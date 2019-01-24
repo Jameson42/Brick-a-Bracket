@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+    font-family: 'Roboto', sans-serif;
+    padding-top: 40px;
+}
+
+h1, h2, h3, h4, h5, h6, nav, 
+.h1, .h2, .h3, .h4, .h5, .h6, .navbar {
+    font-family: 'Roboto Slab', serif;
+}
+
+code, kbd, samp {
+    font-family: 'Roboto Mono', monospace;
+}
+
+.btn-primary {
+    color:#000;
+    background-color: #fec601;
+    border-color:#fec601;
+}
+
+.btn-primary:hover{
+    color: #fff;
+    background-color: #ea7317;
+    border-color: #ea7317;
+}
