@@ -1,0 +1,121 @@
+long THRESHOLD;
+long lane1,lane2,lane3,lane4,startTick;
+bool Sensitivityclose = false;
+mutex ButtonWait;
+
+long Max(long l1, long l2, long l3, long l4)
+{
+ long temp = l1;
+ if (l2>temp)
+    temp = l2;
+ if (l3>temp)
+    temp = l3;
+ if (l4>temp)
+    temp = l4;
+ return temp;
+}
+
+bool Display(long MS, long Line)
+{
+ string tempStr = NumToStr(MS%1000);
+ while (strlen(tempStr)<3)
+    tempStr = StrCat("0",tempStr);
+ string outStr = StrCat(NumToStr(MS/1000),".",tempStr);
+ TextOut(0,Line,outStr);
+ long queueNum = 5 - (Line / 16);
+ SendMessage(queueNum,outStr);
+}
+
+task L1()
+{
+ Wait(100);
+  Acquire(ButtonWait);
+  Release(ButtonWait);
+  while(SensorHTEOPD(S1)<THRESHOLD);
+  lane1 = CurrentTick() - startTick;
+  Wait(100);
+  Display(lane1,LCD_LINE2);
+}
+
+task L2()
+{
+ Wait(100);
+  Acquire(ButtonWait);
+  Release(ButtonWait);
+  while(SensorHTEOPD(S2)<THRESHOLD);
+  lane2 = CurrentTick() - startTick;
+  Wait(100);
+  Display(lane2,LCD_LINE4);
+}
+
+task L3()
+{
+ Wait(100);
+  Acquire(ButtonWait);
+  Release(ButtonWait);
+  while(SensorHTEOPD(S3)<THRESHOLD);
+  lane3 = CurrentTick() - startTick;
+  Wait(100);
+  Display(lane3,LCD_LINE6);
+}
+
+task L4()
+{
+ Wait(100);
+  Acquire(ButtonWait);
+  Release(ButtonWait);
+  while(SensorHTEOPD(S4)<THRESHOLD);
+  lane4 = CurrentTick() - startTick;
+  Wait(100);
+  Display(lane4,LCD_LINE8);
+}
+
+task ButtonWatch()
+//watches for center button, resets timer and display when it's pressed.
+//launches cars as well, and resets stop after 5 seconds.
+{
+  Acquire(ButtonWait);
+  //Start when told!
+  CoastEx(OUT_A,RESET_ALL);
+  SendMessage(MAILBOX1,"Ready");
+  string message;
+  while(!ButtonPressed(BTNCENTER,true))
+  {
+   ReceiveMessage(MAILBOX2,true,message);
+   if (message == "Ready")
+    break;
+  }
+  OffEx(OUT_A,RESET_ALL);
+
+  TextOut(0,LCD_LINE1,"Lane 1:",DRAW_OPT_CLEAR_WHOLE_SCREEN);
+  TextOut(0,LCD_LINE3,"Lane 2:");
+  TextOut(0,LCD_LINE5,"Lane 3:");
+  TextOut(0,LCD_LINE7,"Lane 4:");
+
+  startTick = CurrentTick();
+  Release(ButtonWait);
+  //Do the motor action here...
+  RotateMotor(OUT_A,90,180);
+  OffEx(OUT_A,RESET_ALL);
+
+  Wait(100);
+  CoastEx(OUT_A,RESET_ALL);
+  while(!ButtonPressed(BTNCENTER,true));
+  StopAllTasks();
+}
+
+task main()
+{
+ //4 EOPD Sensors.
+ SetSensorHTEOPD(S1,Sensitivityclose);
+ SetSensorHTEOPD(S2,Sensitivityclose);
+ SetSensorHTEOPD(S3,Sensitivityclose);
+ SetSensorHTEOPD(S4,Sensitivityclose);
+ 
+ THRESHOLD = Max(SensorHTEOPD(S1),SensorHTEOPD(S2),SensorHTEOPD(S3),SensorHTEOPD(S4)) + 20;
+ 
+ TextOut(0,LCD_LINE4," Press button to",DRAW_OPT_CLEAR_WHOLE_SCREEN);
+ TextOut(0,LCD_LINE5,"      Start!");
+ 
+ Precedes(L1,L2,L3,L4,ButtonWatch);
+}
