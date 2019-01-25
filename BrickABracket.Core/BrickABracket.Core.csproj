@@ -1,5 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+  <ItemGroup>
+    <ProjectReference Include="..\BrickABracket.Derby\BrickABracket.Derby.csproj" />
+    <ProjectReference Include="..\BrickABracket.Models\BrickABracket.Models.csproj" />
+    <ProjectReference Include="..\BrickABracket.NXT\BrickABracket.NXT.csproj" />
+    <ProjectReference Include="..\BrickABracket.RoundRobin\BrickABracket.RoundRobin.csproj" />
+    <ProjectReference Include="..\BrickABracket.SingleElimination\BrickABracket.SingleElimination.csproj" />
+    <ProjectReference Include="..\BrickABracket.SwissSystem\BrickABracket.SwissSystem.csproj" />
+  </ItemGroup>
+
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
