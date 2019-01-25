@@ -1,0 +1,4 @@
+
+namespace BrickABracket.Models.Interfaces
+{
+}
