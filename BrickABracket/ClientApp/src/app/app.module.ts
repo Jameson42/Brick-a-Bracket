@@ -9,6 +9,8 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
+import { CoreModule } from './core/core.module';
+import { ConnectionResolver } from './core/signalr-connection.resolver';
 
 @NgModule({
   declarations: [
@@ -23,10 +25,12 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: '', component: HomeComponent, pathMatch: 'full',
+        resolve: {connection: ConnectionResolver} },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
-    ])
+    ]),
+    CoreModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
