@@ -1,0 +1,163 @@
+bool SensitivityClose = false;
+bool Racing = false;
+long StartTick;
+
+task L1();
+task L2();
+task L3();
+task L4();
+task ButtonWatch();
+task MessageWatch();
+task RaceStart();
+task PostRaceStart();
+task RaceStop();
+
+inline void Display(string ms, int lane)
+{
+   // Convert to LCD_LINE# 2,4,6,8
+   long line = (4 - lane) * 16;
+   TextOut(0, line, ms);
+}
+
+inline void Send(string ms, int lane)
+{
+   string message = StrCat(NumToStr(lane), "-", ms);
+   SendMessage(MAILBOX2, message);
+}
+
+inline void SendStatus(string status)
+{
+   SendMessage(MAILBOX1, status);
+}
+
+string MSToString(long ms)
+{
+   string tempStr = NumToStr(ms%1000);
+   while (strlen(tempStr)<3)
+      tempStr = StrCat("0",tempStr);
+   return StrCat(NumToStr(ms/1000),".",tempStr);
+}
+
+void PreRaceScreen()
+{
+   TextOut(0,LCD_LINE4," Press button to",DRAW_OPT_CLEAR_WHOLE_SCREEN);
+   TextOut(0,LCD_LINE5,"      Start!");
+}
+
+void RaceScreen()
+{
+   TextOut(0,LCD_LINE1,"Lane 1:",DRAW_OPT_CLEAR_WHOLE_SCREEN);
+   TextOut(0,LCD_LINE3,"Lane 2:");
+   TextOut(0,LCD_LINE5,"Lane 3:");
+   TextOut(0,LCD_LINE7,"Lane 4:");
+}
+
+long RaceLane(int lane)
+{
+   int sensor = lane-1;
+   long threshold = SensorHTEOPD(sensor) + 20;
+   while(SensorHTEOPD(sensor)<threshold)
+   {
+      Yield(); // Give up control to next task
+   }
+   long time = CurrentTick() - StartTick;
+   Wait(100);  // Ensure we don't block other tasks
+   string timeString = MSToString(time);
+   Send(timeString, lane);
+   Display(timeString, lane);
+}
+
+task main()
+{
+   // Start watches after init
+   Precedes(ButtonWatch,MessageWatch);
+
+   // Setup 4 EOPD Sensors.
+   SetSensorHTEOPD(S1,SensitivityClose);
+   SetSensorHTEOPD(S2,SensitivityClose);
+   SetSensorHTEOPD(S3,SensitivityClose);
+   SetSensorHTEOPD(S4,SensitivityClose);
+
+   PreRaceScreen();
+   SendStatus("Ready");
+}
+
+task ButtonWatch()
+{
+   while(true)
+   {
+      while(!ButtonPressed(BTNCENTER,true))
+      {
+         Yield(); // Give up control to next task
+      }
+      if (Racing)
+         SendStatus("Stop");
+      else SendStatus("Start");
+      Wait(500);  // Try not to catch long presses
+   }
+}
+
+task MessageWatch()
+{
+   string message;
+   while(true)
+   {
+      ReceiveMessage(MAILBOX6,true,message)
+      if (!Racing && message == "Start")
+         start RaceStart;
+      else if (Racing && message == "Stop")
+         start RaceStop;
+      Yield(); // Give up control to next task
+   }
+}
+
+task L1()
+{
+   RaceLane(1);
+}
+
+task L2()
+{
+   RaceLane(2);
+}
+
+task L3()
+{
+   RaceLane(3);
+}
+
+task L4()
+{
+   RaceLane(4);
+}
+
+task RaceStart()
+{
+   // Start lane counters after init
+   Precedes(L1,L2,L3,L4,PostRaceStart);
+
+   RaceScreen();
+   SendStatus("Running");
+   Racing = true;
+   OffEx(OUT_A,RESET_ALL);
+   StartTick = CurrentTick();
+   RotateMotor(OUT_A,90,180);
+   OffEx(OUT_A,RESET_ALL);
+}
+
+task PostRaceStart()
+{
+   Wait(100);
+   CoastEx(OUT_A,RESET_ALL);
+}
+
+task RaceStop()
+{
+   stop L1;
+   stop L2;
+   stop L3;
+   stop L4;
+   SendStatus("Stopped");
+   Racing = false;
+   PreRaceScreen();
+}
