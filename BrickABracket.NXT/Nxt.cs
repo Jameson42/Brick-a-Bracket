@@ -59,9 +59,9 @@ namespace BrickABracket.NXT
             }
             _followSubscription = Statuses.Subscribe(i => {
                 if (i == Status.Start)  // Start race and start emitting scores
-                    StartRace();
+                    StartMatch();
                 else if (i == Status.Stop) // Stop race and stop emitting scores
-                    StopRace();
+                    StopMatch();
             });
         }
         public IObservable<IScore> Scores { get; private set; }
@@ -92,14 +92,14 @@ namespace BrickABracket.NXT
             }
         }
 
-        private void StartRace()
+        private void StartMatch()
         {
             lock(MessageLock)
             {
                 _brick.Mailbox.Send("Start", Box.Box5);
             }
         }
-        private void StopRace()
+        private void StopMatch()
         {
             lock(MessageLock)
             {
@@ -116,16 +116,10 @@ namespace BrickABracket.NXT
                     // Post all queued statuses
                     while (PostStatus(_brick.Mailbox.ReadString(Box.Box0, true)));
                     // Post all queued scores
-                    while (PostScore(_brick.Mailbox.ReadString(Box.Box1, true)));
+                    while (PostScore((Score)_brick.Mailbox.ReadString(Box.Box1, true)));
                 }
                 Thread.Sleep(500);
             }
-        }
-        private bool PostScore(string score)
-        {
-            if (score == null)
-                return false;
-            return PostScore(ParseScore(score));
         }
         private bool PostScore(IScore score)
         {
@@ -134,21 +128,11 @@ namespace BrickABracket.NXT
             _scores.OnNext(score);
             return true;
         }
-        private IScore ParseScore(string score)
-        {
-            // Expect data as "{lane-time}", i.e. "1-1.43"
-            if (score == null || score.Length<3)
-                return null;
-            if (int.TryParse(score.Substring(0,1), out int lane)
-            && double.TryParse(score.Substring(2), out double time))
-                return new Score(lane, time);
-            return null;
-        }
         private bool PostStatus(string status)
         {
             if (status == null)
                 return false;
-            return PostStatus(ParseStatus(status));
+            return PostStatus(status.ToStatus());
         }
 
         private bool PostStatus(Status status)
@@ -159,30 +143,9 @@ namespace BrickABracket.NXT
             return true;
         }
 
-        private Status ParseStatus(string status)
-        {
-            if (status == null)
-                return Status.Unknown;
-            switch (status.ToLower())
-            {
-                case "ready":
-                    return Status.Ready;
-                case "start":
-                    return Status.Start;
-                case "stop":
-                    return Status.Stop;
-                case "running":
-                    return Status.Running;
-                case "stopped":
-                    return Status.Stopped;
-                default:
-                    return Status.Unknown;
-            }
-        }
-
         public void Dispose()
         {
-            StopRace();
+            StopMatch();
             _messageThread.Abort();
             _brick?.Connection.Close();
             _scores.OnCompleted();

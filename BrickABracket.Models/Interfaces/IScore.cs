@@ -2,7 +2,7 @@ namespace BrickABracket.Models.Interfaces
 {
     public interface IScore
     {
-        int lane {get;}
+        int player {get;}
         double time {get;}
     }
 }
