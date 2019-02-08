@@ -2,8 +2,12 @@ using System.Collections.Generic;
 
 namespace BrickABracket.Models.Interfaces
 {
-    public interface ICategory {
+    public interface ICategory: IDBItem
+    {
         string Name {get;}
-        List<IRound> Rounds {get;}
+        IClassification Classification {get;}
+        IList<IRound> Rounds {get;}
+        ITournament Tournament {get;}
+        // TODO: Results
     }
 }

@@ -3,8 +3,8 @@ using BrickABracket.Models.Base;
 
 namespace BrickABracket.Models.Interfaces
 {
-    public interface IMatchStarter 
+    public interface IStatusFollower
     {
-        IObservable<Status> Statuses {get;}
+        void FollowStatus(IObservable<Status> Statuses);
     }
 }

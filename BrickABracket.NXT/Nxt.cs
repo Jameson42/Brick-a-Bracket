@@ -50,7 +50,7 @@ namespace BrickABracket.NXT
                 catch {return "";}
             }
         }
-        public void FollowStart(IObservable<Status> Statuses)
+        public void FollowStatus(IObservable<Status> Statuses)
         {
             if (_followSubscription != null)
             {

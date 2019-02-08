@@ -11,6 +11,8 @@ namespace BrickABracket.Models.Base
         }
         public int player {get;}
         public double time {get;}
+        public int _id { get; set; }
+
         public static implicit operator string(Score s)
         {
             return $"{s.player}-{s.time}";

@@ -1,11 +1,11 @@
 namespace BrickABracket.Models.Interfaces
 {
-    public interface IMoc: IDBItem
+    public interface ICompetitor: IDBItem
     {
-        string Name {get;set;}
+        string FirstName {get;}
+        string LastName {get;}
+        string Name {get;}
         // Picure URI will be a REST endpoint for upload and download
         string PictureUri {get;}
-        IClassification Classification {get;set;}
-        double Weight {get;set;}
     }
 }

@@ -2,7 +2,7 @@ using System;
 
 namespace BrickABracket.Models.Interfaces
 {
-    public interface INxt: IDisposable, IScoreProvider, IMatchFollower, IMatchStarter
+    public interface INxt: IDisposable, IScoreProvider, IStatusFollower, IStatusProvider
     {
         bool Connect();
         bool Connect(string connection);
