@@ -10,7 +10,7 @@ using MonoBrick.NXT;
 
 namespace BrickABracket.NXT
 {
-    public class Nxt : INxt
+    public class Nxt : IDevice
     {
         private Brick<I2CSensor,I2CSensor,I2CSensor,I2CSensor> _brick;
         private static readonly object MessageLock = new object();
