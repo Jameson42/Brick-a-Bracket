@@ -10,16 +10,18 @@ using MonoBrick.NXT;
 
 namespace BrickABracket.NXT
 {
-    public class Nxt : IDevice
+    public class Nxt : IDevice, IEquatable<Nxt>
     {
         private Brick<I2CSensor,I2CSensor,I2CSensor,I2CSensor> _brick;
         private static readonly object MessageLock = new object();
         private IDisposable _followSubscription;
         private Subject<IScore> _scores;
         private Subject<Status> _statuses;
+        public IObservable<IScore> Scores { get; private set; }
+        public IObservable<Status> Statuses { get; private set; }
         private Thread _messageThread;
 
-        public Nxt()
+        public Nxt(string connectionString)
         {
             _scores = new Subject<IScore>();
             // call _scores.OnNext() with each new IScore
@@ -29,9 +31,7 @@ namespace BrickABracket.NXT
             Scores = _scores.AsObservable();
             Statuses = _statuses.Replay(1); //Always provide current status to new subscribers
 
-            _messageThread = new Thread(new ThreadStart(ReadMailboxes));
-            _messageThread.IsBackground = true;
-            _messageThread.Start();
+            Connection = connectionString;
         }
 
         public bool Connected => Connect();
@@ -64,30 +64,33 @@ namespace BrickABracket.NXT
                     StopMatch();
             });
         }
-        public IObservable<IScore> Scores { get; private set; }
-        public IObservable<Status> Statuses { get; private set; }
         public bool Connect()
-        {
-            return Connect(null);
-        }
-        public bool Connect(string connection)
         {
             if (_brick?.Connection.IsConnected ?? false)
                 return true;
-            if (connection == null)
+            if (string.IsNullOrWhiteSpace(Connection))
                 return false;
             try
             {
-                _brick = new Brick<I2CSensor, I2CSensor, I2CSensor, I2CSensor>(connection);
+                _brick = new Brick<I2CSensor, I2CSensor, I2CSensor, I2CSensor>(Connection);
                 _brick.Connection.Open();
-                //_brick.Beep(50);
-                Connection = connection;
+                if (_messageThread == null)
+                {
+                    _messageThread = new Thread(new ThreadStart(ReadMailboxes));
+                    _messageThread.IsBackground = true;
+                    _messageThread.Start();
+                }
                 return _brick.Connection.IsConnected;
             }
             catch
             {
                 _brick?.Connection.Close();
                 Connection = "";
+                if (_messageThread != null)
+                {
+                    _messageThread.Abort();
+                    _messageThread = null;
+                }
                 return false;
             }
         }
@@ -111,12 +114,21 @@ namespace BrickABracket.NXT
         {
             while(true)
             {
+                while(!Connected)
+                    Thread.Sleep(500);
                 lock(MessageLock)
                 {
-                    // Post all queued statuses
-                    while (PostStatus(_brick.Mailbox.ReadString(Box.Box0, true)));
-                    // Post all queued scores
-                    while (PostScore((Score)_brick.Mailbox.ReadString(Box.Box1, true)));
+                    try
+                    {
+                        // Post all queued statuses
+                        while (PostStatus(_brick.Mailbox.ReadString(Box.Box0, true)));
+                        // Post all queued scores
+                        while (PostScore((Score)_brick.Mailbox.ReadString(Box.Box1, true)));
+                    }
+                    catch
+                    {
+                        //Eat message failures
+                    }
                 }
                 Thread.Sleep(500);
             }
@@ -130,7 +142,7 @@ namespace BrickABracket.NXT
         }
         private bool PostStatus(string status)
         {
-            if (status == null)
+            if (string.IsNullOrWhiteSpace(status))
                 return false;
             return PostStatus(status.ToStatus());
         }
@@ -146,13 +158,37 @@ namespace BrickABracket.NXT
         public void Dispose()
         {
             StopMatch();
-            _messageThread.Abort();
+            if (_messageThread != null)
+            {
+                _messageThread.Abort();
+                _messageThread = null;
+            }
             _brick?.Connection.Close();
             _scores.OnCompleted();
             _scores.Dispose();
             _statuses.OnCompleted();
             _statuses.Dispose();
             _followSubscription.Dispose();
+        }
+
+        public bool Equals(Nxt other)
+        {
+            if (other == null) return false;
+            return string.Equals(Connection, other.Connection);
+        }
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != GetType()) return false;
+            return Equals(obj as Nxt);
+	    }
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                return 17071 ^ Connection.GetHashCode();
+            }
         }
     }
 }
