@@ -7,7 +7,12 @@ namespace BrickABracket.Core.ORM
     public class Repository: IDisposable
     {
         private LiteDatabase _db;
-        public Repository(string connectionString) => _db = new LiteDatabase(connectionString);
+        public string ConnectionString { get; }
+        public Repository(string connectionString)
+        { 
+            _db = new LiteDatabase(connectionString);
+            ConnectionString = connectionString;
+        }
         public T Get<T>(int id) => _db.GetCollection<T>(typeof(T).Name).FindById(id);
         public IEnumerable<T> GetAll<T>() => _db.GetCollection<T>(typeof(T).Name).FindAll();
         public BsonValue Insert<T>(T item) => _db.GetCollection<T>(typeof(T).Name).Insert(item);

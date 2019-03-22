@@ -1,13 +1,19 @@
 using Microsoft.AspNetCore.SignalR;
 using System.Threading.Tasks;
+using BrickABracket.Core.ORM;
 
 namespace BrickABracket.Hubs
 {
     public class ChatHub : Hub
     {
-        public async Task SendMessage(string user, string message)
+        public ChatHub(Repository repo)
         {
-            await Clients.All.SendAsync("ReceiveMessage", user, message);
+            _repo = repo;
+        }
+        private Repository _repo;
+        public async Task SendMessage(string message)
+        {
+            await Clients.All.SendAsync("ReceiveMessage", _repo.ConnectionString);
         }
     }
 }

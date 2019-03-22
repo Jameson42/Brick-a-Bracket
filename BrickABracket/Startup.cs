@@ -5,7 +5,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using BrickABracket.Core;
+using BrickABracket.Core.ORM;
 using BrickABracket.Hubs;
+using Autofac;
 
 namespace BrickABracket
 {
@@ -73,6 +76,16 @@ namespace BrickABracket
                     spa.UseAngularCliServer(npmScript: "start");
                 }
             });
+        }
+
+        // Use this to register things with Autofac
+        // This is called after ConfigureServices, so will override registrations there
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            builder.RegisterType(typeof(Repository))
+                .WithParameter("connectionString","BrickABracket.db")
+                .InstancePerLifetimeScope();
+            builder.RegisterInstance(new Tracker());
         }
     }
 }
