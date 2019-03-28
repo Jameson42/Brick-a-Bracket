@@ -6,6 +6,7 @@ namespace BrickABracket.Models.Interfaces
         // Picure URI will be a REST endpoint for upload and download
         string PictureUri {get;}
         IClassification Classification {get;set;}
+        ICompetitor Competitor {get;set;}
         double Weight {get;set;}
     }
 }

@@ -13,10 +13,9 @@ namespace BrickABracket.Models.Base
         public double time {get;}
         public int _id { get; set; }
 
-        public static implicit operator string(Score s)
-        {
-            return $"{s.player}-{s.time}";
-        }
+        public override string ToString() => $"{s.player}-{s.time}";
+
+        public static implicit operator string(Score s) => s?.ToString() ?? string.Empty;
         public static implicit operator Score(string s)
         {
             if (s == null || s.Length<3)

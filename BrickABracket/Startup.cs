@@ -5,10 +5,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Autofac;
 using BrickABracket.Core;
 using BrickABracket.Core.ORM;
 using BrickABracket.Hubs;
-using Autofac;
+using BrickABracket.Models;
 
 namespace BrickABracket
 {
@@ -82,10 +83,11 @@ namespace BrickABracket
         // This is called after ConfigureServices, so will override registrations there
         public void ConfigureContainer(ContainerBuilder builder)
         {
+            builder.RegisterModule(new ModelModule());
             builder.RegisterType(typeof(Repository))
                 .WithParameter("connectionString","BrickABracket.db")
                 .InstancePerLifetimeScope();
-            builder.RegisterInstance(new Tracker());
+            builder.RegisterInstance(new Tracker()).SingleInstance();
         }
     }
 }
