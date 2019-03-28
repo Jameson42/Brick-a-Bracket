@@ -23,9 +23,11 @@ namespace BrickABracket.Core
         private HashSet<IDevice> _connectedDevices {get;}
         private HashSet<IScoreProvider> _scoreProviders {get;}
         private HashSet<IStatusProvider> _statusProviders {get;}
+        private Func<string, IDevice> _brickFactory {get;}
 
-        public Tracker()
+        public Tracker(Func<string, IDevice> brickFactory)
         {
+            _brickFactory = brickFactory;
             _scores = new Subject<IScore>();
             _statuses = new Subject<Status>();
             Scores = _scores.AsObservable();
@@ -51,15 +53,17 @@ namespace BrickABracket.Core
 
         public void RemoveNxtScoreProvider(string connectionString)
         {
-            RemoveScoreProvider(new Nxt(connectionString));
+            if (_brickFactory == null)
+                throw new NullReferenceException("BrickABracket.Core::Tracker is missing a brick factory");
+            RemoveScoreProvider(_brickFactory(connectionString));
         }
 
         public void RemoveScoreProvider(IDevice device)
         {
-            if (_scoreProviders.Contains(device) || _scoreSubscriptions.ContainsKey(device))
-                return;
-            _scoreProviders.Remove(device);
-            _scoreSubscriptions[device].Dispose();
+            if (_scoreProviders.Contains(device))
+                _scoreProviders.Remove(device);
+            if (_scoreSubscriptions.ContainsKey(device))
+                _scoreSubscriptions[device].Dispose();
         }
 
         private void PassScore(IScore score)

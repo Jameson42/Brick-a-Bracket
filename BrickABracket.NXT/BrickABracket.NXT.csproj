@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.9.2" />
     <ProjectReference Include="..\BrickABracket.Models\BrickABracket.Models.csproj" />
     <Reference Include="MonoBrick">
       <HintPath>_Dependencies\MonoBrick\MonoBrick.dll</HintPath>

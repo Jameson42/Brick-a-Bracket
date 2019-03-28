@@ -4,10 +4,9 @@ namespace BrickABracket.Models.Interfaces
 {
     public interface ICategory: IDBItem
     {
-        string Name {get;}
-        IClassification Classification {get;}
-        IList<IRound> Rounds {get;}
-        ITournament Tournament {get;}
-        // TODO: Results
+        string Name {get;set;}
+        IClassification Classification {get;set;}
+        IList<IRound> Rounds {get;set;}
+        ITournament Tournament {get;set;}
     }
 }

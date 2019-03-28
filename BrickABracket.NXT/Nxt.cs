@@ -20,9 +20,11 @@ namespace BrickABracket.NXT
         public IObservable<IScore> Scores { get; private set; }
         public IObservable<Status> Statuses { get; private set; }
         private Thread _messageThread;
+        private Func<string, IScore> _scoreFactory;
 
-        public Nxt(string connectionString)
+        public Nxt(string connectionString, Func<string, IScore> scoreFactory)
         {
+            _scoreFactory = scoreFactory;
             _scores = new Subject<IScore>();
             // call _scores.OnNext() with each new IScore
             _statuses = new Subject<Status>();
@@ -123,7 +125,8 @@ namespace BrickABracket.NXT
                         // Post all queued statuses
                         while (PostStatus(_brick.Mailbox.ReadString(Box.Box0, true)));
                         // Post all queued scores
-                        while (PostScore((Score)_brick.Mailbox.ReadString(Box.Box1, true)));
+                        while (_scoreFactory!=null 
+                            && PostScore(_scoreFactory(_brick.Mailbox.ReadString(Box.Box1, true))));
                     }
                     catch
                     {
