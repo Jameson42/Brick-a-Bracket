@@ -1,12 +1,9 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reactive;
 using System.Reactive.Linq;
 using System.Reactive.Subjects;
 using BrickABracket.Models.Base;
 using BrickABracket.Models.Interfaces;
-using BrickABracket.NXT;
 
 namespace BrickABracket.Core
 {

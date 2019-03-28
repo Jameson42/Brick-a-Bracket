@@ -7,6 +7,7 @@ namespace BrickABracket.SingleElimination
     {
         public IList<ICategory> Categories {get;} = new List<ICategory>();
         public int _id { get; set; }
+        public string Type => "singleelimination";
 
         // TODO: MOC list, create categories
     }

@@ -10,6 +10,7 @@ namespace BrickABracket.Models.Interfaces
     public interface ITournament: IDBItem
     {
         IList<ICategory> Categories {get;}
+        string Type {get;}
         // TODO: Results, MOC list, ?
     }
 }

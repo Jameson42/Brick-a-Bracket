@@ -7,6 +7,7 @@ namespace BrickABracket.RoundRobin
     {
         public IList<ICategory> Categories {get;} = new List<ICategory>();
         public int _id { get; set; }
+        public string Type => "roundrobin";
 
         // TODO: MOC list, create categories
     }
