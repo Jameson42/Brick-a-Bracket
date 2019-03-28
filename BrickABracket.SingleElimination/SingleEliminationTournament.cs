@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using BrickABracket.Models.Interfaces;
 
-namespace BrickABracket.Derby
+namespace BrickABracket.SingleElimination
 {
-    public class DerbyTournament : ITournament
+    public class SingleEliminationTournament : ITournament
     {
         public IList<ICategory> Categories {get;} = new List<ICategory>();
         public int _id { get; set; }

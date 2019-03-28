@@ -9,6 +9,10 @@ using BrickABracket.Core;
 using BrickABracket.Hubs;
 using BrickABracket.Models;
 using BrickABracket.NXT;
+using BrickABracket.Derby;
+using BrickABracket.RoundRobin;
+using BrickABracket.SingleElimination;
+using BrickABracket.SwissSystem;
 
 namespace BrickABracket
 {
@@ -85,6 +89,10 @@ namespace BrickABracket
             builder.RegisterModule(new ModelsModule());
             builder.RegisterModule(new CoreModule());
             builder.RegisterModule(new NxtModule());
+            builder.RegisterModule(new DerbyModule());
+            builder.RegisterModule(new RoundRobinModule());
+            builder.RegisterModule(new SingleEliminationModule());
+            builder.RegisterModule(new SwissSystemModule());
         }
     }
 }

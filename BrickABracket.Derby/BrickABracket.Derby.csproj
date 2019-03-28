@@ -4,6 +4,10 @@
     <ProjectReference Include="..\BrickABracket.Models\BrickABracket.Models.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.9.2" />
+  </ItemGroup>
+
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
