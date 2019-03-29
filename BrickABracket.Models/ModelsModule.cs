@@ -1,6 +1,5 @@
 using Autofac;
 using BrickABracket.Models.Base;
-using BrickABracket.Models.Interfaces;
 
 namespace BrickABracket.Models
 {
@@ -8,12 +7,13 @@ namespace BrickABracket.Models
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<Category>().As<ICategory>();
-            builder.RegisterType<Classification>().As<IClassification>();
-            builder.RegisterType<Match>().As<IMatch>();
-            builder.RegisterType<Moc>().As<IMoc>();
-            builder.RegisterType<Round>().As<IRound>();
-            builder.RegisterType<Score>().As<IScore>();
+            builder.RegisterType<Category>();
+            builder.RegisterType<Classification>();
+            builder.RegisterType<Match>();
+            builder.RegisterType<Moc>();
+            builder.RegisterType<Round>();
+            builder.RegisterType<Score>();
+            builder.RegisterType<Tournament>();
         }
     }
 }

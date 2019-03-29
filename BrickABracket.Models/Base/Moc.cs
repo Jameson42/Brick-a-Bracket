@@ -2,7 +2,7 @@ using BrickABracket.Models.Interfaces;
 
 namespace BrickABracket.Models.Base
 {
-    public class Moc: IMoc
+    public class Moc: IDBItem
     {
         public delegate Moc Factory(string baseUrl);
         public Moc(string baseUrl)
@@ -11,8 +11,8 @@ namespace BrickABracket.Models.Base
         }
         public string Name {get;set;}
         public string PictureUri => _baseUrl + _id;
-        public IClassification Classification {get;set;}
-        public ICompetitor Competitor {get;set;}
+        public Classification Classification {get;set;}
+        public Competitor Competitor {get;set;}
         public double Weight {get;set;}
         public int _id {get;set;}
 

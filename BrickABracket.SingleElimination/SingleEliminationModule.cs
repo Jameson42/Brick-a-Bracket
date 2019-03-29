@@ -8,7 +8,7 @@ namespace BrickABracket.SingleElimination
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<SingleEliminationTournament>()
-                .As<ITournament>()
+                .As<ITournamentStrategy>()
                 .WithMetadata("Type", "singleelimination");
         }
     }

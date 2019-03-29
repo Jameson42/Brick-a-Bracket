@@ -8,7 +8,7 @@ namespace BrickABracket.RoundRobin
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<RoundRobinTournament>()
-                .As<ITournament>()
+                .As<ITournamentStrategy>()
                 .WithMetadata("Type", "roundrobin");
         }
     }

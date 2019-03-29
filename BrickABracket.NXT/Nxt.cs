@@ -15,17 +15,17 @@ namespace BrickABracket.NXT
         private Brick<I2CSensor,I2CSensor,I2CSensor,I2CSensor> _brick;
         private static readonly object MessageLock = new object();
         private IDisposable _followSubscription;
-        private Subject<IScore> _scores;
+        private Subject<Score> _scores;
         private Subject<Status> _statuses;
-        public IObservable<IScore> Scores { get; private set; }
+        public IObservable<Score> Scores { get; private set; }
         public IObservable<Status> Statuses { get; private set; }
         private Thread _messageThread;
-        private Func<string, IScore> _scoreFactory;
+        private Func<string, Score> _scoreFactory;
 
-        public Nxt(string connectionString, Func<string, IScore> scoreFactory)
+        public Nxt(string connectionString, Func<string, Score> scoreFactory)
         {
             _scoreFactory = scoreFactory;
-            _scores = new Subject<IScore>();
+            _scores = new Subject<Score>();
             // call _scores.OnNext() with each new IScore
             _statuses = new Subject<Status>();
             // call _start.OnNext() with true with each NXT-triggered start. 
@@ -136,7 +136,7 @@ namespace BrickABracket.NXT
                 Thread.Sleep(500);
             }
         }
-        private bool PostScore(IScore score)
+        private bool PostScore(Score score)
         {
             if (score == null)
                 return false;

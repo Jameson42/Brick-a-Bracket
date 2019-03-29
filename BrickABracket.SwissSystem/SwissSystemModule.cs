@@ -8,7 +8,7 @@ namespace BrickABracket.SwissSystem
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<SwissSystemTournament>()
-                .As<ITournament>()
+                .As<ITournamentStrategy>()
                 .WithMetadata("Type", "swisssystem");
         }
     }

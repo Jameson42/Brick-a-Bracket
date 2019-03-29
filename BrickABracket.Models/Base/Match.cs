@@ -3,10 +3,10 @@ using BrickABracket.Models.Interfaces;
 
 namespace BrickABracket.Models.Base
 {
-    public class Match : IMatch
+    public class Match : IDBItem
     {
-        public IList<IMoc> Mocs {get;} = new List<IMoc>();
-        public IRound Round {get;set;}
+        public List<Moc> Mocs {get;} = new List<Moc>();
+        public Round Round {get;set;}
         public int _id { get; set; }
     }
 }

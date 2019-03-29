@@ -7,13 +7,13 @@ using BrickABracket.Models.Interfaces;
 
 namespace BrickABracket.Core
 {
-    public class Tracker
+    public class Tracker: IScoreProvider, IStatusProvider
     {
         private Dictionary<IDevice,IDisposable> _scoreSubscriptions;
         private Dictionary<IDevice,IDisposable> _statusSubscriptions;
-        private Subject<IScore> _scores;
+        private Subject<Score> _scores;
         private Subject<Status> _statuses;
-        public IObservable<IScore> Scores { get; private set; }
+        public IObservable<Score> Scores { get; private set; }
         public IObservable<Status> Statuses { get; private set; }
 
         // HashSet to ensure only one of each device object is kept
@@ -25,7 +25,7 @@ namespace BrickABracket.Core
         public Tracker(Func<string, IDevice> brickFactory)
         {
             _brickFactory = brickFactory;
-            _scores = new Subject<IScore>();
+            _scores = new Subject<Score>();
             _statuses = new Subject<Status>();
             Scores = _scores.AsObservable();
             Statuses = _statuses.Replay(1);
@@ -63,7 +63,7 @@ namespace BrickABracket.Core
                 _scoreSubscriptions[device].Dispose();
         }
 
-        private void PassScore(IScore score)
+        private void PassScore(Score score)
         {
             _scores.OnNext(score);
         }

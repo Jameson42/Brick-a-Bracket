@@ -2,7 +2,7 @@ using BrickABracket.Models.Interfaces;
 
 namespace BrickABracket.Models.Base
 {
-    public class Score : IScore
+    public class Score : IDBItem
     {
         public Score(string s)
         {

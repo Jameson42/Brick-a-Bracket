@@ -3,12 +3,12 @@ using BrickABracket.Models.Interfaces;
 
 namespace BrickABracket.Models.Base
 {
-    public class Category : ICategory
+    public class Category : IDBItem
     {
         public string Name {get;set;}
-        public IClassification Classification {get;set;}
-        public IList<IRound> Rounds {get;set;}
-        public ITournament Tournament {get;set;}
+        public Classification Classification {get;set;}
+        public List<Round> Rounds {get;set;} = new List<Round>();
+        public Tournament Tournament {get;set;}
         public int _id { get; set; }
     }
 }

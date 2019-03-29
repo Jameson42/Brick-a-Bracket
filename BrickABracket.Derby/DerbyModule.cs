@@ -8,7 +8,7 @@ namespace BrickABracket.Derby
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<DerbyTournament>()
-                .As<ITournament>()
+                .As<ITournamentStrategy>()
                 .WithMetadata("Type", "derby");
         }
     }

@@ -3,7 +3,7 @@ using BrickABracket.Models.Interfaces;
 
 namespace BrickABracket.Models.Base
 {
-    public class Competitor : ICompetitor
+    public class Competitor : IDBItem
     {
 
         public string FirstName { get; set; }

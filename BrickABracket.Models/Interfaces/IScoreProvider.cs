@@ -1,9 +1,10 @@
 using System;
+using BrickABracket.Models.Base;
 
 namespace BrickABracket.Models.Interfaces
 {
     public interface IScoreProvider
     {
-        IObservable<IScore> Scores {get;}
+        IObservable<Score> Scores {get;}
     }
 }
