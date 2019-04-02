@@ -11,6 +11,7 @@ namespace BrickABracket.Core
                 .WithParameter("connectionString","BrickABracket.db")
                 .InstancePerLifetimeScope();
             builder.RegisterType<Tracker>().SingleInstance();
+            builder.RegisterType<TournamentManager>().SingleInstance();
         }
     }
 }
