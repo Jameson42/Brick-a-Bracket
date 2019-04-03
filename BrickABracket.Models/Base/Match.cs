@@ -5,8 +5,7 @@ namespace BrickABracket.Models.Base
 {
     public class Match : IDBItem
     {
-        public List<Moc> Mocs {get;} = new List<Moc>();
-        public Round Round {get;set;}
+        public List<int> MocIds {get;} = new List<int>();
         public int _id { get; set; }
     }
 }

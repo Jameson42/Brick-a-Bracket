@@ -6,9 +6,8 @@ namespace BrickABracket.Models.Base
     public class Tournament : IDBItem
     {
         public List<Category> Categories {get;} = new List<Category>();
-        public int _id { get; set; }
+        public List<int> MocIds {get;} = new List<int>();
         public string TournamentType {get;set;}
-
-        // TODO: MOC list, create categories
+        public int _id { get; set; }
     }
 }

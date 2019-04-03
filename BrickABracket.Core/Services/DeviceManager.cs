@@ -4,11 +4,11 @@ using BrickABracket.Models.Interfaces;
 
 namespace BrickABracket.Core.Services
 {
-    public class DeviceTracker
+    public class DeviceManager
     {
         private Func<string, IDevice> _deviceFactory {get;}
         private Dictionary<string, IDevice> _devices {get;} = new Dictionary<string, IDevice>();
-        public DeviceTracker(Func<string, IDevice> deviceFactory)
+        public DeviceManager(Func<string, IDevice> deviceFactory)
         {
             _deviceFactory = deviceFactory;
             // TODO: Auto-connect to devices (or reconnect on restart)?

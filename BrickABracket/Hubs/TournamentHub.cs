@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.SignalR;
 using System.Threading.Tasks;
-using BrickABracket.Core;
+using BrickABracket.Core.Services;
 
 namespace BrickABracket.Hubs
 {

@@ -6,9 +6,8 @@ namespace BrickABracket.Models.Base
     public class Category : IDBItem
     {
         public string Name {get;set;}
-        public Classification Classification {get;set;}
+        public int ClassificationId {get;set;}
         public List<Round> Rounds {get;set;} = new List<Round>();
-        public Tournament Tournament {get;set;}
         public int _id { get; set; }
     }
 }

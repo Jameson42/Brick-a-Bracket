@@ -18,6 +18,11 @@ namespace BrickABracket.Models.Base
             this.player = player;
             this.time = time;
         }
+        public Score()
+        {
+            player = 0;
+            time = 0.0;
+        }
         public int player {get;}
         public double time {get;}
         public int _id { get; set; }
