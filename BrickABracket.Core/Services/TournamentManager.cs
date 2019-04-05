@@ -1,11 +1,7 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using Autofac;
 using Autofac.Features.Metadata;
 using LiteDB;
 using BrickABracket.Models.Interfaces;
-using BrickABracket.Core.ORM;
 using BrickABracket.Models.Base;
 
 namespace BrickABracket.Core.Services
@@ -14,8 +10,6 @@ namespace BrickABracket.Core.Services
     public class TournamentManager
     {
         private IEnumerable<Meta<ITournamentStrategy>> _tournamentStrategies;
-        // Create a new repository reference on each get/save action
-        private Func<Repository> _repositoryFactory;
         private LiteRepository db {get;}
         public TournamentManager(IEnumerable<Meta<ITournamentStrategy>> tournamentStrategies, LiteRepository repository)
         {
@@ -23,31 +17,16 @@ namespace BrickABracket.Core.Services
             db = repository;
         }
 
-        public int Create(Tournament t)
-        {
-            return db.Insert<Tournament>(t);
-        }
+        public int Create(Tournament t) => db.Insert<Tournament>(t);
+        public Tournament Read(int id) => db.Query<Tournament>().SingleById(id);
+        public IEnumerable<Tournament> ReadAll() => db.Query<Tournament>().ToEnumerable();
+        public IEnumerable<TournamentSummary> ReadAllSummaries() => db.Database
+            .GetCollection<TournamentSummary>(typeof(Tournament).Name)
+            .FindAll();
 
-        public Tournament Read(int id)
-        {
-            return db.Query<Tournament>()
-                .SingleById(id);
-        }
+        public bool Update(Tournament t) => db.Update<Tournament>(t);
+        public bool Delete(int id) => db.Delete<Tournament>(id);
 
-        public IEnumerable<Tournament> ReadAll()
-        {
-            return db.Query<Tournament>()
-                .ToEnumerable();
-        }
-
-        public bool Update(Tournament t)
-        {
-            return db.Update<Tournament>(t);
-        }
-
-        public bool Delete(int id)
-        {
-            return db.Delete<Tournament>(id);
-        }
+        // TODO: Add methods to run tournaments through strategies
     }
 }
