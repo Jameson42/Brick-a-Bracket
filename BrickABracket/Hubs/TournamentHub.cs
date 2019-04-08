@@ -6,11 +6,11 @@ namespace BrickABracket.Hubs
 {
     public class TournamentHub : Hub
     {
-        public TournamentHub(TournamentManager tm)
+        public TournamentHub(TournamentService tm)
         {
             _tm = tm;
         }
-        private TournamentManager _tm;
+        private TournamentService _tm;
         public async Task SendMessage(string message)
         {
             await Clients.All.SendAsync("ReceiveMessage", _tm);

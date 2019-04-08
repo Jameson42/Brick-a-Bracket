@@ -15,11 +15,12 @@ namespace BrickABracket.Core
             
             // Services
             builder.RegisterType<Tracker>().SingleInstance();
-            builder.RegisterType<DeviceManager>().SingleInstance();
-            builder.RegisterType<TournamentManager>();
-            builder.RegisterType<CompetitorManager>();
-            builder.RegisterType<MocManager>();
-            builder.RegisterType<ClassificationManager>();
+            builder.RegisterType<DeviceService>().SingleInstance();
+            builder.RegisterType<ActivesService>().SingleInstance();
+            builder.RegisterType<TournamentService>();
+            builder.RegisterType<CompetitorService>();
+            builder.RegisterType<MocService>();
+            builder.RegisterType<ClassificationService>();
         }
     }
 }
