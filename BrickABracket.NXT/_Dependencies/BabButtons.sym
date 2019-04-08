@@ -1,0 +1,1204 @@
+#SYMBOLS
+Index	Identifier	Type	Flag	Data	Size	RefCount
+0	__Display_7qG2_line_7qG2_000_inline_MatchPlayer_inline_P1	6	1	0	4	2
+1	__DU0ButtonWatch	5	1	4	4	8
+2	__D0ButtonWatch	6	1	8	4	10
+3	__D0main	6	1	12	4	4
+4	__MatchPlayer_7qG2_time_7qG2_000_inline_P2	6	1	16	4	2
+5	__D0MatchScreen	6	1	20	4	5
+6	__DU0MatchPlayer_inline_P2	5	1	24	4	2
+7	__signed_stack_001MessageWatch	6	1	28	4	4
+8	__signed_stack_001MSToString	6	1	32	4	2
+9	__signed_stack_001PlayerButton	6	1	36	4	2
+10	__signed_stack_002MatchScreen	6	1	40	4	6
+11	__signed_stack_001ButtonWatch	6	1	44	4	4
+12	__signed_stack_001MatchScreen	6	1	48	4	6
+13	__constVal786433	6	0	52	4	2
+14	__DU0MatchPlayer_inline_P1	5	1	56	4	2
+15	__D0PlayerButton	6	1	60	4	4
+16	__DU0StopButton	5	1	64	4	3
+17	__Display_7qG2_line_7qG2_000_inline_MatchPlayer_inline_P2	6	1	68	4	2
+18	__DU0PlayerButton	5	1	72	4	6
+19	__DU0StartButton	5	1	76	4	3
+20	__D0StartButton	6	1	80	4	4
+21	__D0StopButton	6	1	84	4	4
+22	__D0SendStatus_inline_ButtonWatch	6	1	88	4	2
+23	__DU0MessageWatch	5	1	92	4	4
+24	__D0MessageWatch	6	1	96	4	11
+25	__D0Send_inline_MatchPlayer	6	1	100	4	6
+26	__D0strlen_inline_MSToString	6	1	104	4	2
+27	__D0MSToString	6	1	108	4	7
+28	__D0Display_inline_MatchPlayer	6	1	112	4	2
+29	__inputModuleOffsetMutex	9	0	116	4	2
+30	__MSToString_7qG2_ms_7qG2_000	6	1	120	4	4
+31	StartTick	6	1	124	4	3
+32	__MatchPlayer_7qG2_time_7qG2_000_inline_P1	6	1	128	4	2
+33	DisplayLock	9	0	132	4	6
+34	__IOMRMutex	9	0	136	4	6
+35	__constVal196609	6	0	140	4	3
+36	__TextOutMutex	9	0	144	4	10
+37	__RBtnMutex	9	0	148	4	6
+38	__signed_stack_002Display_inline_MatchPlayer	6	1	152	4	4
+39	__MRMutex	9	0	156	4	2
+40	__signed_stack_001Display_inline_MatchPlayer	6	1	160	4	8
+41	__signed_stack_001StartButton	6	1	164	4	2
+42	__signed_stack_001StopButton	6	1	168	4	2
+43	__MWMutex	9	0	172	4	14
+44	__unsigned_stack_001MatchPlayer_inline_P2	5	1	176	4	2
+45	__unsigned_stack_001MatchPlayer_inline_P1	5	1	180	4	2
+46	__PlayerButton_7qG2_sensor_7qG2_000	4	1	184	2	2
+47	__PlayerButton_7qG2_player_7qG2_000	4	1	186	2	4
+48	__PlayerButton_7qG2_button_7qG2_000	4	1	188	2	2
+49	__MatchPlayer_7qG2_player_7qG2_000_inline_P2	4	1	190	2	4
+50	__inputModuleOffset	3	1	192	2	4
+51	__MatchPlayer_7qG2_player_7qG2_000_inline_P1	4	1	194	2	4
+52	__constVal1000	4	0	196	2	2
+53	__MatchScreen_return	1	1	198	1	4
+54	__MSToString_return	1	1	199	1	5
+55	__tmpsbyteStopButton	2	1	200	1	3
+56	__zfMatchPlayer_inline_P1	1	1	201	1	2
+57	__zfMatchPlayer_inline_P2	1	1	202	1	2
+58	Match	1	1	203	1	8
+59	__StartButton_return	1	1	204	1	5
+60	__zfStopButton	1	1	205	1	2
+61	__PlayerButton_return	1	1	206	1	6
+62	__StopButton_return	1	1	207	1	5
+63	__zfStartButton	1	1	208	1	2
+64	__constVal20	2	0	209	1	1
+65	__constVal50	2	0	210	1	1
+66	__IOMRUnflattenErr	1	1	211	1	3
+67	__constVal10	2	0	212	1	1
+68	__constVal16	2	0	213	1	2
+69	__constVal40	2	0	214	1	2
+70	____initialize_global_data_return	1	1	215	1	3
+71	__constVal70	2	0	216	1	1
+72	__SetSensorTouch_7qG2_port_7qG2_000_inline_main	1	1	217	1	16
+73	__constVal0	2	1	218	1	5
+74	__constVal3	2	0	219	1	1
+75	__constVal32	2	0	220	1	4
+76	__constVal1	2	0	221	1	11
+77	__constVal4	2	0	222	1	3
+78	__ResetSensorTmp	1	1	223	1	2
+79	____ResetSensorSubroutine_return	1	1	224	1	6
+80	__constVal5	2	0	225	1	1
+81	__ResetSensorPort	1	1	226	1	6
+82	__zfButtonWatch	1	1	227	1	16
+83	__zfmain	1	1	228	1	4
+84	__zfMessageWatch	1	1	229	1	16
+85	__zfMSToString	1	1	230	1	3
+86	__tmpsbyteStartButton	2	1	231	1	3
+87	__zfPlayerButton	1	1	232	1	2
+88	__tmpsbytePlayerButton	2	1	233	1	3
+89	__IOMWBIArgs	8	0	4	16	8
+90	__IOMWBIArgs.Result	2	1	236	1	8
+91	__IOMWBIArgs.ModuleID	5	1	240	4	8
+92	__IOMWBIArgs.Offset	3	1	244	2	8
+93	__IOMWBIArgs.Buffer	7	0	246	4	8
+94	__IOMWBIArgs.Buffer.Buffer_type	1	0	0	1	0
+95	__TextOutArgs	8	0	4	16	30
+96	__TextOutArgs.Result	2	1	248	1	30
+97	__TextOutArgs.Location	8	0	2	4	30
+98	__TextOutArgs.Location.X	4	1	252	2	30
+99	__TextOutArgs.Location.Y	4	1	254	2	30
+100	__TextOutArgs.Text	7	0	256	4	30
+101	__TextOutArgs.Text.Text_type	1	0	0	1	0
+102	__TextOutArgs.Options	5	1	260	4	30
+103	__RBtnArgs	8	0	5	8	12
+104	__RBtnArgs.Result	2	1	264	1	12
+105	__RBtnArgs.Index	1	1	265	1	12
+106	__RBtnArgs.Pressed	1	1	266	1	12
+107	__RBtnArgs.Count	1	1	267	1	12
+108	__RBtnArgs.Reset	1	1	268	1	12
+109	__IOMRBIArgs	8	0	5	16	15
+110	__IOMRBIArgs.Result	2	1	272	1	15
+111	__IOMRBIArgs.ModuleID	5	1	276	4	15
+112	__IOMRBIArgs.Offset	3	1	280	2	15
+113	__IOMRBIArgs.Count	3	1	282	2	15
+114	__IOMRBIArgs.Buffer	7	0	284	4	15
+115	__IOMRBIArgs.Buffer.Buffer_type	1	0	0	1	0
+116	__MWArgs	8	0	3	8	25
+117	__MWArgs.Result	2	1	288	1	25
+118	__MWArgs.QueueID	1	1	289	1	25
+119	__MWArgs.Message	7	0	290	4	25
+120	__MWArgs.Message.Message_type	1	0	0	1	0
+121	__MRArgs	8	0	4	8	5
+122	__MRArgs.Result	2	1	292	1	5
+123	__MRArgs.QueueID	1	1	293	1	5
+124	__MRArgs.Remove	1	1	294	1	5
+125	__MRArgs.Message	7	0	296	4	5
+126	__MRArgs.Message.Message_type	1	0	0	1	0
+127	__Send_7qG2_ms_7qG2_000_inline_MatchPlayer_inline_P1	7	0	298	4	2
+128	__Send_7qG2_ms_7qG2_000_inline_MatchPlayer_inline_P1.__Send_7qG2_ms_7qG2_000_inline_MatchPlayer_inline_P1_type	1	0	0	1	0
+129	__MatchPlayer_7qG2_timeString_7qG2_000_inline_P1	7	0	300	4	3
+130	__MatchPlayer_7qG2_timeString_7qG2_000_inline_P1.__MatchPlayer_7qG2_timeString_7qG2_000_inline_P1_type	1	0	0	1	0
+131	__Send_7qG2_message_7qG2_000_inline_MatchPlayer_inline_P2	7	0	302	4	2
+132	__Send_7qG2_message_7qG2_000_inline_MatchPlayer_inline_P2.__Send_7qG2_message_7qG2_000_inline_MatchPlayer_inline_P2_type	1	0	0	1	0
+133	__SendStatus_7qG2_status_7qG2_000_inline_MatchStart	7	0	304	4	2
+134	__SendStatus_7qG2_status_7qG2_000_inline_MatchStart.__SendStatus_7qG2_status_7qG2_000_inline_MatchStart_type	1	0	0	1	0
+135	__Display_7qG2_ms_7qG2_000_inline_MatchPlayer_inline_P2	7	0	306	4	2
+136	__Display_7qG2_ms_7qG2_000_inline_MatchPlayer_inline_P2.__Display_7qG2_ms_7qG2_000_inline_MatchPlayer_inline_P2_type	1	0	0	1	0
+137	__Display_7qG2_ms_7qG2_000_inline_MatchPlayer_inline_P1	7	0	308	4	2
+138	__Display_7qG2_ms_7qG2_000_inline_MatchPlayer_inline_P1.__Display_7qG2_ms_7qG2_000_inline_MatchPlayer_inline_P1_type	1	0	0	1	0
+139	__Send_7qG2_message_7qG2_000_inline_MatchPlayer_inline_P1	7	0	310	4	2
+140	__Send_7qG2_message_7qG2_000_inline_MatchPlayer_inline_P1.__Send_7qG2_message_7qG2_000_inline_MatchPlayer_inline_P1_type	1	0	0	1	0
+141	__constStr0015	7	0	312	4	1
+142	__constStr0015.__constStr0015_type	1	1	0	1	0
+143	__SendStatus_7qG2_status_7qG2_000_inline_main	7	0	314	4	2
+144	__SendStatus_7qG2_status_7qG2_000_inline_main.__SendStatus_7qG2_status_7qG2_000_inline_main_type	1	0	0	1	0
+145	__constStr0017	7	0	316	4	2
+146	__constStr0017.__constStr0017_type	1	1	0	1	0
+147	__constStr0018	7	0	318	4	2
+148	__constStr0018.__constStr0018_type	1	1	0	1	0
+149	__MessageWatch_7qG2_message_7qG2_000	7	0	320	4	3
+150	__MessageWatch_7qG2_message_7qG2_000.__MessageWatch_7qG2_message_7qG2_000_type	1	0	0	1	0
+151	__constStr0014	7	0	322	4	2
+152	__constStr0014.__constStr0014_type	1	1	0	1	0
+153	__SendStatus_7qG2_status_7qG2_000_inline_ButtonWatch	7	0	324	4	4
+154	__SendStatus_7qG2_status_7qG2_000_inline_ButtonWatch.__SendStatus_7qG2_status_7qG2_000_inline_ButtonWatch_type	1	0	0	1	0
+155	__MatchPlayer_7qG2_timeString_7qG2_000_inline_P2	7	0	326	4	3
+156	__MatchPlayer_7qG2_timeString_7qG2_000_inline_P2.__MatchPlayer_7qG2_timeString_7qG2_000_inline_P2_type	1	0	0	1	0
+157	__Send_7qG2_ms_7qG2_000_inline_MatchPlayer_inline_P2	7	0	328	4	2
+158	__Send_7qG2_ms_7qG2_000_inline_MatchPlayer_inline_P2.__Send_7qG2_ms_7qG2_000_inline_MatchPlayer_inline_P2_type	1	0	0	1	0
+159	__constStr0019	7	0	330	4	1
+160	__constStr0019.__constStr0019_type	1	1	0	1	0
+161	__constStr0016	7	0	332	4	1
+162	__constStr0016.__constStr0016_type	1	1	0	1	0
+163	__SendStatus_7qG2_status_7qG2_000_inline_MatchStop	7	0	334	4	2
+164	__SendStatus_7qG2_status_7qG2_000_inline_MatchStop.__SendStatus_7qG2_status_7qG2_000_inline_MatchStop_type	1	0	0	1	0
+165	__constStr0013	7	0	336	4	1
+166	__constStr0013.__constStr0013_type	1	1	0	1	0
+167	__strbufMatchScreen	7	0	338	4	6
+168	__strbufMatchScreen.__strbufMatchScreen_type	1	0	0	1	0
+169	__strbufmain	7	0	340	4	2
+170	__strbufmain.__strbufmain_type	1	0	0	1	0
+171	__strbufButtonWatch	7	0	342	4	4
+172	__strbufButtonWatch.__strbufButtonWatch_type	1	0	0	1	0
+173	__strbufMatchStart	7	0	344	4	2
+174	__strbufMatchStart.__strbufMatchStart_type	1	0	0	1	0
+175	__strbufMessageWatch	7	0	346	4	8
+176	__strbufMessageWatch.__strbufMessageWatch_type	1	0	0	1	0
+177	__strtmpbufMessageWatch	7	0	348	4	4
+178	__strtmpbufMessageWatch.__strtmpbufMessageWatch_type	1	0	0	1	0
+179	__strbufMatchStop	7	0	350	4	2
+180	__strbufMatchStop.__strbufMatchStop_type	1	0	0	1	0
+181	__ArrHelper__Send_244_2	7	0	352	4	4
+182	__ArrHelper__Send_244_2.__ArrHelper__Send_244_2_type	1	0	0	1	0
+183	__ArrHelper__MSToString_244_0	7	0	354	4	4
+184	__ArrHelper__MSToString_244_0.__ArrHelper__MSToString_244_0_type	1	0	0	1	0
+185	__IOMWFlattenBuf	7	0	356	4	4
+186	__IOMWFlattenBuf.__IOMWFlattenBuf_type	1	0	0	1	0
+187	__IOMRUnflattenBuf	7	0	358	4	6
+188	__IOMRUnflattenBuf.__IOMRUnflattenBuf_type	1	0	0	1	0
+189	__ArrHelper__MSToString_244_1	7	0	360	4	4
+190	__ArrHelper__MSToString_244_1.__ArrHelper__MSToString_244_1_type	1	0	0	1	0
+191	__ArrHelper__Send_244_1	7	0	362	4	4
+192	__ArrHelper__Send_244_1.__ArrHelper__Send_244_1_type	1	0	0	1	0
+193	__ArrHelper__Send_244_0	7	0	364	4	4
+194	__ArrHelper__Send_244_0.__ArrHelper__Send_244_0_type	1	0	0	1	0
+195	__ArrHelper__MSToString_244_2	7	0	366	4	2
+196	__ArrHelper__MSToString_244_2.__ArrHelper__MSToString_244_2_type	1	0	0	1	0
+197	__strlen_7qG2_str_7qG2_000_inline_MSToString	7	0	368	4	2
+198	__strlen_7qG2_str_7qG2_000_inline_MSToString.__strlen_7qG2_str_7qG2_000_inline_MSToString_type	1	0	0	1	0
+199	__MSToString_7qG2_tempStr_7qG2_000	7	0	370	4	5
+200	__MSToString_7qG2_tempStr_7qG2_000.__MSToString_7qG2_tempStr_7qG2_000_type	1	0	0	1	0
+201	__strretvalMatchPlayer_inline_P2	7	0	372	4	2
+202	__strretvalMatchPlayer_inline_P2.__strretvalMatchPlayer_inline_P2_type	1	0	0	1	0
+203	__constStr0009	7	0	374	4	1
+204	__constStr0009.__constStr0009_type	1	1	0	1	0
+205	__constStr0012	7	0	376	4	1
+206	__constStr0012.__constStr0012_type	1	1	0	1	0
+207	__constStr0011	7	0	378	4	1
+208	__constStr0011.__constStr0011_type	1	1	0	1	0
+209	__constStr0010	7	0	380	4	1
+210	__constStr0010.__constStr0010_type	1	1	0	1	0
+211	__strbufMatchPlayer_inline_P2	7	0	382	4	6
+212	__strbufMatchPlayer_inline_P2.__strbufMatchPlayer_inline_P2_type	1	0	0	1	0
+213	__strbufDisplay_inline_MatchPlayer	7	0	384	4	4
+214	__strbufDisplay_inline_MatchPlayer.__strbufDisplay_inline_MatchPlayer_type	1	0	0	1	0
+215	__strretvalMSToString	7	0	386	4	8
+216	__strretvalMSToString.__strretvalMSToString_type	1	0	0	1	0
+217	__strbufMSToString	7	0	388	4	19
+218	__strbufMSToString.__strbufMSToString_type	1	0	0	1	0
+219	__strbufSend_inline_MatchPlayer	7	0	390	4	16
+220	__strbufSend_inline_MatchPlayer.__strbufSend_inline_MatchPlayer_type	1	0	0	1	0
+221	__strretvalMatchPlayer_inline_P1	7	0	392	4	2
+222	__strretvalMatchPlayer_inline_P1.__strretvalMatchPlayer_inline_P1_type	1	0	0	1	0
+223	__strbufMatchPlayer_inline_P1	7	0	394	4	6
+224	__strbufMatchPlayer_inline_P1.__strbufMatchPlayer_inline_P1_type	1	0	0	1	0
+225	__strretvalSend_inline_MatchPlayer	7	0	396	4	8
+226	__strretvalSend_inline_MatchPlayer.__strretvalSend_inline_MatchPlayer_type	1	0	0	1	0
+#SOURCES
+Clump	Line	PC	Source
+0	153	0	#line 153 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+0	154	0		subcall __initialize_global_data, ____initialize_global_data_return
+0	153	2	#line 153 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+0	155	2	#line 155 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+0	155	2	#line 155 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+0	156	2	#line 156 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+0	157	2	#pragma macro 7
+0	157	2	#line 157 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+0	157	2		set __D0main, 1
+0	158	5	#line 158 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+0	158	5		tst 5, __zfmain, __D0main
+0	158	8	#line 158 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+0	159	8		brtst 4, __NXC_Label_725, __zfmain
+0	158	11	#line 158 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+0	159	11	#pragma macro 8
+0	159	11		mov __IOMWBIArgs.ModuleID, __constVal786433
+0	159	13		mov __IOMWBIArgs.Offset, __constVal40
+0	159	15		flatten __IOMWFlattenBuf, __constVal4
+0	159	18		strtoarr __IOMWBIArgs.Buffer, __IOMWFlattenBuf
+0	159	21		syscall 79, __IOMWBIArgs
+0	8821	24	#line 8821 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+0	159	24	#line 159 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+0	160	24	#line 160 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+0	161	24		jmp __NXC_Label_726
+0	160	26	#line 160 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+0	161	26	#pragma macro 8
+0	161	26		mov __IOMWBIArgs.ModuleID, __constVal786433
+0	161	28		mov __IOMWBIArgs.Offset, __constVal40
+0	161	30		flatten __IOMWFlattenBuf, __constVal1
+0	161	33		strtoarr __IOMWBIArgs.Buffer, __IOMWFlattenBuf
+0	161	36		syscall 79, __IOMWBIArgs
+0	8827	39	#line 8827 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+0	161	39	#line 161 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+0	162	39	#line 162 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+0	163	39	#line 163 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+0	164	39		set __D0main, 0
+0	156	42	#line 156 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+0	155	42	#line 155 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+0	156	42	#line 156 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+0	157	42		tst 5, __zfmain, __D0main
+0	156	45	#line 156 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+0	157	45		brtst 4, __NXC_Label_722, __zfmain
+0	156	48	#line 156 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+0	157	48		jmp __NXC_Label_721
+0	156	50	#line 156 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+0	156	50	#line 156 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+0	157	50	#line 157 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+0	156	50	#line 156 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+0	157	50	#line 157 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+0	158	50		set __SetSensorTouch_7qG2_port_7qG2_000_inline_main, 0
+0	157	53	#line 157 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+0	3718	53	#line 3718 "NXCDefs.h"
+0	3719	53	#pragma macro 6
+0	3719	53		setin __constVal1, __SetSensorTouch_7qG2_port_7qG2_000_inline_main, 0
+0	3719	57		setin __constVal32, __SetSensorTouch_7qG2_port_7qG2_000_inline_main, 1
+0	3719	61		mov __ResetSensorPort, __SetSensorTouch_7qG2_port_7qG2_000_inline_main
+0	3719	63		subcall __ResetSensorSubroutine, ____ResetSensorSubroutine_return
+0	8859	65	#line 8859 "NXCDefs.h"
+0	3718	65	#line 3718 "NXCDefs.h"
+0	158	65	#line 158 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+0	158	65	#line 158 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+0	159	65		set __SetSensorTouch_7qG2_port_7qG2_000_inline_main, 1
+0	158	68	#line 158 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+0	3718	68	#line 3718 "NXCDefs.h"
+0	3719	68	#pragma macro 6
+0	3719	68		setin __constVal1, __SetSensorTouch_7qG2_port_7qG2_000_inline_main, 0
+0	3719	72		setin __constVal32, __SetSensorTouch_7qG2_port_7qG2_000_inline_main, 1
+0	3719	76		mov __ResetSensorPort, __SetSensorTouch_7qG2_port_7qG2_000_inline_main
+0	3719	78		subcall __ResetSensorSubroutine, ____ResetSensorSubroutine_return
+0	8869	80	#line 8869 "NXCDefs.h"
+0	3718	80	#line 3718 "NXCDefs.h"
+0	159	80	#line 159 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+0	159	80	#line 159 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+0	160	80		set __SetSensorTouch_7qG2_port_7qG2_000_inline_main, 2
+0	159	83	#line 159 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+0	3718	83	#line 3718 "NXCDefs.h"
+0	3719	83	#pragma macro 6
+0	3719	83		setin __constVal1, __SetSensorTouch_7qG2_port_7qG2_000_inline_main, 0
+0	3719	87		setin __constVal32, __SetSensorTouch_7qG2_port_7qG2_000_inline_main, 1
+0	3719	91		mov __ResetSensorPort, __SetSensorTouch_7qG2_port_7qG2_000_inline_main
+0	3719	93		subcall __ResetSensorSubroutine, ____ResetSensorSubroutine_return
+0	8879	95	#line 8879 "NXCDefs.h"
+0	3718	95	#line 3718 "NXCDefs.h"
+0	160	95	#line 160 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+0	160	95	#line 160 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+0	161	95		set __SetSensorTouch_7qG2_port_7qG2_000_inline_main, 3
+0	160	98	#line 160 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+0	3718	98	#line 3718 "NXCDefs.h"
+0	3719	98	#pragma macro 6
+0	3719	98		setin __constVal1, __SetSensorTouch_7qG2_port_7qG2_000_inline_main, 0
+0	3719	102		setin __constVal32, __SetSensorTouch_7qG2_port_7qG2_000_inline_main, 1
+0	3719	106		mov __ResetSensorPort, __SetSensorTouch_7qG2_port_7qG2_000_inline_main
+0	3719	108		subcall __ResetSensorSubroutine, ____ResetSensorSubroutine_return
+0	8889	110	#line 8889 "NXCDefs.h"
+0	3718	110	#line 3718 "NXCDefs.h"
+0	161	110	#line 161 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+0	162	110	#line 162 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+0	163	110		subcall MatchScreen, __MatchScreen_return
+0	162	112	#line 162 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+0	162	112	#line 162 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+0	163	112		strcat __strbufmain, __constStr0019
+0	162	116	#line 162 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+0	163	116		mov __SendStatus_7qG2_status_7qG2_000_inline_main, __strbufmain
+0	73	118	#line 73 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+0	74	118	#pragma macro 6
+0	74	118		acquire __MWMutex
+0	74	119		mov __MWArgs.QueueID, __constVal0
+0	74	121		mov __MWArgs.Message, __SendStatus_7qG2_status_7qG2_000_inline_main
+0	74	123		syscall 26, __MWArgs
+0	74	126		release __MWMutex
+0	8904	127	#line 8904 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+0	73	127	#line 73 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+0	73	127	#line 73 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+0	163	127	#line 163 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+0	164	127		exit 0, 1
+1	4885	0		setin __constVal1, __ResetSensorPort, 5
+1	4887	4		getin __ResetSensorTmp, __ResetSensorPort, 5
+1	4888	8		brtst 5, __SensorStillInvalid, __ResetSensorTmp
+1	4889	11		subret ____ResetSensorSubroutine_return
+2	23	0	#line 23 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+2	24	0		set __signed_stack_001StartButton, 3
+2	23	3	#line 23 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+2	23	3	#line 23 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+2	24	3		set __D0StartButton, 0
+2	24	6	#line 24 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+2	25	6		acquire __RBtnMutex
+2	24	7	#line 24 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+2	25	7		mov __RBtnArgs.Index, __signed_stack_001StartButton
+2	24	9	#line 24 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+2	25	9		mov __RBtnArgs.Reset, __D0StartButton
+2	24	11	#line 24 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+2	25	11		syscall 20, __RBtnArgs
+2	24	14	#line 24 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+2	25	14		mov __D0StartButton, __RBtnArgs.Pressed
+2	24	16	#line 24 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+2	25	16		release __RBtnMutex
+2	24	17	#line 24 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+2	25	17		tst 5, __zfStartButton, __D0StartButton
+2	24	20	#line 24 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+2	25	20		brtst 4, __NXC_Label_610, __zfStartButton
+2	25	23	#line 25 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+2	26	23		set __DU0StartButton, 1
+2	25	26	#line 25 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+2	25	26	#line 25 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+2	26	26		subret __StartButton_return
+2	25	28	#line 25 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+2	25	28	#line 25 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+2	25	28	#line 25 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+2	26	28	#pragma macro 2
+2	26	28	#pragma macro 26
+2	26	28		acquire __IOMRMutex
+2	26	29		mov __IOMRBIArgs.ModuleID, __constVal196609
+2	26	31		mov __IOMRBIArgs.Offset, __constVal50
+2	26	33		set __IOMRBIArgs.Count, 1
+2	26	36		syscall 78, __IOMRBIArgs
+2	26	39		arrtostr __IOMRUnflattenBuf, __IOMRBIArgs.Buffer
+2	26	42		unflatten __tmpsbyteStartButton, __IOMRUnflattenErr, __IOMRUnflattenBuf, __tmpsbyteStartButton
+2	26	47		release __IOMRMutex
+2	7718	48	#line 7718 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+2	7719	48		mov __DU0StartButton, __tmpsbyteStartButton
+2	25	50	#line 25 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+2	25	50	#line 25 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+2	25	50	#line 25 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+2	26	50		subret __StartButton_return
+2	25	52	#line 25 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+2	25	52	#line 25 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+2	28	52	#line 28 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+2	29	52		subret __StartButton_return
+3	31	0	#line 31 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+3	32	0		set __signed_stack_001StopButton, 0
+3	31	3	#line 31 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+3	31	3	#line 31 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+3	32	3		set __D0StopButton, 0
+3	32	6	#line 32 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+3	33	6		acquire __RBtnMutex
+3	32	7	#line 32 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+3	33	7		mov __RBtnArgs.Index, __signed_stack_001StopButton
+3	32	9	#line 32 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+3	33	9		mov __RBtnArgs.Reset, __D0StopButton
+3	32	11	#line 32 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+3	33	11		syscall 20, __RBtnArgs
+3	32	14	#line 32 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+3	33	14		mov __D0StopButton, __RBtnArgs.Pressed
+3	32	16	#line 32 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+3	33	16		release __RBtnMutex
+3	32	17	#line 32 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+3	33	17		tst 5, __zfStopButton, __D0StopButton
+3	32	20	#line 32 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+3	33	20		brtst 4, __NXC_Label_621, __zfStopButton
+3	34	23	#line 34 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+3	35	23		set __DU0StopButton, 1
+3	34	26	#line 34 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+3	34	26	#line 34 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+3	35	26		subret __StopButton_return
+3	34	28	#line 34 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+3	34	28	#line 34 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+3	34	28	#line 34 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+3	35	28	#pragma macro 2
+3	35	28	#pragma macro 26
+3	35	28		acquire __IOMRMutex
+3	35	29		mov __IOMRBIArgs.ModuleID, __constVal196609
+3	35	31		mov __IOMRBIArgs.Offset, __constVal70
+3	35	33		set __IOMRBIArgs.Count, 1
+3	35	36		syscall 78, __IOMRBIArgs
+3	35	39		arrtostr __IOMRUnflattenBuf, __IOMRBIArgs.Buffer
+3	35	42		unflatten __tmpsbyteStopButton, __IOMRUnflattenErr, __IOMRUnflattenBuf, __tmpsbyteStopButton
+3	35	47		release __IOMRMutex
+3	7775	48	#line 7775 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+3	7776	48		mov __DU0StopButton, __tmpsbyteStopButton
+3	34	50	#line 34 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+3	34	50	#line 34 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+3	34	50	#line 34 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+3	35	50		subret __StopButton_return
+3	34	52	#line 34 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+3	34	52	#line 34 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+3	37	52	#line 37 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+3	38	52		subret __StopButton_return
+4	40	0	#line 40 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+4	40	0	#line 40 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+4	42	0	#line 42 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+4	42	0	#line 42 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+4	43	0		sub __PlayerButton_7qG2_button_7qG2_000, __constVal3, __PlayerButton_7qG2_player_7qG2_000
+4	42	4	#line 42 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+4	42	4	#line 42 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+4	42	4	#line 42 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+4	43	4	#line 43 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+4	43	4	#line 43 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+4	44	4		sub __PlayerButton_7qG2_sensor_7qG2_000, __PlayerButton_7qG2_player_7qG2_000, __constVal1
+4	43	8	#line 43 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+4	43	8	#line 43 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+4	44	8		mov __signed_stack_001PlayerButton, __PlayerButton_7qG2_button_7qG2_000
+4	43	10	#line 43 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+4	43	10	#line 43 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+4	44	10		set __D0PlayerButton, 0
+4	44	13	#line 44 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+4	45	13		acquire __RBtnMutex
+4	44	14	#line 44 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+4	45	14		mov __RBtnArgs.Index, __signed_stack_001PlayerButton
+4	44	16	#line 44 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+4	45	16		mov __RBtnArgs.Reset, __D0PlayerButton
+4	44	18	#line 44 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+4	45	18		syscall 20, __RBtnArgs
+4	44	21	#line 44 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+4	45	21		mov __D0PlayerButton, __RBtnArgs.Pressed
+4	44	23	#line 44 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+4	45	23		release __RBtnMutex
+4	44	24	#line 44 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+4	45	24		tst 5, __zfPlayerButton, __D0PlayerButton
+4	44	27	#line 44 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+4	45	27		brtst 4, __NXC_Label_636, __zfPlayerButton
+4	45	30	#line 45 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+4	46	30		set __DU0PlayerButton, 1
+4	45	33	#line 45 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+4	45	33	#line 45 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+4	46	33		subret __PlayerButton_return
+4	45	35	#line 45 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+4	45	35	#line 45 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+4	45	35	#line 45 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+4	46	35	#pragma macro 2
+4	46	35	#pragma macro 26
+4	46	35		acquire __inputModuleOffsetMutex
+4	46	36		mul __inputModuleOffset, __PlayerButton_7qG2_sensor_7qG2_000, __constVal20
+4	46	40		add __inputModuleOffset, __inputModuleOffset, __constVal10
+4	46	44		acquire __IOMRMutex
+4	46	45		mov __IOMRBIArgs.ModuleID, __constVal196609
+4	46	47		mov __IOMRBIArgs.Offset, __inputModuleOffset
+4	46	49		set __IOMRBIArgs.Count, 1
+4	46	52		syscall 78, __IOMRBIArgs
+4	46	55		arrtostr __IOMRUnflattenBuf, __IOMRBIArgs.Buffer
+4	46	58		unflatten __tmpsbytePlayerButton, __IOMRUnflattenErr, __IOMRUnflattenBuf, __tmpsbytePlayerButton
+4	46	63		release __IOMRMutex
+4	46	64		release __inputModuleOffsetMutex
+4	7868	65	#line 7868 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+4	7869	65		mov __DU0PlayerButton, __tmpsbytePlayerButton
+4	45	67	#line 45 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+4	45	67	#line 45 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+4	45	67	#line 45 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+4	46	67		subret __PlayerButton_return
+4	45	69	#line 45 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+4	45	69	#line 45 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+4	48	69	#line 48 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+4	49	69		subret __PlayerButton_return
+5	50	0	#line 50 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+5	50	0	#line 50 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+5	50	0	#line 50 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+5	50	0	#line 50 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+5	51	0		mod __D0MSToString, __MSToString_7qG2_ms_7qG2_000, __constVal1000
+5	51	4	#line 51 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+5	52	4		numtostr __strretvalMSToString, __D0MSToString
+5	51	7	#line 51 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+5	52	7		strcat __strbufMSToString, __strretvalMSToString
+5	51	11	#line 51 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+5	52	11		mov __MSToString_7qG2_tempStr_7qG2_000, __strbufMSToString
+5	51	13	#line 51 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+5	52	13		strcat __strbufMSToString, __MSToString_7qG2_tempStr_7qG2_000
+5	51	17	#line 51 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+5	52	17		mov __strlen_7qG2_str_7qG2_000_inline_MSToString, __strbufMSToString
+5	18590	19	#line 18590 "NXCDefs.h"
+5	18591	19		arrsize __D0strlen_inline_MSToString, __strlen_7qG2_str_7qG2_000_inline_MSToString
+5	18591	22		sub __signed_stack_001MSToString, __D0strlen_inline_MSToString, __constVal1
+5	18590	26	#line 18590 "NXCDefs.h"
+5	51	26	#line 51 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+5	51	26	#line 51 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+5	52	26	#line 52 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+5	53	26		set __D0MSToString, 3
+5	52	29	#line 52 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+5	53	29		cmp 0, __zfMSToString, __signed_stack_001MSToString, __D0MSToString
+5	52	33	#line 52 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+5	53	33		mov __D0MSToString, __zfMSToString
+5	52	35	#line 52 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+5	53	35		brtst 4, __NXC_Label_644, __zfMSToString
+5	52	38	#line 52 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+5	53	38		strcat __strbufMSToString, __constStr0009
+5	52	42	#line 52 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+5	53	42		mov __ArrHelper__MSToString_244_0, __strbufMSToString
+5	52	44	#line 52 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+5	53	44		strcat __strbufMSToString, __MSToString_7qG2_tempStr_7qG2_000
+5	52	48	#line 52 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+5	53	48		mov __ArrHelper__MSToString_244_1, __strbufMSToString
+5	53	50	#line 53 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+5	54	50		strcat __strretvalMSToString, __ArrHelper__MSToString_244_0, __ArrHelper__MSToString_244_1
+5	53	55	#line 53 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+5	54	55		strcat __strbufMSToString, __strretvalMSToString
+5	53	59	#line 53 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+5	54	59		mov __MSToString_7qG2_tempStr_7qG2_000, __strbufMSToString
+5	53	61	#line 53 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+5	53	61	#line 53 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+5	54	61		jmp __NXC_Label_643
+5	53	63	#line 53 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+5	53	63	#line 53 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+5	53	63	#line 53 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+5	53	63	#line 53 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+5	53	63	#line 53 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+5	54	63		div __D0MSToString, __MSToString_7qG2_ms_7qG2_000, __constVal1000
+5	53	67	#line 53 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+5	54	67		numtostr __strretvalMSToString, __D0MSToString
+5	53	70	#line 53 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+5	54	70		strcat __strbufMSToString, __strretvalMSToString
+5	53	74	#line 53 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+5	54	74		mov __ArrHelper__MSToString_244_0, __strbufMSToString
+5	53	76	#line 53 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+5	54	76		strcat __strbufMSToString, __constStr0010
+5	53	80	#line 53 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+5	54	80		mov __ArrHelper__MSToString_244_1, __strbufMSToString
+5	53	82	#line 53 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+5	54	82		strcat __strbufMSToString, __MSToString_7qG2_tempStr_7qG2_000
+5	53	86	#line 53 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+5	54	86		mov __ArrHelper__MSToString_244_2, __strbufMSToString
+5	54	88	#line 54 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+5	55	88		strcat __strretvalMSToString, __ArrHelper__MSToString_244_0, __ArrHelper__MSToString_244_1, __ArrHelper__MSToString_244_2
+5	54	94	#line 54 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+5	55	94		strcat __strbufMSToString, __strretvalMSToString
+5	54	98	#line 54 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+5	55	98		subret __MSToString_return
+5	54	100	#line 54 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+5	56	100	#line 56 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+5	57	100		subret __MSToString_return
+6	79	0	#line 79 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+6	80	0		acquire DisplayLock
+6	79	1	#line 79 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+6	79	1	#line 79 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+6	80	1		set __signed_stack_001MatchScreen, 0
+6	79	4	#line 79 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+6	79	4	#line 79 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+6	80	4		set __signed_stack_002MatchScreen, 56
+6	79	7	#line 79 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+6	79	7	#line 79 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+6	80	7		strcat __strbufMatchScreen, __constStr0011
+6	79	11	#line 79 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+6	80	11		set __D0MatchScreen, 1
+6	80	14	#line 80 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+6	81	14		acquire __TextOutMutex
+6	80	15	#line 80 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+6	81	15		mov __TextOutArgs.Location.X, __signed_stack_001MatchScreen
+6	80	17	#line 80 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+6	81	17		mov __TextOutArgs.Location.Y, __signed_stack_002MatchScreen
+6	80	19	#line 80 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+6	81	19		mov __TextOutArgs.Options, __D0MatchScreen
+6	80	21	#line 80 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+6	81	21		mov __TextOutArgs.Text, __strbufMatchScreen
+6	80	23	#line 80 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+6	81	23		syscall 13, __TextOutArgs
+6	80	26	#line 80 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+6	81	26		mov __D0MatchScreen, __TextOutArgs.Result
+6	80	28	#line 80 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+6	81	28		release __TextOutMutex
+6	80	29	#line 80 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+6	80	29	#line 80 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+6	81	29		set __signed_stack_001MatchScreen, 0
+6	80	32	#line 80 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+6	80	32	#line 80 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+6	81	32		set __signed_stack_002MatchScreen, 40
+6	80	35	#line 80 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+6	80	35	#line 80 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+6	81	35		strcat __strbufMatchScreen, __constStr0012
+6	81	39	#line 81 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+6	82	39		acquire __TextOutMutex
+6	81	40	#line 81 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+6	82	40		mov __TextOutArgs.Location.X, __signed_stack_001MatchScreen
+6	81	42	#line 81 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+6	82	42		mov __TextOutArgs.Location.Y, __signed_stack_002MatchScreen
+6	81	44	#line 81 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+6	82	44		set __TextOutArgs.Options, 0
+6	81	47	#line 81 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+6	82	47		mov __TextOutArgs.Text, __strbufMatchScreen
+6	81	49	#line 81 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+6	82	49		syscall 13, __TextOutArgs
+6	81	52	#line 81 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+6	82	52		mov __D0MatchScreen, __TextOutArgs.Result
+6	81	54	#line 81 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+6	82	54		release __TextOutMutex
+6	81	55	#line 81 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+6	81	55	#line 81 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+6	82	55		set __signed_stack_001MatchScreen, 0
+6	81	58	#line 81 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+6	81	58	#line 81 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+6	82	58		set __signed_stack_002MatchScreen, 0
+6	81	61	#line 81 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+6	81	61	#line 81 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+6	82	61		strcat __strbufMatchScreen, __constStr0013
+6	82	65	#line 82 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+6	83	65		acquire __TextOutMutex
+6	82	66	#line 82 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+6	83	66		mov __TextOutArgs.Location.X, __signed_stack_001MatchScreen
+6	82	68	#line 82 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+6	83	68		mov __TextOutArgs.Location.Y, __signed_stack_002MatchScreen
+6	82	70	#line 82 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+6	83	70		set __TextOutArgs.Options, 0
+6	82	73	#line 82 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+6	83	73		mov __TextOutArgs.Text, __strbufMatchScreen
+6	82	75	#line 82 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+6	83	75		syscall 13, __TextOutArgs
+6	82	78	#line 82 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+6	83	78		mov __D0MatchScreen, __TextOutArgs.Result
+6	82	80	#line 82 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+6	83	80		release __TextOutMutex
+6	82	81	#line 82 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+6	83	81	#line 83 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+6	84	81		release DisplayLock
+6	83	82	#line 83 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+6	85	82	#line 85 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+6	86	82		subret __MatchScreen_return
+7	100	0	#line 100 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	101	0		set __MatchPlayer_7qG2_player_7qG2_000_inline_P1, 1
+7	100	3	#line 100 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	87	3	#line 87 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	88	3		mov __PlayerButton_7qG2_player_7qG2_000, __MatchPlayer_7qG2_player_7qG2_000_inline_P1
+7	87	5	#line 87 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	88	5	#line 88 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	89	5		subcall PlayerButton, __PlayerButton_return
+7	88	7	#line 88 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	88	7	#line 88 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	89	7		not __DU0MatchPlayer_inline_P1, __DU0PlayerButton
+7	89	10	#line 89 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	90	10		tst 5, __zfMatchPlayer_inline_P1, __DU0MatchPlayer_inline_P1
+7	89	13	#line 89 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	90	13		brtst 4, __001__NXC_Label_674, __zfMatchPlayer_inline_P1
+7	7927	16	#line 7927 "NXCDefs.h"
+7	7928	16		wait 1
+7	7927	18	#line 7927 "NXCDefs.h"
+7	90	18	#line 90 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	91	18	#line 91 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	92	18		jmp __001__NXC_Label_673
+7	91	20	#line 91 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	91	20	#line 91 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	92	20		gettick __unsigned_stack_001MatchPlayer_inline_P1
+7	91	22	#line 91 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	92	22	#line 92 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	92	22	#line 92 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	93	22		sub __MatchPlayer_7qG2_time_7qG2_000_inline_P1, __unsigned_stack_001MatchPlayer_inline_P1, StartTick
+7	92	26	#line 92 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	7927	26	#line 7927 "NXCDefs.h"
+7	7928	26		wait 1
+7	7927	28	#line 7927 "NXCDefs.h"
+7	93	28	#line 93 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	93	28	#line 93 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	94	28		mov __MSToString_7qG2_ms_7qG2_000, __MatchPlayer_7qG2_time_7qG2_000_inline_P1
+7	93	30	#line 93 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	94	30	#line 94 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	95	30		subcall MSToString, __MSToString_return
+7	94	32	#line 94 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	95	32		mov __strretvalMatchPlayer_inline_P1, __strbufMSToString
+7	94	34	#line 94 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	95	34		strcat __strbufMatchPlayer_inline_P1, __strretvalMatchPlayer_inline_P1
+7	94	38	#line 94 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	95	38		mov __MatchPlayer_7qG2_timeString_7qG2_000_inline_P1, __strbufMatchPlayer_inline_P1
+7	94	40	#line 94 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	95	40		strcat __strbufMatchPlayer_inline_P1, __MatchPlayer_7qG2_timeString_7qG2_000_inline_P1
+7	94	44	#line 94 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	95	44		mov __Send_7qG2_ms_7qG2_000_inline_MatchPlayer_inline_P1, __strbufMatchPlayer_inline_P1
+7	94	46	#line 94 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	94	46	#line 94 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	67	46	#line 67 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	68	46		mov __D0Send_inline_MatchPlayer, __MatchPlayer_7qG2_player_7qG2_000_inline_P1
+7	67	48	#line 67 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	68	48		numtostr __strretvalSend_inline_MatchPlayer, __D0Send_inline_MatchPlayer
+7	67	51	#line 67 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	68	51		strcat __strbufSend_inline_MatchPlayer, __strretvalSend_inline_MatchPlayer
+7	67	55	#line 67 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	68	55		mov __ArrHelper__Send_244_0, __strbufSend_inline_MatchPlayer
+7	67	57	#line 67 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	68	57		strcat __strbufSend_inline_MatchPlayer, __constStr0014
+7	67	61	#line 67 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	68	61		mov __ArrHelper__Send_244_1, __strbufSend_inline_MatchPlayer
+7	67	63	#line 67 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	68	63		strcat __strbufSend_inline_MatchPlayer, __Send_7qG2_ms_7qG2_000_inline_MatchPlayer_inline_P1
+7	67	67	#line 67 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	68	67		mov __ArrHelper__Send_244_2, __strbufSend_inline_MatchPlayer
+7	68	69	#line 68 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	69	69		strcat __strretvalSend_inline_MatchPlayer, __ArrHelper__Send_244_0, __ArrHelper__Send_244_1, __ArrHelper__Send_244_2
+7	68	75	#line 68 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	69	75		strcat __strbufSend_inline_MatchPlayer, __strretvalSend_inline_MatchPlayer
+7	68	79	#line 68 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	69	79		mov __Send_7qG2_message_7qG2_000_inline_MatchPlayer_inline_P1, __strbufSend_inline_MatchPlayer
+7	68	81	#line 68 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	69	81	#pragma macro 6
+7	69	81		acquire __MWMutex
+7	69	82		mov __MWArgs.QueueID, __constVal1
+7	69	84		mov __MWArgs.Message, __Send_7qG2_message_7qG2_000_inline_MatchPlayer_inline_P1
+7	69	86		syscall 26, __MWArgs
+7	69	89		mov __D0Send_inline_MatchPlayer, __MWArgs.Result
+7	69	91		release __MWMutex
+7	8235	92	#line 8235 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	68	92	#line 68 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	68	92	#line 68 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	95	92	#line 95 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	95	92	#line 95 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	96	92		strcat __strbufMatchPlayer_inline_P1, __MatchPlayer_7qG2_timeString_7qG2_000_inline_P1
+7	95	96	#line 95 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	96	96		mov __Display_7qG2_ms_7qG2_000_inline_MatchPlayer_inline_P1, __strbufMatchPlayer_inline_P1
+7	95	98	#line 95 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	95	98	#line 95 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	59	98	#line 59 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	59	98	#line 59 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	59	98	#line 59 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	59	98	#line 59 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	60	98		sub __signed_stack_001Display_inline_MatchPlayer, __constVal4, __MatchPlayer_7qG2_player_7qG2_000_inline_P1
+7	59	102	#line 59 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	60	102	#line 60 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	60	102	#line 60 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	61	102		mul __Display_7qG2_line_7qG2_000_inline_MatchPlayer_inline_P1, __signed_stack_001Display_inline_MatchPlayer, __constVal16
+7	60	106	#line 60 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	61	106	#line 61 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	62	106		acquire DisplayLock
+7	61	107	#line 61 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	61	107	#line 61 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	62	107		set __signed_stack_001Display_inline_MatchPlayer, 0
+7	61	110	#line 61 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	61	110	#line 61 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	62	110		mov __signed_stack_002Display_inline_MatchPlayer, __Display_7qG2_line_7qG2_000_inline_MatchPlayer_inline_P1
+7	61	112	#line 61 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	61	112	#line 61 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	62	112		strcat __strbufDisplay_inline_MatchPlayer, __Display_7qG2_ms_7qG2_000_inline_MatchPlayer_inline_P1
+7	62	116	#line 62 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	63	116		acquire __TextOutMutex
+7	62	117	#line 62 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	63	117		mov __TextOutArgs.Location.X, __signed_stack_001Display_inline_MatchPlayer
+7	62	119	#line 62 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	63	119		mov __TextOutArgs.Location.Y, __signed_stack_002Display_inline_MatchPlayer
+7	62	121	#line 62 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	63	121		set __TextOutArgs.Options, 0
+7	62	124	#line 62 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	63	124		mov __TextOutArgs.Text, __strbufDisplay_inline_MatchPlayer
+7	62	126	#line 62 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	63	126		syscall 13, __TextOutArgs
+7	62	129	#line 62 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	63	129		mov __D0Display_inline_MatchPlayer, __TextOutArgs.Result
+7	62	131	#line 62 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	63	131		release __TextOutMutex
+7	62	132	#line 62 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	63	132	#line 63 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	64	132		release DisplayLock
+7	63	133	#line 63 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	96	133	#line 96 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	101	133	#line 101 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+7	102	133		exit -1, -1
+8	104	0	#line 104 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	105	0		set __MatchPlayer_7qG2_player_7qG2_000_inline_P2, 2
+8	104	3	#line 104 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	87	3	#line 87 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	88	3		mov __PlayerButton_7qG2_player_7qG2_000, __MatchPlayer_7qG2_player_7qG2_000_inline_P2
+8	87	5	#line 87 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	88	5	#line 88 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	89	5		subcall PlayerButton, __PlayerButton_return
+8	88	7	#line 88 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	88	7	#line 88 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	89	7		not __DU0MatchPlayer_inline_P2, __DU0PlayerButton
+8	89	10	#line 89 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	90	10		tst 5, __zfMatchPlayer_inline_P2, __DU0MatchPlayer_inline_P2
+8	89	13	#line 89 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	90	13		brtst 4, __002__NXC_Label_674, __zfMatchPlayer_inline_P2
+8	7927	16	#line 7927 "NXCDefs.h"
+8	7928	16		wait 1
+8	7927	18	#line 7927 "NXCDefs.h"
+8	90	18	#line 90 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	91	18	#line 91 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	92	18		jmp __002__NXC_Label_673
+8	91	20	#line 91 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	91	20	#line 91 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	92	20		gettick __unsigned_stack_001MatchPlayer_inline_P2
+8	91	22	#line 91 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	92	22	#line 92 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	92	22	#line 92 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	93	22		sub __MatchPlayer_7qG2_time_7qG2_000_inline_P2, __unsigned_stack_001MatchPlayer_inline_P2, StartTick
+8	92	26	#line 92 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	7927	26	#line 7927 "NXCDefs.h"
+8	7928	26		wait 1
+8	7927	28	#line 7927 "NXCDefs.h"
+8	93	28	#line 93 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	93	28	#line 93 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	94	28		mov __MSToString_7qG2_ms_7qG2_000, __MatchPlayer_7qG2_time_7qG2_000_inline_P2
+8	93	30	#line 93 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	94	30	#line 94 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	95	30		subcall MSToString, __MSToString_return
+8	94	32	#line 94 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	95	32		mov __strretvalMatchPlayer_inline_P2, __strbufMSToString
+8	94	34	#line 94 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	95	34		strcat __strbufMatchPlayer_inline_P2, __strretvalMatchPlayer_inline_P2
+8	94	38	#line 94 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	95	38		mov __MatchPlayer_7qG2_timeString_7qG2_000_inline_P2, __strbufMatchPlayer_inline_P2
+8	94	40	#line 94 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	95	40		strcat __strbufMatchPlayer_inline_P2, __MatchPlayer_7qG2_timeString_7qG2_000_inline_P2
+8	94	44	#line 94 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	95	44		mov __Send_7qG2_ms_7qG2_000_inline_MatchPlayer_inline_P2, __strbufMatchPlayer_inline_P2
+8	94	46	#line 94 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	94	46	#line 94 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	67	46	#line 67 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	68	46		mov __D0Send_inline_MatchPlayer, __MatchPlayer_7qG2_player_7qG2_000_inline_P2
+8	67	48	#line 67 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	68	48		numtostr __strretvalSend_inline_MatchPlayer, __D0Send_inline_MatchPlayer
+8	67	51	#line 67 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	68	51		strcat __strbufSend_inline_MatchPlayer, __strretvalSend_inline_MatchPlayer
+8	67	55	#line 67 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	68	55		mov __ArrHelper__Send_244_0, __strbufSend_inline_MatchPlayer
+8	67	57	#line 67 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	68	57		strcat __strbufSend_inline_MatchPlayer, __constStr0014
+8	67	61	#line 67 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	68	61		mov __ArrHelper__Send_244_1, __strbufSend_inline_MatchPlayer
+8	67	63	#line 67 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	68	63		strcat __strbufSend_inline_MatchPlayer, __Send_7qG2_ms_7qG2_000_inline_MatchPlayer_inline_P2
+8	67	67	#line 67 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	68	67		mov __ArrHelper__Send_244_2, __strbufSend_inline_MatchPlayer
+8	68	69	#line 68 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	69	69		strcat __strretvalSend_inline_MatchPlayer, __ArrHelper__Send_244_0, __ArrHelper__Send_244_1, __ArrHelper__Send_244_2
+8	68	75	#line 68 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	69	75		strcat __strbufSend_inline_MatchPlayer, __strretvalSend_inline_MatchPlayer
+8	68	79	#line 68 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	69	79		mov __Send_7qG2_message_7qG2_000_inline_MatchPlayer_inline_P2, __strbufSend_inline_MatchPlayer
+8	68	81	#line 68 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	69	81	#pragma macro 6
+8	69	81		acquire __MWMutex
+8	69	82		mov __MWArgs.QueueID, __constVal1
+8	69	84		mov __MWArgs.Message, __Send_7qG2_message_7qG2_000_inline_MatchPlayer_inline_P2
+8	69	86		syscall 26, __MWArgs
+8	69	89		mov __D0Send_inline_MatchPlayer, __MWArgs.Result
+8	69	91		release __MWMutex
+8	8445	92	#line 8445 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	68	92	#line 68 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	68	92	#line 68 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	95	92	#line 95 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	95	92	#line 95 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	96	92		strcat __strbufMatchPlayer_inline_P2, __MatchPlayer_7qG2_timeString_7qG2_000_inline_P2
+8	95	96	#line 95 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	96	96		mov __Display_7qG2_ms_7qG2_000_inline_MatchPlayer_inline_P2, __strbufMatchPlayer_inline_P2
+8	95	98	#line 95 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	95	98	#line 95 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	59	98	#line 59 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	59	98	#line 59 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	59	98	#line 59 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	59	98	#line 59 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	60	98		sub __signed_stack_001Display_inline_MatchPlayer, __constVal4, __MatchPlayer_7qG2_player_7qG2_000_inline_P2
+8	59	102	#line 59 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	60	102	#line 60 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	60	102	#line 60 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	61	102		mul __Display_7qG2_line_7qG2_000_inline_MatchPlayer_inline_P2, __signed_stack_001Display_inline_MatchPlayer, __constVal16
+8	60	106	#line 60 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	61	106	#line 61 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	62	106		acquire DisplayLock
+8	61	107	#line 61 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	61	107	#line 61 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	62	107		set __signed_stack_001Display_inline_MatchPlayer, 0
+8	61	110	#line 61 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	61	110	#line 61 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	62	110		mov __signed_stack_002Display_inline_MatchPlayer, __Display_7qG2_line_7qG2_000_inline_MatchPlayer_inline_P2
+8	61	112	#line 61 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	61	112	#line 61 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	62	112		strcat __strbufDisplay_inline_MatchPlayer, __Display_7qG2_ms_7qG2_000_inline_MatchPlayer_inline_P2
+8	62	116	#line 62 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	63	116		acquire __TextOutMutex
+8	62	117	#line 62 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	63	117		mov __TextOutArgs.Location.X, __signed_stack_001Display_inline_MatchPlayer
+8	62	119	#line 62 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	63	119		mov __TextOutArgs.Location.Y, __signed_stack_002Display_inline_MatchPlayer
+8	62	121	#line 62 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	63	121		set __TextOutArgs.Options, 0
+8	62	124	#line 62 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	63	124		mov __TextOutArgs.Text, __strbufDisplay_inline_MatchPlayer
+8	62	126	#line 62 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	63	126		syscall 13, __TextOutArgs
+8	62	129	#line 62 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	63	129		mov __D0Display_inline_MatchPlayer, __TextOutArgs.Result
+8	62	131	#line 62 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	63	131		release __TextOutMutex
+8	62	132	#line 62 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	63	132	#line 63 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	64	132		release DisplayLock
+8	63	133	#line 63 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	96	133	#line 96 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	105	133	#line 105 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+8	106	133		exit -1, -1
+9	110	0	#line 110 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+9	110	0	#line 110 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+9	110	0	#line 110 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+9	111	0		strcat __strbufMatchStart, __constStr0015
+9	110	4	#line 110 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+9	111	4		mov __SendStatus_7qG2_status_7qG2_000_inline_MatchStart, __strbufMatchStart
+9	73	6	#line 73 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+9	74	6	#pragma macro 6
+9	74	6		acquire __MWMutex
+9	74	7		mov __MWArgs.QueueID, __constVal0
+9	74	9		mov __MWArgs.Message, __SendStatus_7qG2_status_7qG2_000_inline_MatchStart
+9	74	11		syscall 26, __MWArgs
+9	74	14		release __MWMutex
+9	8533	15	#line 8533 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+9	73	15	#line 73 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+9	73	15	#line 73 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+9	111	15	#line 111 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+9	112	15	#line 112 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+9	113	15		set Match, 1
+9	112	18	#line 112 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+9	112	18	#line 112 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+9	112	18	#line 112 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+9	113	18		gettick StartTick
+9	112	20	#line 112 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+9	112	20	#line 112 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+9	112	20	#line 112 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+9	113	20		exit 0, 1
+10	118	0	#line 118 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+10	119	0		stopthread P1
+10	118	2	#line 118 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+10	119	2	#line 119 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+10	120	2		stopthread P2
+10	119	4	#line 119 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+10	119	4	#line 119 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+10	120	4		strcat __strbufMatchStop, __constStr0016
+10	119	8	#line 119 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+10	120	8		mov __SendStatus_7qG2_status_7qG2_000_inline_MatchStop, __strbufMatchStop
+10	73	10	#line 73 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+10	74	10	#pragma macro 6
+10	74	10		acquire __MWMutex
+10	74	11		mov __MWArgs.QueueID, __constVal0
+10	74	13		mov __MWArgs.Message, __SendStatus_7qG2_status_7qG2_000_inline_MatchStop
+10	74	15		syscall 26, __MWArgs
+10	74	18		release __MWMutex
+10	8570	19	#line 8570 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+10	73	19	#line 73 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+10	73	19	#line 73 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+10	120	19	#line 120 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+10	121	19	#line 121 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+10	122	19		set Match, 0
+10	121	22	#line 121 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+10	121	22	#line 121 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+10	122	22	#line 122 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+10	123	22		subcall MatchScreen, __MatchScreen_return
+10	122	24	#line 122 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+10	123	24		exit -1, -1
+11	127	0	#line 127 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+11	128	0		set __D0ButtonWatch, 1
+11	128	3	#line 128 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+11	129	3		tst 5, __zfButtonWatch, __D0ButtonWatch
+11	128	6	#line 128 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+11	129	6		brtst 4, __NXC_Label_698, __zfButtonWatch
+11	128	9	#line 128 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+11	129	9		mov __DU0ButtonWatch, Match
+11	128	11	#line 128 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+11	129	11		tst 5, __zfButtonWatch, __DU0ButtonWatch
+11	128	14	#line 128 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+11	129	14		mov __D0ButtonWatch, __zfButtonWatch
+11	128	16	#line 128 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+11	129	16		brtst 4, __NXC_Label_702, __zfButtonWatch
+11	128	19	#line 128 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+11	129	19		mov __signed_stack_001ButtonWatch, __D0ButtonWatch
+11	129	21	#line 129 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+11	130	21		subcall StopButton, __StopButton_return
+11	129	23	#line 129 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+11	130	23		mov __DU0ButtonWatch, __DU0StopButton
+11	129	25	#line 129 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+11	130	25		tst 5, __zfButtonWatch, __DU0ButtonWatch
+11	129	28	#line 129 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+11	129	28	#line 129 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+11	130	28		and __D0ButtonWatch, __signed_stack_001ButtonWatch, __zfButtonWatch
+11	129	32	#line 129 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+11	130	32		tst 5, __zfButtonWatch, __D0ButtonWatch
+11	129	35	#line 129 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+11	130	35		brtst 4, __NXC_Label_703, __zfButtonWatch
+11	129	38	#line 129 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+11	130	38		strcat __strbufButtonWatch, __constStr0017
+11	129	42	#line 129 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+11	130	42		mov __SendStatus_7qG2_status_7qG2_000_inline_ButtonWatch, __strbufButtonWatch
+11	73	44	#line 73 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+11	74	44	#pragma macro 6
+11	74	44		acquire __MWMutex
+11	74	45		mov __MWArgs.QueueID, __constVal0
+11	74	47		mov __MWArgs.Message, __SendStatus_7qG2_status_7qG2_000_inline_ButtonWatch
+11	74	49		syscall 26, __MWArgs
+11	74	52		mov __D0SendStatus_inline_ButtonWatch, __MWArgs.Result
+11	74	54		release __MWMutex
+11	8631	55	#line 8631 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+11	73	55	#line 73 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+11	73	55	#line 73 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+11	130	55	#line 130 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+11	130	55	#line 130 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+11	131	55		jmp __NXC_Label_704
+11	130	57	#line 130 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+11	130	57	#line 130 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+11	131	57		not __DU0ButtonWatch, Match
+11	130	60	#line 130 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+11	131	60		tst 5, __zfButtonWatch, __DU0ButtonWatch
+11	130	63	#line 130 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+11	131	63		mov __D0ButtonWatch, __zfButtonWatch
+11	130	65	#line 130 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+11	131	65		brtst 4, __NXC_Label_706, __zfButtonWatch
+11	130	68	#line 130 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+11	131	68		mov __signed_stack_001ButtonWatch, __D0ButtonWatch
+11	131	70	#line 131 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+11	132	70		subcall StartButton, __StartButton_return
+11	131	72	#line 131 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+11	132	72		mov __DU0ButtonWatch, __DU0StartButton
+11	131	74	#line 131 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+11	132	74		tst 5, __zfButtonWatch, __DU0ButtonWatch
+11	131	77	#line 131 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+11	131	77	#line 131 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+11	132	77		and __D0ButtonWatch, __signed_stack_001ButtonWatch, __zfButtonWatch
+11	131	81	#line 131 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+11	132	81		tst 5, __zfButtonWatch, __D0ButtonWatch
+11	131	84	#line 131 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+11	132	84		brtst 4, __NXC_Label_707, __zfButtonWatch
+11	131	87	#line 131 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+11	132	87		strcat __strbufButtonWatch, __constStr0018
+11	131	91	#line 131 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+11	132	91		mov __SendStatus_7qG2_status_7qG2_000_inline_ButtonWatch, __strbufButtonWatch
+11	73	93	#line 73 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+11	74	93	#pragma macro 6
+11	74	93		acquire __MWMutex
+11	74	94		mov __MWArgs.QueueID, __constVal0
+11	74	96		mov __MWArgs.Message, __SendStatus_7qG2_status_7qG2_000_inline_ButtonWatch
+11	74	98		syscall 26, __MWArgs
+11	74	101		mov __D0SendStatus_inline_ButtonWatch, __MWArgs.Result
+11	74	103		release __MWMutex
+11	8671	104	#line 8671 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+11	73	104	#line 73 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+11	73	104	#line 73 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+11	132	104	#line 132 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+11	132	104	#line 132 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+11	132	104	#line 132 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+11	7927	104	#line 7927 "NXCDefs.h"
+11	7928	104		wait 1
+11	7927	106	#line 7927 "NXCDefs.h"
+11	133	106	#line 133 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+11	133	106	#line 133 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+11	133	106	#line 133 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+11	7921	106	#line 7921 "NXCDefs.h"
+11	7922	106		wait 500
+11	7921	108	#line 7921 "NXCDefs.h"
+11	134	108	#line 134 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+11	137	108	#line 137 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+11	138	108		jmp __NXC_Label_697
+11	137	110	#line 137 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+11	138	110		exit -1, -1
+12	141	0	#line 141 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+12	142	0		set __D0MessageWatch, 1
+12	142	3	#line 142 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+12	143	3		tst 5, __zfMessageWatch, __D0MessageWatch
+12	142	6	#line 142 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+12	143	6		brtst 4, __NXC_Label_711, __zfMessageWatch
+12	142	9	#line 142 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+12	143	9	#pragma macro 7
+12	143	9		acquire __MRMutex
+12	143	10		mov __MRArgs.QueueID, __constVal5
+12	143	12		mov __MRArgs.Remove, __constVal1
+12	143	14		syscall 27, __MRArgs
+12	143	17		mov __MessageWatch_7qG2_message_7qG2_000, __MRArgs.Message
+12	143	19		mov __D0MessageWatch, __MRArgs.Result
+12	143	21		release __MRMutex
+12	8718	22	#line 8718 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+12	143	22	#line 143 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+12	143	22	#line 143 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+12	143	22	#line 143 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+12	144	22		not __DU0MessageWatch, Match
+12	143	25	#line 143 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+12	144	25		tst 5, __zfMessageWatch, __DU0MessageWatch
+12	143	28	#line 143 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+12	144	28		mov __D0MessageWatch, __zfMessageWatch
+12	143	30	#line 143 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+12	144	30		brtst 4, __NXC_Label_715, __zfMessageWatch
+12	143	33	#line 143 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+12	144	33		mov __signed_stack_001MessageWatch, __D0MessageWatch
+12	143	35	#line 143 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+12	144	35		strcat __strbufMessageWatch, __MessageWatch_7qG2_message_7qG2_000
+12	143	39	#line 143 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+12	144	39		mov __strtmpbufMessageWatch, __strbufMessageWatch
+12	144	41	#line 144 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+12	145	41		strcat __strbufMessageWatch, __constStr0018
+12	144	45	#line 144 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+12	145	45		cmp 4, __zfMessageWatch, __strtmpbufMessageWatch, __strbufMessageWatch
+12	144	49	#line 144 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+12	144	49	#line 144 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+12	145	49		and __D0MessageWatch, __signed_stack_001MessageWatch, __zfMessageWatch
+12	144	53	#line 144 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+12	145	53		tst 5, __zfMessageWatch, __D0MessageWatch
+12	144	56	#line 144 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+12	145	56		brtst 4, __NXC_Label_716, __zfMessageWatch
+12	145	59	#line 145 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+12	146	59		start MatchStart
+12	145	61	#line 145 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+12	145	61	#line 145 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+12	146	61		jmp __NXC_Label_717
+12	145	63	#line 145 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+12	146	63		mov __DU0MessageWatch, Match
+12	145	65	#line 145 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+12	146	65		tst 5, __zfMessageWatch, __DU0MessageWatch
+12	145	68	#line 145 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+12	146	68		mov __D0MessageWatch, __zfMessageWatch
+12	145	70	#line 145 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+12	146	70		brtst 4, __NXC_Label_719, __zfMessageWatch
+12	145	73	#line 145 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+12	146	73		mov __signed_stack_001MessageWatch, __D0MessageWatch
+12	145	75	#line 145 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+12	146	75		strcat __strbufMessageWatch, __MessageWatch_7qG2_message_7qG2_000
+12	145	79	#line 145 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+12	146	79		mov __strtmpbufMessageWatch, __strbufMessageWatch
+12	146	81	#line 146 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+12	147	81		strcat __strbufMessageWatch, __constStr0017
+12	146	85	#line 146 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+12	147	85		cmp 4, __zfMessageWatch, __strtmpbufMessageWatch, __strbufMessageWatch
+12	146	89	#line 146 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+12	146	89	#line 146 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+12	147	89		and __D0MessageWatch, __signed_stack_001MessageWatch, __zfMessageWatch
+12	146	93	#line 146 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+12	147	93		tst 5, __zfMessageWatch, __D0MessageWatch
+12	146	96	#line 146 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+12	147	96		brtst 4, __NXC_Label_720, __zfMessageWatch
+12	147	99	#line 147 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+12	148	99		start MatchStop
+12	147	101	#line 147 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+12	147	101	#line 147 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+12	147	101	#line 147 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+12	7927	101	#line 7927 "NXCDefs.h"
+12	7928	101		wait 1
+12	7927	103	#line 7927 "NXCDefs.h"
+12	148	103	#line 148 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+12	151	103	#line 151 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+12	152	103		jmp __NXC_Label_710
+12	151	105	#line 151 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+12	152	105		exit -1, -1
+13	166	0	#line 166 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc"
+13	167	0		subret ____initialize_global_data_return
+#CLUMPS
+Clump	Name	Offset	File
+0	main	0	C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc
+1	__ResetSensorSubroutine	130	NXTDefs.h
+2	StartButton	143	C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc
+3	StopButton	197	C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc
+4	PlayerButton	251	C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc
+5	MSToString	322	C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc
+6	MatchScreen	424	C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc
+7	P1	508	C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc
+8	P2	644	C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc
+9	MatchStart	780	C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc
+10	MatchStop	803	C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc
+11	ButtonWatch	830	C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc
+12	MessageWatch	943	C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc
+13	__initialize_global_data	1051	C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabButtons.nxc

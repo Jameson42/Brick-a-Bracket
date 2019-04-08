@@ -1,0 +1,164 @@
+/*
+Brick-a-Bracket Buttons
+Version 1.0
+Jameson Gagnepain
+
+Works with Brick-a-Bracket server to track times
+for 1 vs 1 competition matches using an NXT and 
+one or more touch sensors.
+
+Center button and sensor 3 => Start match
+Buttom button and sensor 4 => Stop match
+Left button and sensor 1 => Player 1 winner
+Right button and sensor 2 => Player 2 winner
+
+Bottom button requires enhanced NXT firmware
+*/
+
+bool Match = false;
+long StartTick;
+mutex DisplayLock;
+
+bool StartButton()
+{
+    if (ButtonPressed(BTNCENTER, false))
+        return true;
+    return SensorBoolean(S3);
+}
+
+bool StopButton()
+{
+#ifdef __ENHANCED_FIRMWARE
+    if (ButtonPressed(BTNEXIT, false))
+        return true;
+#endif
+    return SensorBoolean(S4);
+}
+
+bool PlayerButton(int player)
+{
+    // BTNLEFT = 2, BTNRIGHT = 1
+    int button = 3-player;
+    // S1 = 0, S2 = 1
+    int sensor = player-1;
+    if (ButtonPressed(button, false))
+        return true;
+    return SensorBoolean(sensor);
+}
+
+string MSToString(long ms)
+{
+   string tempStr = NumToStr(ms%1000);
+   while (strlen(tempStr)<3)
+      tempStr = StrCat("0",tempStr);
+   return StrCat(NumToStr(ms/1000),".",tempStr);
+}
+
+inline void Display(string ms, int player)
+{
+   // Convert to LCD_LINE# 2,4
+   long line = (4 - player) * 16;
+   Acquire(DisplayLock);
+   TextOut(0, line, ms);
+   Release(DisplayLock);
+}
+
+inline void Send(string ms, int player)
+{
+   string message = StrCat(NumToStr(player), "-", ms);
+   SendMessage(MAILBOX2, message);
+}
+
+inline void SendStatus(string status)
+{
+   SendMessage(MAILBOX1, status);
+}
+
+void MatchScreen()
+{
+   Acquire(DisplayLock);
+   TextOut(0,LCD_LINE1,"Player 1:",DRAW_OPT_CLEAR_WHOLE_SCREEN);
+   TextOut(0,LCD_LINE3,"Player 2:");
+   TextOut(0,LCD_LINE8,"1   2  Start Stop");
+   Release(DisplayLock);
+}
+
+inline void MatchPlayer(int player)
+{
+    while(!PlayerButton(player))
+    {
+        Yield();
+    }
+    long time = CurrentTick() - StartTick;
+    Yield();
+    string timeString = MSToString(time);
+    Send(timeString, player);
+    Display(timeString, player);
+}
+
+task P1()
+{
+    MatchPlayer(1);
+}
+task P2()
+{
+    MatchPlayer(2);
+}
+
+task MatchStart()
+{
+    Precedes(P1,P2);
+    SendStatus("Running");
+    Match = true;
+    StartTick = CurrentTick();
+}
+
+task MatchStop()
+{
+    stop P1;
+    stop P2;
+    SendStatus("Stopped");
+    Match = false;
+    MatchScreen();
+}
+
+task ButtonWatch()
+{
+   while(true)
+   {
+    if (Match && StopButton())
+        SendStatus("Stop");
+    else if (!Match && StartButton())
+        SendStatus("Start");
+        Yield(); // Give up control to next task
+      Wait(500);  // Try not to catch long presses
+   }
+}
+
+task MessageWatch()
+{
+   string message;
+   while(true)
+   {
+      ReceiveMessage(MAILBOX6,true,message)
+      if (!Match && message == "Start")
+         start MatchStart;
+      else if (Match && message == "Stop")
+         start MatchStop;
+      Yield(); // Give up control to next task
+   }
+}
+
+task main()
+{
+    Precedes(ButtonWatch, MessageWatch);
+#ifdef __ENHANCED_FIRMWARE
+    SetLongAbort(true);
+#endif
+    SetSensorTouch(S1);
+    SetSensorTouch(S2);
+    SetSensorTouch(S3);
+    SetSensorTouch(S4);
+    MatchScreen();
+    SendStatus("Ready");
+}

@@ -1,0 +1,1727 @@
+#SYMBOLS
+Index	Identifier	Type	Flag	Data	Size	RefCount
+0	__D0RaceLane_inline_L4	6	1	0	4	3
+1	__signed_stack_001ButtonWatch	6	1	4	4	2
+2	__signed_stack_001MessageWatch	6	1	8	4	4
+3	__D0RaceLane_inline_L1	6	1	12	4	3
+4	__D0RaceLane_inline_L2	6	1	16	4	3
+5	__D0RaceLane_inline_L3	6	1	20	4	3
+6	__signed_stack_001RaceScreen	6	1	24	4	8
+7	__signed_stack_002RaceScreen	6	1	28	4	8
+8	__signed_stack_001RaceStart	6	1	32	4	2
+9	__signed_stack_001MSToString	6	1	36	4	2
+10	__signed_stack_001PreRaceScreen	6	1	40	4	4
+11	__signed_stack_002PreRaceScreen	6	1	44	4	4
+12	__D0SendStatus_inline_ButtonWatch	6	1	48	4	2
+13	__D0PreRaceScreen	6	1	52	4	4
+14	__D0RaceScreen	6	1	56	4	6
+15	__D0RaceStart	6	1	60	4	2
+16	__D0MessageWatch	6	1	64	4	11
+17	__DU0MessageWatch	5	1	68	4	4
+18	__D0MSToString	6	1	72	4	7
+19	__D0strlen_inline_MSToString	6	1	76	4	2
+20	__D0Display_inline_RaceLane	6	1	80	4	4
+21	__D0Send_inline_RaceLane	6	1	84	4	12
+22	__D0SensorHTEOPD_inline_RaceLane	6	1	88	4	16
+23	__D0SetSensorHTEOPD_inline_main	6	1	92	4	12
+24	__DU0SetSensorHTEOPD_inline_main	5	1	96	4	8
+25	__RaceLane_7qG2_threshold_7qG2_000_inline_L2	6	1	100	4	2
+26	__RaceLane_7qG2_time_7qG2_000_inline_L2	6	1	104	4	2
+27	__Display_7qG2_line_7qG2_000_inline_RaceLane_inline_L2	6	1	108	4	2
+28	__RaceLane_7qG2_threshold_7qG2_000_inline_L1	6	1	112	4	2
+29	__RaceLane_7qG2_time_7qG2_000_inline_L1	6	1	116	4	2
+30	__Display_7qG2_line_7qG2_000_inline_RaceLane_inline_L1	6	1	120	4	2
+31	__RaceLane_7qG2_threshold_7qG2_000_inline_L4	6	1	124	4	2
+32	__RaceLane_7qG2_time_7qG2_000_inline_L4	6	1	128	4	2
+33	__Display_7qG2_line_7qG2_000_inline_RaceLane_inline_L4	6	1	132	4	2
+34	__RaceLane_7qG2_threshold_7qG2_000_inline_L3	6	1	136	4	2
+35	__RaceLane_7qG2_time_7qG2_000_inline_L3	6	1	140	4	2
+36	__Display_7qG2_line_7qG2_000_inline_RaceLane_inline_L3	6	1	144	4	2
+37	__MSToString_7qG2_ms_7qG2_000	6	1	148	4	6
+38	__unsigned_stack_001RaceLane_inline_L1	5	1	152	4	2
+39	__signed_stack_001RaceLane_inline_L2	6	1	156	4	4
+40	__unsigned_stack_001RaceLane_inline_L2	5	1	160	4	2
+41	__signed_stack_001Display_inline_RaceLane	6	1	164	4	16
+42	__signed_stack_002Display_inline_RaceLane	6	1	168	4	8
+43	__signed_stack_001RaceLane_inline_L1	6	1	172	4	4
+44	__unsigned_stack_001RaceLane_inline_L4	5	1	176	4	2
+45	StartTick	6	1	180	4	5
+46	DisplayLock	9	0	184	4	12
+47	__signed_stack_001RaceLane_inline_L3	6	1	188	4	4
+48	__unsigned_stack_001RaceLane_inline_L3	5	1	192	4	2
+49	__signed_stack_001RaceLane_inline_L4	6	1	196	4	4
+50	__MRMutex	9	0	200	4	2
+51	__rotate_angle0	6	1	204	4	4
+52	__rotateMutex0	9	0	208	4	2
+53	__MWMutex	9	0	212	4	18
+54	__TextOutMutex	9	0	216	4	20
+55	__rotate_theAngle0	5	1	220	4	2
+56	__RBtnMutex	9	0	224	4	2
+57	__D0ButtonWatch	6	1	228	4	8
+58	__DU0ButtonWatch	5	1	232	4	2
+59	__RaceLane_7qG2_sensor_7qG2_000_inline_L4	4	1	236	2	3
+60	__RaceLane_7qG2_sensor_7qG2_000_inline_L2	4	1	238	2	3
+61	__RaceLane_7qG2_lane_7qG2_000_inline_L2	4	1	240	2	3
+62	__constVal1000	4	0	242	2	2
+63	__RaceLane_7qG2_lane_7qG2_000_inline_L4	4	1	244	2	3
+64	__constVal1023	4	0	246	2	8
+65	__rotate_RotCount0	4	1	248	2	4
+66	__rotate_OldRotCount0	4	1	250	2	2
+67	__RaceLane_7qG2_sensor_7qG2_000_inline_L3	4	1	252	2	3
+68	__RaceLane_7qG2_lane_7qG2_000_inline_L1	4	1	254	2	3
+69	__RaceLane_7qG2_sensor_7qG2_000_inline_L1	4	1	256	2	3
+70	__RaceLane_7qG2_lane_7qG2_000_inline_L3	4	1	258	2	3
+71	__constVal3	2	0	260	1	3
+72	__SensorHTEOPD_7qG2_port_7qG2_000_inline_RaceLane_inline_L1	1	1	261	1	4
+73	__rotate_rs0	1	1	262	1	2
+74	SensitivityClose	1	1	263	1	4
+75	__rotate_theRVD0	1	1	264	1	2
+76	Racing	1	1	265	1	6
+77	____RotateMotor0_return	1	1	266	1	3
+78	__rotate_theRM0	1	1	267	1	4
+79	__rotate_theTurnPct0	2	1	268	1	4
+80	__rotate_thePower0	2	1	269	1	4
+81	__constVal0	2	1	270	1	28
+82	__constVal1	2	0	271	1	15
+83	__constVal32	2	0	272	1	12
+84	__SetSensorHTEOPD_7qG2_bStandard_7qG2_000_inline_main	1	1	273	1	8
+85	__SetSensorType_7qG2_port_7qG2_000_inline_SetSensorHTEOPD_inline_main	1	1	274	1	8
+86	____initialize_global_data_return	1	1	275	1	3
+87	__SetSensorHTEOPD_7qG2_port_7qG2_000_inline_main	1	1	276	1	20
+88	__SetSensorType_7qG2_type_7qG2_000_inline_SetSensorHTEOPD_inline_main	1	1	277	1	8
+89	__ResetSensor_7qG2_port_7qG2_000_inline_SetSensorHTEOPD_inline_main	1	1	278	1	4
+90	__rotate_theOM0	1	1	279	1	7
+91	__SetSensorMode_7qG2_port_7qG2_000_inline_SetSensorHTEOPD_inline_main	1	1	280	1	8
+92	__SetSensorMode_7qG2_mode_7qG2_000_inline_SetSensorHTEOPD_inline_main	1	1	281	1	8
+93	__rotate_theRS0	1	1	282	1	3
+94	__MSToString_return	1	1	283	1	7
+95	__rotate_stop0	1	1	284	1	2
+96	__rotate_theRVI0	1	1	285	1	2
+97	__rotate_theRVP0	1	1	286	1	2
+98	__PreRaceScreen_return	1	1	287	1	4
+99	__SensorHTEOPD_7qG2_port_7qG2_000_inline_RaceLane_inline_L2	1	1	288	1	4
+100	__rotate_theUF0	1	1	289	1	6
+101	__rotate_turnpct0	2	1	290	1	3
+102	__RaceScreen_return	1	1	291	1	3
+103	__zfRaceLane_inline_L1	1	1	292	1	3
+104	__constVal127	2	0	293	1	3
+105	__constVal20	2	0	294	1	4
+106	__zfButtonWatch	1	1	295	1	6
+107	__zfRaceLane_inline_L2	1	1	296	1	3
+108	__zfMessageWatch	1	1	297	1	16
+109	__rotate_power0	1	1	298	1	4
+110	__constVal96	2	0	299	1	4
+111	__zfMSToString	1	1	300	1	3
+112	__zfSetSensorHTEOPD_inline_main	1	1	301	1	8
+113	__constVal16	2	0	302	1	4
+114	__SensorHTEOPD_7qG2_port_7qG2_000_inline_RaceLane_inline_L4	1	1	303	1	4
+115	__constVal5	2	0	304	1	1
+116	__constVal2	2	0	305	1	2
+117	__constVal4	2	0	306	1	5
+118	__ResetSensorPort	1	1	307	1	6
+119	____ResetSensorSubroutine_return	1	1	308	1	6
+120	__zfRaceLane_inline_L4	1	1	309	1	3
+121	__ResetSensorTmp	1	1	310	1	2
+122	__SensorHTEOPD_7qG2_port_7qG2_000_inline_RaceLane_inline_L3	1	1	311	1	4
+123	__zfRaceLane_inline_L3	1	1	312	1	3
+124	__rotate_firstPort0	1	1	313	1	5
+125	__rotate_sync0	1	1	314	1	2
+126	__MRArgs	8	0	4	8	5
+127	__MRArgs.Result	2	1	316	1	5
+128	__MRArgs.QueueID	1	1	317	1	5
+129	__MRArgs.Remove	1	1	318	1	5
+130	__MRArgs.Message	7	0	320	4	5
+131	__MRArgs.Message.Message_type	1	0	0	1	0
+132	__MWArgs	8	0	3	8	33
+133	__MWArgs.Result	2	1	324	1	33
+134	__MWArgs.QueueID	1	1	325	1	33
+135	__MWArgs.Message	7	0	326	4	33
+136	__MWArgs.Message.Message_type	1	0	0	1	0
+137	__TextOutArgs	8	0	4	16	60
+138	__TextOutArgs.Result	2	1	328	1	60
+139	__TextOutArgs.Location	8	0	2	4	60
+140	__TextOutArgs.Location.X	4	1	332	2	60
+141	__TextOutArgs.Location.Y	4	1	334	2	60
+142	__TextOutArgs.Text	7	0	336	4	60
+143	__TextOutArgs.Text.Text_type	1	0	0	1	0
+144	__TextOutArgs.Options	5	1	340	4	60
+145	__RBtnArgs	8	0	5	8	4
+146	__RBtnArgs.Result	2	1	344	1	4
+147	__RBtnArgs.Index	1	1	345	1	4
+148	__RBtnArgs.Pressed	1	1	346	1	4
+149	__RBtnArgs.Count	1	1	347	1	4
+150	__RBtnArgs.Reset	1	1	348	1	4
+151	__constStr0020	7	0	350	4	4
+152	__constStr0020.__constStr0020_type	1	1	0	1	0
+153	__constStr0021	7	0	352	4	1
+154	__constStr0021.__constStr0021_type	1	1	0	1	0
+155	__RaceLane_7qG2_timeString_7qG2_000_inline_L1	7	0	354	4	3
+156	__RaceLane_7qG2_timeString_7qG2_000_inline_L1.__RaceLane_7qG2_timeString_7qG2_000_inline_L1_type	1	0	0	1	0
+157	__SendStatus_7qG2_status_7qG2_000_inline_RaceStop	7	0	356	4	2
+158	__SendStatus_7qG2_status_7qG2_000_inline_RaceStop.__SendStatus_7qG2_status_7qG2_000_inline_RaceStop_type	1	0	0	1	0
+159	__constStr0022	7	0	358	4	1
+160	__constStr0022.__constStr0022_type	1	1	0	1	0
+161	__Display_7qG2_ms_7qG2_000_inline_RaceLane_inline_L1	7	0	360	4	2
+162	__Display_7qG2_ms_7qG2_000_inline_RaceLane_inline_L1.__Display_7qG2_ms_7qG2_000_inline_RaceLane_inline_L1_type	1	0	0	1	0
+163	__Send_7qG2_message_7qG2_000_inline_RaceLane_inline_L1	7	0	362	4	2
+164	__Send_7qG2_message_7qG2_000_inline_RaceLane_inline_L1.__Send_7qG2_message_7qG2_000_inline_RaceLane_inline_L1_type	1	0	0	1	0
+165	__Send_7qG2_ms_7qG2_000_inline_RaceLane_inline_L1	7	0	364	4	2
+166	__Send_7qG2_ms_7qG2_000_inline_RaceLane_inline_L1.__Send_7qG2_ms_7qG2_000_inline_RaceLane_inline_L1_type	1	0	0	1	0
+167	__SendStatus_7qG2_status_7qG2_000_inline_RaceStart	7	0	366	4	2
+168	__SendStatus_7qG2_status_7qG2_000_inline_RaceStart.__SendStatus_7qG2_status_7qG2_000_inline_RaceStart_type	1	0	0	1	0
+169	__Display_7qG2_ms_7qG2_000_inline_RaceLane_inline_L2	7	0	368	4	2
+170	__Display_7qG2_ms_7qG2_000_inline_RaceLane_inline_L2.__Display_7qG2_ms_7qG2_000_inline_RaceLane_inline_L2_type	1	0	0	1	0
+171	__Send_7qG2_message_7qG2_000_inline_RaceLane_inline_L2	7	0	370	4	2
+172	__Send_7qG2_message_7qG2_000_inline_RaceLane_inline_L2.__Send_7qG2_message_7qG2_000_inline_RaceLane_inline_L2_type	1	0	0	1	0
+173	__Send_7qG2_ms_7qG2_000_inline_RaceLane_inline_L2	7	0	372	4	2
+174	__Send_7qG2_ms_7qG2_000_inline_RaceLane_inline_L2.__Send_7qG2_ms_7qG2_000_inline_RaceLane_inline_L2_type	1	0	0	1	0
+175	__RaceLane_7qG2_timeString_7qG2_000_inline_L3	7	0	374	4	3
+176	__RaceLane_7qG2_timeString_7qG2_000_inline_L3.__RaceLane_7qG2_timeString_7qG2_000_inline_L3_type	1	0	0	1	0
+177	__Send_7qG2_ms_7qG2_000_inline_RaceLane_inline_L3	7	0	376	4	2
+178	__Send_7qG2_ms_7qG2_000_inline_RaceLane_inline_L3.__Send_7qG2_ms_7qG2_000_inline_RaceLane_inline_L3_type	1	0	0	1	0
+179	__Send_7qG2_message_7qG2_000_inline_RaceLane_inline_L3	7	0	378	4	2
+180	__Send_7qG2_message_7qG2_000_inline_RaceLane_inline_L3.__Send_7qG2_message_7qG2_000_inline_RaceLane_inline_L3_type	1	0	0	1	0
+181	__Display_7qG2_ms_7qG2_000_inline_RaceLane_inline_L3	7	0	380	4	2
+182	__Display_7qG2_ms_7qG2_000_inline_RaceLane_inline_L3.__Display_7qG2_ms_7qG2_000_inline_RaceLane_inline_L3_type	1	0	0	1	0
+183	__Send_7qG2_ms_7qG2_000_inline_RaceLane_inline_L4	7	0	382	4	2
+184	__Send_7qG2_ms_7qG2_000_inline_RaceLane_inline_L4.__Send_7qG2_ms_7qG2_000_inline_RaceLane_inline_L4_type	1	0	0	1	0
+185	__Send_7qG2_message_7qG2_000_inline_RaceLane_inline_L4	7	0	384	4	2
+186	__Send_7qG2_message_7qG2_000_inline_RaceLane_inline_L4.__Send_7qG2_message_7qG2_000_inline_RaceLane_inline_L4_type	1	0	0	1	0
+187	__Display_7qG2_ms_7qG2_000_inline_RaceLane_inline_L4	7	0	386	4	2
+188	__Display_7qG2_ms_7qG2_000_inline_RaceLane_inline_L4.__Display_7qG2_ms_7qG2_000_inline_RaceLane_inline_L4_type	1	0	0	1	0
+189	__RaceLane_7qG2_timeString_7qG2_000_inline_L2	7	0	388	4	3
+190	__RaceLane_7qG2_timeString_7qG2_000_inline_L2.__RaceLane_7qG2_timeString_7qG2_000_inline_L2_type	1	0	0	1	0
+191	__rotate_ports0	7	0	390	4	6
+192	__rotate_ports0.__rotate_ports0_type	1	0	0	1	0
+193	__RaceLane_7qG2_timeString_7qG2_000_inline_L4	7	0	392	4	3
+194	__RaceLane_7qG2_timeString_7qG2_000_inline_L4.__RaceLane_7qG2_timeString_7qG2_000_inline_L4_type	1	0	0	1	0
+195	__ArrHelper__Send_244_1	7	0	394	4	8
+196	__ArrHelper__Send_244_1.__ArrHelper__Send_244_1_type	1	0	0	1	0
+197	__ArrHelper__Send_244_0	7	0	396	4	8
+198	__ArrHelper__Send_244_0.__ArrHelper__Send_244_0_type	1	0	0	1	0
+199	__strbufRaceStop	7	0	398	4	2
+200	__strbufRaceStop.__strbufRaceStop_type	1	0	0	1	0
+201	__ArrHelper__Send_244_2	7	0	400	4	8
+202	__ArrHelper__Send_244_2.__ArrHelper__Send_244_2_type	1	0	0	1	0
+203	__strbufRaceStart	7	0	402	4	2
+204	__strbufRaceStart.__strbufRaceStart_type	1	0	0	1	0
+205	__strbufRaceLane_inline_L1	7	0	404	4	6
+206	__strbufRaceLane_inline_L1.__strbufRaceLane_inline_L1_type	1	0	0	1	0
+207	__strretvalRaceLane_inline_L1	7	0	406	4	2
+208	__strretvalRaceLane_inline_L1.__strretvalRaceLane_inline_L1_type	1	0	0	1	0
+209	__strretvalSend_inline_RaceLane	7	0	408	4	16
+210	__strretvalSend_inline_RaceLane.__strretvalSend_inline_RaceLane_type	1	0	0	1	0
+211	__strbufDisplay_inline_RaceLane	7	0	410	4	8
+212	__strbufDisplay_inline_RaceLane.__strbufDisplay_inline_RaceLane_type	1	0	0	1	0
+213	__strbufSend_inline_RaceLane	7	0	412	4	32
+214	__strbufSend_inline_RaceLane.__strbufSend_inline_RaceLane_type	1	0	0	1	0
+215	__strbufRaceScreen	7	0	414	4	8
+216	__strbufRaceScreen.__strbufRaceScreen_type	1	0	0	1	0
+217	__strbufMessageWatch	7	0	416	4	8
+218	__strbufMessageWatch.__strbufMessageWatch_type	1	0	0	1	0
+219	__ArrHelper__MSToString_244_2	7	0	418	4	2
+220	__ArrHelper__MSToString_244_2.__ArrHelper__MSToString_244_2_type	1	0	0	1	0
+221	__strtmpbufMessageWatch	7	0	420	4	4
+222	__strtmpbufMessageWatch.__strtmpbufMessageWatch_type	1	0	0	1	0
+223	__strbufButtonWatch	7	0	422	4	4
+224	__strbufButtonWatch.__strbufButtonWatch_type	1	0	0	1	0
+225	__strbufmain	7	0	424	4	2
+226	__strbufmain.__strbufmain_type	1	0	0	1	0
+227	__strbufPreRaceScreen	7	0	426	4	4
+228	__strbufPreRaceScreen.__strbufPreRaceScreen_type	1	0	0	1	0
+229	__ArrHelper__MSToString_244_0	7	0	428	4	4
+230	__ArrHelper__MSToString_244_0.__ArrHelper__MSToString_244_0_type	1	0	0	1	0
+231	__ArrHelper__MSToString_244_1	7	0	430	4	4
+232	__ArrHelper__MSToString_244_1.__ArrHelper__MSToString_244_1_type	1	0	0	1	0
+233	__strbufMSToString	7	0	432	4	21
+234	__strbufMSToString.__strbufMSToString_type	1	0	0	1	0
+235	__strretvalMSToString	7	0	434	4	8
+236	__strretvalMSToString.__strretvalMSToString_type	1	0	0	1	0
+237	__strbufRaceLane_inline_L2	7	0	436	4	6
+238	__strbufRaceLane_inline_L2.__strbufRaceLane_inline_L2_type	1	0	0	1	0
+239	__constStr0016	7	0	438	4	1
+240	__constStr0016.__constStr0016_type	1	1	0	1	0
+241	__SendStatus_7qG2_status_7qG2_000_inline_main	7	0	440	4	2
+242	__SendStatus_7qG2_status_7qG2_000_inline_main.__SendStatus_7qG2_status_7qG2_000_inline_main_type	1	0	0	1	0
+243	__constStr0015	7	0	442	4	1
+244	__constStr0015.__constStr0015_type	1	1	0	1	0
+245	__constStr0013	7	0	444	4	1
+246	__constStr0013.__constStr0013_type	1	1	0	1	0
+247	__constStr0014	7	0	446	4	1
+248	__constStr0014.__constStr0014_type	1	1	0	1	0
+249	__constStr0019	7	0	448	4	2
+250	__constStr0019.__constStr0019_type	1	1	0	1	0
+251	__MessageWatch_7qG2_message_7qG2_000	7	0	450	4	3
+252	__MessageWatch_7qG2_message_7qG2_000.__MessageWatch_7qG2_message_7qG2_000_type	1	0	0	1	0
+253	__constStr0018	7	0	452	4	2
+254	__constStr0018.__constStr0018_type	1	1	0	1	0
+255	__constStr0017	7	0	454	4	1
+256	__constStr0017.__constStr0017_type	1	1	0	1	0
+257	__SendStatus_7qG2_status_7qG2_000_inline_ButtonWatch	7	0	456	4	4
+258	__SendStatus_7qG2_status_7qG2_000_inline_ButtonWatch.__SendStatus_7qG2_status_7qG2_000_inline_ButtonWatch_type	1	0	0	1	0
+259	__constStr0012	7	0	458	4	1
+260	__constStr0012.__constStr0012_type	1	1	0	1	0
+261	__strbufRaceLane_inline_L4	7	0	460	4	6
+262	__strbufRaceLane_inline_L4.__strbufRaceLane_inline_L4_type	1	0	0	1	0
+263	__strretvalRaceLane_inline_L4	7	0	462	4	2
+264	__strretvalRaceLane_inline_L4.__strretvalRaceLane_inline_L4_type	1	0	0	1	0
+265	__strretvalRaceLane_inline_L3	7	0	464	4	2
+266	__strretvalRaceLane_inline_L3.__strretvalRaceLane_inline_L3_type	1	0	0	1	0
+267	__strretvalRaceLane_inline_L2	7	0	466	4	2
+268	__strretvalRaceLane_inline_L2.__strretvalRaceLane_inline_L2_type	1	0	0	1	0
+269	__strbufRaceLane_inline_L3	7	0	468	4	6
+270	__strbufRaceLane_inline_L3.__strbufRaceLane_inline_L3_type	1	0	0	1	0
+271	__constStr0010	7	0	470	4	1
+272	__constStr0010.__constStr0010_type	1	1	0	1	0
+273	__constStr0011	7	0	472	4	1
+274	__constStr0011.__constStr0011_type	1	1	0	1	0
+275	__constStr0009	7	0	474	4	1
+276	__constStr0009.__constStr0009_type	1	1	0	1	0
+277	__MSToString_7qG2_tempStr_7qG2_000	7	0	476	4	5
+278	__MSToString_7qG2_tempStr_7qG2_000.__MSToString_7qG2_tempStr_7qG2_000_type	1	0	0	1	0
+279	__strlen_7qG2_str_7qG2_000_inline_MSToString	7	0	478	4	2
+280	__strlen_7qG2_str_7qG2_000_inline_MSToString.__strlen_7qG2_str_7qG2_000_inline_MSToString_type	1	0	0	1	0
+#SOURCES
+Clump	Line	PC	Source
+0	91	0	#line 91 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+0	92	0		subcall __initialize_global_data, ____initialize_global_data_return
+0	91	2	#line 91 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+0	94	2	#line 94 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+0	94	2	#line 94 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+0	94	2	#line 94 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+0	95	2		set __SetSensorHTEOPD_7qG2_port_7qG2_000_inline_main, 0
+0	94	5	#line 94 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+0	94	5	#line 94 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+0	95	5		mov __SetSensorHTEOPD_7qG2_bStandard_7qG2_000_inline_main, SensitivityClose
+0	94	7	#line 94 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+0	12965	7	#line 12965 "NXCDefs.h"
+0	12966	7		mov __SetSensorType_7qG2_port_7qG2_000_inline_SetSensorHTEOPD_inline_main, __SetSensorHTEOPD_7qG2_port_7qG2_000_inline_main
+0	12965	9	#line 12965 "NXCDefs.h"
+0	12965	9	#line 12965 "NXCDefs.h"
+0	12966	9		mov __DU0SetSensorHTEOPD_inline_main, __SetSensorHTEOPD_7qG2_bStandard_7qG2_000_inline_main
+0	12965	11	#line 12965 "NXCDefs.h"
+0	12966	11		tst 5, __zfSetSensorHTEOPD_inline_main, __DU0SetSensorHTEOPD_inline_main
+0	12965	14	#line 12965 "NXCDefs.h"
+0	12966	14		brtst 4, __001__NXC_Label_181, __zfSetSensorHTEOPD_inline_main
+0	12965	17	#line 12965 "NXCDefs.h"
+0	12966	17		set __D0SetSensorHTEOPD_inline_main, 6
+0	12965	20	#line 12965 "NXCDefs.h"
+0	12966	20		jmp __001__NXC_Label_182
+0	12965	22	#line 12965 "NXCDefs.h"
+0	12966	22		set __D0SetSensorHTEOPD_inline_main, 5
+0	12965	25	#line 12965 "NXCDefs.h"
+0	12966	25		mov __SetSensorType_7qG2_type_7qG2_000_inline_SetSensorHTEOPD_inline_main, __D0SetSensorHTEOPD_inline_main
+0	3663	27	#line 3663 "NXCDefs.h"
+0	3664	27		setin __SetSensorType_7qG2_type_7qG2_000_inline_SetSensorHTEOPD_inline_main, __SetSensorType_7qG2_port_7qG2_000_inline_SetSensorHTEOPD_inline_main, 0
+0	3663	31	#line 3663 "NXCDefs.h"
+0	12966	31	#line 12966 "NXCDefs.h"
+0	12966	31	#line 12966 "NXCDefs.h"
+0	12967	31		mov __SetSensorMode_7qG2_port_7qG2_000_inline_SetSensorHTEOPD_inline_main, __SetSensorHTEOPD_7qG2_port_7qG2_000_inline_main
+0	12966	33	#line 12966 "NXCDefs.h"
+0	12966	33	#line 12966 "NXCDefs.h"
+0	12967	33		set __SetSensorMode_7qG2_mode_7qG2_000_inline_SetSensorHTEOPD_inline_main, 0
+0	12966	36	#line 12966 "NXCDefs.h"
+0	3676	36	#line 3676 "NXCDefs.h"
+0	3677	36		setin __SetSensorMode_7qG2_mode_7qG2_000_inline_SetSensorHTEOPD_inline_main, __SetSensorMode_7qG2_port_7qG2_000_inline_SetSensorHTEOPD_inline_main, 1
+0	3676	40	#line 3676 "NXCDefs.h"
+0	12967	40	#line 12967 "NXCDefs.h"
+0	12967	40	#line 12967 "NXCDefs.h"
+0	12968	40		mov __ResetSensor_7qG2_port_7qG2_000_inline_SetSensorHTEOPD_inline_main, __SetSensorHTEOPD_7qG2_port_7qG2_000_inline_main
+0	12967	42	#line 12967 "NXCDefs.h"
+0	3694	42	#line 3694 "NXCDefs.h"
+0	3695	42	#pragma macro 4
+0	3695	42		mov __ResetSensorPort, __SetSensorHTEOPD_7qG2_port_7qG2_000_inline_main
+0	3695	44		subcall __ResetSensorSubroutine, ____ResetSensorSubroutine_return
+0	8576	46	#line 8576 "NXCDefs.h"
+0	3694	46	#line 3694 "NXCDefs.h"
+0	12968	46	#line 12968 "NXCDefs.h"
+0	95	46	#line 95 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+0	95	46	#line 95 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+0	96	46		set __SetSensorHTEOPD_7qG2_port_7qG2_000_inline_main, 1
+0	95	49	#line 95 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+0	95	49	#line 95 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+0	96	49		mov __SetSensorHTEOPD_7qG2_bStandard_7qG2_000_inline_main, SensitivityClose
+0	95	51	#line 95 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+0	12965	51	#line 12965 "NXCDefs.h"
+0	12966	51		mov __SetSensorType_7qG2_port_7qG2_000_inline_SetSensorHTEOPD_inline_main, __SetSensorHTEOPD_7qG2_port_7qG2_000_inline_main
+0	12965	53	#line 12965 "NXCDefs.h"
+0	12965	53	#line 12965 "NXCDefs.h"
+0	12966	53		mov __DU0SetSensorHTEOPD_inline_main, __SetSensorHTEOPD_7qG2_bStandard_7qG2_000_inline_main
+0	12965	55	#line 12965 "NXCDefs.h"
+0	12966	55		tst 5, __zfSetSensorHTEOPD_inline_main, __DU0SetSensorHTEOPD_inline_main
+0	12965	58	#line 12965 "NXCDefs.h"
+0	12966	58		brtst 4, __002__NXC_Label_181, __zfSetSensorHTEOPD_inline_main
+0	12965	61	#line 12965 "NXCDefs.h"
+0	12966	61		set __D0SetSensorHTEOPD_inline_main, 6
+0	12965	64	#line 12965 "NXCDefs.h"
+0	12966	64		jmp __002__NXC_Label_182
+0	12965	66	#line 12965 "NXCDefs.h"
+0	12966	66		set __D0SetSensorHTEOPD_inline_main, 5
+0	12965	69	#line 12965 "NXCDefs.h"
+0	12966	69		mov __SetSensorType_7qG2_type_7qG2_000_inline_SetSensorHTEOPD_inline_main, __D0SetSensorHTEOPD_inline_main
+0	3663	71	#line 3663 "NXCDefs.h"
+0	3664	71		setin __SetSensorType_7qG2_type_7qG2_000_inline_SetSensorHTEOPD_inline_main, __SetSensorType_7qG2_port_7qG2_000_inline_SetSensorHTEOPD_inline_main, 0
+0	3663	75	#line 3663 "NXCDefs.h"
+0	12966	75	#line 12966 "NXCDefs.h"
+0	12966	75	#line 12966 "NXCDefs.h"
+0	12967	75		mov __SetSensorMode_7qG2_port_7qG2_000_inline_SetSensorHTEOPD_inline_main, __SetSensorHTEOPD_7qG2_port_7qG2_000_inline_main
+0	12966	77	#line 12966 "NXCDefs.h"
+0	12966	77	#line 12966 "NXCDefs.h"
+0	12967	77		set __SetSensorMode_7qG2_mode_7qG2_000_inline_SetSensorHTEOPD_inline_main, 0
+0	12966	80	#line 12966 "NXCDefs.h"
+0	3676	80	#line 3676 "NXCDefs.h"
+0	3677	80		setin __SetSensorMode_7qG2_mode_7qG2_000_inline_SetSensorHTEOPD_inline_main, __SetSensorMode_7qG2_port_7qG2_000_inline_SetSensorHTEOPD_inline_main, 1
+0	3676	84	#line 3676 "NXCDefs.h"
+0	12967	84	#line 12967 "NXCDefs.h"
+0	12967	84	#line 12967 "NXCDefs.h"
+0	12968	84		mov __ResetSensor_7qG2_port_7qG2_000_inline_SetSensorHTEOPD_inline_main, __SetSensorHTEOPD_7qG2_port_7qG2_000_inline_main
+0	12967	86	#line 12967 "NXCDefs.h"
+0	3694	86	#line 3694 "NXCDefs.h"
+0	3695	86	#pragma macro 4
+0	3695	86		mov __ResetSensorPort, __SetSensorHTEOPD_7qG2_port_7qG2_000_inline_main
+0	3695	88		subcall __ResetSensorSubroutine, ____ResetSensorSubroutine_return
+0	8647	90	#line 8647 "NXCDefs.h"
+0	3694	90	#line 3694 "NXCDefs.h"
+0	12968	90	#line 12968 "NXCDefs.h"
+0	96	90	#line 96 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+0	96	90	#line 96 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+0	97	90		set __SetSensorHTEOPD_7qG2_port_7qG2_000_inline_main, 2
+0	96	93	#line 96 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+0	96	93	#line 96 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+0	97	93		mov __SetSensorHTEOPD_7qG2_bStandard_7qG2_000_inline_main, SensitivityClose
+0	96	95	#line 96 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+0	12965	95	#line 12965 "NXCDefs.h"
+0	12966	95		mov __SetSensorType_7qG2_port_7qG2_000_inline_SetSensorHTEOPD_inline_main, __SetSensorHTEOPD_7qG2_port_7qG2_000_inline_main
+0	12965	97	#line 12965 "NXCDefs.h"
+0	12965	97	#line 12965 "NXCDefs.h"
+0	12966	97		mov __DU0SetSensorHTEOPD_inline_main, __SetSensorHTEOPD_7qG2_bStandard_7qG2_000_inline_main
+0	12965	99	#line 12965 "NXCDefs.h"
+0	12966	99		tst 5, __zfSetSensorHTEOPD_inline_main, __DU0SetSensorHTEOPD_inline_main
+0	12965	102	#line 12965 "NXCDefs.h"
+0	12966	102		brtst 4, __003__NXC_Label_181, __zfSetSensorHTEOPD_inline_main
+0	12965	105	#line 12965 "NXCDefs.h"
+0	12966	105		set __D0SetSensorHTEOPD_inline_main, 6
+0	12965	108	#line 12965 "NXCDefs.h"
+0	12966	108		jmp __003__NXC_Label_182
+0	12965	110	#line 12965 "NXCDefs.h"
+0	12966	110		set __D0SetSensorHTEOPD_inline_main, 5
+0	12965	113	#line 12965 "NXCDefs.h"
+0	12966	113		mov __SetSensorType_7qG2_type_7qG2_000_inline_SetSensorHTEOPD_inline_main, __D0SetSensorHTEOPD_inline_main
+0	3663	115	#line 3663 "NXCDefs.h"
+0	3664	115		setin __SetSensorType_7qG2_type_7qG2_000_inline_SetSensorHTEOPD_inline_main, __SetSensorType_7qG2_port_7qG2_000_inline_SetSensorHTEOPD_inline_main, 0
+0	3663	119	#line 3663 "NXCDefs.h"
+0	12966	119	#line 12966 "NXCDefs.h"
+0	12966	119	#line 12966 "NXCDefs.h"
+0	12967	119		mov __SetSensorMode_7qG2_port_7qG2_000_inline_SetSensorHTEOPD_inline_main, __SetSensorHTEOPD_7qG2_port_7qG2_000_inline_main
+0	12966	121	#line 12966 "NXCDefs.h"
+0	12966	121	#line 12966 "NXCDefs.h"
+0	12967	121		set __SetSensorMode_7qG2_mode_7qG2_000_inline_SetSensorHTEOPD_inline_main, 0
+0	12966	124	#line 12966 "NXCDefs.h"
+0	3676	124	#line 3676 "NXCDefs.h"
+0	3677	124		setin __SetSensorMode_7qG2_mode_7qG2_000_inline_SetSensorHTEOPD_inline_main, __SetSensorMode_7qG2_port_7qG2_000_inline_SetSensorHTEOPD_inline_main, 1
+0	3676	128	#line 3676 "NXCDefs.h"
+0	12967	128	#line 12967 "NXCDefs.h"
+0	12967	128	#line 12967 "NXCDefs.h"
+0	12968	128		mov __ResetSensor_7qG2_port_7qG2_000_inline_SetSensorHTEOPD_inline_main, __SetSensorHTEOPD_7qG2_port_7qG2_000_inline_main
+0	12967	130	#line 12967 "NXCDefs.h"
+0	3694	130	#line 3694 "NXCDefs.h"
+0	3695	130	#pragma macro 4
+0	3695	130		mov __ResetSensorPort, __SetSensorHTEOPD_7qG2_port_7qG2_000_inline_main
+0	3695	132		subcall __ResetSensorSubroutine, ____ResetSensorSubroutine_return
+0	8718	134	#line 8718 "NXCDefs.h"
+0	3694	134	#line 3694 "NXCDefs.h"
+0	12968	134	#line 12968 "NXCDefs.h"
+0	97	134	#line 97 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+0	97	134	#line 97 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+0	98	134		set __SetSensorHTEOPD_7qG2_port_7qG2_000_inline_main, 3
+0	97	137	#line 97 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+0	97	137	#line 97 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+0	98	137		mov __SetSensorHTEOPD_7qG2_bStandard_7qG2_000_inline_main, SensitivityClose
+0	97	139	#line 97 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+0	12965	139	#line 12965 "NXCDefs.h"
+0	12966	139		mov __SetSensorType_7qG2_port_7qG2_000_inline_SetSensorHTEOPD_inline_main, __SetSensorHTEOPD_7qG2_port_7qG2_000_inline_main
+0	12965	141	#line 12965 "NXCDefs.h"
+0	12965	141	#line 12965 "NXCDefs.h"
+0	12966	141		mov __DU0SetSensorHTEOPD_inline_main, __SetSensorHTEOPD_7qG2_bStandard_7qG2_000_inline_main
+0	12965	143	#line 12965 "NXCDefs.h"
+0	12966	143		tst 5, __zfSetSensorHTEOPD_inline_main, __DU0SetSensorHTEOPD_inline_main
+0	12965	146	#line 12965 "NXCDefs.h"
+0	12966	146		brtst 4, __004__NXC_Label_181, __zfSetSensorHTEOPD_inline_main
+0	12965	149	#line 12965 "NXCDefs.h"
+0	12966	149		set __D0SetSensorHTEOPD_inline_main, 6
+0	12965	152	#line 12965 "NXCDefs.h"
+0	12966	152		jmp __004__NXC_Label_182
+0	12965	154	#line 12965 "NXCDefs.h"
+0	12966	154		set __D0SetSensorHTEOPD_inline_main, 5
+0	12965	157	#line 12965 "NXCDefs.h"
+0	12966	157		mov __SetSensorType_7qG2_type_7qG2_000_inline_SetSensorHTEOPD_inline_main, __D0SetSensorHTEOPD_inline_main
+0	3663	159	#line 3663 "NXCDefs.h"
+0	3664	159		setin __SetSensorType_7qG2_type_7qG2_000_inline_SetSensorHTEOPD_inline_main, __SetSensorType_7qG2_port_7qG2_000_inline_SetSensorHTEOPD_inline_main, 0
+0	3663	163	#line 3663 "NXCDefs.h"
+0	12966	163	#line 12966 "NXCDefs.h"
+0	12966	163	#line 12966 "NXCDefs.h"
+0	12967	163		mov __SetSensorMode_7qG2_port_7qG2_000_inline_SetSensorHTEOPD_inline_main, __SetSensorHTEOPD_7qG2_port_7qG2_000_inline_main
+0	12966	165	#line 12966 "NXCDefs.h"
+0	12966	165	#line 12966 "NXCDefs.h"
+0	12967	165		set __SetSensorMode_7qG2_mode_7qG2_000_inline_SetSensorHTEOPD_inline_main, 0
+0	12966	168	#line 12966 "NXCDefs.h"
+0	3676	168	#line 3676 "NXCDefs.h"
+0	3677	168		setin __SetSensorMode_7qG2_mode_7qG2_000_inline_SetSensorHTEOPD_inline_main, __SetSensorMode_7qG2_port_7qG2_000_inline_SetSensorHTEOPD_inline_main, 1
+0	3676	172	#line 3676 "NXCDefs.h"
+0	12967	172	#line 12967 "NXCDefs.h"
+0	12967	172	#line 12967 "NXCDefs.h"
+0	12968	172		mov __ResetSensor_7qG2_port_7qG2_000_inline_SetSensorHTEOPD_inline_main, __SetSensorHTEOPD_7qG2_port_7qG2_000_inline_main
+0	12967	174	#line 12967 "NXCDefs.h"
+0	3694	174	#line 3694 "NXCDefs.h"
+0	3695	174	#pragma macro 4
+0	3695	174		mov __ResetSensorPort, __SetSensorHTEOPD_7qG2_port_7qG2_000_inline_main
+0	3695	176		subcall __ResetSensorSubroutine, ____ResetSensorSubroutine_return
+0	8789	178	#line 8789 "NXCDefs.h"
+0	3694	178	#line 3694 "NXCDefs.h"
+0	12968	178	#line 12968 "NXCDefs.h"
+0	99	178	#line 99 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+0	100	178	#line 100 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+0	101	178		subcall PreRaceScreen, __PreRaceScreen_return
+0	100	180	#line 100 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+0	100	180	#line 100 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+0	101	180		strcat __strbufmain, __constStr0017
+0	100	184	#line 100 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+0	101	184		mov __SendStatus_7qG2_status_7qG2_000_inline_main, __strbufmain
+0	44	186	#line 44 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+0	45	186	#pragma macro 6
+0	45	186		acquire __MWMutex
+0	45	187		mov __MWArgs.QueueID, __constVal0
+0	45	189		mov __MWArgs.Message, __SendStatus_7qG2_status_7qG2_000_inline_main
+0	45	191		syscall 26, __MWArgs
+0	45	194		release __MWMutex
+0	8805	195	#line 8805 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+0	44	195	#line 44 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+0	44	195	#line 44 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+0	101	195	#line 101 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+0	102	195		exit 0, 1
+1	4476	0		brtst 4, __rotate_Done0, __rotate_angle0
+1	4477	3		sign __rotate_thePower0, __rotate_angle0
+1	4478	6		abs __rotate_theAngle0, __rotate_angle0
+1	4479	9		mul __rotate_thePower0, __rotate_thePower0, __rotate_power0
+1	4481	13		set __rotate_theUF0, 23
+1	4482	16		brtst 4, __rotate_NoSync0, __rotate_sync0
+1	4483	19		set __rotate_theOM0, 7
+1	4484	22		set __rotate_theRM0, 2
+1	4485	25		mov __rotate_theTurnPct0, __rotate_turnpct0
+1	4486	27		brtst 4, __rotate_Start0, __rotate_theTurnPct0
+1	4487	30		add __rotate_theUF0, __rotate_theUF0, __constVal32
+1	4488	34		jmp __rotate_Start0
+1	4490	36		set __rotate_theOM0, 3
+1	4491	39		set __rotate_theRM0, 0
+1	4492	42		set __rotate_theTurnPct0, 0
+1	4494	45		set __rotate_theRS0, 32
+1	4495	48		setout __rotate_ports0, 1, __rotate_theOM0, 8, __rotate_theRM0, 5, __rotate_theAngle0, 6, __rotate_theRS0, 10, __rotate_theRVP0, 11, __rotate_theRVI0, 12, __rotate_theRVD0, 2, __rotate_thePower0, 7, __rotate_turnpct0, 0, __rotate_theUF0
+1	4498	71		index __rotate_firstPort0, __rotate_ports0, 65535
+1	4500	75		getout __rotate_power0, __rotate_firstPort0, 2
+1	4501	79		brtst 4, __rotate_doneRunning0, __rotate_power0
+1	4502	82		getout __rotate_rs0, __rotate_firstPort0, 6
+1	4503	86		brcmp 4, __rotate_Running0, __rotate_rs0, __constVal32
+1	4505	90		brtst 4, __rotate_Reset0, __rotate_stop0
+1	4507	93		set __rotate_theOM0, 7
+1	4508	96		set __rotate_theUF0, 7
+1	4509	99		setout __rotate_ports0, 1, __rotate_theOM0, 8, __constVal1, 6, __rotate_theRS0, 2, __constVal0, 5, __constVal0, 0, __rotate_theUF0
+1	4511	114		getout __rotate_RotCount0, __rotate_firstPort0, 14
+1	4513	118		mov __rotate_OldRotCount0, __rotate_RotCount0
+1	4514	120		wait 50
+1	4516	122		getout __rotate_RotCount0, __rotate_firstPort0, 14
+1	4517	126		brcmp 5, __rotate_Stabilize0, __rotate_OldRotCount0, __rotate_RotCount0
+1	4518	130		set __rotate_theOM0, 4
+1	4519	133		setout __rotate_ports0, 8, __rotate_theRM0, 6, __constVal0, 1, __rotate_theOM0, 0, __constVal1
+1	4522	144		brtst 4, __rotate_Done0, __rotate_theTurnPct0
+1	4523	147		setout __rotate_ports0, 0, __constVal32
+1	4525	152		subret ____RotateMotor0_return
+2	4885	0		setin __constVal1, __ResetSensorPort, 5
+2	4887	4		getin __ResetSensorTmp, __ResetSensorPort, 5
+2	4888	8		brtst 5, __SensorStillInvalid, __ResetSensorTmp
+2	4889	11		subret ____ResetSensorSubroutine_return
+3	49	0	#line 49 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+3	49	0	#line 49 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+3	49	0	#line 49 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+3	49	0	#line 49 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+3	50	0		mod __D0MSToString, __MSToString_7qG2_ms_7qG2_000, __constVal1000
+3	50	4	#line 50 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+3	51	4		numtostr __strretvalMSToString, __D0MSToString
+3	50	7	#line 50 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+3	51	7		strcat __strbufMSToString, __strretvalMSToString
+3	50	11	#line 50 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+3	51	11		mov __MSToString_7qG2_tempStr_7qG2_000, __strbufMSToString
+3	50	13	#line 50 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+3	51	13		strcat __strbufMSToString, __MSToString_7qG2_tempStr_7qG2_000
+3	50	17	#line 50 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+3	51	17		mov __strlen_7qG2_str_7qG2_000_inline_MSToString, __strbufMSToString
+3	18590	19	#line 18590 "NXCDefs.h"
+3	18591	19		arrsize __D0strlen_inline_MSToString, __strlen_7qG2_str_7qG2_000_inline_MSToString
+3	18591	22		sub __signed_stack_001MSToString, __D0strlen_inline_MSToString, __constVal1
+3	18590	26	#line 18590 "NXCDefs.h"
+3	50	26	#line 50 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+3	50	26	#line 50 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+3	51	26	#line 51 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+3	52	26		set __D0MSToString, 3
+3	51	29	#line 51 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+3	52	29		cmp 0, __zfMSToString, __signed_stack_001MSToString, __D0MSToString
+3	51	33	#line 51 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+3	52	33		mov __D0MSToString, __zfMSToString
+3	51	35	#line 51 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+3	52	35		brtst 4, __NXC_Label_617, __zfMSToString
+3	51	38	#line 51 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+3	52	38		strcat __strbufMSToString, __constStr0009
+3	51	42	#line 51 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+3	52	42		mov __ArrHelper__MSToString_244_0, __strbufMSToString
+3	51	44	#line 51 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+3	52	44		strcat __strbufMSToString, __MSToString_7qG2_tempStr_7qG2_000
+3	51	48	#line 51 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+3	52	48		mov __ArrHelper__MSToString_244_1, __strbufMSToString
+3	52	50	#line 52 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+3	53	50		strcat __strretvalMSToString, __ArrHelper__MSToString_244_0, __ArrHelper__MSToString_244_1
+3	52	55	#line 52 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+3	53	55		strcat __strbufMSToString, __strretvalMSToString
+3	52	59	#line 52 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+3	53	59		mov __MSToString_7qG2_tempStr_7qG2_000, __strbufMSToString
+3	52	61	#line 52 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+3	52	61	#line 52 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+3	53	61		jmp __NXC_Label_616
+3	52	63	#line 52 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+3	52	63	#line 52 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+3	52	63	#line 52 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+3	52	63	#line 52 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+3	52	63	#line 52 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+3	53	63		div __D0MSToString, __MSToString_7qG2_ms_7qG2_000, __constVal1000
+3	52	67	#line 52 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+3	53	67		numtostr __strretvalMSToString, __D0MSToString
+3	52	70	#line 52 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+3	53	70		strcat __strbufMSToString, __strretvalMSToString
+3	52	74	#line 52 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+3	53	74		mov __ArrHelper__MSToString_244_0, __strbufMSToString
+3	52	76	#line 52 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+3	53	76		strcat __strbufMSToString, __constStr0010
+3	52	80	#line 52 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+3	53	80		mov __ArrHelper__MSToString_244_1, __strbufMSToString
+3	52	82	#line 52 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+3	53	82		strcat __strbufMSToString, __MSToString_7qG2_tempStr_7qG2_000
+3	52	86	#line 52 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+3	53	86		mov __ArrHelper__MSToString_244_2, __strbufMSToString
+3	53	88	#line 53 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+3	54	88		strcat __strretvalMSToString, __ArrHelper__MSToString_244_0, __ArrHelper__MSToString_244_1, __ArrHelper__MSToString_244_2
+3	53	94	#line 53 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+3	54	94		strcat __strbufMSToString, __strretvalMSToString
+3	53	98	#line 53 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+3	54	98		subret __MSToString_return
+3	53	100	#line 53 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+3	55	100	#line 55 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+3	56	100		subret __MSToString_return
+4	58	0	#line 58 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+4	59	0		acquire DisplayLock
+4	58	1	#line 58 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+4	58	1	#line 58 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+4	59	1		set __signed_stack_001PreRaceScreen, 0
+4	58	4	#line 58 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+4	58	4	#line 58 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+4	59	4		set __signed_stack_002PreRaceScreen, 32
+4	58	7	#line 58 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+4	58	7	#line 58 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+4	59	7		strcat __strbufPreRaceScreen, __constStr0011
+4	58	11	#line 58 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+4	59	11		set __D0PreRaceScreen, 1
+4	59	14	#line 59 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+4	60	14		acquire __TextOutMutex
+4	59	15	#line 59 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+4	60	15		mov __TextOutArgs.Location.X, __signed_stack_001PreRaceScreen
+4	59	18	#line 59 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+4	60	18		mov __TextOutArgs.Location.Y, __signed_stack_002PreRaceScreen
+4	59	21	#line 59 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+4	60	21		mov __TextOutArgs.Options, __D0PreRaceScreen
+4	59	24	#line 59 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+4	60	24		mov __TextOutArgs.Text, __strbufPreRaceScreen
+4	59	26	#line 59 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+4	60	26		syscall 13, __TextOutArgs
+4	59	29	#line 59 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+4	60	29		mov __D0PreRaceScreen, __TextOutArgs.Result
+4	59	31	#line 59 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+4	60	31		release __TextOutMutex
+4	59	32	#line 59 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+4	59	32	#line 59 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+4	60	32		set __signed_stack_001PreRaceScreen, 0
+4	59	35	#line 59 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+4	59	35	#line 59 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+4	60	35		set __signed_stack_002PreRaceScreen, 24
+4	59	38	#line 59 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+4	59	38	#line 59 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+4	60	38		strcat __strbufPreRaceScreen, __constStr0012
+4	60	42	#line 60 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+4	61	42		acquire __TextOutMutex
+4	60	43	#line 60 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+4	61	43		mov __TextOutArgs.Location.X, __signed_stack_001PreRaceScreen
+4	60	46	#line 60 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+4	61	46		mov __TextOutArgs.Location.Y, __signed_stack_002PreRaceScreen
+4	60	49	#line 60 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+4	61	49		set __TextOutArgs.Options, 0
+4	60	52	#line 60 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+4	61	52		mov __TextOutArgs.Text, __strbufPreRaceScreen
+4	60	54	#line 60 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+4	61	54		syscall 13, __TextOutArgs
+4	60	57	#line 60 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+4	61	57		mov __D0PreRaceScreen, __TextOutArgs.Result
+4	60	59	#line 60 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+4	61	59		release __TextOutMutex
+4	60	60	#line 60 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+4	61	60	#line 61 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+4	62	60		release DisplayLock
+4	61	61	#line 61 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+4	63	61	#line 63 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+4	64	61		subret __PreRaceScreen_return
+5	66	0	#line 66 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	67	0		acquire DisplayLock
+5	66	1	#line 66 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	66	1	#line 66 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	67	1		set __signed_stack_001RaceScreen, 0
+5	66	4	#line 66 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	66	4	#line 66 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	67	4		set __signed_stack_002RaceScreen, 56
+5	66	7	#line 66 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	66	7	#line 66 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	67	7		strcat __strbufRaceScreen, __constStr0013
+5	66	11	#line 66 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	67	11		set __D0RaceScreen, 1
+5	67	14	#line 67 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	68	14		acquire __TextOutMutex
+5	67	15	#line 67 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	68	15		mov __TextOutArgs.Location.X, __signed_stack_001RaceScreen
+5	67	18	#line 67 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	68	18		mov __TextOutArgs.Location.Y, __signed_stack_002RaceScreen
+5	67	21	#line 67 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	68	21		mov __TextOutArgs.Options, __D0RaceScreen
+5	67	24	#line 67 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	68	24		mov __TextOutArgs.Text, __strbufRaceScreen
+5	67	26	#line 67 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	68	26		syscall 13, __TextOutArgs
+5	67	29	#line 67 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	68	29		mov __D0RaceScreen, __TextOutArgs.Result
+5	67	31	#line 67 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	68	31		release __TextOutMutex
+5	67	32	#line 67 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	67	32	#line 67 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	68	32		set __signed_stack_001RaceScreen, 0
+5	67	35	#line 67 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	67	35	#line 67 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	68	35		set __signed_stack_002RaceScreen, 40
+5	67	38	#line 67 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	67	38	#line 67 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	68	38		strcat __strbufRaceScreen, __constStr0014
+5	68	42	#line 68 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	69	42		acquire __TextOutMutex
+5	68	43	#line 68 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	69	43		mov __TextOutArgs.Location.X, __signed_stack_001RaceScreen
+5	68	46	#line 68 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	69	46		mov __TextOutArgs.Location.Y, __signed_stack_002RaceScreen
+5	68	49	#line 68 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	69	49		set __TextOutArgs.Options, 0
+5	68	52	#line 68 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	69	52		mov __TextOutArgs.Text, __strbufRaceScreen
+5	68	54	#line 68 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	69	54		syscall 13, __TextOutArgs
+5	68	57	#line 68 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	69	57		mov __D0RaceScreen, __TextOutArgs.Result
+5	68	59	#line 68 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	69	59		release __TextOutMutex
+5	68	60	#line 68 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	68	60	#line 68 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	69	60		set __signed_stack_001RaceScreen, 0
+5	68	63	#line 68 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	68	63	#line 68 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	69	63		set __signed_stack_002RaceScreen, 24
+5	68	66	#line 68 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	68	66	#line 68 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	69	66		strcat __strbufRaceScreen, __constStr0015
+5	69	70	#line 69 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	70	70		acquire __TextOutMutex
+5	69	71	#line 69 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	70	71		mov __TextOutArgs.Location.X, __signed_stack_001RaceScreen
+5	69	74	#line 69 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	70	74		mov __TextOutArgs.Location.Y, __signed_stack_002RaceScreen
+5	69	77	#line 69 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	70	77		set __TextOutArgs.Options, 0
+5	69	80	#line 69 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	70	80		mov __TextOutArgs.Text, __strbufRaceScreen
+5	69	82	#line 69 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	70	82		syscall 13, __TextOutArgs
+5	69	85	#line 69 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	70	85		mov __D0RaceScreen, __TextOutArgs.Result
+5	69	87	#line 69 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	70	87		release __TextOutMutex
+5	69	88	#line 69 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	69	88	#line 69 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	70	88		set __signed_stack_001RaceScreen, 0
+5	69	91	#line 69 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	69	91	#line 69 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	70	91		set __signed_stack_002RaceScreen, 8
+5	69	94	#line 69 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	69	94	#line 69 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	70	94		strcat __strbufRaceScreen, __constStr0016
+5	70	98	#line 70 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	71	98		acquire __TextOutMutex
+5	70	99	#line 70 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	71	99		mov __TextOutArgs.Location.X, __signed_stack_001RaceScreen
+5	70	102	#line 70 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	71	102		mov __TextOutArgs.Location.Y, __signed_stack_002RaceScreen
+5	70	105	#line 70 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	71	105		set __TextOutArgs.Options, 0
+5	70	108	#line 70 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	71	108		mov __TextOutArgs.Text, __strbufRaceScreen
+5	70	110	#line 70 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	71	110		syscall 13, __TextOutArgs
+5	70	113	#line 70 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	71	113		mov __D0RaceScreen, __TextOutArgs.Result
+5	70	115	#line 70 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	71	115		release __TextOutMutex
+5	70	116	#line 70 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	71	116	#line 71 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	72	116		release DisplayLock
+5	71	117	#line 71 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	73	117	#line 73 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+5	74	117		subret __RaceScreen_return
+6	106	0	#line 106 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+6	107	0		set __D0ButtonWatch, 1
+6	107	3	#line 107 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+6	108	3		tst 5, __zfButtonWatch, __D0ButtonWatch
+6	107	6	#line 107 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+6	108	6		brtst 4, __NXC_Label_689, __zfButtonWatch
+6	107	9	#line 107 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+6	108	9		set __signed_stack_001ButtonWatch, 3
+6	107	12	#line 107 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+6	107	12	#line 107 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+6	108	12		set __D0ButtonWatch, 1
+6	108	15	#line 108 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+6	109	15		acquire __RBtnMutex
+6	108	16	#line 108 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+6	109	16		mov __RBtnArgs.Index, __signed_stack_001ButtonWatch
+6	108	19	#line 108 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+6	109	19		mov __RBtnArgs.Reset, __D0ButtonWatch
+6	108	21	#line 108 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+6	109	21		syscall 20, __RBtnArgs
+6	108	24	#line 108 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+6	109	24		mov __D0ButtonWatch, __RBtnArgs.Pressed
+6	108	26	#line 108 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+6	109	26		release __RBtnMutex
+6	108	27	#line 108 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+6	109	27		not __D0ButtonWatch, __D0ButtonWatch
+6	109	30	#line 109 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+6	110	30		tst 5, __zfButtonWatch, __D0ButtonWatch
+6	109	33	#line 109 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+6	110	33		brtst 4, __NXC_Label_693, __zfButtonWatch
+6	7927	36	#line 7927 "NXCDefs.h"
+6	7928	36		wait 1
+6	7927	38	#line 7927 "NXCDefs.h"
+6	110	38	#line 110 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+6	111	38	#line 111 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+6	112	38		jmp __NXC_Label_692
+6	111	40	#line 111 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+6	112	40	#line 112 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+6	113	40		mov __DU0ButtonWatch, Racing
+6	112	42	#line 112 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+6	113	42		tst 5, __zfButtonWatch, __DU0ButtonWatch
+6	112	45	#line 112 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+6	113	45		brtst 4, __NXC_Label_702, __zfButtonWatch
+6	112	48	#line 112 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+6	113	48		strcat __strbufButtonWatch, __constStr0018
+6	112	52	#line 112 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+6	113	52		mov __SendStatus_7qG2_status_7qG2_000_inline_ButtonWatch, __strbufButtonWatch
+6	44	54	#line 44 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+6	45	54	#pragma macro 6
+6	45	54		acquire __MWMutex
+6	45	55		mov __MWArgs.QueueID, __constVal0
+6	45	57		mov __MWArgs.Message, __SendStatus_7qG2_status_7qG2_000_inline_ButtonWatch
+6	45	59		syscall 26, __MWArgs
+6	45	62		mov __D0SendStatus_inline_ButtonWatch, __MWArgs.Result
+6	45	64		release __MWMutex
+6	8877	65	#line 8877 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+6	44	65	#line 44 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+6	44	65	#line 44 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+6	113	65	#line 113 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+6	113	65	#line 113 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+6	114	65		jmp __NXC_Label_703
+6	113	67	#line 113 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+6	114	67		strcat __strbufButtonWatch, __constStr0019
+6	113	71	#line 113 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+6	114	71		mov __SendStatus_7qG2_status_7qG2_000_inline_ButtonWatch, __strbufButtonWatch
+6	44	73	#line 44 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+6	45	73	#pragma macro 6
+6	45	73		acquire __MWMutex
+6	45	74		mov __MWArgs.QueueID, __constVal0
+6	45	76		mov __MWArgs.Message, __SendStatus_7qG2_status_7qG2_000_inline_ButtonWatch
+6	45	78		syscall 26, __MWArgs
+6	45	81		mov __D0SendStatus_inline_ButtonWatch, __MWArgs.Result
+6	45	83		release __MWMutex
+6	8889	84	#line 8889 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+6	44	84	#line 44 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+6	44	84	#line 44 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+6	114	84	#line 114 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+6	114	84	#line 114 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+6	114	84	#line 114 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+6	114	84	#line 114 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+6	7921	84	#line 7921 "NXCDefs.h"
+6	7922	84		wait 500
+6	7921	86	#line 7921 "NXCDefs.h"
+6	115	86	#line 115 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+6	118	86	#line 118 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+6	119	86		jmp __NXC_Label_688
+6	118	88	#line 118 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+6	119	88		exit -1, -1
+7	122	0	#line 122 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+7	123	0		set __D0MessageWatch, 1
+7	123	3	#line 123 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+7	124	3		tst 5, __zfMessageWatch, __D0MessageWatch
+7	123	6	#line 123 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+7	124	6		brtst 4, __NXC_Label_707, __zfMessageWatch
+7	123	9	#line 123 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+7	124	9	#pragma macro 7
+7	124	9		acquire __MRMutex
+7	124	10		mov __MRArgs.QueueID, __constVal5
+7	124	12		mov __MRArgs.Remove, __constVal1
+7	124	14		syscall 27, __MRArgs
+7	124	17		mov __MessageWatch_7qG2_message_7qG2_000, __MRArgs.Message
+7	124	19		mov __D0MessageWatch, __MRArgs.Result
+7	124	21		release __MRMutex
+7	8930	22	#line 8930 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+7	124	22	#line 124 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+7	124	22	#line 124 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+7	124	22	#line 124 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+7	125	22		not __DU0MessageWatch, Racing
+7	124	25	#line 124 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+7	125	25		tst 5, __zfMessageWatch, __DU0MessageWatch
+7	124	28	#line 124 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+7	125	28		mov __D0MessageWatch, __zfMessageWatch
+7	124	30	#line 124 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+7	125	30		brtst 4, __NXC_Label_711, __zfMessageWatch
+7	124	33	#line 124 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+7	125	33		mov __signed_stack_001MessageWatch, __D0MessageWatch
+7	124	35	#line 124 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+7	125	35		strcat __strbufMessageWatch, __MessageWatch_7qG2_message_7qG2_000
+7	124	39	#line 124 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+7	125	39		mov __strtmpbufMessageWatch, __strbufMessageWatch
+7	125	41	#line 125 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+7	126	41		strcat __strbufMessageWatch, __constStr0019
+7	125	45	#line 125 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+7	126	45		cmp 4, __zfMessageWatch, __strtmpbufMessageWatch, __strbufMessageWatch
+7	125	49	#line 125 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+7	125	49	#line 125 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+7	126	49		and __D0MessageWatch, __signed_stack_001MessageWatch, __zfMessageWatch
+7	125	53	#line 125 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+7	126	53		tst 5, __zfMessageWatch, __D0MessageWatch
+7	125	56	#line 125 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+7	126	56		brtst 4, __NXC_Label_712, __zfMessageWatch
+7	126	59	#line 126 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+7	127	59		start RaceStart
+7	126	61	#line 126 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+7	126	61	#line 126 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+7	127	61		jmp __NXC_Label_713
+7	126	63	#line 126 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+7	127	63		mov __DU0MessageWatch, Racing
+7	126	65	#line 126 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+7	127	65		tst 5, __zfMessageWatch, __DU0MessageWatch
+7	126	68	#line 126 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+7	127	68		mov __D0MessageWatch, __zfMessageWatch
+7	126	70	#line 126 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+7	127	70		brtst 4, __NXC_Label_715, __zfMessageWatch
+7	126	73	#line 126 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+7	127	73		mov __signed_stack_001MessageWatch, __D0MessageWatch
+7	126	75	#line 126 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+7	127	75		strcat __strbufMessageWatch, __MessageWatch_7qG2_message_7qG2_000
+7	126	79	#line 126 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+7	127	79		mov __strtmpbufMessageWatch, __strbufMessageWatch
+7	127	81	#line 127 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+7	128	81		strcat __strbufMessageWatch, __constStr0018
+7	127	85	#line 127 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+7	128	85		cmp 4, __zfMessageWatch, __strtmpbufMessageWatch, __strbufMessageWatch
+7	127	89	#line 127 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+7	127	89	#line 127 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+7	128	89		and __D0MessageWatch, __signed_stack_001MessageWatch, __zfMessageWatch
+7	127	93	#line 127 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+7	128	93		tst 5, __zfMessageWatch, __D0MessageWatch
+7	127	96	#line 127 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+7	128	96		brtst 4, __NXC_Label_716, __zfMessageWatch
+7	128	99	#line 128 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+7	129	99		start RaceStop
+7	128	101	#line 128 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+7	128	101	#line 128 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+7	128	101	#line 128 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+7	7927	101	#line 7927 "NXCDefs.h"
+7	7928	101		wait 1
+7	7927	103	#line 7927 "NXCDefs.h"
+7	129	103	#line 129 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+7	132	103	#line 132 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+7	133	103		jmp __NXC_Label_706
+7	132	105	#line 132 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+7	133	105		exit -1, -1
+8	134	0	#line 134 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	135	0		set __RaceLane_7qG2_lane_7qG2_000_inline_L1, 1
+8	134	3	#line 134 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	75	3	#line 75 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	75	3	#line 75 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	76	3	#line 76 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	76	3	#line 76 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	77	3		sub __RaceLane_7qG2_sensor_7qG2_000_inline_L1, __constVal1, __constVal1
+8	76	7	#line 76 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	76	7	#line 76 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	77	7		mov __SensorHTEOPD_7qG2_port_7qG2_000_inline_RaceLane_inline_L1, __RaceLane_7qG2_sensor_7qG2_000_inline_L1
+8	76	9	#line 76 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	12952	9	#line 12952 "NXCDefs.h"
+8	12953	9		getin __D0SensorHTEOPD_inline_RaceLane, __SensorHTEOPD_7qG2_port_7qG2_000_inline_RaceLane_inline_L1, 2
+8	12954	13		sub __signed_stack_001RaceLane_inline_L1, __constVal1023, __D0SensorHTEOPD_inline_RaceLane
+8	12955	17	#line 12955 "NXCDefs.h"
+8	76	17	#line 76 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	76	17	#line 76 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	77	17	#line 77 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	77	17	#line 77 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	78	17		add __RaceLane_7qG2_threshold_7qG2_000_inline_L1, __signed_stack_001RaceLane_inline_L1, __constVal20
+8	77	21	#line 77 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	77	21	#line 77 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	78	21		mov __SensorHTEOPD_7qG2_port_7qG2_000_inline_RaceLane_inline_L1, __RaceLane_7qG2_sensor_7qG2_000_inline_L1
+8	77	23	#line 77 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	12952	23	#line 12952 "NXCDefs.h"
+8	12953	23		getin __D0SensorHTEOPD_inline_RaceLane, __SensorHTEOPD_7qG2_port_7qG2_000_inline_RaceLane_inline_L1, 2
+8	12954	27		sub __signed_stack_001RaceLane_inline_L1, __constVal1023, __D0SensorHTEOPD_inline_RaceLane
+8	12955	31	#line 12955 "NXCDefs.h"
+8	77	31	#line 77 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	77	31	#line 77 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	78	31	#line 78 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	79	31		mov __D0RaceLane_inline_L1, __RaceLane_7qG2_threshold_7qG2_000_inline_L1
+8	78	33	#line 78 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	79	33		cmp 0, __zfRaceLane_inline_L1, __signed_stack_001RaceLane_inline_L1, __D0RaceLane_inline_L1
+8	78	37	#line 78 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	79	37		mov __D0RaceLane_inline_L1, __zfRaceLane_inline_L1
+8	79	39	#line 79 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	80	39		brtst 4, __001__NXC_Label_657, __zfRaceLane_inline_L1
+8	7927	42	#line 7927 "NXCDefs.h"
+8	7928	42		wait 1
+8	7927	44	#line 7927 "NXCDefs.h"
+8	80	44	#line 80 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	81	44	#line 81 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	82	44		jmp __001__NXC_Label_656
+8	81	46	#line 81 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	81	46	#line 81 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	82	46		gettick __unsigned_stack_001RaceLane_inline_L1
+8	81	48	#line 81 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	82	48	#line 82 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	82	48	#line 82 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	83	48		sub __RaceLane_7qG2_time_7qG2_000_inline_L1, __unsigned_stack_001RaceLane_inline_L1, StartTick
+8	82	52	#line 82 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	82	52	#line 82 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	82	52	#line 82 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	7921	52	#line 7921 "NXCDefs.h"
+8	7922	52		wait 100
+8	7921	54	#line 7921 "NXCDefs.h"
+8	83	54	#line 83 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	83	54	#line 83 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	84	54		mov __MSToString_7qG2_ms_7qG2_000, __RaceLane_7qG2_time_7qG2_000_inline_L1
+8	83	56	#line 83 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	84	56	#line 84 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	85	56		subcall MSToString, __MSToString_return
+8	84	58	#line 84 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	85	58		mov __strretvalRaceLane_inline_L1, __strbufMSToString
+8	84	60	#line 84 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	85	60		strcat __strbufRaceLane_inline_L1, __strretvalRaceLane_inline_L1
+8	84	64	#line 84 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	85	64		mov __RaceLane_7qG2_timeString_7qG2_000_inline_L1, __strbufRaceLane_inline_L1
+8	84	66	#line 84 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	85	66		strcat __strbufRaceLane_inline_L1, __RaceLane_7qG2_timeString_7qG2_000_inline_L1
+8	84	70	#line 84 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	85	70		mov __Send_7qG2_ms_7qG2_000_inline_RaceLane_inline_L1, __strbufRaceLane_inline_L1
+8	84	72	#line 84 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	84	72	#line 84 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	38	72	#line 38 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	39	72		mov __D0Send_inline_RaceLane, __RaceLane_7qG2_lane_7qG2_000_inline_L1
+8	38	74	#line 38 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	39	74		numtostr __strretvalSend_inline_RaceLane, __D0Send_inline_RaceLane
+8	38	77	#line 38 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	39	77		strcat __strbufSend_inline_RaceLane, __strretvalSend_inline_RaceLane
+8	38	81	#line 38 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	39	81		mov __ArrHelper__Send_244_0, __strbufSend_inline_RaceLane
+8	38	83	#line 38 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	39	83		strcat __strbufSend_inline_RaceLane, __constStr0020
+8	38	87	#line 38 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	39	87		mov __ArrHelper__Send_244_1, __strbufSend_inline_RaceLane
+8	38	89	#line 38 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	39	89		strcat __strbufSend_inline_RaceLane, __Send_7qG2_ms_7qG2_000_inline_RaceLane_inline_L1
+8	38	93	#line 38 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	39	93		mov __ArrHelper__Send_244_2, __strbufSend_inline_RaceLane
+8	39	95	#line 39 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	40	95		strcat __strretvalSend_inline_RaceLane, __ArrHelper__Send_244_0, __ArrHelper__Send_244_1, __ArrHelper__Send_244_2
+8	39	101	#line 39 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	40	101		strcat __strbufSend_inline_RaceLane, __strretvalSend_inline_RaceLane
+8	39	105	#line 39 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	40	105		mov __Send_7qG2_message_7qG2_000_inline_RaceLane_inline_L1, __strbufSend_inline_RaceLane
+8	39	107	#line 39 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	40	107	#pragma macro 6
+8	40	107		acquire __MWMutex
+8	40	108		mov __MWArgs.QueueID, __constVal1
+8	40	110		mov __MWArgs.Message, __Send_7qG2_message_7qG2_000_inline_RaceLane_inline_L1
+8	40	112		syscall 26, __MWArgs
+8	40	115		mov __D0Send_inline_RaceLane, __MWArgs.Result
+8	40	117		release __MWMutex
+8	9210	118	#line 9210 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	39	118	#line 39 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	39	118	#line 39 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	85	118	#line 85 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	85	118	#line 85 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	86	118		strcat __strbufRaceLane_inline_L1, __RaceLane_7qG2_timeString_7qG2_000_inline_L1
+8	85	122	#line 85 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	86	122		mov __Display_7qG2_ms_7qG2_000_inline_RaceLane_inline_L1, __strbufRaceLane_inline_L1
+8	85	124	#line 85 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	85	124	#line 85 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	30	124	#line 30 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	30	124	#line 30 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	30	124	#line 30 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	30	124	#line 30 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	31	124		sub __signed_stack_001Display_inline_RaceLane, __constVal4, __RaceLane_7qG2_lane_7qG2_000_inline_L1
+8	30	128	#line 30 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	31	128	#line 31 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	31	128	#line 31 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	32	128		mul __Display_7qG2_line_7qG2_000_inline_RaceLane_inline_L1, __signed_stack_001Display_inline_RaceLane, __constVal16
+8	31	132	#line 31 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	32	132	#line 32 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	33	132		acquire DisplayLock
+8	32	133	#line 32 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	32	133	#line 32 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	33	133		set __signed_stack_001Display_inline_RaceLane, 0
+8	32	136	#line 32 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	32	136	#line 32 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	33	136		mov __signed_stack_002Display_inline_RaceLane, __Display_7qG2_line_7qG2_000_inline_RaceLane_inline_L1
+8	32	138	#line 32 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	32	138	#line 32 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	33	138		strcat __strbufDisplay_inline_RaceLane, __Display_7qG2_ms_7qG2_000_inline_RaceLane_inline_L1
+8	33	142	#line 33 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	34	142		acquire __TextOutMutex
+8	33	143	#line 33 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	34	143		mov __TextOutArgs.Location.X, __signed_stack_001Display_inline_RaceLane
+8	33	145	#line 33 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	34	145		mov __TextOutArgs.Location.Y, __signed_stack_002Display_inline_RaceLane
+8	33	147	#line 33 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	34	147		set __TextOutArgs.Options, 0
+8	33	150	#line 33 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	34	150		mov __TextOutArgs.Text, __strbufDisplay_inline_RaceLane
+8	33	152	#line 33 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	34	152		syscall 13, __TextOutArgs
+8	33	155	#line 33 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	34	155		mov __D0Display_inline_RaceLane, __TextOutArgs.Result
+8	33	157	#line 33 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	34	157		release __TextOutMutex
+8	33	158	#line 33 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	34	158	#line 34 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	35	158		release DisplayLock
+8	34	159	#line 34 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	86	159	#line 86 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	135	159	#line 135 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+8	136	159		exit -1, -1
+9	139	0	#line 139 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	140	0		set __RaceLane_7qG2_lane_7qG2_000_inline_L2, 2
+9	139	3	#line 139 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	75	3	#line 75 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	75	3	#line 75 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	76	3	#line 76 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	76	3	#line 76 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	77	3		sub __RaceLane_7qG2_sensor_7qG2_000_inline_L2, __constVal2, __constVal1
+9	76	7	#line 76 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	76	7	#line 76 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	77	7		mov __SensorHTEOPD_7qG2_port_7qG2_000_inline_RaceLane_inline_L2, __RaceLane_7qG2_sensor_7qG2_000_inline_L2
+9	76	9	#line 76 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	12952	9	#line 12952 "NXCDefs.h"
+9	12953	9		getin __D0SensorHTEOPD_inline_RaceLane, __SensorHTEOPD_7qG2_port_7qG2_000_inline_RaceLane_inline_L2, 2
+9	12954	13		sub __signed_stack_001RaceLane_inline_L2, __constVal1023, __D0SensorHTEOPD_inline_RaceLane
+9	12955	17	#line 12955 "NXCDefs.h"
+9	76	17	#line 76 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	76	17	#line 76 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	77	17	#line 77 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	77	17	#line 77 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	78	17		add __RaceLane_7qG2_threshold_7qG2_000_inline_L2, __signed_stack_001RaceLane_inline_L2, __constVal20
+9	77	21	#line 77 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	77	21	#line 77 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	78	21		mov __SensorHTEOPD_7qG2_port_7qG2_000_inline_RaceLane_inline_L2, __RaceLane_7qG2_sensor_7qG2_000_inline_L2
+9	77	23	#line 77 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	12952	23	#line 12952 "NXCDefs.h"
+9	12953	23		getin __D0SensorHTEOPD_inline_RaceLane, __SensorHTEOPD_7qG2_port_7qG2_000_inline_RaceLane_inline_L2, 2
+9	12954	27		sub __signed_stack_001RaceLane_inline_L2, __constVal1023, __D0SensorHTEOPD_inline_RaceLane
+9	12955	31	#line 12955 "NXCDefs.h"
+9	77	31	#line 77 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	77	31	#line 77 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	78	31	#line 78 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	79	31		mov __D0RaceLane_inline_L2, __RaceLane_7qG2_threshold_7qG2_000_inline_L2
+9	78	33	#line 78 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	79	33		cmp 0, __zfRaceLane_inline_L2, __signed_stack_001RaceLane_inline_L2, __D0RaceLane_inline_L2
+9	78	37	#line 78 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	79	37		mov __D0RaceLane_inline_L2, __zfRaceLane_inline_L2
+9	79	39	#line 79 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	80	39		brtst 4, __002__NXC_Label_657, __zfRaceLane_inline_L2
+9	7927	42	#line 7927 "NXCDefs.h"
+9	7928	42		wait 1
+9	7927	44	#line 7927 "NXCDefs.h"
+9	80	44	#line 80 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	81	44	#line 81 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	82	44		jmp __002__NXC_Label_656
+9	81	46	#line 81 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	81	46	#line 81 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	82	46		gettick __unsigned_stack_001RaceLane_inline_L2
+9	81	48	#line 81 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	82	48	#line 82 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	82	48	#line 82 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	83	48		sub __RaceLane_7qG2_time_7qG2_000_inline_L2, __unsigned_stack_001RaceLane_inline_L2, StartTick
+9	82	52	#line 82 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	82	52	#line 82 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	82	52	#line 82 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	7921	52	#line 7921 "NXCDefs.h"
+9	7922	52		wait 100
+9	7921	54	#line 7921 "NXCDefs.h"
+9	83	54	#line 83 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	83	54	#line 83 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	84	54		mov __MSToString_7qG2_ms_7qG2_000, __RaceLane_7qG2_time_7qG2_000_inline_L2
+9	83	56	#line 83 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	84	56	#line 84 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	85	56		subcall MSToString, __MSToString_return
+9	84	58	#line 84 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	85	58		mov __strretvalRaceLane_inline_L2, __strbufMSToString
+9	84	60	#line 84 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	85	60		strcat __strbufRaceLane_inline_L2, __strretvalRaceLane_inline_L2
+9	84	64	#line 84 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	85	64		mov __RaceLane_7qG2_timeString_7qG2_000_inline_L2, __strbufRaceLane_inline_L2
+9	84	66	#line 84 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	85	66		strcat __strbufRaceLane_inline_L2, __RaceLane_7qG2_timeString_7qG2_000_inline_L2
+9	84	70	#line 84 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	85	70		mov __Send_7qG2_ms_7qG2_000_inline_RaceLane_inline_L2, __strbufRaceLane_inline_L2
+9	84	72	#line 84 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	84	72	#line 84 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	38	72	#line 38 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	39	72		mov __D0Send_inline_RaceLane, __RaceLane_7qG2_lane_7qG2_000_inline_L2
+9	38	74	#line 38 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	39	74		numtostr __strretvalSend_inline_RaceLane, __D0Send_inline_RaceLane
+9	38	77	#line 38 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	39	77		strcat __strbufSend_inline_RaceLane, __strretvalSend_inline_RaceLane
+9	38	81	#line 38 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	39	81		mov __ArrHelper__Send_244_0, __strbufSend_inline_RaceLane
+9	38	83	#line 38 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	39	83		strcat __strbufSend_inline_RaceLane, __constStr0020
+9	38	87	#line 38 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	39	87		mov __ArrHelper__Send_244_1, __strbufSend_inline_RaceLane
+9	38	89	#line 38 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	39	89		strcat __strbufSend_inline_RaceLane, __Send_7qG2_ms_7qG2_000_inline_RaceLane_inline_L2
+9	38	93	#line 38 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	39	93		mov __ArrHelper__Send_244_2, __strbufSend_inline_RaceLane
+9	39	95	#line 39 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	40	95		strcat __strretvalSend_inline_RaceLane, __ArrHelper__Send_244_0, __ArrHelper__Send_244_1, __ArrHelper__Send_244_2
+9	39	101	#line 39 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	40	101		strcat __strbufSend_inline_RaceLane, __strretvalSend_inline_RaceLane
+9	39	105	#line 39 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	40	105		mov __Send_7qG2_message_7qG2_000_inline_RaceLane_inline_L2, __strbufSend_inline_RaceLane
+9	39	107	#line 39 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	40	107	#pragma macro 6
+9	40	107		acquire __MWMutex
+9	40	108		mov __MWArgs.QueueID, __constVal1
+9	40	110		mov __MWArgs.Message, __Send_7qG2_message_7qG2_000_inline_RaceLane_inline_L2
+9	40	112		syscall 26, __MWArgs
+9	40	115		mov __D0Send_inline_RaceLane, __MWArgs.Result
+9	40	117		release __MWMutex
+9	9482	118	#line 9482 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	39	118	#line 39 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	39	118	#line 39 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	85	118	#line 85 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	85	118	#line 85 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	86	118		strcat __strbufRaceLane_inline_L2, __RaceLane_7qG2_timeString_7qG2_000_inline_L2
+9	85	122	#line 85 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	86	122		mov __Display_7qG2_ms_7qG2_000_inline_RaceLane_inline_L2, __strbufRaceLane_inline_L2
+9	85	124	#line 85 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	85	124	#line 85 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	30	124	#line 30 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	30	124	#line 30 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	30	124	#line 30 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	30	124	#line 30 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	31	124		sub __signed_stack_001Display_inline_RaceLane, __constVal4, __RaceLane_7qG2_lane_7qG2_000_inline_L2
+9	30	128	#line 30 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	31	128	#line 31 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	31	128	#line 31 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	32	128		mul __Display_7qG2_line_7qG2_000_inline_RaceLane_inline_L2, __signed_stack_001Display_inline_RaceLane, __constVal16
+9	31	132	#line 31 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	32	132	#line 32 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	33	132		acquire DisplayLock
+9	32	133	#line 32 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	32	133	#line 32 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	33	133		set __signed_stack_001Display_inline_RaceLane, 0
+9	32	136	#line 32 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	32	136	#line 32 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	33	136		mov __signed_stack_002Display_inline_RaceLane, __Display_7qG2_line_7qG2_000_inline_RaceLane_inline_L2
+9	32	138	#line 32 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	32	138	#line 32 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	33	138		strcat __strbufDisplay_inline_RaceLane, __Display_7qG2_ms_7qG2_000_inline_RaceLane_inline_L2
+9	33	142	#line 33 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	34	142		acquire __TextOutMutex
+9	33	143	#line 33 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	34	143		mov __TextOutArgs.Location.X, __signed_stack_001Display_inline_RaceLane
+9	33	145	#line 33 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	34	145		mov __TextOutArgs.Location.Y, __signed_stack_002Display_inline_RaceLane
+9	33	147	#line 33 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	34	147		set __TextOutArgs.Options, 0
+9	33	150	#line 33 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	34	150		mov __TextOutArgs.Text, __strbufDisplay_inline_RaceLane
+9	33	152	#line 33 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	34	152		syscall 13, __TextOutArgs
+9	33	155	#line 33 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	34	155		mov __D0Display_inline_RaceLane, __TextOutArgs.Result
+9	33	157	#line 33 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	34	157		release __TextOutMutex
+9	33	158	#line 33 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	34	158	#line 34 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	35	158		release DisplayLock
+9	34	159	#line 34 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	86	159	#line 86 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	140	159	#line 140 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+9	141	159		exit -1, -1
+10	144	0	#line 144 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	145	0		set __RaceLane_7qG2_lane_7qG2_000_inline_L3, 3
+10	144	3	#line 144 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	75	3	#line 75 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	75	3	#line 75 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	76	3	#line 76 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	76	3	#line 76 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	77	3		sub __RaceLane_7qG2_sensor_7qG2_000_inline_L3, __constVal3, __constVal1
+10	76	7	#line 76 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	76	7	#line 76 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	77	7		mov __SensorHTEOPD_7qG2_port_7qG2_000_inline_RaceLane_inline_L3, __RaceLane_7qG2_sensor_7qG2_000_inline_L3
+10	76	9	#line 76 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	12952	9	#line 12952 "NXCDefs.h"
+10	12953	9		getin __D0SensorHTEOPD_inline_RaceLane, __SensorHTEOPD_7qG2_port_7qG2_000_inline_RaceLane_inline_L3, 2
+10	12954	13		sub __signed_stack_001RaceLane_inline_L3, __constVal1023, __D0SensorHTEOPD_inline_RaceLane
+10	12955	17	#line 12955 "NXCDefs.h"
+10	76	17	#line 76 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	76	17	#line 76 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	77	17	#line 77 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	77	17	#line 77 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	78	17		add __RaceLane_7qG2_threshold_7qG2_000_inline_L3, __signed_stack_001RaceLane_inline_L3, __constVal20
+10	77	21	#line 77 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	77	21	#line 77 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	78	21		mov __SensorHTEOPD_7qG2_port_7qG2_000_inline_RaceLane_inline_L3, __RaceLane_7qG2_sensor_7qG2_000_inline_L3
+10	77	23	#line 77 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	12952	23	#line 12952 "NXCDefs.h"
+10	12953	23		getin __D0SensorHTEOPD_inline_RaceLane, __SensorHTEOPD_7qG2_port_7qG2_000_inline_RaceLane_inline_L3, 2
+10	12954	27		sub __signed_stack_001RaceLane_inline_L3, __constVal1023, __D0SensorHTEOPD_inline_RaceLane
+10	12955	31	#line 12955 "NXCDefs.h"
+10	77	31	#line 77 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	77	31	#line 77 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	78	31	#line 78 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	79	31		mov __D0RaceLane_inline_L3, __RaceLane_7qG2_threshold_7qG2_000_inline_L3
+10	78	33	#line 78 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	79	33		cmp 0, __zfRaceLane_inline_L3, __signed_stack_001RaceLane_inline_L3, __D0RaceLane_inline_L3
+10	78	37	#line 78 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	79	37		mov __D0RaceLane_inline_L3, __zfRaceLane_inline_L3
+10	79	39	#line 79 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	80	39		brtst 4, __003__NXC_Label_657, __zfRaceLane_inline_L3
+10	7927	42	#line 7927 "NXCDefs.h"
+10	7928	42		wait 1
+10	7927	44	#line 7927 "NXCDefs.h"
+10	80	44	#line 80 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	81	44	#line 81 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	82	44		jmp __003__NXC_Label_656
+10	81	46	#line 81 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	81	46	#line 81 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	82	46		gettick __unsigned_stack_001RaceLane_inline_L3
+10	81	48	#line 81 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	82	48	#line 82 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	82	48	#line 82 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	83	48		sub __RaceLane_7qG2_time_7qG2_000_inline_L3, __unsigned_stack_001RaceLane_inline_L3, StartTick
+10	82	52	#line 82 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	82	52	#line 82 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	82	52	#line 82 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	7921	52	#line 7921 "NXCDefs.h"
+10	7922	52		wait 100
+10	7921	54	#line 7921 "NXCDefs.h"
+10	83	54	#line 83 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	83	54	#line 83 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	84	54		mov __MSToString_7qG2_ms_7qG2_000, __RaceLane_7qG2_time_7qG2_000_inline_L3
+10	83	56	#line 83 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	84	56	#line 84 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	85	56		subcall MSToString, __MSToString_return
+10	84	58	#line 84 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	85	58		mov __strretvalRaceLane_inline_L3, __strbufMSToString
+10	84	60	#line 84 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	85	60		strcat __strbufRaceLane_inline_L3, __strretvalRaceLane_inline_L3
+10	84	64	#line 84 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	85	64		mov __RaceLane_7qG2_timeString_7qG2_000_inline_L3, __strbufRaceLane_inline_L3
+10	84	66	#line 84 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	85	66		strcat __strbufRaceLane_inline_L3, __RaceLane_7qG2_timeString_7qG2_000_inline_L3
+10	84	70	#line 84 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	85	70		mov __Send_7qG2_ms_7qG2_000_inline_RaceLane_inline_L3, __strbufRaceLane_inline_L3
+10	84	72	#line 84 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	84	72	#line 84 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	38	72	#line 38 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	39	72		mov __D0Send_inline_RaceLane, __RaceLane_7qG2_lane_7qG2_000_inline_L3
+10	38	74	#line 38 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	39	74		numtostr __strretvalSend_inline_RaceLane, __D0Send_inline_RaceLane
+10	38	77	#line 38 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	39	77		strcat __strbufSend_inline_RaceLane, __strretvalSend_inline_RaceLane
+10	38	81	#line 38 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	39	81		mov __ArrHelper__Send_244_0, __strbufSend_inline_RaceLane
+10	38	83	#line 38 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	39	83		strcat __strbufSend_inline_RaceLane, __constStr0020
+10	38	87	#line 38 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	39	87		mov __ArrHelper__Send_244_1, __strbufSend_inline_RaceLane
+10	38	89	#line 38 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	39	89		strcat __strbufSend_inline_RaceLane, __Send_7qG2_ms_7qG2_000_inline_RaceLane_inline_L3
+10	38	93	#line 38 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	39	93		mov __ArrHelper__Send_244_2, __strbufSend_inline_RaceLane
+10	39	95	#line 39 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	40	95		strcat __strretvalSend_inline_RaceLane, __ArrHelper__Send_244_0, __ArrHelper__Send_244_1, __ArrHelper__Send_244_2
+10	39	101	#line 39 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	40	101		strcat __strbufSend_inline_RaceLane, __strretvalSend_inline_RaceLane
+10	39	105	#line 39 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	40	105		mov __Send_7qG2_message_7qG2_000_inline_RaceLane_inline_L3, __strbufSend_inline_RaceLane
+10	39	107	#line 39 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	40	107	#pragma macro 6
+10	40	107		acquire __MWMutex
+10	40	108		mov __MWArgs.QueueID, __constVal1
+10	40	110		mov __MWArgs.Message, __Send_7qG2_message_7qG2_000_inline_RaceLane_inline_L3
+10	40	112		syscall 26, __MWArgs
+10	40	115		mov __D0Send_inline_RaceLane, __MWArgs.Result
+10	40	117		release __MWMutex
+10	9754	118	#line 9754 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	39	118	#line 39 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	39	118	#line 39 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	85	118	#line 85 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	85	118	#line 85 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	86	118		strcat __strbufRaceLane_inline_L3, __RaceLane_7qG2_timeString_7qG2_000_inline_L3
+10	85	122	#line 85 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	86	122		mov __Display_7qG2_ms_7qG2_000_inline_RaceLane_inline_L3, __strbufRaceLane_inline_L3
+10	85	124	#line 85 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	85	124	#line 85 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	30	124	#line 30 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	30	124	#line 30 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	30	124	#line 30 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	30	124	#line 30 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	31	124		sub __signed_stack_001Display_inline_RaceLane, __constVal4, __RaceLane_7qG2_lane_7qG2_000_inline_L3
+10	30	128	#line 30 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	31	128	#line 31 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	31	128	#line 31 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	32	128		mul __Display_7qG2_line_7qG2_000_inline_RaceLane_inline_L3, __signed_stack_001Display_inline_RaceLane, __constVal16
+10	31	132	#line 31 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	32	132	#line 32 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	33	132		acquire DisplayLock
+10	32	133	#line 32 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	32	133	#line 32 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	33	133		set __signed_stack_001Display_inline_RaceLane, 0
+10	32	136	#line 32 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	32	136	#line 32 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	33	136		mov __signed_stack_002Display_inline_RaceLane, __Display_7qG2_line_7qG2_000_inline_RaceLane_inline_L3
+10	32	138	#line 32 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	32	138	#line 32 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	33	138		strcat __strbufDisplay_inline_RaceLane, __Display_7qG2_ms_7qG2_000_inline_RaceLane_inline_L3
+10	33	142	#line 33 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	34	142		acquire __TextOutMutex
+10	33	143	#line 33 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	34	143		mov __TextOutArgs.Location.X, __signed_stack_001Display_inline_RaceLane
+10	33	145	#line 33 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	34	145		mov __TextOutArgs.Location.Y, __signed_stack_002Display_inline_RaceLane
+10	33	147	#line 33 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	34	147		set __TextOutArgs.Options, 0
+10	33	150	#line 33 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	34	150		mov __TextOutArgs.Text, __strbufDisplay_inline_RaceLane
+10	33	152	#line 33 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	34	152		syscall 13, __TextOutArgs
+10	33	155	#line 33 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	34	155		mov __D0Display_inline_RaceLane, __TextOutArgs.Result
+10	33	157	#line 33 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	34	157		release __TextOutMutex
+10	33	158	#line 33 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	34	158	#line 34 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	35	158		release DisplayLock
+10	34	159	#line 34 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	86	159	#line 86 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	145	159	#line 145 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+10	146	159		exit -1, -1
+11	149	0	#line 149 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	150	0		set __RaceLane_7qG2_lane_7qG2_000_inline_L4, 4
+11	149	3	#line 149 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	75	3	#line 75 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	75	3	#line 75 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	76	3	#line 76 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	76	3	#line 76 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	77	3		sub __RaceLane_7qG2_sensor_7qG2_000_inline_L4, __constVal4, __constVal1
+11	76	7	#line 76 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	76	7	#line 76 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	77	7		mov __SensorHTEOPD_7qG2_port_7qG2_000_inline_RaceLane_inline_L4, __RaceLane_7qG2_sensor_7qG2_000_inline_L4
+11	76	9	#line 76 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	12952	9	#line 12952 "NXCDefs.h"
+11	12953	9		getin __D0SensorHTEOPD_inline_RaceLane, __SensorHTEOPD_7qG2_port_7qG2_000_inline_RaceLane_inline_L4, 2
+11	12954	13		sub __signed_stack_001RaceLane_inline_L4, __constVal1023, __D0SensorHTEOPD_inline_RaceLane
+11	12955	17	#line 12955 "NXCDefs.h"
+11	76	17	#line 76 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	76	17	#line 76 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	77	17	#line 77 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	77	17	#line 77 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	78	17		add __RaceLane_7qG2_threshold_7qG2_000_inline_L4, __signed_stack_001RaceLane_inline_L4, __constVal20
+11	77	21	#line 77 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	77	21	#line 77 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	78	21		mov __SensorHTEOPD_7qG2_port_7qG2_000_inline_RaceLane_inline_L4, __RaceLane_7qG2_sensor_7qG2_000_inline_L4
+11	77	23	#line 77 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	12952	23	#line 12952 "NXCDefs.h"
+11	12953	23		getin __D0SensorHTEOPD_inline_RaceLane, __SensorHTEOPD_7qG2_port_7qG2_000_inline_RaceLane_inline_L4, 2
+11	12954	27		sub __signed_stack_001RaceLane_inline_L4, __constVal1023, __D0SensorHTEOPD_inline_RaceLane
+11	12955	31	#line 12955 "NXCDefs.h"
+11	77	31	#line 77 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	77	31	#line 77 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	78	31	#line 78 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	79	31		mov __D0RaceLane_inline_L4, __RaceLane_7qG2_threshold_7qG2_000_inline_L4
+11	78	33	#line 78 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	79	33		cmp 0, __zfRaceLane_inline_L4, __signed_stack_001RaceLane_inline_L4, __D0RaceLane_inline_L4
+11	78	37	#line 78 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	79	37		mov __D0RaceLane_inline_L4, __zfRaceLane_inline_L4
+11	79	39	#line 79 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	80	39		brtst 4, __004__NXC_Label_657, __zfRaceLane_inline_L4
+11	7927	42	#line 7927 "NXCDefs.h"
+11	7928	42		wait 1
+11	7927	44	#line 7927 "NXCDefs.h"
+11	80	44	#line 80 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	81	44	#line 81 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	82	44		jmp __004__NXC_Label_656
+11	81	46	#line 81 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	81	46	#line 81 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	82	46		gettick __unsigned_stack_001RaceLane_inline_L4
+11	81	48	#line 81 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	82	48	#line 82 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	82	48	#line 82 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	83	48		sub __RaceLane_7qG2_time_7qG2_000_inline_L4, __unsigned_stack_001RaceLane_inline_L4, StartTick
+11	82	52	#line 82 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	82	52	#line 82 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	82	52	#line 82 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	7921	52	#line 7921 "NXCDefs.h"
+11	7922	52		wait 100
+11	7921	54	#line 7921 "NXCDefs.h"
+11	83	54	#line 83 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	83	54	#line 83 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	84	54		mov __MSToString_7qG2_ms_7qG2_000, __RaceLane_7qG2_time_7qG2_000_inline_L4
+11	83	56	#line 83 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	84	56	#line 84 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	85	56		subcall MSToString, __MSToString_return
+11	84	58	#line 84 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	85	58		mov __strretvalRaceLane_inline_L4, __strbufMSToString
+11	84	60	#line 84 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	85	60		strcat __strbufRaceLane_inline_L4, __strretvalRaceLane_inline_L4
+11	84	64	#line 84 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	85	64		mov __RaceLane_7qG2_timeString_7qG2_000_inline_L4, __strbufRaceLane_inline_L4
+11	84	66	#line 84 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	85	66		strcat __strbufRaceLane_inline_L4, __RaceLane_7qG2_timeString_7qG2_000_inline_L4
+11	84	70	#line 84 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	85	70		mov __Send_7qG2_ms_7qG2_000_inline_RaceLane_inline_L4, __strbufRaceLane_inline_L4
+11	84	72	#line 84 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	84	72	#line 84 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	38	72	#line 38 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	39	72		mov __D0Send_inline_RaceLane, __RaceLane_7qG2_lane_7qG2_000_inline_L4
+11	38	74	#line 38 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	39	74		numtostr __strretvalSend_inline_RaceLane, __D0Send_inline_RaceLane
+11	38	77	#line 38 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	39	77		strcat __strbufSend_inline_RaceLane, __strretvalSend_inline_RaceLane
+11	38	81	#line 38 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	39	81		mov __ArrHelper__Send_244_0, __strbufSend_inline_RaceLane
+11	38	83	#line 38 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	39	83		strcat __strbufSend_inline_RaceLane, __constStr0020
+11	38	87	#line 38 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	39	87		mov __ArrHelper__Send_244_1, __strbufSend_inline_RaceLane
+11	38	89	#line 38 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	39	89		strcat __strbufSend_inline_RaceLane, __Send_7qG2_ms_7qG2_000_inline_RaceLane_inline_L4
+11	38	93	#line 38 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	39	93		mov __ArrHelper__Send_244_2, __strbufSend_inline_RaceLane
+11	39	95	#line 39 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	40	95		strcat __strretvalSend_inline_RaceLane, __ArrHelper__Send_244_0, __ArrHelper__Send_244_1, __ArrHelper__Send_244_2
+11	39	101	#line 39 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	40	101		strcat __strbufSend_inline_RaceLane, __strretvalSend_inline_RaceLane
+11	39	105	#line 39 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	40	105		mov __Send_7qG2_message_7qG2_000_inline_RaceLane_inline_L4, __strbufSend_inline_RaceLane
+11	39	107	#line 39 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	40	107	#pragma macro 6
+11	40	107		acquire __MWMutex
+11	40	108		mov __MWArgs.QueueID, __constVal1
+11	40	110		mov __MWArgs.Message, __Send_7qG2_message_7qG2_000_inline_RaceLane_inline_L4
+11	40	112		syscall 26, __MWArgs
+11	40	115		mov __D0Send_inline_RaceLane, __MWArgs.Result
+11	40	117		release __MWMutex
+11	10026	118	#line 10026 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	39	118	#line 39 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	39	118	#line 39 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	85	118	#line 85 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	85	118	#line 85 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	86	118		strcat __strbufRaceLane_inline_L4, __RaceLane_7qG2_timeString_7qG2_000_inline_L4
+11	85	122	#line 85 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	86	122		mov __Display_7qG2_ms_7qG2_000_inline_RaceLane_inline_L4, __strbufRaceLane_inline_L4
+11	85	124	#line 85 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	85	124	#line 85 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	30	124	#line 30 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	30	124	#line 30 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	30	124	#line 30 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	30	124	#line 30 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	31	124		sub __signed_stack_001Display_inline_RaceLane, __constVal4, __RaceLane_7qG2_lane_7qG2_000_inline_L4
+11	30	128	#line 30 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	31	128	#line 31 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	31	128	#line 31 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	32	128		mul __Display_7qG2_line_7qG2_000_inline_RaceLane_inline_L4, __signed_stack_001Display_inline_RaceLane, __constVal16
+11	31	132	#line 31 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	32	132	#line 32 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	33	132		acquire DisplayLock
+11	32	133	#line 32 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	32	133	#line 32 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	33	133		set __signed_stack_001Display_inline_RaceLane, 0
+11	32	136	#line 32 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	32	136	#line 32 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	33	136		mov __signed_stack_002Display_inline_RaceLane, __Display_7qG2_line_7qG2_000_inline_RaceLane_inline_L4
+11	32	138	#line 32 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	32	138	#line 32 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	33	138		strcat __strbufDisplay_inline_RaceLane, __Display_7qG2_ms_7qG2_000_inline_RaceLane_inline_L4
+11	33	142	#line 33 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	34	142		acquire __TextOutMutex
+11	33	143	#line 33 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	34	143		mov __TextOutArgs.Location.X, __signed_stack_001Display_inline_RaceLane
+11	33	145	#line 33 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	34	145		mov __TextOutArgs.Location.Y, __signed_stack_002Display_inline_RaceLane
+11	33	147	#line 33 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	34	147		set __TextOutArgs.Options, 0
+11	33	150	#line 33 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	34	150		mov __TextOutArgs.Text, __strbufDisplay_inline_RaceLane
+11	33	152	#line 33 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	34	152		syscall 13, __TextOutArgs
+11	33	155	#line 33 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	34	155		mov __D0Display_inline_RaceLane, __TextOutArgs.Result
+11	33	157	#line 33 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	34	157		release __TextOutMutex
+11	33	158	#line 33 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	34	158	#line 34 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	35	158		release DisplayLock
+11	34	159	#line 34 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	86	159	#line 86 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	150	159	#line 150 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+11	151	159		exit -1, -1
+12	157	0	#line 157 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+12	157	0	#line 157 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+12	158	0	#line 158 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+12	159	0		subcall RaceScreen, __RaceScreen_return
+12	158	2	#line 158 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+12	158	2	#line 158 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+12	159	2		strcat __strbufRaceStart, __constStr0021
+12	158	6	#line 158 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+12	159	6		mov __SendStatus_7qG2_status_7qG2_000_inline_RaceStart, __strbufRaceStart
+12	44	8	#line 44 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+12	45	8	#pragma macro 6
+12	45	8		acquire __MWMutex
+12	45	9		mov __MWArgs.QueueID, __constVal0
+12	45	11		mov __MWArgs.Message, __SendStatus_7qG2_status_7qG2_000_inline_RaceStart
+12	45	13		syscall 26, __MWArgs
+12	45	16		release __MWMutex
+12	10117	17	#line 10117 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+12	44	17	#line 44 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+12	44	17	#line 44 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+12	159	17	#line 159 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+12	160	17	#line 160 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+12	161	17		set Racing, 1
+12	160	20	#line 160 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+12	160	20	#line 160 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+12	161	20	#line 161 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+12	162	20	#pragma macro 7
+12	162	20		setout __constVal0, 2, __constVal0, 1, __constVal3, 8, __constVal0, 6, __constVal32, 7, __constVal0, 5, __constVal0, 10, __constVal96, 11, __constVal32, 12, __constVal32, 0, __constVal127
+12	10129	43	#line 10129 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+12	161	43	#line 161 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+12	161	43	#line 161 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+12	162	43		gettick StartTick
+12	161	45	#line 161 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+12	161	45	#line 161 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+12	161	45	#line 161 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+12	162	45	#line 162 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+12	163	45		set __signed_stack_001RaceStart, 90
+12	162	48	#line 162 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+12	162	48	#line 162 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+12	163	48		set __D0RaceStart, 180
+12	163	51	#line 163 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+12	164	51	#pragma macro 33
+12	164	51		acquire __rotateMutex0
+12	164	52		arrbuild __rotate_ports0, __constVal0
+12	164	56		mov __rotate_power0, __signed_stack_001RaceStart
+12	164	58		mov __rotate_angle0, __D0RaceStart
+12	164	60		mov __rotate_turnpct0, __constVal0
+12	164	62		mov __rotate_sync0, __constVal0
+12	164	64		mov __rotate_stop0, __constVal1
+12	164	66		mov __rotate_theRVP0, __constVal32
+12	164	68		mov __rotate_theRVI0, __constVal0
+12	164	70		mov __rotate_theRVD0, __constVal96
+12	164	72		subcall __RotateMotor0, ____RotateMotor0_return
+12	164	74		release __rotateMutex0
+12	10150	75	#line 10150 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+12	163	75	#line 163 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+12	164	75	#line 164 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+12	165	75	#pragma macro 7
+12	165	75		setout __constVal0, 2, __constVal0, 1, __constVal3, 8, __constVal0, 6, __constVal32, 7, __constVal0, 5, __constVal0, 10, __constVal96, 11, __constVal32, 12, __constVal32, 0, __constVal127
+12	10153	98	#line 10153 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+12	164	98	#line 164 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+12	165	98		exit 0, 4
+13	168	0	#line 168 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+13	168	0	#line 168 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+13	7921	0	#line 7921 "NXCDefs.h"
+13	7922	0		wait 100
+13	7921	2	#line 7921 "NXCDefs.h"
+13	169	2	#line 169 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+13	170	2	#line 170 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+13	171	2	#pragma macro 7
+13	171	2		setout __constVal0, 2, __constVal0, 1, __constVal2, 8, __constVal0, 6, __constVal0, 7, __constVal0, 5, __constVal0, 10, __constVal96, 11, __constVal32, 12, __constVal32, 0, __constVal127
+13	10173	25	#line 10173 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+13	170	25	#line 170 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+13	171	25		exit -1, -1
+14	175	0	#line 175 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+14	176	0		stopthread L1
+14	175	2	#line 175 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+14	176	2	#line 176 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+14	177	2		stopthread L2
+14	176	4	#line 176 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+14	177	4	#line 177 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+14	178	4		stopthread L3
+14	177	6	#line 177 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+14	178	6	#line 178 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+14	179	6		stopthread L4
+14	178	8	#line 178 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+14	178	8	#line 178 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+14	179	8		strcat __strbufRaceStop, __constStr0022
+14	178	12	#line 178 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+14	179	12		mov __SendStatus_7qG2_status_7qG2_000_inline_RaceStop, __strbufRaceStop
+14	44	14	#line 44 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+14	45	14	#pragma macro 6
+14	45	14		acquire __MWMutex
+14	45	15		mov __MWArgs.QueueID, __constVal0
+14	45	17		mov __MWArgs.Message, __SendStatus_7qG2_status_7qG2_000_inline_RaceStop
+14	45	19		syscall 26, __MWArgs
+14	45	22		release __MWMutex
+14	10199	23	#line 10199 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+14	44	23	#line 44 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+14	44	23	#line 44 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+14	179	23	#line 179 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+14	180	23	#line 180 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+14	181	23		set Racing, 0
+14	180	26	#line 180 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+14	180	26	#line 180 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+14	181	26	#line 181 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+14	182	26		subcall PreRaceScreen, __PreRaceScreen_return
+14	181	28	#line 181 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+14	182	28		exit -1, -1
+15	184	0	#line 184 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+15	185	0		subret ____initialize_global_data_return
+#CLUMPS
+Clump	Name	Offset	File
+0	main	0	C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc
+1	__RotateMotor0	198	NXTDefs.h
+2	__ResetSensorSubroutine	352	NXTDefs.h
+3	MSToString	365	C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc
+4	PreRaceScreen	467	C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc
+5	RaceScreen	530	C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc
+6	ButtonWatch	649	C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc
+7	MessageWatch	740	C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc
+8	L1	848	C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc
+9	L2	1010	C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc
+10	L3	1172	C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc
+11	L4	1334	C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc
+12	RaceStart	1496	C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc
+13	PostRaceStart	1597	C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc
+14	RaceStop	1625	C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc
+15	__initialize_global_data	1656	C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc

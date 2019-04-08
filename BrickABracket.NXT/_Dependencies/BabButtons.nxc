@@ -19,14 +19,14 @@ bool Match = false;
 long StartTick;
 mutex DisplayLock;
 
-bool Start()
+bool StartButton()
 {
     if (ButtonPressed(BTNCENTER, false))
         return true;
     return SensorBoolean(S3);
 }
 
-bool Stop()
+bool StopButton()
 {
 #ifdef __ENHANCED_FIRMWARE
     if (ButtonPressed(BTNEXIT, false))
@@ -87,10 +87,10 @@ inline void MatchPlayer(int player)
 {
     while(!PlayerButton(player))
     {
-        Yield;
+        Yield();
     }
     long time = CurrentTick() - StartTick;
-    Yield;
+    Yield();
     string timeString = MSToString(time);
     Send(timeString, player);
     Display(timeString, player);
@@ -126,9 +126,9 @@ task ButtonWatch()
 {
    while(true)
    {
-    if (Match && Stop())
+    if (Match && StopButton())
         SendStatus("Stop");
-    else if (!Match && Start())
+    else if (!Match && StartButton())
         SendStatus("Start");
         Yield(); // Give up control to next task
       Wait(500);  // Try not to catch long presses
