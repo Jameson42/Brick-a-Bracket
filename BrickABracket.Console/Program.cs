@@ -5,6 +5,7 @@ using Autofac.Extensions.DependencyInjection;
 using BrickABracket.Core;
 using BrickABracket.Core.Services;
 using BrickABracket.Models;
+using BrickABracket.Models.Interfaces;
 using BrickABracket.NXT;
 using BrickABracket.Derby;
 using BrickABracket.RoundRobin;
@@ -23,8 +24,7 @@ namespace BrickABracket.Console
             
             using(var scope = _container.BeginLifetimeScope())
             {
-                var resolver = scope.Resolve<Func<string, Nxt>>();
-                var nxt = resolver("COM3");
+                var nxt = scope.Resolve<IDevice>(new NamedParameter("connectionString","com3"));
                 System.Console.WriteLine(nxt.Connect());
             }
 
