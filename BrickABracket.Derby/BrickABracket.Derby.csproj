@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BrickABracket.Models\BrickABracket.Models.csproj" />
+    <ProjectReference Include="..\BrickABracket.Core\BrickABracket.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

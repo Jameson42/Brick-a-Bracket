@@ -2,6 +2,9 @@ using BrickABracket.Models.Interfaces;
 
 namespace BrickABracket.Models.Base
 {
+    /// <summary>
+    /// A built competitive creation, submitted by a competitor
+    /// </summary>
     public class Moc: IDBItem
     {
         public string Name {get;set;}
