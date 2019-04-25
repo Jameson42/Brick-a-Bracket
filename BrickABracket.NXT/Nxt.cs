@@ -19,7 +19,8 @@ namespace BrickABracket.NXT
         private Subject<Status> _statuses;
         public IObservable<Score> Scores { get; private set; }
         public IObservable<Status> Statuses { get; private set; }
-        private Thread _messageThread;
+        private CancellationTokenSource _messageTokenSource;
+        private Task _messageTask;
         private Func<string, Score> _scoreFactory;
 
         public Nxt(string connectionString, Func<string, Score> scoreFactory)
@@ -60,9 +61,9 @@ namespace BrickABracket.NXT
                 _followSubscription = null;
             }
             _followSubscription = Statuses.Subscribe(i => {
-                if (i == Status.Start)  // Start race and start emitting scores
+                if (i == Status.Start)  // Start matach and start emitting scores
                     StartMatch();
-                else if (i == Status.Stop) // Stop race and stop emitting scores
+                else if (i == Status.Stop) // Stop match and stop emitting scores
                     StopMatch();
             });
         }
@@ -76,45 +77,37 @@ namespace BrickABracket.NXT
             {
                 _brick = new Brick<I2CSensor, I2CSensor, I2CSensor, I2CSensor>(Connection);
                 _brick.Connection.Open();
-                if (_messageThread == null)
-                {
-                    _messageThread = new Thread(new ThreadStart(ReadMailboxes));
-                    _messageThread.IsBackground = true;
-                    _messageThread.Start();
-                }
+                StartReadMailboxes();
                 return _brick.Connection.IsConnected;
             }
             catch
             {
                 _brick?.Connection.Close();
                 Connection = "";
-                if (_messageThread != null)
-                {
-                    _messageThread.Abort();
-                    _messageThread = null;
-                }
+                StopReadMailboxes();
                 return false;
             }
         }
 
-        private void StartMatch()
+        public void StartMatch()
         {
             lock(MessageLock)
             {
-                _brick.Mailbox.Send("Start", Box.Box5);
+                _brick?.Mailbox?.Send("Start", Box.Box5);
             }
         }
         private void StopMatch()
         {
             lock(MessageLock)
             {
-                _brick.Mailbox.Send("Stop", Box.Box5);
+                if (Connected)
+                    _brick?.Mailbox?.Send("Stop", Box.Box5);
             }
         }
 
-        private void ReadMailboxes()
+        private void ReadMailboxes(CancellationToken token)
         {
-            while(true)
+            while(!token.IsCancellationRequested)
             {
                 while(!Connected)
                     Thread.Sleep(500);
@@ -138,6 +131,7 @@ namespace BrickABracket.NXT
         }
         private bool PostScore(Score score)
         {
+            System.Console.WriteLine($"Received score {score}");
             if (score == null)
                 return false;
             _scores.OnNext(score);
@@ -145,6 +139,7 @@ namespace BrickABracket.NXT
         }
         private bool PostStatus(string status)
         {
+            System.Console.WriteLine($"Received status {status}");
             if (string.IsNullOrWhiteSpace(status))
                 return false;
             return PostStatus(status.ToStatus());
@@ -158,20 +153,37 @@ namespace BrickABracket.NXT
             return true;
         }
 
+        private void StartReadMailboxes()
+        {
+            StopReadMailboxes();
+            _messageTokenSource = new CancellationTokenSource();
+            var token = _messageTokenSource.Token;
+            _messageTask = Task.Factory.StartNew(() => ReadMailboxes(token), token);
+        }
+
+        private void StopReadMailboxes()
+        {
+            try
+            {
+                _messageTokenSource?.Cancel();
+                _messageTask?.Wait();
+            }
+            finally
+            {
+                _messageTokenSource?.Dispose();
+            }
+        }
+
         public void Dispose()
         {
             StopMatch();
-            if (_messageThread != null)
-            {
-                _messageThread.Abort();
-                _messageThread = null;
-            }
+            StopReadMailboxes();
             _brick?.Connection.Close();
-            _scores.OnCompleted();
-            _scores.Dispose();
-            _statuses.OnCompleted();
-            _statuses.Dispose();
-            _followSubscription.Dispose();
+            _scores?.OnCompleted();
+            _scores?.Dispose();
+            _statuses?.OnCompleted();
+            _statuses?.Dispose();
+            _followSubscription?.Dispose();
         }
 
         public bool Equals(Nxt other)

@@ -1,0 +1,116 @@
+#SYMBOLS
+Index	Identifier	Type	Flag	Data	Size	RefCount
+0	__D0main	6	1	0	4	9
+1	__signed_stack_001main	6	1	4	4	2
+2	__main_7qG2_i_7qG2_001	4	1	8	2	8
+3	__zfmain	1	1	10	1	3
+4	____initialize_global_data_return	1	1	11	1	3
+5	__constVal1	2	0	12	1	1
+6	__constVal10	2	0	13	1	1
+7	__MWArgs	8	0	3	8	8
+8	__MWArgs.Result	2	1	16	1	8
+9	__MWArgs.QueueID	1	1	17	1	8
+10	__MWArgs.Message	7	0	18	4	8
+11	__MWArgs.Message.Message_type	1	0	0	1	0
+12	__constStr0010	7	0	20	4	1
+13	__constStr0010.__constStr0010_type	1	1	0	1	0
+14	__main_7qG2_j_7qG2_002	7	0	22	4	4
+15	__main_7qG2_j_7qG2_002.__main_7qG2_j_7qG2_002_type	1	0	0	1	0
+16	__constStr0009	7	0	24	4	1
+17	__constStr0009.__constStr0009_type	1	1	0	1	0
+18	__ArrHelper__main_244_1	7	0	26	4	4
+19	__ArrHelper__main_244_1.__ArrHelper__main_244_1_type	1	0	0	1	0
+20	__ArrHelper__main_244_0	7	0	28	4	4
+21	__ArrHelper__main_244_0.__ArrHelper__main_244_0_type	1	0	0	1	0
+22	__strretvalmain	7	0	30	4	4
+23	__strretvalmain.__strretvalmain_type	1	0	0	1	0
+24	__strbufmain	7	0	32	4	8
+25	__strbufmain.__strbufmain_type	1	0	0	1	0
+#SOURCES
+Clump	Line	PC	Source
+0	2	0	#line 2 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\MessageTest.nxc"
+0	3	0		subcall __initialize_global_data, ____initialize_global_data_return
+0	2	2	#line 2 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\MessageTest.nxc"
+0	2	2	#line 2 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\MessageTest.nxc"
+0	3	2		set __main_7qG2_i_7qG2_001, 0
+0	2	5	#line 2 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\MessageTest.nxc"
+0	2	5	#line 2 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\MessageTest.nxc"
+0	3	5		mov __signed_stack_001main, __main_7qG2_i_7qG2_001
+0	2	7	#line 2 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\MessageTest.nxc"
+0	2	7	#line 2 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\MessageTest.nxc"
+0	3	7		set __D0main, 10
+0	2	10	#line 2 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\MessageTest.nxc"
+0	3	10		cmp 0, __zfmain, __signed_stack_001main, __D0main
+0	2	14	#line 2 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\MessageTest.nxc"
+0	3	14		mov __D0main, __zfmain
+0	2	16	#line 2 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\MessageTest.nxc"
+0	3	16		brtst 4, __NXC_Label_605, __zfmain
+0	2	19	#line 2 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\MessageTest.nxc"
+0	3	19		jmp __NXC_Label_606
+0	3	21	#line 3 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\MessageTest.nxc"
+0	4	21		add __main_7qG2_i_7qG2_001, __main_7qG2_i_7qG2_001, __constVal1
+0	4	25	#line 4 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\MessageTest.nxc"
+0	5	25		jmp __NXC_Label_604
+0	4	27	#line 4 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\MessageTest.nxc"
+0	5	27		mov __ArrHelper__main_244_0, __constStr0009
+0	4	29	#line 4 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\MessageTest.nxc"
+0	5	29		mov __D0main, __main_7qG2_i_7qG2_001
+0	5	31	#line 5 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\MessageTest.nxc"
+0	6	31		numtostr __strretvalmain, __D0main
+0	5	34	#line 5 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\MessageTest.nxc"
+0	6	34		strcat __strbufmain, __strretvalmain
+0	5	38	#line 5 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\MessageTest.nxc"
+0	6	38		mov __ArrHelper__main_244_1, __strbufmain
+0	5	40	#line 5 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\MessageTest.nxc"
+0	6	40		strcat __strbufmain, __ArrHelper__main_244_0, __ArrHelper__main_244_1
+0	5	45	#line 5 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\MessageTest.nxc"
+0	6	45		mov __main_7qG2_j_7qG2_002, __strbufmain
+0	5	47	#line 5 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\MessageTest.nxc"
+0	6	47	#pragma macro 6
+0	6	47		mov __MWArgs.QueueID, __main_7qG2_i_7qG2_001
+0	6	49		mov __MWArgs.Message, __main_7qG2_j_7qG2_002
+0	6	51		syscall 26, __MWArgs
+0	6	54		mov __D0main, __MWArgs.Result
+0	5843	56	#line 5843 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\MessageTest.nxc"
+0	5	56	#line 5 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\MessageTest.nxc"
+0	5	56	#line 5 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\MessageTest.nxc"
+0	6	56	#line 6 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\MessageTest.nxc"
+0	7	56		mov __ArrHelper__main_244_0, __constStr0010
+0	6	58	#line 6 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\MessageTest.nxc"
+0	7	58		mov __D0main, __main_7qG2_i_7qG2_001
+0	7	60	#line 7 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\MessageTest.nxc"
+0	8	60		numtostr __strretvalmain, __D0main
+0	7	63	#line 7 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\MessageTest.nxc"
+0	8	63		strcat __strbufmain, __strretvalmain
+0	7	67	#line 7 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\MessageTest.nxc"
+0	8	67		mov __ArrHelper__main_244_1, __strbufmain
+0	7	69	#line 7 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\MessageTest.nxc"
+0	8	69		strcat __strbufmain, __ArrHelper__main_244_0, __ArrHelper__main_244_1
+0	7	74	#line 7 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\MessageTest.nxc"
+0	8	74		mov __main_7qG2_j_7qG2_002, __strbufmain
+0	7	76	#line 7 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\MessageTest.nxc"
+0	7	76	#line 7 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\MessageTest.nxc"
+0	8	76	#pragma macro 6
+0	8	76		add __MWArgs.QueueID, __main_7qG2_i_7qG2_001, __constVal10
+0	8	80		mov __MWArgs.Message, __main_7qG2_j_7qG2_002
+0	8	82		syscall 26, __MWArgs
+0	8	85		mov __D0main, __MWArgs.Result
+0	5864	87	#line 5864 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\MessageTest.nxc"
+0	7	87	#line 7 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\MessageTest.nxc"
+0	7	87	#line 7 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\MessageTest.nxc"
+0	9	87	#line 9 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\MessageTest.nxc"
+0	10	87		jmp __NXC_Label_607
+0	9	89	#line 9 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\MessageTest.nxc"
+0	9	89	#line 9 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\MessageTest.nxc"
+0	9	89	#line 9 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\MessageTest.nxc"
+0	7921	89	#line 7921 "NXCDefs.h"
+0	7922	89		wait 10000
+0	7921	91	#line 7921 "NXCDefs.h"
+0	10	91	#line 10 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\MessageTest.nxc"
+0	11	91		exit -1, -1
+1	13	0	#line 13 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\MessageTest.nxc"
+1	14	0		subret ____initialize_global_data_return
+#CLUMPS
+Clump	Name	Offset	File
+0	main	0	C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\MessageTest.nxc
+1	__initialize_global_data	94	C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\MessageTest.nxc
