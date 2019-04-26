@@ -15,70 +15,57 @@ namespace BrickABracket.Derby
         private TournamentService _tournamentService;
         private MocService _mocService;
         private CompetitorService _competitorService;
-        private PatternService _patternService;
         public DerbyTournament(TournamentService tournamentService, 
             MocService mocService, CompetitorService competitorService, 
-            PatternService patternService, int tournamentId)
+            int tournamentId)
         {
             _tournamentService = tournamentService;
             _mocService = mocService;
             _competitorService = competitorService;
-            _patternService = patternService;
             _tournament = _tournamentService.Read(tournamentId);
         }
 
         // TODO: Add methods for "next round", "next match", etc?
 
-        private TournamentPattern GetPattern(int size, bool forceGenerate = false)
+        /// <summary>
+        /// Generates a match within the given round. 
+        /// Defaults to next match if no match number is specified
+        /// </summary>
+        /// <returns>Returns new match number, or -1 on a failure</returns>
+        private int GenerateMatch(Category category, Round round, int matchNumber = -1)
         {
-            if (size<1)
-                return null;
-            string id = PatternId(size);
-            if (!forceGenerate)
-                try
-                {
-                    return _patternService.Read(id);
-                }
-                catch // Read throws on not found
-                {}
-
-            var pattern = GeneratePattern(size);
-            _patternService.Upsert(pattern);
-            return pattern;
-        }
-
-        private TournamentPattern GeneratePattern(int size)
-        {
-            // If not enough players for match size, default to match size
-            if (size<matchSize)
-                return GetPattern(matchSize);
-            var tournamentPattern = new TournamentPattern();
-            tournamentPattern._id = PatternId(size);
-
-
-            // It doesn't make sense for a derby to have multiple rounds for most
-            // player counts (any not devisible by matchSize)
-            var round = new RoundPattern();
-            for (int i=0;i<size;i++)
+            if (matchNumber>category.MocIds.Count)
+                return -1;
+            if (matchNumber<0)
+                matchNumber = round.Matches.Count;
+            if (round.Matches.Count > matchNumber)
             {
-                var match = new MatchPattern();
-                for (int j=0;j<matchSize;j++)
+                round.Matches.RemoveAt(matchNumber);
+                matchNumber = round.Matches.Count;
+            }
+            var match = new Match();
+            for (int i=0;i<matchSize;i++)
                 {
-                    var pickList = Enumerable.Range(0,size)
-                        .Where(p => !match.Mocs.Contains(p));
+                    var pickList = category.MocIds
+                        .Where(p => !match.MocIds.Contains(p));
 
                     // If pickList is empty, we've reached a bad 
                     // state due to pickList randomness. 
                     // Restart the selection for the current match.
                     if (!pickList.Any())
                     {
-                        match = new MatchPattern();
-                        j = -1;
-                        continue;
+                        try 
+                        {
+                            return GenerateMatch(category, round, matchNumber);
+                        }
+                        catch
+                        {
+                            return -1;
+                        }
                     }
 
                     var matchCounts = round.Matches
-                        .SelectMany(p => p.Mocs)
+                        .SelectMany(p => p.MocIds)
                         .GroupBy(m => m)
                         .Select(m => new { Count = m.Count(), Moc = m.Key });
                     var fewestMatches = matchCounts
@@ -87,42 +74,34 @@ namespace BrickABracket.Derby
                     var availableMocs = matchCounts
                         .Where(m => m.Count == fewestMatches)
                         .Select(m => m.Moc);
-
                     pickList = pickList
                         .Intersect(availableMocs)
                         .OrderBy(p => FacingCount(round, match, p))
                         .ThenBy(p => System.Guid.NewGuid()); // Random
-
                     if (fewestMatches > 0)
                         pickList = pickList
-                            .Where(m => !round.Matches.Last().Mocs.Contains(m));
-
-                    match.Mocs.Add(pickList.Count()>0
+                            .Where(m => !round.Matches.Last().MocIds.Contains(m));
+                    match.MocIds.Add(pickList.Count()>0
                         ? pickList.First()
                         : -1);
                 }
                 round.Matches.Add(match);
-            }
-
-            tournamentPattern.Rounds.Add(round);
-            return tournamentPattern;
+                return matchNumber;
         }
-        
+
         /// <summary>
         /// Find how many times id has faced other mocs from the current match
         /// </summary>
         /// <param name="round">The round</param>
-        /// <param name="match">The current match</param>
+        /// <param name="match">The match</param>
         /// <param name="id">id to check</param>
         /// <returns>Total</returns>
-        private static int FacingCount(RoundPattern round, MatchPattern match, int id)
+        private static int FacingCount(Round round, Match match, int id)
         {
             return round.Matches
-                .Where(m => m.Mocs.Contains(id))
-                .Where(m => match.Mocs.Any(i => m.Mocs.Contains(i)))
+                .Where(m => m.MocIds.Contains(id))
+                .Where(m => match.MocIds.Any(i => m.MocIds.Contains(i)))
                 .Count();
         }
-
-        private string PatternId(int size) => $"{patternPrefix}{size}";
     }
 }
