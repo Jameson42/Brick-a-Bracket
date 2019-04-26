@@ -5,34 +5,28 @@ using System.Reactive.Subjects;
 using BrickABracket.Models.Base;
 using BrickABracket.Models.Interfaces;
 
-namespace BrickABracket.Core
+namespace BrickABracket.Core.Services
 {
-    public class Tracker: IScoreProvider, IStatusProvider
+    public class ScoreTracker: IScoreProvider
     {
         private Dictionary<IScoreProvider,IDisposable> _scoreSubscriptions;
-        private Dictionary<IStatusProvider,IDisposable> _statusSubscriptions;
         private Subject<Score> _scores;
-        private Subject<Status> _statuses;
-        public IObservable<Score> Scores { get; private set; }
-        public IObservable<Status> Statuses { get; private set; }
-
-        // HashSet to ensure only one of each device object is kept
         private HashSet<IScoreProvider> _scoreProviders {get;}
-        private HashSet<IStatusProvider> _statusProviders {get;}
+        private TournamentRunner _runner;
+        public IObservable<Score> Scores { get; private set; }
 
-        public Tracker()
+        public ScoreTracker(TournamentRunner runner)
         {
             _scores = new Subject<Score>();
-            _statuses = new Subject<Status>();
-            Scores = _scores.AsObservable();
-            Statuses = _statuses.Replay(1);
-            // Do I actually need to maintain these? Probably...
             _scoreProviders = new HashSet<IScoreProvider>();
-            _statusProviders = new HashSet<IStatusProvider>();
             _scoreSubscriptions = new Dictionary<IScoreProvider, IDisposable>();
-            _statusSubscriptions = new Dictionary<IStatusProvider, IDisposable>();
+
+            _runner = runner;
+            // Runner needs to follow scores from external score sources to update the active tournament
+            _runner.FollowScores(Scores);
+            Scores = _scores.AsObservable();
         }
-        public bool AddScoreProvider(IScoreProvider device)
+        public bool Add(IScoreProvider device)
         {
             if (_scoreProviders.Contains(device) || _scoreSubscriptions.ContainsKey(device))
                 return false;
@@ -40,15 +34,16 @@ namespace BrickABracket.Core
             _scoreSubscriptions.Add(device, device.Scores.Subscribe(PassScore));
             return true;
         }
-
-        public void RemoveScoreProvider(IScoreProvider device)
+        public void Remove(IScoreProvider device)
         {
             if (_scoreProviders.Contains(device))
                 _scoreProviders.Remove(device);
             if (_scoreSubscriptions.ContainsKey(device))
+            {
                 _scoreSubscriptions[device].Dispose();
+                _scoreSubscriptions.Remove(device);
+            }
         }
-
         private void PassScore(Score score)
         {
             _scores.OnNext(score);

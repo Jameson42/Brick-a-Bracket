@@ -6,18 +6,15 @@ using BrickABracket.Models.Base;
 
 namespace BrickABracket.Core.Services
 {
-    // Runs tournaments, retrieving and saving to repository as necessary.
     public class TournamentService
     {
         private IEnumerable<Meta<ITournamentStrategy>> _tournamentStrategies;
         private LiteRepository db {get;}
-        private ActivesService _actives {get;}
-        public TournamentService(IEnumerable<Meta<ITournamentStrategy>> tournamentStrategies, 
-            LiteRepository repository, ActivesService actives)
+        public TournamentService(LiteRepository repository,
+            IEnumerable<Meta<ITournamentStrategy>> tournamentStrategies)
         {
             _tournamentStrategies = tournamentStrategies;
             db = repository;
-            _actives = actives;
         }
 
         public int Create(Tournament t) => db.Insert<Tournament>(t);
@@ -29,7 +26,5 @@ namespace BrickABracket.Core.Services
 
         public bool Update(Tournament t) => db.Update<Tournament>(t);
         public bool Delete(int id) => db.Delete<Tournament>(id);
-
-        // TODO: Add methods to run tournaments through strategies
     }
 }

@@ -9,7 +9,7 @@ namespace BrickABracket.Derby
 {
     public class DerbyTournament: ITournamentStrategy
     {
-        private const int matchSize = 4;
+        public int MatchSize {get;} = 4;
         private const string patternPrefix = "derby";
         private Tournament _tournament; 
         private TournamentService _tournamentService;
@@ -17,13 +17,17 @@ namespace BrickABracket.Derby
         private CompetitorService _competitorService;
         public DerbyTournament(TournamentService tournamentService, 
             MocService mocService, CompetitorService competitorService, 
-            int tournamentId)
+            Tournament tournament)
         {
             _tournamentService = tournamentService;
             _mocService = mocService;
             _competitorService = competitorService;
-            _tournament = _tournamentService.Read(tournamentId);
+            _tournament = tournament;
         }
+        public DerbyTournament(TournamentService tournamentService, 
+            MocService mocService, CompetitorService competitorService, 
+            int tournamentId):this(tournamentService, mocService, competitorService, tournamentService.Read(tournamentId))
+        {}
 
         // TODO: Add methods for "next round", "next match", etc?
 
@@ -44,7 +48,7 @@ namespace BrickABracket.Derby
                 matchNumber = round.Matches.Count;
             }
             var match = new Match();
-            for (int i=0;i<matchSize;i++)
+            for (int i=0;i<MatchSize;i++)
                 {
                     var pickList = category.MocIds
                         .Where(p => !match.MocIds.Contains(p));
