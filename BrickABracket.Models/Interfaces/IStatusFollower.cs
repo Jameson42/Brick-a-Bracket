@@ -6,5 +6,6 @@ namespace BrickABracket.Models.Interfaces
     public interface IStatusFollower
     {
         void FollowStatus(IObservable<Status> Statuses);
+        void UnFollowStatus();
     }
 }

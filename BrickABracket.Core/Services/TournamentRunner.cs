@@ -19,9 +19,10 @@ namespace BrickABracket.Core.Services
         #region BackerVariables
         private Tournament _tournament;
         private ITournamentStrategy _strategy;
-        private int _categoryIndex = -1;
-        private int _roundIndex = -1;
-        private int _matchIndex = -1;
+        private const int DEFAULTINDEX = -1;
+        private int _categoryIndex = DEFAULTINDEX;
+        private int _roundIndex = DEFAULTINDEX;
+        private int _matchIndex = DEFAULTINDEX;
         private Subject<Status> _statuses;
         private IDisposable _followStatusSubscription;
         private IDisposable _followScoreSubscription;
@@ -38,7 +39,7 @@ namespace BrickABracket.Core.Services
             set
             {
                 _tournament = value;
-                CategoryIndex = -1;
+                CategoryIndex = DEFAULTINDEX;
                 if (_tournament==null)
                     return;
                 _strategy = _tournamentStrategies
@@ -52,7 +53,7 @@ namespace BrickABracket.Core.Services
             set
             {
                 _categoryIndex = value;
-                RoundIndex = -1;
+                RoundIndex = DEFAULTINDEX;
             }
         }
         public int RoundIndex
@@ -61,7 +62,7 @@ namespace BrickABracket.Core.Services
             set
             {
                 _roundIndex = value;
-                MatchIndex = -1;
+                MatchIndex = DEFAULTINDEX;
             }
         }
         public int MatchIndex
@@ -77,21 +78,29 @@ namespace BrickABracket.Core.Services
 
         public void FollowScores(IObservable<Score> scores)
         {
+            UnFollowScores();
+            _followScoreSubscription = scores.Subscribe(ProcessScore);
+        }
+        public void FollowStatus(IObservable<Status> statuses)
+        {
+            UnFollowStatus();
+            _followStatusSubscription = statuses.Subscribe(ProcessStatus);
+        }
+        public void UnFollowScores()
+        {
             if (_followScoreSubscription != null)
             {
                 _followScoreSubscription.Dispose();
                 _followScoreSubscription = null;
             }
-            _followScoreSubscription = scores.Subscribe(ProcessScore);
         }
-        public void FollowStatus(IObservable<Status> statuses)
+        public void UnFollowStatus()
         {
             if (_followStatusSubscription != null)
             {
                 _followStatusSubscription.Dispose();
                 _followStatusSubscription = null;
             }
-            _followStatusSubscription = statuses.Subscribe(ProcessStatus);
         }
 
         /// <summary>
@@ -133,16 +142,8 @@ namespace BrickABracket.Core.Services
 
         public void Dispose()
         {
-            if (_followScoreSubscription != null)
-            {
-                _followScoreSubscription.Dispose();
-                _followScoreSubscription = null;
-            }
-            if (_followStatusSubscription != null)
-            {
-                _followStatusSubscription.Dispose();
-                _followStatusSubscription = null;
-            }
+            UnFollowScores();
+            UnFollowStatus();
         }
     }
 }

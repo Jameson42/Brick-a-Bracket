@@ -55,17 +55,21 @@ namespace BrickABracket.NXT
         }
         public void FollowStatus(IObservable<Status> Statuses)
         {
-            if (_followSubscription != null)
-            {
-                _followSubscription.Dispose();
-                _followSubscription = null;
-            }
+            UnFollowStatus();
             _followSubscription = Statuses.Subscribe(i => {
                 if (i == Status.Start)  // Start matach and start emitting scores
                     StartMatch();
                 else if (i == Status.Stop) // Stop match and stop emitting scores
                     StopMatch();
             });
+        }
+        public void UnFollowStatus()
+        {
+            if (_followSubscription != null)
+            {
+                _followSubscription.Dispose();
+                _followSubscription = null;
+            }
         }
         public bool Connect()
         {
@@ -178,12 +182,12 @@ namespace BrickABracket.NXT
         {
             StopMatch();
             StopReadMailboxes();
+            UnFollowStatus();
             _brick?.Connection.Close();
             _scores?.OnCompleted();
             _scores?.Dispose();
             _statuses?.OnCompleted();
             _statuses?.Dispose();
-            _followSubscription?.Dispose();
         }
 
         public bool Equals(Nxt other)
