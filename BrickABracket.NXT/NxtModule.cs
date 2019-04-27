@@ -7,7 +7,9 @@ namespace BrickABracket.NXT
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<Nxt>().As<IDevice>();
+            builder.RegisterType<Nxt>()
+                .As<IDevice>()
+                .WithMetadata("Type", "NXT");
         }
     }
 }

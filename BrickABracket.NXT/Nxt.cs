@@ -151,7 +151,7 @@ namespace BrickABracket.NXT
 
         private bool PostStatus(Status status)
         {
-            if (status == BrickABracket.Models.Base.Status.Unknown)
+            if (status == Status.Unknown)
                 return false;
             _statuses.OnNext(status);
             return true;

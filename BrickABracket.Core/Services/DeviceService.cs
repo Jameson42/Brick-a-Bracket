@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using Autofac.Features.Metadata;
 using BrickABracket.Models.Base;
 using BrickABracket.Models.Interfaces;
 
@@ -8,12 +9,12 @@ namespace BrickABracket.Core.Services
 {
     public class DeviceService
     {
-        private Func<string, IDevice> _deviceFactory {get;}
+        private IEnumerable<Meta<Func<string, IDevice>>> _deviceFactory {get;}
         private ScoreTracker _scoreTracker;
         private StatusTracker _statusTracker;
         private Dictionary<string, DeviceMetadata> _devices {get;} = new Dictionary<string, DeviceMetadata>();
         public IEnumerable<DeviceMetadata> Devices => _devices.Select(kv => kv.Value);
-        public DeviceService(Func<string, IDevice> deviceFactory,
+        public DeviceService(IEnumerable<Meta<Func<string, IDevice>>> deviceFactory,
             ScoreTracker scoreTracker, StatusTracker statusTracker)
         {
             _deviceFactory = deviceFactory;
@@ -23,19 +24,20 @@ namespace BrickABracket.Core.Services
             // Should store last-known devices
         }
 
-        public bool Add(string connectionString, DeviceRole role)
+        public bool Add(string connectionString, string deviceType = "NXT", DeviceRole role = DeviceRole.None)
         {
             if (_devices.ContainsKey(connectionString))
                 return false;
-            var device = _deviceFactory(connectionString);
+            var device = _deviceFactory
+                .First(df => (string)df.Metadata["Type"] == deviceType)
+                .Value(connectionString);
             if (!device.Connect())
                 return false;
             _devices.Add(connectionString, new DeviceMetadata(device, DeviceRole.None, connectionString));
             AddRole(connectionString, role);
             return true;
         }
-
-        private bool AddRole(string connectionString, DeviceRole role)
+        public bool AddRole(string connectionString, DeviceRole role)
         {
             if (!_devices.ContainsKey(connectionString))
                 return false;
@@ -51,7 +53,7 @@ namespace BrickABracket.Core.Services
             return true;
         }
 
-        private bool RemoveRole(string connectionString, DeviceRole role)
+        public bool RemoveRole(string connectionString, DeviceRole role)
         {
             if (!_devices.ContainsKey(connectionString))
                 return false;

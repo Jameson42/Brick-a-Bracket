@@ -23,7 +23,7 @@ namespace BrickABracket.Core.Services
         private int _categoryIndex = DEFAULTINDEX;
         private int _roundIndex = DEFAULTINDEX;
         private int _matchIndex = DEFAULTINDEX;
-        private Subject<Status> _statuses;
+        private Subject<Status> _statuses = new Subject<Status>();
         private IDisposable _followStatusSubscription;
         private IDisposable _followScoreSubscription;
         private IEnumerable<Meta<Func<Tournament, ITournamentStrategy>>> _tournamentStrategies;
@@ -52,6 +52,7 @@ namespace BrickABracket.Core.Services
             get => _categoryIndex;
             set
             {
+                // TODO: Check validity
                 _categoryIndex = value;
                 RoundIndex = DEFAULTINDEX;
             }
@@ -61,6 +62,7 @@ namespace BrickABracket.Core.Services
             get => _roundIndex;
             set
             {
+                // TODO: Check validity
                 _roundIndex = value;
                 MatchIndex = DEFAULTINDEX;
             }
@@ -70,6 +72,7 @@ namespace BrickABracket.Core.Services
             get => _matchIndex;
             set
             {
+                // TODO: Check validity
                 _matchIndex = value;
             }
         }
@@ -102,21 +105,34 @@ namespace BrickABracket.Core.Services
                 _followStatusSubscription = null;
             }
         }
+        public void StartMatch() => _statuses.OnNext(Status.Start);
+        public void StopMatch() => _statuses.OnNext(Status.Stop);
+        public void StartTimedMatch(long milliseconds)
+        {
+            _statuses.OnNext(Status.Start);
+            Observable.Timer(TimeSpan.FromMilliseconds(milliseconds))
+                .Subscribe(x => {
+                    _statuses.OnNext(Status.Stop);
+                });
+        }
 
         /// <summary>
         /// Record score into current Match
         /// </summary>
         private void ProcessScore(Score score)
         {
-            var match = _tournament
-                ?.Categories?.ElementAtOrDefault(_categoryIndex)
-                ?.Rounds?.ElementAtOrDefault(_roundIndex)
-                ?.Matches?.ElementAtOrDefault(_matchIndex);
-            if (match == null)
+            if (MatchIsNull())
                 return;
             if (score.player>_strategy.MatchSize || score.player<=0)
                 return;
             // TODO: Record score on match
+        }
+        private bool MatchIsNull()
+        {
+            return null == _tournament
+                ?.Categories?.ElementAtOrDefault(_categoryIndex)
+                ?.Rounds?.ElementAtOrDefault(_roundIndex)
+                ?.Matches?.ElementAtOrDefault(_matchIndex);
         }
 
         /// <summary>
@@ -144,6 +160,7 @@ namespace BrickABracket.Core.Services
         {
             UnFollowScores();
             UnFollowStatus();
+            _statuses.OnCompleted();
         }
     }
 }
