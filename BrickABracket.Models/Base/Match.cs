@@ -11,6 +11,7 @@ namespace BrickABracket.Models.Base
     public class Match
     {
         public List<int> MocIds {get;} = new List<int>();
-        // TODO: Need a way to store scores
+        public List<Standing> Standings {get;set;} = new List<Standing>();
+        // TODO: Need a good way to store multiple sets of times for the same match
     }
 }

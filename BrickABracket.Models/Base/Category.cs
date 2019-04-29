@@ -16,5 +16,6 @@ namespace BrickABracket.Models.Base
         public int ClassificationId {get;set;}
         public List<Round> Rounds {get;set;} = new List<Round>();
         public List<int> MocIds {get;set;} = new List<int>();
+        public List<Standing> Standings {get;set;} = new List<Standing>();
     }
 }

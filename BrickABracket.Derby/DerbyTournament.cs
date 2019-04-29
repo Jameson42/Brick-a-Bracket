@@ -26,26 +26,39 @@ namespace BrickABracket.Derby
         }
         public DerbyTournament(TournamentService tournamentService, 
             MocService mocService, CompetitorService competitorService, 
-            int tournamentId):this(tournamentService, mocService, competitorService, tournamentService.Read(tournamentId))
+            int tournamentId):this(tournamentService, mocService, competitorService, 
+            tournamentService.Read(tournamentId))
         {}
 
-        // TODO: Add methods for "next round", "next match", etc?
-
-        /// <summary>
-        /// Generates a match within the given round. 
-        /// Defaults to next match if no match number is specified
-        /// </summary>
-        /// <returns>Returns new match number, or -1 on a failure</returns>
-        private int GenerateMatch(Category category, Round round, int matchNumber = -1)
+        public int GenerateMatch(int categoryIndex, int roundIndex = -1, int matchIndex = -1)
         {
-            if (matchNumber>category.MocIds.Count)
+            //Ensure category exists
+            var category = _tournament.Categories.ElementAtOrDefault(categoryIndex);
+            if (category == null)
                 return -1;
-            if (matchNumber<0)
-                matchNumber = round.Matches.Count;
-            if (round.Matches.Count > matchNumber)
+
+            //Ensure only one round exists
+            //Derby tournaments only have one round with all matches in it
+            if (category.Rounds.Count == 0)
+                category.Rounds.Add(new Round());
+            if (category.Rounds.Count>1)
+                category.Rounds.RemoveRange(1, category.Rounds.Count-1);
+            roundIndex = 0;
+            var round = category.Rounds[roundIndex];
+            return GenerateMatch(category, round, matchIndex, 10);
+        }
+        private int GenerateMatch(Category category, Round round, int matchIndex, int retryAttempts)
+        {
+            if (retryAttempts<=0)
+                return -1;
+            if (matchIndex<0)
+                matchIndex = round.Matches.Count;
+            if (matchIndex>=category.MocIds.Count)
+                return -1;
+            if (round.Matches.Count > matchIndex)
             {
-                round.Matches.RemoveAt(matchNumber);
-                matchNumber = round.Matches.Count;
+                round.Matches.RemoveAt(matchIndex);
+                matchIndex = round.Matches.Count;
             }
             var match = new Match();
             for (int i=0;i<MatchSize;i++)
@@ -60,7 +73,7 @@ namespace BrickABracket.Derby
                     {
                         try 
                         {
-                            return GenerateMatch(category, round, matchNumber);
+                            return GenerateMatch(category, round, matchIndex, retryAttempts - 1);
                         }
                         catch
                         {
@@ -90,7 +103,7 @@ namespace BrickABracket.Derby
                         : -1);
                 }
                 round.Matches.Add(match);
-                return matchNumber;
+                return matchIndex;
         }
 
         /// <summary>
