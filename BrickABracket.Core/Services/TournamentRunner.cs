@@ -73,8 +73,28 @@ namespace BrickABracket.Core.Services
             set
             {
                 // TODO: Check validity
+                // Ask strategy for validity
+                // Strategy can create match if necessary
                 _matchIndex = value;
             }
+        }
+        public TournamentMetadata Metadata
+        {
+            get
+            {
+                return new TournamentMetadata()
+                {
+                    Tournament = this.Tournament,
+                    CategoryIndex = this.CategoryIndex,
+                    RoundIndex = this.RoundIndex,
+                    MatchIndex = this.MatchIndex
+                };
+            }
+        }
+        public bool NextMatch()
+        {
+            // Make next match active, create if necessary
+            return false;
         }
 
         public IObservable<Status> Statuses {get;}
@@ -106,13 +126,14 @@ namespace BrickABracket.Core.Services
             }
         }
         public void StartMatch() => _statuses.OnNext(Status.Start);
+        //TODO: Check if current match is valid first
         public void StopMatch() => _statuses.OnNext(Status.Stop);
         public void StartTimedMatch(long milliseconds)
         {
-            _statuses.OnNext(Status.Start);
+            ProcessStatus(Status.Start);
             Observable.Timer(TimeSpan.FromMilliseconds(milliseconds))
                 .Subscribe(x => {
-                    _statuses.OnNext(Status.Stop);
+                    ProcessStatus(Status.Stop);
                 });
         }
 
@@ -125,6 +146,7 @@ namespace BrickABracket.Core.Services
                 return;
             if (score.player>_strategy.MatchSize || score.player<=0)
                 return;
+            _statuses.OnNext(Status.ScoreReceived);
             // TODO: Record score on match
         }
         private bool MatchIsNull()
@@ -143,12 +165,16 @@ namespace BrickABracket.Core.Services
             switch (status)
             {
                 case Status.Start:
+                    StartMatch();
+                    break;
                 case Status.Stop:
-                    _statuses.OnNext(status);
+                    StopMatch();
                     break;
                 case Status.Ready:
                 case Status.Running:
                 case Status.Stopped:
+                    _statuses.OnNext(status);
+                    break;
                 case Status.Unknown:
                 default:
                     // TODO: Log status?
@@ -161,6 +187,14 @@ namespace BrickABracket.Core.Services
             UnFollowScores();
             UnFollowStatus();
             _statuses.OnCompleted();
+        }
+
+        public class TournamentMetadata
+        {
+            public Tournament Tournament;
+            public int CategoryIndex;
+            public int RoundIndex;
+            public int MatchIndex;
         }
     }
 }

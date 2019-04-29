@@ -8,6 +8,7 @@ using Autofac;
 using BrickABracket.Core;
 using BrickABracket.Hubs;
 using BrickABracket.Models;
+using BrickABracket.Services;
 using BrickABracket.NXT;
 using BrickABracket.Derby;
 using BrickABracket.RoundRobin;
@@ -58,7 +59,7 @@ namespace BrickABracket
             app.UseSpaStaticFiles();
 
             app.UseSignalR(routes =>{
-                routes.MapHub<ChatHub>("/chatHub");
+                routes.MapHub<TournamentHub>("/tournamentHub");
             });
 
             app.UseMvc(routes =>
@@ -93,6 +94,7 @@ namespace BrickABracket
             builder.RegisterModule(new RoundRobinModule());
             builder.RegisterModule(new SingleEliminationModule());
             builder.RegisterModule(new SwissSystemModule());
+            builder.RegisterType<MatchWatcher>().SingleInstance();
         }
     }
 }

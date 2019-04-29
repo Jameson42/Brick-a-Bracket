@@ -7,7 +7,8 @@ namespace BrickABracket.Models.Base
         Running,
         Stopped,
         Start,
-        Stop        
+        Stop,
+        ScoreReceived     
     }
     public static class StatusExtensions
     {

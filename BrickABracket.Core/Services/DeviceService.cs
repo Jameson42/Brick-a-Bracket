@@ -23,7 +23,12 @@ namespace BrickABracket.Core.Services
             // TODO: Auto-connect to devices (or reconnect on restart)?
             // Should store last-known devices
         }
-
+        public bool Add(string connectionString, string deviceType, string role)
+        {
+            if (!Enum.TryParse(role, true, out DeviceRole deviceRole))
+                return false;
+            return Add(connectionString, deviceType, deviceRole);
+        }
         public bool Add(string connectionString, string deviceType = "NXT", DeviceRole role = DeviceRole.None)
         {
             if (_devices.ContainsKey(connectionString))
@@ -34,39 +39,45 @@ namespace BrickABracket.Core.Services
             if (!device.Connect())
                 return false;
             _devices.Add(connectionString, new DeviceMetadata(device, DeviceRole.None, connectionString));
-            AddRole(connectionString, role);
+            SetRole(connectionString, role);
             return true;
         }
-        public bool AddRole(string connectionString, DeviceRole role)
+        public bool SetRole(string connectionString, string role)
+        {
+            if (!Enum.TryParse(role, true, out DeviceRole deviceRole))
+                return false;
+            return SetRole(connectionString, deviceRole);
+        }
+        public bool SetRole(string connectionString, DeviceRole role)
         {
             if (!_devices.ContainsKey(connectionString))
                 return false;
             var device = _devices[connectionString];
             DeviceRole rolesToAdd = (role ^ device.Role) & role;
-            if ((rolesToAdd & DeviceRole.ScoreProvider) == DeviceRole.ScoreProvider)
-                _scoreTracker.Add(device.Device);
-            if ((rolesToAdd & DeviceRole.StatusProvider) == DeviceRole.StatusProvider)
-                _statusTracker.Add(device.Device);
-            if ((rolesToAdd & DeviceRole.StatusFollower) == DeviceRole.StatusFollower)
-                device.Device.FollowStatus(_statusTracker.Statuses);
-            device.Role |= role;          
+            DeviceRole rolesToRemove = (role & device.Role);
+            AddRoles(device, rolesToAdd);
+            RemoveRoles(device, rolesToRemove);
             return true;
         }
-
-        public bool RemoveRole(string connectionString, DeviceRole role)
+        private void AddRoles(DeviceMetadata device, DeviceRole roles)
         {
-            if (!_devices.ContainsKey(connectionString))
-                return false;
-                var device = _devices[connectionString];
-                DeviceRole rolesToRemove = (role & device.Role);
-            if ((rolesToRemove & DeviceRole.ScoreProvider) == DeviceRole.ScoreProvider)
+            if ((roles & DeviceRole.ScoreProvider) == DeviceRole.ScoreProvider)
+                _scoreTracker.Add(device.Device);
+            if ((roles & DeviceRole.StatusProvider) == DeviceRole.StatusProvider)
+                _statusTracker.Add(device.Device);
+            if ((roles & DeviceRole.StatusFollower) == DeviceRole.StatusFollower)
+                device.Device.FollowStatus(_statusTracker.Statuses);
+            device.Role |= roles;
+        }
+        private void RemoveRoles(DeviceMetadata device, DeviceRole roles)
+        {
+            if ((roles & DeviceRole.ScoreProvider) == DeviceRole.ScoreProvider)
                 _scoreTracker.Remove(device.Device);
-            if ((rolesToRemove & DeviceRole.StatusProvider) == DeviceRole.StatusProvider)
+            if ((roles & DeviceRole.StatusProvider) == DeviceRole.StatusProvider)
                 _statusTracker.Remove(device.Device);
-            if ((rolesToRemove & DeviceRole.StatusFollower) == DeviceRole.StatusFollower)
+            if ((roles & DeviceRole.StatusFollower) == DeviceRole.StatusFollower)
                 device.Device.UnFollowStatus();
-            device.Role &= (device.Role ^ role);
-            return true;
+            device.Role &= (device.Role ^ roles);
         }
 
         public bool Remove(string connectionString)
@@ -77,6 +88,7 @@ namespace BrickABracket.Core.Services
             {
                 var device = _devices[connectionString];
                 _devices.Remove(connectionString);
+                RemoveRoles(device, DeviceRole.All);
                 device.Device.Dispose();
                 return true;
             }
@@ -86,7 +98,7 @@ namespace BrickABracket.Core.Services
             }
         }
 
-        public struct DeviceMetadata
+        public class DeviceMetadata
         {
             public DeviceMetadata(IDevice device, DeviceRole role, string connectionString)
             {
@@ -94,9 +106,9 @@ namespace BrickABracket.Core.Services
                 Role = role;
                 ConnectionString = connectionString;
             }
-            public IDevice Device;
-            public DeviceRole Role;
-            public string ConnectionString;
+            public IDevice Device {get;}
+            public DeviceRole Role {get;set;}
+            public string ConnectionString {get;}
         }
     }
 }
