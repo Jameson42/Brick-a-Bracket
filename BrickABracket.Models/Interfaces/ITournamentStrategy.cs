@@ -14,9 +14,7 @@ namespace BrickABracket.Models.Interfaces
         int GenerateMatch(int categoryIndex, int roundIndex = -1, int matchIndex = -1);
 
         // TODO: Scoring methods
-        // Round Totals? For most tournament types each Moc will only be in each round once
-        // Category totals? Yes, this is necessary. Should provide a way to have an ordered list
-        // of MOCs with "place", score totals, time totals, avg times
-        // 
+        bool GenerateCategoryStandings(int categoryIndex);
+        bool GenerateRoundStandings(int categoryIndex, int roundIndex);
     }
 }

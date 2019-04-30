@@ -105,7 +105,48 @@ namespace BrickABracket.Derby
                 round.Matches.Add(match);
                 return matchIndex;
         }
-
+        public bool GenerateCategoryStandings(int categoryIndex)
+        {
+            var category = _tournament.Categories.ElementAtOrDefault(categoryIndex);
+            if (category == null)
+                return false;
+            return GenerateCategoryStandings(category);
+        }
+        private bool GenerateCategoryStandings(Category category)
+        {
+            foreach (var round in category.Rounds)
+                GenerateRoundStandings(category, round);
+            // Derby tournaments should only have 1 Round
+            category.Standings = category.Rounds.FirstOrDefault()?.Standings;
+            if (category.Standings == null)
+                return false;
+            return true;
+        }
+        public bool GenerateRoundStandings(int categoryIndex, int roundIndex)
+        {
+            var category = _tournament.Categories.ElementAtOrDefault(categoryIndex);
+            if (category == null)
+                return false;
+            var round = category.Rounds.ElementAtOrDefault(roundIndex);
+            if (round == null)
+                return false;
+            return GenerateRoundStandings(category, round);
+        }
+        private bool GenerateRoundStandings(Category category, Round round)
+        {
+            round.Standings = round.Matches
+                .SelectMany(m => m.Standings)
+                .GroupBy(s => s.MocId)
+                .OrderBy(g => g.Sum(s => s.TotalTime))
+                .Select((g, index) => new Standing(){
+                    MocId = g.Key,
+                    Score = g.Sum(s => s.Score),
+                    TotalTime = g.Sum(s => s.TotalTime),
+                    AverageTime = g.Sum(s => s.TotalTime)/Convert.ToDouble(g.Count()),
+                    Place = index + 1
+                }).ToList();
+            return true;
+        }
         /// <summary>
         /// Find how many times id has faced other mocs from the current match
         /// </summary>

@@ -11,5 +11,13 @@ namespace BrickABracket.SingleElimination
         {
             return -1;
         }
+        public bool GenerateCategoryStandings(int categoryIndex)
+        {
+            return false;
+        }
+        public bool GenerateRoundStandings(int categoryIndex, int roundIndex)
+        {
+            return false;
+        }
     }
 }
