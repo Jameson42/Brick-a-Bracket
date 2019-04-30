@@ -9,6 +9,7 @@ namespace BrickABracket.Models.Interfaces
         string Connection {get;}
         ushort BatteryLevel {get;}
         string BrickName {get;}
+        string Program {get;set;}
 
     }
 }

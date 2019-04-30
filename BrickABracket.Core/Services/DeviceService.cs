@@ -23,13 +23,13 @@ namespace BrickABracket.Core.Services
             // TODO: Auto-connect to devices (or reconnect on restart)?
             // Should store last-known devices
         }
-        public bool Add(string connectionString, string deviceType, string role)
+        public bool Add(string connectionString, string program, string deviceType, string role)
         {
             if (!Enum.TryParse(role, true, out DeviceRole deviceRole))
                 return false;
-            return Add(connectionString, deviceType, deviceRole);
+            return Add(connectionString, program, deviceType, deviceRole);
         }
-        public bool Add(string connectionString, string deviceType = "NXT", DeviceRole role = DeviceRole.None)
+        public bool Add(string connectionString, string program, string deviceType = "NXT", DeviceRole role = DeviceRole.None)
         {
             if (_devices.ContainsKey(connectionString))
                 return false;
@@ -38,8 +38,18 @@ namespace BrickABracket.Core.Services
                 .Value(connectionString);
             if (!device.Connect())
                 return false;
-            _devices.Add(connectionString, new DeviceMetadata(device, DeviceRole.None, connectionString));
+            _devices.Add(connectionString, new DeviceMetadata(device, DeviceRole.None, connectionString, program));
             SetRole(connectionString, role);
+            SetProgram(connectionString, program);
+            return true;
+        }
+        public bool SetProgram(string connectionString, string program)
+        {
+            if (!_devices.ContainsKey(connectionString))
+                return false;
+            var device = _devices[connectionString];
+            device.Program = program;
+            device.Device.Program = program;
             return true;
         }
         public bool SetRole(string connectionString, string role)
@@ -100,15 +110,17 @@ namespace BrickABracket.Core.Services
 
         public class DeviceMetadata
         {
-            public DeviceMetadata(IDevice device, DeviceRole role, string connectionString)
+            public DeviceMetadata(IDevice device, DeviceRole role, string connectionString, string program)
             {
                 Device = device;
                 Role = role;
                 ConnectionString = connectionString;
+                Program = program;
             }
             public IDevice Device {get;}
             public DeviceRole Role {get;set;}
             public string ConnectionString {get;}
+            public string Program {get;set;}
         }
     }
 }

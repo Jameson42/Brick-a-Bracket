@@ -12,8 +12,6 @@ namespace BrickABracket.Models.Interfaces
         /// </summary>
         /// <returns>Returns new match index, or -1 on a failure</returns>
         int GenerateMatch(int categoryIndex, int roundIndex = -1, int matchIndex = -1);
-
-        // TODO: Scoring methods
         bool GenerateCategoryStandings(int categoryIndex);
         bool GenerateRoundStandings(int categoryIndex, int roundIndex);
     }

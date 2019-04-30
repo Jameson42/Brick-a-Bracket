@@ -2,7 +2,7 @@ using BrickABracket.Models.Interfaces;
 
 namespace BrickABracket.Models.Base
 {
-    public class Score : IDBItem
+    public class Score
     {
         public Score(string s)
         {
@@ -25,7 +25,6 @@ namespace BrickABracket.Models.Base
         }
         public int player {get;}
         public double time {get;}
-        public int _id { get; set; }
 
         public override string ToString() => $"{player}-{time}";
 

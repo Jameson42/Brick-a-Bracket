@@ -53,14 +53,25 @@ namespace BrickABracket.NXT
                 catch {return "";}
             }
         }
+        public string Program {get;set;}
         public void FollowStatus(IObservable<Status> Statuses)
         {
             UnFollowStatus();
             _followSubscription = Statuses.Subscribe(i => {
-                if (i == Status.Start)  // Start matach and start emitting scores
-                    StartMatch();
-                else if (i == Status.Stop) // Stop match and stop emitting scores
-                    StopMatch();
+                switch (i)
+                {
+                    case Status.Start: // Start matach and start emitting scores
+                        StartMatch();
+                        break;
+                    case Status.Stop: // Stop match and stop emitting scores
+                        StopMatch();
+                        break;
+                    case Status.Ready: //Make sure Program is running
+                        StartProgram();
+                        break;
+                    default:
+                        break;
+                }
             });
         }
         public void UnFollowStatus()
@@ -95,17 +106,43 @@ namespace BrickABracket.NXT
 
         public void StartMatch()
         {
-            lock(MessageLock)
-            {
-                _brick?.Mailbox?.Send("Start", Box.Box5);
-            }
+            //Start program, then wait for "Ready" before sending Start?
+            StartProgram();
+            _statuses.FirstAsync(s => s == Status.Ready)
+                .Subscribe(s => {
+                    lock(MessageLock)
+                        if (Connected)
+                            _brick?.Mailbox?.Send("Start", Box.Box5);
+                });
         }
         private void StopMatch()
         {
-            lock(MessageLock)
-            {
+            lock (MessageLock)
                 if (Connected)
                     _brick?.Mailbox?.Send("Stop", Box.Box5);
+            StopProgram();
+        }
+        private void StartProgram()
+        {
+            if (ProgramIsRunning)
+                return;
+            lock (MessageLock)
+                if (Connected)
+                    _brick?.StartProgram(Program);
+        }
+        private void StopProgram()
+        {
+            lock (MessageLock)
+                if (Connected)
+                    _brick?.StopProgram();
+        }
+        private bool ProgramIsRunning
+        {
+            get
+            {
+                lock (MessageLock)
+                    return string.Equals(_brick.GetRunningProgram(), Program, 
+                        StringComparison.InvariantCultureIgnoreCase);
             }
         }
 
@@ -115,7 +152,7 @@ namespace BrickABracket.NXT
             {
                 while(!Connected)
                     Thread.Sleep(500);
-                lock(MessageLock)
+                lock (MessageLock)
                 {
                     try
                     {

@@ -115,7 +115,7 @@ namespace BrickABracket.Derby
         private bool GenerateCategoryStandings(Category category)
         {
             foreach (var round in category.Rounds)
-                GenerateRoundStandings(category, round);
+                GenerateRoundStandings(round);
             // Derby tournaments should only have 1 Round
             category.Standings = category.Rounds.FirstOrDefault()?.Standings;
             if (category.Standings == null)
@@ -130,14 +130,24 @@ namespace BrickABracket.Derby
             var round = category.Rounds.ElementAtOrDefault(roundIndex);
             if (round == null)
                 return false;
-            return GenerateRoundStandings(category, round);
+            return GenerateRoundStandings(round);
         }
-        private bool GenerateRoundStandings(Category category, Round round)
+        private bool GenerateRoundStandings(Round round)
         {
             round.Standings = round.Matches
-                .SelectMany(m => m.Standings)
+                .Where(m => m.Results.Any())
+                .SelectMany(m => m.Results.LastOrDefault()?.Scores
+                    ?.OrderBy(s => s.time)
+                    ?.Select((s, index) => new Standing(){
+                        MocId = m.MocIds[s.player-1],
+                        Place = index + 1,
+                        Score = index + 1,
+                        TotalTime = s.time,
+                        AverageTime = s.time
+                    })
+                )
                 .GroupBy(s => s.MocId)
-                .OrderBy(g => g.Sum(s => s.TotalTime))
+                .OrderBy(g => g.Sum(s => s.Score))  //Lower = better
                 .Select((g, index) => new Standing(){
                     MocId = g.Key,
                     Score = g.Sum(s => s.Score),

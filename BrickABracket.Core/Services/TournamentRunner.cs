@@ -26,10 +26,13 @@ namespace BrickABracket.Core.Services
         private Subject<Status> _statuses = new Subject<Status>();
         private IDisposable _followStatusSubscription;
         private IDisposable _followScoreSubscription;
+        private MocService _mocs;
         private IEnumerable<Meta<Func<Tournament, ITournamentStrategy>>> _tournamentStrategies;
         #endregion
-        public TournamentRunner(IEnumerable<Meta<Func<Tournament, ITournamentStrategy>>> tournamentStrategies)
+        public TournamentRunner(MocService mocs, 
+            IEnumerable<Meta<Func<Tournament, ITournamentStrategy>>> tournamentStrategies)
         {
+            _mocs = mocs;
             _tournamentStrategies = tournamentStrategies;
             Statuses = _statuses.Replay(1);
         }
@@ -78,6 +81,9 @@ namespace BrickABracket.Core.Services
                 _matchIndex = value;
             }
         }
+        public Category Category => Tournament?.Categories?.ElementAtOrDefault(CategoryIndex);
+        public Round Round => Category?.Rounds?.ElementAtOrDefault(RoundIndex);
+        public Match Match => Round?.Matches?.ElementAtOrDefault(MatchIndex);
         public TournamentMetadata Metadata
         {
             get
@@ -91,14 +97,7 @@ namespace BrickABracket.Core.Services
                 };
             }
         }
-        public bool NextMatch()
-        {
-            // Make next match active, create if necessary
-            return false;
-        }
-
         public IObservable<Status> Statuses {get;}
-
         public void FollowScores(IObservable<Score> scores)
         {
             UnFollowScores();
@@ -125,37 +124,77 @@ namespace BrickABracket.Core.Services
                 _followStatusSubscription = null;
             }
         }
+        //Create/Update categories for current Tournament
+        public void GenerateCategories()
+        {
+            var mocs = _mocs.ReadAll()
+                .Where(m => Tournament.MocIds.Contains(m._id));
+            var classifications = mocs
+                .Select(m => m.ClassificationId)
+                .Distinct()
+                .OrderBy(x => x)
+                .ToList();
+            // Add Categories
+            foreach (var classification in classifications)
+            {
+                if (Tournament.Categories.Any(c => c.ClassificationId == classification))
+                    continue;
+                Tournament.Categories.Add(new Category(classification));
+            }
+            // Put MOCs in categories
+            foreach (var category in Tournament.Categories)
+            {
+                category.MocIds = mocs
+                    .Where(m => m.ClassificationId == category.ClassificationId)
+                    .Select(m => m._id)
+                    .ToList();
+                // Remove Categories w/ no MOCs in Tournament (RARE)
+                if (!category.MocIds.Any())
+                    Tournament.Categories.Remove(category);
+            }
+        }
+        public bool NextMatch()
+        {
+            // Make next match active, create if necessary
+            return false;
+        }
+        public void ReadyMatch()
+        {
+            if (MatchIsNull)
+                return;
+            Match.Results.Add(new MatchResult());
+            _statuses.OnNext(Status.Ready);
+        }
         public void StartMatch() => _statuses.OnNext(Status.Start);
         //TODO: Check if current match is valid first
         public void StopMatch() => _statuses.OnNext(Status.Stop);
         public void StartTimedMatch(long milliseconds)
         {
-            ProcessStatus(Status.Start);
+            StartMatch();
             Observable.Timer(TimeSpan.FromMilliseconds(milliseconds))
                 .Subscribe(x => {
                     ProcessStatus(Status.Stop);
                 });
         }
 
+        //TODO: Generate round/category standings
+        //TODO: Generate Match(es)
+
         /// <summary>
         /// Record score into current Match
         /// </summary>
         private void ProcessScore(Score score)
         {
-            if (MatchIsNull())
+            if (MatchIsNull)
                 return;
             if (score.player>_strategy.MatchSize || score.player<=0)
                 return;
+            if (!Match.Results.Any())
+                return; //Should be unreachable, Ready should always be sent before Start or scores
+            Match.Results.Last().Scores.Add(score);
             _statuses.OnNext(Status.ScoreReceived);
-            // TODO: Record score on match
         }
-        private bool MatchIsNull()
-        {
-            return null == _tournament
-                ?.Categories?.ElementAtOrDefault(_categoryIndex)
-                ?.Rounds?.ElementAtOrDefault(_roundIndex)
-                ?.Matches?.ElementAtOrDefault(_matchIndex);
-        }
+        private bool MatchIsNull => Match == null;
 
         /// <summary>
         /// Act on incoming status
@@ -171,6 +210,10 @@ namespace BrickABracket.Core.Services
                     StopMatch();
                     break;
                 case Status.Ready:
+                    // Only send Ready once in a row
+                    if (_statuses.Latest().FirstOrDefault() != Status.Ready)
+                        ReadyMatch();
+                    break;
                 case Status.Running:
                 case Status.Stopped:
                     _statuses.OnNext(status);

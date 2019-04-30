@@ -39,16 +39,26 @@ namespace BrickABracket.Hubs
         // CRUD Tournaments (metadata only? How do I keep frontend from editing Matches, Rounds, etc?)
         #region Tournament CRUD
         //Creating or updating a tournament will always activate it.
-        public async Task SendTournament()
+        public async Task SendTournament() => await Clients.All.SendAsync("ReceiveTournament", _runner.Metadata);
+        public async Task CreateTournament(string name, string type)
         {
-            await Clients.All.SendAsync("ReceiveTournament", _runner.Metadata);
+            var tournament = new Tournament(){
+                Name = name,
+                TournamentType = type
+            };
+            await CreateTournament(tournament);
         }
-        public async Task CreateTournament(Tournament t)
+        private async Task CreateTournament(Tournament t)
         {
             var id = _tournaments.Create(t);
             await Clients.All.SendAsync("ReceiveTournamentSummaries", _tournaments.ReadAllSummaries());
             var tournament = _tournaments.Read(id);
             _runner.Tournament = tournament;
+            await SendTournament();
+        }
+        public async Task SetActiveTournament(int id)
+        {
+            _runner.Tournament = _tournaments.Read(id);
             await SendTournament();
         }
         public async Task GetTournament()
@@ -57,10 +67,14 @@ namespace BrickABracket.Hubs
         }
         public async Task UpdateTournament(Tournament t)
         {
-            if (_tournaments.Update(t))
+            var fullTournament = _tournaments.Read(t._id);
+            // Do not allow frontend to change sub-classes directly
+            fullTournament.Name = t.Name;
+            fullTournament.TournamentType = t.TournamentType;
+            fullTournament.MocIds = t.MocIds;
+            if (_tournaments.Update(fullTournament))
             {
-                _runner.Tournament = _tournaments.Read(t._id);
-                await SendTournament();
+                await SetActiveTournament(t._id);
             }
         }
         public async Task DeleteTournament(int id)
@@ -74,9 +88,9 @@ namespace BrickABracket.Hubs
         #endregion
         // CRUD Devices
         #region Device CRUD
-        public async Task CreateDevice(string connectionString, string type="NXT", string role="All")
+        public async Task CreateDevice(string connectionString, string program, string type="NXT", string role="All")
         {
-            if (!_devices.Add(connectionString, type, role))
+            if (!_devices.Add(connectionString, program, type, role))
                 return;
             await Clients.All.SendAsync("ReceiveDevices", _devices.Devices);
         }
@@ -87,6 +101,12 @@ namespace BrickABracket.Hubs
         public async Task SetDeviceRole(string connectionString, string role)
         {
             if (!_devices.SetRole(connectionString, role))
+                return;
+            await Clients.All.SendAsync("ReceiveDevices", _devices.Devices);
+        }
+        public async Task SetDeviceProgram(string connectionString, string program)
+        {
+            if (!_devices.SetProgram(connectionString, program))
                 return;
             await Clients.All.SendAsync("ReceiveDevices", _devices.Devices);
         }
@@ -165,6 +185,11 @@ namespace BrickABracket.Hubs
         #endregion
         // Tournament running
         #region Run Tournaments
+        public async Task GenerateCategories()
+        {
+            _runner.GenerateCategories();
+            await SendTournament();
+        }
         public async Task SetCategoryIndex(int i)
         {
             _runner.CategoryIndex = i;
@@ -185,9 +210,17 @@ namespace BrickABracket.Hubs
             if (_runner.NextMatch())
                 await SendTournament();
         }
+        public async Task ReadyMatch()
+        {
+            _runner.ReadyMatch();
+        }
         public async Task StartMatch()
         {
             _runner.StartMatch();
+        }
+        public async Task StartTimedMatch(long milliseconds)
+        {
+            _runner.StartTimedMatch(milliseconds);
         }
         public async Task StopMatch()
         {
