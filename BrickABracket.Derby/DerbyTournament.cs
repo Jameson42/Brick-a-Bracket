@@ -29,7 +29,26 @@ namespace BrickABracket.Derby
             int tournamentId):this(tournamentService, mocService, competitorService, 
             tournamentService.Read(tournamentId))
         {}
-
+        public int GenerateRound(int categoryIndex, int roundIndex = -1)
+        {
+            //Ensure category exists
+            var category = _tournament.Categories.ElementAtOrDefault(categoryIndex);
+            if (category == null)
+                return -1;
+            return GenerateRound(category, roundIndex);
+        }
+        private int GenerateRound(Category category, int roundIndex)
+        {
+            //Ensure only one round exists
+            //Derby tournaments only have one round with all matches in it
+            if (category.Rounds.Count>1)
+                category.Rounds.RemoveRange(1, category.Rounds.Count-1);
+            if (roundIndex == 0 && category.Rounds.Count == 1)
+                category.Rounds[0] = new Round();
+            if (category.Rounds.Count == 0)
+                category.Rounds.Add(new Round());
+            return 0;
+        }
         public int GenerateMatch(int categoryIndex, int roundIndex = -1, int matchIndex = -1)
         {
             //Ensure category exists

@@ -155,8 +155,14 @@ namespace BrickABracket.Core.Services
         }
         public bool NextMatch()
         {
-            // Make next match active, create if necessary
-            return false;
+            // Create next match in category and activate
+            if (Category == null)
+                return false;
+            // Select first unfinished round
+            RoundIndex = _strategy.GenerateRound(CategoryIndex);
+            // Select next match
+            MatchIndex = _strategy.GenerateMatch(CategoryIndex, RoundIndex);
+            return MatchIndex > -1;
         }
         public void ReadyMatch()
         {
@@ -165,20 +171,26 @@ namespace BrickABracket.Core.Services
             Match.Results.Add(new MatchResult());
             _statuses.OnNext(Status.Ready);
         }
-        public void StartMatch() => _statuses.OnNext(Status.Start);
-        //TODO: Check if current match is valid first
-        public void StopMatch() => _statuses.OnNext(Status.Stop);
-        public void StartTimedMatch(long milliseconds)
+        public bool StartMatch() 
         {
-            StartMatch();
+            if (MatchIsNull)
+                return false;
+            _statuses.OnNext(Status.Start);
+            return true;
+        }
+        public void StopMatch() => _statuses.OnNext(Status.Stop);
+        public bool StartTimedMatch(long milliseconds)
+        {
+            if (!StartMatch())
+                return false;
             Observable.Timer(TimeSpan.FromMilliseconds(milliseconds))
                 .Subscribe(x => {
                     ProcessStatus(Status.Stop);
                 });
+            return true;
         }
 
         //TODO: Generate round/category standings
-        //TODO: Generate Match(es)
 
         /// <summary>
         /// Record score into current Match
