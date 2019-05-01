@@ -27,12 +27,14 @@ namespace BrickABracket.Core.Services
         private IDisposable _followStatusSubscription;
         private IDisposable _followScoreSubscription;
         private MocService _mocs;
+        private TournamentService _tournaments;
         private IEnumerable<Meta<Func<Tournament, ITournamentStrategy>>> _tournamentStrategies;
         #endregion
-        public TournamentRunner(MocService mocs, 
+        public TournamentRunner(MocService mocs, TournamentService tournaments,
             IEnumerable<Meta<Func<Tournament, ITournamentStrategy>>> tournamentStrategies)
         {
             _mocs = mocs;
+            _tournaments = tournaments;
             _tournamentStrategies = tournamentStrategies;
             Statuses = _statuses.Replay(1);
         }
@@ -97,6 +99,11 @@ namespace BrickABracket.Core.Services
                 };
             }
         }
+        private void SaveTournament()
+        {
+            if (Tournament != null && Tournament._id>0)
+                _tournaments.Update(Tournament);
+        }
         public IObservable<Status> Statuses {get;}
         public void FollowScores(IObservable<Score> scores)
         {
@@ -152,6 +159,7 @@ namespace BrickABracket.Core.Services
                 if (!category.MocIds.Any())
                     Tournament.Categories.Remove(category);
             }
+            SaveTournament();
         }
         public bool NextMatch()
         {
@@ -162,14 +170,19 @@ namespace BrickABracket.Core.Services
             RoundIndex = _strategy.GenerateRound(CategoryIndex);
             // Select next match
             MatchIndex = _strategy.GenerateMatch(CategoryIndex, RoundIndex);
+            SaveTournament();
             return MatchIndex > -1;
         }
         public void ReadyMatch()
         {
             if (MatchIsNull)
                 return;
-            Match.Results.Add(new MatchResult());
+            var lastResult = Match.Results.LastOrDefault();
+            // Only add new result if last result has scores
+            if (lastResult == null || lastResult.Scores.Any())
+                Match.Results.Add(new MatchResult());
             _statuses.OnNext(Status.Ready);
+            SaveTournament();
         }
         public bool StartMatch() 
         {
@@ -178,7 +191,11 @@ namespace BrickABracket.Core.Services
             _statuses.OnNext(Status.Start);
             return true;
         }
-        public void StopMatch() => _statuses.OnNext(Status.Stop);
+        public void StopMatch()
+        {
+            _statuses.OnNext(Status.Stop);
+            SaveTournament();
+        }
         public bool StartTimedMatch(long milliseconds)
         {
             if (!StartMatch())
@@ -189,9 +206,25 @@ namespace BrickABracket.Core.Services
                 });
             return true;
         }
-
-        //TODO: Generate round/category standings
-
+        public bool GenerateRoundStandings(int categoryIndex = -1, int roundIndex = -1)
+        {
+            if (categoryIndex == -1 || roundIndex == -1)
+                return _strategy.GenerateRoundStandings(this.CategoryIndex, this.RoundIndex);
+            return _strategy.GenerateRoundStandings(categoryIndex, roundIndex);
+        }
+        public bool GenerateCategoryStandings(int categoryIndex = -1)
+        {
+            if (categoryIndex == -1)
+                return _strategy.GenerateCategoryStandings(this.CategoryIndex);
+            return _strategy.GenerateCategoryStandings(categoryIndex);
+        }
+        public bool GenerateAllStandings()
+        {
+            for (int i=0; i<Tournament?.Categories?.Count; i++)
+                _strategy.GenerateCategoryStandings(i);
+            SaveTournament();
+            return true;
+        }
         /// <summary>
         /// Record score into current Match
         /// </summary>
@@ -205,6 +238,7 @@ namespace BrickABracket.Core.Services
                 return; //Should be unreachable, Ready should always be sent before Start or scores
             Match.Results.Last().Scores.Add(score);
             _statuses.OnNext(Status.ScoreReceived);
+            SaveTournament();
         }
         private bool MatchIsNull => Match == null;
 
