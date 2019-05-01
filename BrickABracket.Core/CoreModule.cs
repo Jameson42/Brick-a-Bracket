@@ -21,6 +21,7 @@ namespace BrickABracket.Core
             builder.RegisterType<TournamentService>();
             builder.RegisterType<CompetitorService>();
             builder.RegisterType<MocService>();
+            builder.RegisterType<MocImageService>();
             builder.RegisterType<ClassificationService>();
         }
     }
