@@ -15,7 +15,7 @@ export class SignalrService {
 
   private connection: HubConnection;
   private promise: Promise<HubConnection>;
-  private url = '/chatHub';
+  private url = '/tournamentHub';
 
   constructor() {
     this.connect();

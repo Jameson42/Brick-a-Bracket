@@ -22,7 +22,7 @@ namespace BrickABracket.Hubs
             CompetitorService competitors,
             DeviceService devices,
             MocService mocs,
-            TournamentService tournaments, 
+            TournamentService tournaments,
             TournamentRunner runner,
             MatchWatcher watcher)
         {
@@ -39,7 +39,13 @@ namespace BrickABracket.Hubs
         // CRUD Tournaments (metadata only? How do I keep frontend from editing Matches, Rounds, etc?)
         #region Tournament CRUD
         //Creating or updating a tournament will always activate it.
-        public async Task SendTournament() => await Clients.All.SendAsync("ReceiveTournament", _runner.Metadata);
+        public async Task SendTournament() 
+        {
+            await Task.WhenAll(
+                Clients.All.SendAsync("ReceiveTournament", _runner.Metadata),
+                Clients.All.SendAsync("ReceiveTournamentSummaries", _tournaments.ReadAllSummaries())
+            );
+        } 
         public async Task CreateTournament(string name, string type)
         {
             var tournament = new Tournament(){
@@ -51,7 +57,6 @@ namespace BrickABracket.Hubs
         private async Task CreateTournament(Tournament t)
         {
             var id = _tournaments.Create(t);
-            await Clients.All.SendAsync("ReceiveTournamentSummaries", _tournaments.ReadAllSummaries());
             var tournament = _tournaments.Read(id);
             _runner.Tournament = tournament;
             await SendTournament();
@@ -64,6 +69,10 @@ namespace BrickABracket.Hubs
         public async Task GetTournament()
         {
             await Clients.Caller.SendAsync("ReceiveTournament",_runner.Tournament);
+        }
+        public async Task GetTournamentSummaries()
+        {
+            await Clients.Caller.SendAsync("ReceiveTournamentSummaries", _tournaments.ReadAllSummaries());
         }
         public async Task UpdateTournament(Tournament t)
         {

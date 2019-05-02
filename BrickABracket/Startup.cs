@@ -37,7 +37,9 @@ namespace BrickABracket
                 configuration.RootPath = "ClientApp/dist";
             });
 
-            services.AddSignalR();
+            services.AddSignalR(o => {
+                o.EnableDetailedErrors = true;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -11,10 +11,11 @@ export class HomeComponent implements OnInit {
     this.service = signalR;
   }
   ngOnInit() {
+    this.service.connect().then((result: any) => {console.log(result); });
     this.service
-      .invokeAndListenFor('SendMessage', 'ReceiveMessage', 'Testing')
-      .subscribe((message: string) => {
-        alert(message);
+    .invokeAndListenFor('GetTournamentSummaries', 'ReceiveTournamentSummaries')
+      .subscribe((summaries: any) => {
+        console.log(summaries);
       });
       // Never listen in the component directly like this unless you also do unsubscribe!
   }
