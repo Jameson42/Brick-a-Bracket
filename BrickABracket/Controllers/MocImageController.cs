@@ -46,7 +46,7 @@ namespace BrickABracket.Controllers
             return File(memory, fileInfo.MimeType,fileInfo.Filename);
         }
         [HttpGet("form")]
-        public async Task<IActionResult> Form()
+        public IActionResult Form()
         {
             return Content("<form action='/api/mocs/loopback' method='post' enctype='multipart/form-data'><input type='file' name='file'><input type='submit' value='submit'></form>", "text/html");
         }

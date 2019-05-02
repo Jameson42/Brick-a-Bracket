@@ -219,19 +219,19 @@ namespace BrickABracket.Hubs
             if (_runner.NextMatch())
                 await SendTournament();
         }
-        public async Task ReadyMatch()
+        public void ReadyMatch()
         {
             _runner.ReadyMatch();
         }
-        public async Task StartMatch()
+        public void StartMatch()
         {
             _runner.StartMatch();
         }
-        public async Task StartTimedMatch(long milliseconds)
+        public void StartTimedMatch(long milliseconds)
         {
             _runner.StartTimedMatch(milliseconds);
         }
-        public async Task StopMatch()
+        public void StopMatch()
         {
             _runner.StopMatch();
         }
