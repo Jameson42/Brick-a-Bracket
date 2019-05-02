@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Autofac.Features.Metadata;
 using LiteDB;
@@ -6,14 +7,11 @@ using BrickABracket.Models.Base;
 
 namespace BrickABracket.Core.Services
 {
-    public class TournamentService
+    public class TournamentService: IDisposable
     {
-        private IEnumerable<Meta<ITournamentStrategy>> _tournamentStrategies;
         private LiteRepository db {get;}
-        public TournamentService(LiteRepository repository,
-            IEnumerable<Meta<ITournamentStrategy>> tournamentStrategies)
+        public TournamentService(LiteRepository repository)
         {
-            _tournamentStrategies = tournamentStrategies;
             db = repository;
         }
 
@@ -26,5 +24,9 @@ namespace BrickABracket.Core.Services
 
         public bool Update(Tournament t) => db.Update<Tournament>(t);
         public bool Delete(int id) => db.Delete<Tournament>(id);
+        public void Dispose()
+        {
+            db?.Dispose();
+        }
     }
 }

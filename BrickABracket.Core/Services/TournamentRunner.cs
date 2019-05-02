@@ -26,15 +26,15 @@ namespace BrickABracket.Core.Services
         private Subject<Status> _statuses = new Subject<Status>();
         private IDisposable _followStatusSubscription;
         private IDisposable _followScoreSubscription;
-        private MocService _mocs;
-        private TournamentService _tournaments;
+        private Func<MocService> _mocServiceFactory;
+        private Func<TournamentService> _tournamentServiceFactory;
         private IEnumerable<Meta<Func<Tournament, ITournamentStrategy>>> _tournamentStrategies;
         #endregion
-        public TournamentRunner(MocService mocs, TournamentService tournaments,
+        public TournamentRunner(Func<MocService> mocs, Func<TournamentService> tournaments,
             IEnumerable<Meta<Func<Tournament, ITournamentStrategy>>> tournamentStrategies)
         {
-            _mocs = mocs;
-            _tournaments = tournaments;
+            _mocServiceFactory = mocs;
+            _tournamentServiceFactory = tournaments;
             _tournamentStrategies = tournamentStrategies;
             Statuses = _statuses.Replay(1);
         }
@@ -102,17 +102,22 @@ namespace BrickABracket.Core.Services
         private void SaveTournament()
         {
             if (Tournament != null && Tournament._id>0)
-                _tournaments.Update(Tournament);
+                using (var _tournaments = _tournamentServiceFactory())
+                    _tournaments.Update(Tournament);
         }
         public IObservable<Status> Statuses {get;}
         public void FollowScores(IObservable<Score> scores)
         {
             UnFollowScores();
+            if (scores == null)
+                return;
             _followScoreSubscription = scores.Subscribe(ProcessScore);
         }
         public void FollowStatus(IObservable<Status> statuses)
         {
             UnFollowStatus();
+            if (statuses == null)
+                return;
             _followStatusSubscription = statuses.Subscribe(ProcessStatus);
         }
         public void UnFollowScores()
@@ -134,31 +139,36 @@ namespace BrickABracket.Core.Services
         //Create/Update categories for current Tournament
         public void GenerateCategories()
         {
-            var mocs = _mocs.ReadAll()
-                .Where(m => Tournament.MocIds.Contains(m._id));
-            var classifications = mocs
-                .Select(m => m.ClassificationId)
-                .Distinct()
-                .OrderBy(x => x)
-                .ToList();
-            // Add Categories
-            foreach (var classification in classifications)
+            IEnumerable<Moc> mocs;
+            using (var _mocs = _mocServiceFactory())
             {
-                if (Tournament.Categories.Any(c => c.ClassificationId == classification))
-                    continue;
-                Tournament.Categories.Add(new Category(classification));
-            }
-            // Put MOCs in categories
-            foreach (var category in Tournament.Categories)
-            {
-                category.MocIds = mocs
-                    .Where(m => m.ClassificationId == category.ClassificationId)
-                    .Select(m => m._id)
+                mocs = _mocs.ReadAll()
+                    .Where(m => Tournament.MocIds.Contains(m._id));
+                var classifications = mocs
+                    .Select(m => m.ClassificationId)
+                    .Distinct()
+                    .OrderBy(x => x)
                     .ToList();
-                // Remove Categories w/ no MOCs in Tournament (RARE)
-                if (!category.MocIds.Any())
-                    Tournament.Categories.Remove(category);
+                // Add Categories
+                foreach (var classification in classifications)
+                {
+                    if (Tournament.Categories.Any(c => c.ClassificationId == classification))
+                        continue;
+                    Tournament.Categories.Add(new Category(classification));
+                }
+                // Put MOCs in categories
+                foreach (var category in Tournament.Categories)
+                {
+                    category.MocIds = mocs
+                        .Where(m => m.ClassificationId == category.ClassificationId)
+                        .Select(m => m._id)
+                        .ToList();
+                    // Remove Categories w/ no MOCs in Tournament (RARE)
+                    if (!category.MocIds.Any())
+                        Tournament.Categories.Remove(category);
+                }
             }
+                
             SaveTournament();
         }
         public bool NextMatch()
