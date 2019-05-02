@@ -36,10 +36,11 @@ namespace BrickABracket.Hubs
             // only including it here to ensure
             // an instance gets created.
         }
-        // CRUD Tournaments (metadata only? How do I keep frontend from editing Matches, Rounds, etc?)
+        
+        // CRUD Tournaments
         #region Tournament CRUD
         //Creating or updating a tournament will always activate it.
-        public async Task SendTournament() 
+        public async Task SendTournaments() 
         {
             await Task.WhenAll(
                 Clients.All.SendAsync("ReceiveTournament", _runner.Metadata),
@@ -59,12 +60,12 @@ namespace BrickABracket.Hubs
             var id = _tournaments.Create(t);
             var tournament = _tournaments.Read(id);
             _runner.Tournament = tournament;
-            await SendTournament();
+            await SendTournaments();
         }
         public async Task SetActiveTournament(int id)
         {
             _runner.Tournament = _tournaments.Read(id);
-            await SendTournament();
+            await SendTournaments();
         }
         public async Task GetTournament()
         {
@@ -91,17 +92,18 @@ namespace BrickABracket.Hubs
             if (_tournaments.Delete(id))
             {
                 _runner.Tournament = null;
-                await SendTournament();
+                await SendTournaments();
             }
         }
         #endregion
         // CRUD Devices
         #region Device CRUD
+        public async Task SendDevices() => await Clients.All.SendAsync("ReceiveDevices", _devices.Devices);
         public async Task CreateDevice(string connectionString, string program, string type="NXT", string role="All")
         {
             if (!_devices.Add(connectionString, program, type, role))
                 return;
-            await Clients.All.SendAsync("ReceiveDevices", _devices.Devices);
+            await SendDevices();
         }
         public async Task GetDevices()
         {
@@ -111,27 +113,28 @@ namespace BrickABracket.Hubs
         {
             if (!_devices.SetRole(connectionString, role))
                 return;
-            await Clients.All.SendAsync("ReceiveDevices", _devices.Devices);
+            await SendDevices();
         }
         public async Task SetDeviceProgram(string connectionString, string program)
         {
             if (!_devices.SetProgram(connectionString, program))
                 return;
-            await Clients.All.SendAsync("ReceiveDevices", _devices.Devices);
+            await SendDevices();
         }
         public async Task DeleteDevice(string connectionString)
         {
             if (!_devices.Remove(connectionString))
                 return;
-            await Clients.All.SendAsync("ReceiveDevices", _devices.Devices);
+            await SendDevices();
         }
         #endregion
         // CRUD Classifications
         #region Classification CRUD
+        public async Task SendClassifications() => await Clients.All.SendAsync("ReceiveClassifications",_classes.ReadAll());
         public async Task CreateClassification(Classification classification)
         {
             if(_classes.Create(classification)>0)
-                await Clients.All.SendAsync("ReceiveClassifications",_classes.ReadAll());
+                await SendClassifications();
         }
         public async Task GetClassifications()
         {
@@ -140,20 +143,21 @@ namespace BrickABracket.Hubs
         public async Task UpdateClassification(Classification classification)
         {
             if(_classes.Update(classification))
-                await Clients.All.SendAsync("ReceiveClassifications",_classes.ReadAll());
+                await SendClassifications();
         }
         public async Task DeleteClassification(int id)
         {
             if(_classes.Delete(id))
-                await Clients.All.SendAsync("ReceiveClassifications",_classes.ReadAll());
+                await SendClassifications();
         }
         #endregion
         // CRUD Competitors
         #region Competitor CRUD
+        public async Task SendCompetitors() => await Clients.All.SendAsync("ReceiveCompetitors",_competitors.ReadAll());
         public async Task CreateCompetitor(Competitor competitor)
         {
             if(_competitors.Create(competitor)>0)
-                await Clients.All.SendAsync("ReceiveCompetitors",_competitors.ReadAll());
+                await SendCompetitors();
         }
         public async Task GetCompetitors()
         {
@@ -162,20 +166,21 @@ namespace BrickABracket.Hubs
         public async Task UpdateCompetitor(Competitor competitor)
         {
             if(_competitors.Update(competitor))
-                await Clients.All.SendAsync("ReceiveCompetitors",_competitors.ReadAll());
+                await SendCompetitors();
         }
         public async Task DeleteCompetitor(int id)
         {
             if(_competitors.Delete(id))
-                await Clients.All.SendAsync("ReceiveCompetitors",_competitors.ReadAll());
+                await SendCompetitors();
         }
         #endregion
         // CRUD Mocs
         #region MOC CRUD
+        public async Task SendMocs() => await Clients.All.SendAsync("ReceiveMocs", _mocs.ReadAll());
         public async Task CreateMoc(Moc moc)
         {
             if(_mocs.Create(moc)>0)
-                await Clients.All.SendAsync("ReceiveMocs",_mocs.ReadAll());
+                await SendMocs();
         }
         public async Task GetMocs()
         {
@@ -184,12 +189,12 @@ namespace BrickABracket.Hubs
         public async Task UpdateMoc(Moc moc)
         {
             if(_mocs.Update(moc))
-                await Clients.All.SendAsync("ReceiveMocs",_mocs.ReadAll());
+                await SendMocs();
         }
         public async Task DeleteMoc(int id)
         {
             if(_mocs.Delete(id))
-                await Clients.All.SendAsync("ReceiveMocs",_mocs.ReadAll());
+                await SendMocs();
         }
         #endregion
         // Tournament running
@@ -197,44 +202,32 @@ namespace BrickABracket.Hubs
         public async Task GenerateCategories()
         {
             _runner.GenerateCategories();
-            await SendTournament();
+            await SendTournaments();
         }
         public async Task SetCategoryIndex(int i)
         {
             _runner.CategoryIndex = i;
-            await SendTournament();
+            await SendTournaments();
         }
         public async Task SetRoundIndex(int i)
         {
             _runner.RoundIndex = i;
-            await SendTournament();
+            await SendTournaments();
         }
         public async Task SetMatchIndex(int i)
         {
             _runner.MatchIndex = i;
-            await SendTournament();
+            await SendTournaments();
         }
         public async Task NextMatch()
         {
             if (_runner.NextMatch())
-                await SendTournament();
+                await SendTournaments();
         }
-        public void ReadyMatch()
-        {
-            _runner.ReadyMatch();
-        }
-        public void StartMatch()
-        {
-            _runner.StartMatch();
-        }
-        public void StartTimedMatch(long milliseconds)
-        {
-            _runner.StartTimedMatch(milliseconds);
-        }
-        public void StopMatch()
-        {
-            _runner.StopMatch();
-        }
+        public void ReadyMatch() => _runner.ReadyMatch();
+        public void StartMatch() => _runner.StartMatch();
+        public void StartTimedMatch(long milliseconds) => _runner.StartTimedMatch(milliseconds);
+        public void StopMatch() => _runner.StopMatch();
         #endregion
     }
 }
