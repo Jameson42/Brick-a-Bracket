@@ -45,5 +45,18 @@ namespace BrickABracket.Controllers
             memory.Position = 0;
             return File(memory, fileInfo.MimeType,fileInfo.Filename);
         }
+        [HttpGet("form")]
+        public async Task<IActionResult> Form()
+        {
+            return Content("<form action='/api/mocs/loopback' method='post' enctype='multipart/form-data'><input type='file' name='file'><input type='submit' value='submit'></form>", "text/html");
+        }
+        [HttpPost("loopback")]
+        public async Task<IActionResult> Loopback(IFormFile file)
+        {
+            var memory = new MemoryStream();
+            await file.CopyToAsync(memory);
+            memory.Position = 0;
+            return File(memory, file.ContentType);
+        }
     }
 }
