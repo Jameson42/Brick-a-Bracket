@@ -1,12 +1,14 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Reactive;
 using System.Reactive.Linq;
 using System.Reactive.Subjects;
 using System.Threading;
 using System.Threading.Tasks;
+using MonoBrick.NXT;
 using BrickABracket.Models.Base;
 using BrickABracket.Models.Interfaces;
-using MonoBrick.NXT;
 
 namespace BrickABracket.NXT
 {
@@ -42,18 +44,29 @@ namespace BrickABracket.NXT
         public ushort BatteryLevel {
             get
             {
-                try {return _brick?.GetBatteryLevel() ?? 0;}
-                catch {return 0;}
+                lock(MessageLock)
+                    try {return _brick?.GetBatteryLevel() ?? 0;}
+                    catch {return 0;}
             }
         }
         public string BrickName {
             get
             {
-                try {return _brick?.GetBrickName() ?? "";}
-                catch {return "";}
+                lock(MessageLock)
+                    try {return _brick?.GetBrickName() ?? "";}
+                    catch {return "";}
             }
         }
         public string Program {get;set;}
+        public IEnumerable<string> Programs {
+            get
+            {
+                lock(MessageLock)
+                    return _brick.FileSystem.FileList()
+                        .Where(bf => bf.FileType == MonoBrick.FileType.Program)
+                        .Select(bf => bf.Name);
+            }
+        }
         public void FollowStatus(IObservable<Status> Statuses)
         {
             UnFollowStatus();
@@ -84,8 +97,9 @@ namespace BrickABracket.NXT
         }
         public bool Connect()
         {
-            if (_brick?.Connection.IsConnected ?? false)
-                return true;
+            lock(MessageLock)
+                if (_brick?.Connection.IsConnected ?? false)
+                    return true;
             if (string.IsNullOrWhiteSpace(Connection))
                 return false;
             try
@@ -93,7 +107,8 @@ namespace BrickABracket.NXT
                 _brick = new Brick<I2CSensor, I2CSensor, I2CSensor, I2CSensor>(Connection);
                 _brick.Connection.Open();
                 StartReadMailboxes();
-                return _brick.Connection.IsConnected;
+                lock(MessageLock)
+                    return _brick.Connection.IsConnected;
             }
             catch
             {
@@ -104,21 +119,21 @@ namespace BrickABracket.NXT
             }
         }
 
-        public void StartMatch()
+        private void StartMatch()
         {
             //Start program, then wait for "Ready" before sending Start?
             StartProgram();
             _statuses.FirstAsync(s => s == Status.Ready)
                 .Subscribe(s => {
-                    lock(MessageLock)
-                        if (Connected)
+                    if (Connected)
+                        lock(MessageLock)
                             _brick?.Mailbox?.Send("Start", Box.Box5);
                 });
         }
         private void StopMatch()
         {
-            lock (MessageLock)
-                if (Connected)
+            if (Connected)
+                lock (MessageLock)
                     _brick?.Mailbox?.Send("Stop", Box.Box5);
             StopProgram();
         }
@@ -126,14 +141,14 @@ namespace BrickABracket.NXT
         {
             if (ProgramIsRunning)
                 return;
-            lock (MessageLock)
-                if (Connected)
+            if (Connected)
+                lock (MessageLock)
                     _brick?.StartProgram(Program);
         }
         private void StopProgram()
         {
-            lock (MessageLock)
-                if (Connected)
+            if (Connected)
+                lock (MessageLock)
                     _brick?.StopProgram();
         }
         private bool ProgramIsRunning
@@ -152,27 +167,26 @@ namespace BrickABracket.NXT
             {
                 while(!Connected)
                     Thread.Sleep(500);
-                lock (MessageLock)
-                {
+                // Post all queued statuses
+                lock(MessageLock)
                     try
                     {
-                        // Post all queued statuses
                         while (PostStatus(_brick.Mailbox.ReadString(Box.Box0, true)));
-                        // Post all queued scores
+                    }
+                    catch{}
+                // Post all queued scores
+                lock(MessageLock)
+                    try
+                    {
                         while (_scoreFactory!=null 
                             && PostScore(_scoreFactory(_brick.Mailbox.ReadString(Box.Box1, true))));
                     }
-                    catch
-                    {
-                        //Eat message failures
-                    }
-                }
-                Thread.Sleep(500);
+                    catch{}
+                Thread.Sleep(100);
             }
         }
         private bool PostScore(Score score)
         {
-            System.Console.WriteLine($"Received score {score}");
             if (score == null)
                 return false;
             _scores.OnNext(score);
@@ -180,7 +194,6 @@ namespace BrickABracket.NXT
         }
         private bool PostStatus(string status)
         {
-            System.Console.WriteLine($"Received status {status}");
             if (string.IsNullOrWhiteSpace(status))
                 return false;
             return PostStatus(status.ToStatus());

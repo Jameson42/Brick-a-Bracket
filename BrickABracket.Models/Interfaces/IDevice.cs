@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace BrickABracket.Models.Interfaces
 {
@@ -10,6 +11,6 @@ namespace BrickABracket.Models.Interfaces
         ushort BatteryLevel {get;}
         string BrickName {get;}
         string Program {get;set;}
-
+        IEnumerable<string> Programs {get;}
     }
 }
