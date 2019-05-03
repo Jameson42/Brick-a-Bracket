@@ -160,13 +160,14 @@ namespace BrickABracket.Derby
                     ?.Select((s, index) => new Standing(){
                         MocId = m.MocIds[s.Player-1],
                         Place = index + 1,
-                        Score = index + 1,
+                        Score = 4 - index,
                         TotalTime = s.Time,
                         AverageTime = s.Time
                     })
                 )
                 .GroupBy(s => s.MocId)
-                .OrderBy(g => g.Sum(s => s.Score))  //Lower = better
+                .OrderByDescending(g => g.Sum(s => s.Score))  //Higher = better
+                .ThenBy(g => g.Sum(s => s.TotalTime))   //Total time breaks ties
                 .Select((g, index) => new Standing(){
                     MocId = g.Key,
                     Score = g.Sum(s => s.Score),
