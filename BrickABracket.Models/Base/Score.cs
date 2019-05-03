@@ -9,24 +9,24 @@ namespace BrickABracket.Models.Base
             if (s == null || s.Length<3)
                 return;
             if (int.TryParse(s.Substring(0,1), out int player))
-                this.player = player;
+                Player = player;
             if (double.TryParse(s.Substring(2), out double time))
-                this.time = time;
+                Time = time;
         }
         public  Score(int player, double time)
         {
-            this.player = player;
-            this.time = time;
+            this.Player = player;
+            this.Time = time;
         }
         public Score()
         {
-            player = 0;
-            time = 0.0;
+            Player = 0;
+            Time = 0.0;
         }
-        public int player {get;}
-        public double time {get;}
+        public int Player {get;}
+        public double Time {get;}
 
-        public override string ToString() => $"{player}-{time}";
+        public override string ToString() => $"{Player}-{Time}";
 
         public static implicit operator string(Score s) => s?.ToString() ?? string.Empty;
         public static implicit operator Score(string s)

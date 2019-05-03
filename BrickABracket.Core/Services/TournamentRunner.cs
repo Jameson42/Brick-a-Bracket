@@ -242,7 +242,7 @@ namespace BrickABracket.Core.Services
         {
             if (MatchIsNull)
                 return;
-            if (score.player>_strategy.MatchSize || score.player<=0)
+            if (score.Player>_strategy.MatchSize || score.Player<=0)
                 return;
             if (!Match.Results.Any())
                 return; //Should be unreachable, Ready should always be sent before Start or scores

@@ -156,13 +156,13 @@ namespace BrickABracket.Derby
             round.Standings = round.Matches
                 .Where(m => m.Results.Any())
                 .SelectMany(m => m.Results.LastOrDefault()?.Scores
-                    ?.OrderBy(s => s.time)
+                    ?.OrderBy(s => s.Time)
                     ?.Select((s, index) => new Standing(){
-                        MocId = m.MocIds[s.player-1],
+                        MocId = m.MocIds[s.Player-1],
                         Place = index + 1,
                         Score = index + 1,
-                        TotalTime = s.time,
-                        AverageTime = s.time
+                        TotalTime = s.Time,
+                        AverageTime = s.Time
                     })
                 )
                 .GroupBy(s => s.MocId)
