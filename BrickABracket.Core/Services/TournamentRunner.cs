@@ -57,7 +57,8 @@ namespace BrickABracket.Core.Services
             get => _categoryIndex;
             set
             {
-                // TODO: Check validity
+                if (value < -1 || value >= (Tournament?.Categories?.Count ?? 0))
+                    return;
                 _categoryIndex = value;
                 RoundIndex = DEFAULTINDEX;
             }
@@ -67,7 +68,8 @@ namespace BrickABracket.Core.Services
             get => _roundIndex;
             set
             {
-                // TODO: Check validity
+                if (value < -1 || value >= (Category?.Rounds?.Count ?? 0))
+                    return;
                 _roundIndex = value;
                 MatchIndex = DEFAULTINDEX;
             }
@@ -77,9 +79,8 @@ namespace BrickABracket.Core.Services
             get => _matchIndex;
             set
             {
-                // TODO: Check validity
-                // Ask strategy for validity
-                // Strategy can create match if necessary
+                if (value < -1 || value >= (Round?.Matches?.Count ?? 0))
+                    return;
                 _matchIndex = value;
             }
         }
