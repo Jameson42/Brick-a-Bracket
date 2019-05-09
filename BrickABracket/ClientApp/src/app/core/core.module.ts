@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 // SignalR
 import '@aspnet/signalr';
@@ -15,6 +16,7 @@ import { TournamentService } from './tournaments/tournament.service';
 @NgModule({
   imports: [
     CommonModule,
+    HttpClientModule,
   ],
   providers: [
     ConnectionResolver,

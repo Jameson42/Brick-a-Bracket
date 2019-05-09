@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 
@@ -9,7 +10,7 @@ import {SignalrService} from '../signalr.service';
 export class MocService {
     private mocs$: Observable<Array<Moc>>;
 
-    constructor(private _signalR: SignalrService) { }
+    constructor(private _signalR: SignalrService, private _httpClient: HttpClient) { }
 
     get mocs(): Observable<Array<Moc>> {
         if (!this.mocs$) {
@@ -35,5 +36,22 @@ export class MocService {
 
     delete(id: number) {
         return this._signalR.invoke('DeleteMoc', id);
+    }
+
+    getImage(id: number): Observable<Blob> {
+        return this._httpClient.get('/api/mocs/' + id, { responseType: 'blob' });
+    }
+
+    uploadImage(id: number, image: Blob) {
+        const formData: FormData = new FormData();
+        formData.append('file', image);
+        return this._httpClient.post('/api/mocs/' + id, formData).subscribe(
+            data => {
+                console.log(data);
+            },
+            error => {
+                console.log(error);
+            }
+        );
     }
 }
