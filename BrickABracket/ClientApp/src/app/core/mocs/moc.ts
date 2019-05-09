@@ -1,7 +1,7 @@
-class Moc {
-    public Name: string;
-    public ClassificationId: number;
-    public CompetitorId: number;
-    public Weight: number;
-    public _id: number;
+export class Moc {
+    Name: string;
+    ClassificationId: number;
+    CompetitorId: number;
+    Weight: number;
+    _id: number;
 }

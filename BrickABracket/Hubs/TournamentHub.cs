@@ -62,14 +62,9 @@ namespace BrickABracket.Hubs
             _runner.Tournament = tournament;
             await SendTournaments();
         }
-        public async Task SetActiveTournament(int id)
-        {
-            _runner.Tournament = _tournaments.Read(id);
-            await SendTournaments();
-        }
         public async Task GetTournament()
         {
-            await Clients.Caller.SendAsync("ReceiveTournament",_runner.Tournament);
+            await Clients.Caller.SendAsync("ReceiveTournament",_runner.Metadata);
         }
         public async Task GetTournamentSummaries()
         {
@@ -131,9 +126,9 @@ namespace BrickABracket.Hubs
         // CRUD Classifications
         #region Classification CRUD
         public async Task SendClassifications() => await Clients.All.SendAsync("ReceiveClassifications",_classes.ReadAll());
-        public async Task CreateClassification(Classification classification)
+        public async Task CreateClassification(string name)
         {
-            if(_classes.Create(classification)>0)
+            if(_classes.Create(new Classification(){Name = name})>0)
                 await SendClassifications();
         }
         public async Task GetClassifications()
@@ -199,6 +194,11 @@ namespace BrickABracket.Hubs
         #endregion
         // Tournament running
         #region Run Tournaments
+        public async Task SetActiveTournament(int id)
+        {
+            _runner.Tournament = _tournaments.Read(id);
+            await SendTournaments();
+        }
         public async Task GenerateCategories()
         {
             _runner.GenerateCategories();
