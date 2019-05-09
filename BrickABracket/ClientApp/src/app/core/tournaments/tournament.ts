@@ -1,18 +1,20 @@
-class Tournament {
-    public Categories: Category[];
-    public MocIds: number[];
-    public TournamentType: string;
-    public Name: string;
-    public _id: number;
+import {Category} from './category';
+
+export class Tournament {
+    Categories: Array<Category>;
+    MocIds: Array<number>;
+    TournamentType: string;
+    Name: string;
+    _id: number;
 }
-class TournamentSummary {
-    public TournamentType: string;
-    public Name: string;
-    public _id: number;
+export interface TournamentSummary {
+    TournamentType: string;
+    Name: string;
+    _id: number;
 }
-class TournamentMetadata {
-    public Tournament: Tournament;
-    public CategoryIndex: number;
-    public RoundIndex: number;
-    public MatchIndex: number;
+export interface TournamentMetadata {
+    Tournament: Tournament;
+    CategoryIndex: number;
+    RoundIndex: number;
+    MatchIndex: number;
 }

@@ -1,13 +1,13 @@
-class Match {
-    public MocIds: number[];
-    public Results: MatchResult[];
+export interface Match {
+    MocIds: Array<number>;
+    Results: Array<MatchResult>;
 }
 
-class MatchResult {
-    public Scores: Score[];
+export interface MatchResult {
+    Scores: Array<Score>;
 }
 
-class Score {
-    public Player: number;
-    public Time: number;
+export interface Score {
+    Player: number;
+    Time: number;
 }

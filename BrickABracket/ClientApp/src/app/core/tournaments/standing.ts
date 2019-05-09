@@ -1,7 +1,7 @@
-class Standing {
-    public MocId: number;
-    public Place: number;
-    public Score: number;
-    public TotalTime: number;
-    public AverageTime: number;
+export interface Standing {
+    MocId: number;
+    Place: number;
+    Score: number;
+    TotalTime: number;
+    AverageTime: number;
 }

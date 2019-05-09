@@ -1,7 +1,10 @@
-class Category {
-    public Name: string;
-    public ClassificationId: number;
-    public Rounds: Round[];
-    public MocIds: number[];
-    public Standings: Standing[];
+import {Round} from './round';
+import {Standing} from './standing';
+
+export interface Category {
+    Name: string;
+    ClassificationId: number;
+    Rounds: Array<Round>;
+    MocIds: Array<number>;
+    Standings: Array<Standing>;
 }

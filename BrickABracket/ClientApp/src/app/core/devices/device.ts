@@ -1,23 +1,25 @@
-class Device {
-    public Connected: boolean;
-    public Connection: string;
-    public BatteryLevel: number;
-    public BrickName: string;
-    public Program: string;
-    public Programs: string[];
+export interface Device {
+    Connected: boolean;
+    Connection: string;
+    BatteryLevel: number;
+    BrickName: string;
+    Program: string;
+    Programs: Array<string>;
 }
-class DeviceMetadata {
-    public Device: Device;
-    public Role: DeviceRole;
-    public ConnectionString: string;
-    public Program: string;
+export interface DeviceMetadata {
+    Device: Device;
+    Role: DeviceRole;
+    ConnectionString: string;
+    Program: string;
 }
-enum DeviceRole {
+export enum DeviceRole {
     None = 0,
+    // tslint:disable:no-bitwise
     StatusProvider = 1 << 0,
     StatusFollower = 1 << 1,
     ScoreProvider = 1 << 2,
     StartButton = StatusProvider | StatusFollower,
     Timer = StatusFollower | ScoreProvider,
     All = StatusFollower | StatusProvider | ScoreProvider
+    // tslint:enable:no-bitwise
 }

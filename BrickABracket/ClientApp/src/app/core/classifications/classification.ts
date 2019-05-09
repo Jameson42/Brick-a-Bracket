@@ -1,4 +1,4 @@
-class Classification {
-    public Name: string;
-    public _id: number;
+export class Classification {
+    Name: string;
+    _id: number;
 }
