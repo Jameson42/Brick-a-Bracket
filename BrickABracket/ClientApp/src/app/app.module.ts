@@ -24,6 +24,7 @@ import { ConnectionResolver } from './core/signalr-connection.resolver';
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
+    // TODO: Switch out app-routing module
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full',
         resolve: {connection: ConnectionResolver} },
