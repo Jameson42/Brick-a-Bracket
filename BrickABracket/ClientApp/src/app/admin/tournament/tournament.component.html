@@ -1,3 +1,18 @@
-<p>
-  tournament works!
-</p>
+<form *ngIf="(tournament$ | async) as tournament">
+  <div class="form-group">
+    <label for="tournamentName">Tournament Name</label>
+    <input type="text" id="tournamentName" class="form-control" 
+      [(ngModel)]="tournament.name" name="tournamentName">
+  </div>
+  <div class="form-group">
+    <label for="tournamentType">Tournament Type (change to dropdown)</label>
+    <input type="text" id="tournamentType" class="form-control" 
+      [(ngModel)]="tournament.tournamentType" name="tournamentType">
+  </div>
+  <div class="form-group">
+      <label for="tournamentId">ID</label>
+      <input type="text" id="tournamentId" class="form-control" readonly  
+        [(ngModel)]="tournament._id" name="tournamentId">
+    </div>
+  <button type="submit" class="btn btn-primary" (click)="save(tournament)">Save</button>
+</form>

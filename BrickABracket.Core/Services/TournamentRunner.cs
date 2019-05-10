@@ -48,8 +48,8 @@ namespace BrickABracket.Core.Services
                 if (_tournament==null)
                     return;
                 _strategy = _tournamentStrategies
-                    .First(ts => (string)ts.Metadata["Type"] == _tournament.TournamentType)
-                    .Value(_tournament);
+                    .FirstOrDefault(ts => (string)ts.Metadata["Type"] == _tournament.TournamentType)
+                    ?.Value(_tournament);
             }
         }
         public int CategoryIndex

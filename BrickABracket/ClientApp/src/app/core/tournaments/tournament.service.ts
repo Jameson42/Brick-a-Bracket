@@ -29,7 +29,7 @@ export class TournamentService {
 
     get tournament(): Observable<Tournament> {
         return this.metadata.pipe(
-            map(tm => tm.Tournament),
+            map(tm => tm.tournament),
             shareReplay(1)
         );
     }

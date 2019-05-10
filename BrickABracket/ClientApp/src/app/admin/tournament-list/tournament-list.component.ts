@@ -16,6 +16,7 @@ export class TournamentListComponent implements OnInit {
 
   ngOnInit() {
     this.summaries$ = this.tournaments.summaries;
+    this.summaries$.subscribe(console.log);
   }
 
 }

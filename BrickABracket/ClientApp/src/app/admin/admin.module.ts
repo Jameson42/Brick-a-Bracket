@@ -11,10 +11,12 @@ import { MocComponent } from './moc/moc.component';
 import { MocListComponent } from './moc-list/moc-list.component';
 import { CompetitorComponent } from './competitor/competitor.component';
 import { CompetitorListComponent } from './competitor-list/competitor-list.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     AdminRoutingModule
   ],
   declarations: [

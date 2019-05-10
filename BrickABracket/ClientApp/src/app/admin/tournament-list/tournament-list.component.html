@@ -1,14 +1,16 @@
-<a class="btn btn-outline-success btn-sm float-left" routerLink="/admin/0">
-  <i class="fas fa-plus"></i>
-</a>
+<div class="d-flex mb-1">
+  <a class="btn btn-outline-success btn-sm float-left" routerLink="/admin/tournament/new">
+    <i class="fas fa-plus"></i> Add new tournament
+  </a>
+</div>
 <div *ngIf="(summaries$ | async) as summaries" class="list-group">
   <ng-container *ngFor="let tournament of summaries">
-    <a href="#" class="list-group-item list-group-item-action">
+    <a class="list-group-item list-group-item-action" routerLink="/admin/tournament/{{tournament._id}}">
       <div class="d-flex w-100 justify-content-between">
-        <h5 class="mb-1">{{ tournament.Name }}</h5>
+        <h5 class="mb-1">{{ tournament.name }}</h5>
         <small>{{ tournament._id }}</small>
       </div>
-      <small>{{ tournament.TournamentType }}</small>
+      <small>{{ tournament.tournamentType }}</small>
     </a>
   </ng-container>
 </div>
