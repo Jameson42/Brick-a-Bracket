@@ -12,7 +12,7 @@ export class CompetitorService {
     constructor(private _signalR: SignalrService) { }
 
     get competitors(): Observable<Array<Competitor>> {
-        if !this.competitors$) {
+        if (!this.competitors$) {
             this.competitors$ = this._signalR.invokeAndListenFor('GetCompetitors', 'ReceiveCompetitors');
         }
         return this.competitors$;
