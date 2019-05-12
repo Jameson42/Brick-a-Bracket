@@ -16,7 +16,9 @@ export class TournamentListComponent implements OnInit {
 
   ngOnInit() {
     this.summaries$ = this.tournaments.summaries;
-    this.summaries$.subscribe(console.log);
   }
 
+  delete(id:number) {
+    this.tournaments.delete(id);
+  }
 }

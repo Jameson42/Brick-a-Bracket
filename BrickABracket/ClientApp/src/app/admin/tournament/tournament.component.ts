@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Tournament } from 'src/app/core/tournaments/tournament';
+import { Tournament } from '../../core/tournaments/tournament';
 import { Observable } from 'rxjs';
-import { TournamentService } from 'src/app/core/tournaments/tournament.service';
+import { TournamentService } from '../../core/tournaments/tournament.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({

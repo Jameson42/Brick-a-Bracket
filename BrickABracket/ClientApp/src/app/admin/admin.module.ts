@@ -12,6 +12,7 @@ import { MocListComponent } from './moc-list/moc-list.component';
 import { CompetitorComponent } from './competitor/competitor.component';
 import { CompetitorListComponent } from './competitor-list/competitor-list.component';
 import { FormsModule } from '@angular/forms';
+import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 
 @NgModule({
   imports: [
@@ -29,6 +30,7 @@ import { FormsModule } from '@angular/forms';
     MocListComponent,
     CompetitorComponent,
     CompetitorListComponent,
+    BreadcrumbComponent,
   ]
 })
 export class AdminModule { }

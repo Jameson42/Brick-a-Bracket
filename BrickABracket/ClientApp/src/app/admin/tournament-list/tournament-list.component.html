@@ -1,4 +1,5 @@
-<div class="d-flex mb-1">
+<breadcrumb></breadcrumb>
+<div class="d-flex mb-2">
   <a class="btn btn-outline-success btn-sm float-left" routerLink="/admin/tournament/new">
     <i class="fas fa-plus"></i> Add new tournament
   </a>
@@ -10,7 +11,12 @@
         <h5 class="mb-1">{{ tournament.name }}</h5>
         <small>{{ tournament._id }}</small>
       </div>
-      <small>{{ tournament.tournamentType }}</small>
+      <small class="badge badge-primary text-capitalize">
+        {{ tournament.tournamentType }}
+      </small>
+      <a class="btn btn-danger btn-sm float-right" (click)="delete(tournament._id)" routerLink="/admin">
+        <i class="far fa-trash-alt"></i>
+      </a>
     </a>
   </ng-container>
 </div>
