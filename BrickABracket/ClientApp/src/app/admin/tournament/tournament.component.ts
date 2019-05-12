@@ -32,6 +32,7 @@ export class TournamentComponent implements OnInit {
       } else {
         if (path !== 'tournament') {
           this.tournaments.setActive(Number(path));
+        }
         this.tournament$ = this.tournaments.tournament;
       }
     });
