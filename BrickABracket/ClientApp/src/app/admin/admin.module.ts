@@ -13,6 +13,10 @@ import { CompetitorComponent } from './competitor/competitor.component';
 import { CompetitorListComponent } from './competitor-list/competitor-list.component';
 import { FormsModule } from '@angular/forms';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import { HomeComponent } from './home/home.component';
+import { DeviceListComponent } from './device-list/device-list.component';
+import { DeviceComponent } from './device/device.component';
+import { ClassificationListComponent } from './classification-list/classification-list.component';
 
 @NgModule({
   imports: [
@@ -31,6 +35,10 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
     CompetitorComponent,
     CompetitorListComponent,
     BreadcrumbComponent,
+    HomeComponent,
+    DeviceListComponent,
+    DeviceComponent,
+    ClassificationListComponent,
   ]
 })
 export class AdminModule { }
