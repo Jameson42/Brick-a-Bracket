@@ -1,7 +1,7 @@
 export class Moc {
-    Name: string;
-    ClassificationId: number;
-    CompetitorId: number;
-    Weight: number;
+    name: string;
+    classificationId: number;
+    competitorId: number;
+    weight: number;
     _id: number;
 }

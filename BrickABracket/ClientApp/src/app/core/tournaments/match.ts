@@ -1,13 +1,13 @@
 export interface Match {
-    MocIds: Array<number>;
-    Results: Array<MatchResult>;
+    mocIds: Array<number>;
+    results: Array<MatchResult>;
 }
 
 export interface MatchResult {
-    Scores: Array<Score>;
+    scores: Array<Score>;
 }
 
 export interface Score {
-    Player: number;
-    Time: number;
+    player: number;
+    time: number;
 }

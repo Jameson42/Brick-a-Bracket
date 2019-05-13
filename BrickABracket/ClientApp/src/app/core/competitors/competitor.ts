@@ -1,6 +1,6 @@
 export class Competitor {
-    FirstName: string;
-    LastName: string;
-    Name: string;
+    firstName: string;
+    lastName: string;
+    name: string;
     _id: number;
 }

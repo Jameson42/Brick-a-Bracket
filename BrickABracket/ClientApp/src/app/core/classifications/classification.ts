@@ -1,4 +1,4 @@
 export class Classification {
-    Name: string;
+    name: string;
     _id: number;
 }

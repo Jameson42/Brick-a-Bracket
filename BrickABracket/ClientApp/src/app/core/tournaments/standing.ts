@@ -1,7 +1,7 @@
 export interface Standing {
-    MocId: number;
-    Place: number;
-    Score: number;
-    TotalTime: number;
-    AverageTime: number;
+    mocId: number;
+    place: number;
+    score: number;
+    totalTime: number;
+    averageTime: number;
 }
