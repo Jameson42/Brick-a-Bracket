@@ -2,9 +2,9 @@ import {Round} from './round';
 import {Standing} from './standing';
 
 export interface Category {
-    Name: string;
-    ClassificationId: number;
-    Rounds: Array<Round>;
-    MocIds: Array<number>;
-    Standings: Array<Standing>;
+    name: string;
+    classificationId: number;
+    rounds: Array<Round>;
+    mocIds: Array<number>;
+    standings: Array<Standing>;
 }

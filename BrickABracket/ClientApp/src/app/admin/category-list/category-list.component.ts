@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { TournamentService } from 'src/app/core/tournaments/tournament.service';
+import { Observable } from 'rxjs';
+import { Category } from 'src/app/core/tournaments/category';
+import { map } from 'rxjs/operators';
+import { ClassificationService } from 'src/app/core/classifications/classification.service';
 
 @Component({
   selector: 'app-category-list',
@@ -7,9 +12,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoryListComponent implements OnInit {
 
-  constructor() { }
+  private categories$: Observable<Array<Category>>;
+
+  constructor(
+    private tournaments: TournamentService,
+    private classifications: ClassificationService
+    ) { }
 
   ngOnInit() {
+    this.categories$ = this.tournaments.tournament.pipe(
+      map(t => t.categories)
+    );
+  }
+
+  generateCategories() {
+    return this.tournaments.generateCategories();
   }
 
 }

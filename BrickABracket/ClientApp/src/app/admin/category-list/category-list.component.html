@@ -1,3 +1,14 @@
-<p>
-  category-list works!
-</p>
+<div class="d-flex mb-2">
+    <a class="btn btn-outline-success btn-sm float-left" routerLink="" (click)="generateCategories()">
+      <i class="fas fa-sync-alt"></i> Generate categories
+    </a>
+  </div>
+  <div *ngIf="(categories$ | async) as categories" class="list-group">
+    <ng-container *ngFor="let category of categories; let i = index">
+      <a class="list-group-item list-group-item-action" routerLink="/admin/tournament/category/{{i}}">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">{{ category.name }}</h5>
+        </div>
+      </a>
+    </ng-container>
+  </div>

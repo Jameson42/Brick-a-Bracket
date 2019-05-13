@@ -26,7 +26,7 @@ export class DeviceComponent implements OnInit {
     this.device$ = this.route.paramMap.pipe(
       tap(params => {
         this.connection = params.get('id');
-        this.isNew = this.connection === 'new';
+        this.isNew = !this.connection;
       }),
       switchMap(_ => {
         if (this.isNew) {

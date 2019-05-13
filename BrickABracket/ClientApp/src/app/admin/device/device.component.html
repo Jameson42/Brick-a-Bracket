@@ -1,18 +1,34 @@
 <form *ngIf="(device$ | async) as device">
-  <div class="form-group">
-    <label for="connectionString">Connection String</label>
-    <input type="text" id="connectionString" class="form-control" 
-      [(ngModel)]="device.connectionString" name="connectionString">
+  <div class="form-group row">
+    <label for="connectionString" class="col-sm-4 col-form-label">Connection String</label>
+    <div class="col-sm-8">
+      <input type="text" id="connectionString" class="form-control" 
+        [(ngModel)]="device.connectionString" name="connectionString">
+    </div>
   </div>
-  <div class="form-group">
-    <label for="deviceRole">Device Role (change to dropdown or checkbox)</label>
-    <input type="text" id="deviceRole" class="form-control" 
-      [(ngModel)]="device.deviceRole" name="deviceRole">
+  <div class="form-group row">
+    <label for="deviceRole" class="col-sm-4 col-form-label">Device Role</label>
+    <div class="col-sm-8">
+      <select class="form-control" name="deviceRole" id="deviceRole" [(ngModel)]="device.deviceRole">
+        <option value="none">None</option>
+        <option value="statusProvider">Status Provider</option>
+        <option value="statusFollower">Status Follower</option>
+        <option value="scoreProvider">Score Provider</option>
+        <option value="startButton">Start Button</option>
+        <option value="timer">Timer</option>
+        <option value="all">All</option>
+      </select>
+    </div>
   </div>
-  <div class="form-group">
-      <label for="program">Program</label>
+  <div class="form-group row">
+    <label for="program" class="col-sm-4 col-form-label">Program</label>
+    <div class="col-sm-5">
       <input type="text" id="program" class="form-control"  
         [(ngModel)]="device.program" name="program">
     </div>
-  <button type="submit" class="btn btn-primary" (click)="save(device)">Save</button>
+    <div class="col-sm-1">&nbsp;</div>
+    <div class="col-sm-2">
+      <button type="submit" class="btn btn-primary" (click)="save(device)">Save</button>
+    </div>
+  </div>
 </form>

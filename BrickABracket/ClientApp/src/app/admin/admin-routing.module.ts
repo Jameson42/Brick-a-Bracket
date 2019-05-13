@@ -13,25 +13,33 @@ import { DeviceListComponent } from './device-list/device-list.component';
 import { DeviceComponent } from './device/device.component';
 import { CompetitorComponent } from './competitor/competitor.component';
 import { LayoutComponent } from './layout/layout.component';
+import { MatchComponent } from './match/match.component';
+import { RoundComponent } from './round/round.component';
+import { CategoryComponent } from './category/category.component';
 
 const routes: Routes = [
   { path: '', component: LayoutComponent, children: [
     { path: '', component: HomeComponent },
-    { path: 'tournament', component: TournamentListComponent },
+    { path: 'tournament/category/round/match/:id', component: MatchComponent },
+    { path: 'tournament/category/round/:id', component: RoundComponent },
+    { path: 'tournament/category/:id', component: CategoryComponent },
+    { path: 'tournament/moc/new', component: MocComponent },
+    { path: 'tournament/moc/:id', component: MocComponent },
     { path: 'tournament/new', component: TournamentComponent },
     { path: 'tournament/:id', component: TournamentComponent },
-    { path: 'competitor', component: CompetitorListComponent },
+    { path: 'tournament', component: TournamentListComponent },
     { path: 'competitor/new', component: CompetitorComponent },
     { path: 'competitor/:id', component: CompetitorComponent },
-    { path: 'moc', component: MocListComponent },
+    { path: 'competitor', component: CompetitorListComponent },
     { path: 'moc/new', component: MocComponent },
     { path: 'moc/:id', component: MocComponent },
-    { path: 'classification', component: ClassificationListComponent },
+    { path: 'moc', component: MocListComponent },
     { path: 'classification/new', component: ClassificationComponent },
     { path: 'classification/:id', component: ClassificationComponent },
-    { path: 'device', component: DeviceListComponent },
+    { path: 'classification', component: ClassificationListComponent },
     { path: 'device/new', component: DeviceComponent },
     { path: 'device/:id', component: DeviceComponent },
+    { path: 'device', component: DeviceListComponent },
   ] },
 ];
 

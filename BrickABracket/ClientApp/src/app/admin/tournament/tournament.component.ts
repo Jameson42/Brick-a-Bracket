@@ -35,6 +35,7 @@ export class TournamentComponent implements OnInit {
             observer.complete();
           });
         }
+        this.tournaments.setActive(this.id);
         return this.tournaments.tournament;
       })
     );
