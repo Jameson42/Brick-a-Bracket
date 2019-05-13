@@ -3,7 +3,7 @@ import { DeviceService } from 'src/app/core/devices/device.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Device, DeviceMetadata } from 'src/app/core/devices/device';
-import { create } from 'domain';
+import { tap, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-device',
@@ -14,6 +14,7 @@ export class DeviceComponent implements OnInit {
 
   private device$: Observable<DeviceMetadata>;
   private isNew: boolean;
+  private connection: string;
 
   constructor(
     private devices: DeviceService,
@@ -22,21 +23,24 @@ export class DeviceComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.url.subscribe(e => {
-      const path = e[e.length - 1].path;
-      this.isNew = path === 'new';
-      if (this.isNew) {
-        this.device$ = Observable.create(observer => {
-          observer.next(new DeviceMetadata());
-          observer.complete();
-        });
-      } else {
-        this.device$ = this.devices.get(path);
-      }
-    });
+    this.device$ = this.route.paramMap.pipe(
+      tap(params => {
+        this.connection = params.get('id');
+        this.isNew = this.connection === 'new';
+      }),
+      switchMap(_ => {
+        if (this.isNew) {
+          return Observable.create(observer => {
+            observer.next(new DeviceMetadata());
+            observer.complete();
+          });
+        }
+        return this.devices.get(this.connection);
+      })
+    );
   }
 
-  save(deviceData:DeviceMetadata, type:string) {
+  save(deviceData: DeviceMetadata, type: string) {
     if (this.isNew) {
       this.create(deviceData.connectionString, deviceData.program, type, deviceData.role);
     } else {
@@ -45,15 +49,15 @@ export class DeviceComponent implements OnInit {
     }
   }
 
-  create(connection:string, program:string, type:string, role:string) {
+  create(connection: string, program: string, type: string, role: string) {
     return this.devices.create(connection, program, type, role);
   }
 
-  setRole(connection:string, role:string) {
+  setRole(connection: string, role: string) {
     return this.devices.setRole(connection, role);
   }
 
-  setProgram(connection:string, program:string) {
+  setProgram(connection: string, program: string) {
     return this.devices.setProgram(connection, program);
   }
 }

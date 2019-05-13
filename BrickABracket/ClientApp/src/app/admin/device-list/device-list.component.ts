@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DeviceService } from 'src/app/core/devices/device.service';
-import { Device } from 'src/app/core/devices/device';
+import { Device, DeviceMetadata } from 'src/app/core/devices/device';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 })
 export class DeviceListComponent implements OnInit {
 
-  private devices$: Observable<Array<Device>;
+  private devices$: Observable<Array<DeviceMetadata>>;
 
   constructor(private devices: DeviceService) { }
 
@@ -18,7 +18,7 @@ export class DeviceListComponent implements OnInit {
     this.devices$ = this.devices.devices;
   }
 
-  delete(connection:string) {
+  delete(connection: string) {
     this.devices.delete(connection);
   }
 

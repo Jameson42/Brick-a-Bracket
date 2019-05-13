@@ -6,8 +6,13 @@
   </div>
   <div class="form-group">
     <label for="tournamentType">Tournament Type (change to dropdown)</label>
-    <input type="text" id="tournamentType" class="form-control" 
-      [(ngModel)]="tournament.tournamentType" name="tournamentType">
+    <select class="form-control" id="tournamentType" 
+      [(ngModel)]="tournament.tournamentType"  name="tournamentType">
+      <option>derby</option>
+      <option>roundrobin</option>
+      <option>singleelimination</option>
+      <option>swisssystem</option>
+    </select>
   </div>
   <div class="form-group">
       <label for="tournamentId">ID</label>

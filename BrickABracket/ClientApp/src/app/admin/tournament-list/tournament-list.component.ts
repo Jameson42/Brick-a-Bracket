@@ -18,7 +18,7 @@ export class TournamentListComponent implements OnInit {
     this.summaries$ = this.tournaments.summaries;
   }
 
-  delete(id:number) {
+  delete(id: number) {
     this.tournaments.delete(id);
   }
 }

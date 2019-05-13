@@ -8,7 +8,7 @@ export interface Device {
 }
 export class DeviceMetadata {
     device: Device;
-    role: DeviceRole;
+    role: string;
     connectionString: string;
     program: string;
 }

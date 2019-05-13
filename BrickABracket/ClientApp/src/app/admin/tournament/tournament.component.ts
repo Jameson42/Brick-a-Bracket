@@ -3,6 +3,7 @@ import { Tournament } from '../../core/tournaments/tournament';
 import { Observable } from 'rxjs';
 import { TournamentService } from '../../core/tournaments/tournament.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { switchMap, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-tournament',
@@ -13,6 +14,7 @@ export class TournamentComponent implements OnInit {
 
   private tournament$: Observable<Tournament>;
   private isNew: boolean;
+  private id: number;
 
   constructor(
     private tournaments: TournamentService,
@@ -21,19 +23,21 @@ export class TournamentComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.route.url.subscribe(e => {
-      const path = e[e.length - 1].path;
-      this.isNew = path === 'new';
-      if (this.isNew) {
-        this.tournament$ = Observable.create(observer => {
-          observer.next(new Tournament());
-          observer.complete();
-        });
-      } else {
-        this.tournaments.setActive(Number(path));
-        this.tournament$ = this.tournaments.tournament;
-      }
-    });
+    this.tournament$ = this.route.paramMap.pipe(
+      tap(params => {
+        this.id = Number(params.get('id'));
+        this.isNew = this.id <= 0;
+      }),
+      switchMap(_ => {
+        if (this.isNew) {
+          return Observable.create(observer => {
+            observer.next(new Tournament());
+            observer.complete();
+          });
+        }
+        return this.tournaments.tournament;
+      })
+    );
   }
 
   save(tournament: Tournament) {
