@@ -31,4 +31,4 @@
   </div>
 </form>
 <app-category-list *ngIf="!isNew"></app-category-list>
-<app-moc-list *ngIf="!isNew"></app-moc-list>
+<app-moc-list *ngIf="!isNew && id" [tournamentId]="id"></app-moc-list>
