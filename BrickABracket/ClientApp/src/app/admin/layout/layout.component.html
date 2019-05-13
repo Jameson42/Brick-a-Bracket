@@ -3,10 +3,10 @@
   <div class="col" [@fadeAnimation]="getRouterOutletState(o)">
     <router-outlet #o="outlet"></router-outlet>
   </div>
-  <div class="col" [@fadeAnimation]="getRouterOutletState(s)">
+  <div class="col d-none d-md-block" [@fadeAnimation]="getRouterOutletState(s)">
     <router-outlet name="second" #s="outlet"></router-outlet>
   </div>
-  <div class="col" [@fadeAnimation]="getRouterOutletState(t)">
+  <div class="col d-none d-lg-block" [@fadeAnimation]="getRouterOutletState(t)">
     <router-outlet name="third" #t="outlet"></router-outlet>
   </div>
 </div>
