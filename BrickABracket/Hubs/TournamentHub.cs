@@ -47,20 +47,21 @@ namespace BrickABracket.Hubs
                 Clients.All.SendAsync("ReceiveTournamentSummaries", _tournaments.ReadAllSummaries())
             );
         } 
-        public async Task CreateTournament(string name, string type)
+        public async Task<int> CreateTournament(string name, string type)
         {
             var tournament = new Tournament(){
                 Name = name,
                 TournamentType = type
             };
-            await CreateTournament(tournament);
+            return await CreateTournament(tournament);
         }
-        private async Task CreateTournament(Tournament t)
+        private async Task<int> CreateTournament(Tournament t)
         {
             var id = _tournaments.Create(t);
             var tournament = _tournaments.Read(id);
             _runner.Tournament = tournament;
             await SendTournaments();
+            return id;
         }
         public async Task GetTournament()
         {

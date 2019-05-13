@@ -44,8 +44,8 @@ export class TournamentComponent implements OnInit {
   save(tournament: Tournament) {
     if (this.isNew) {
       this.tournaments.create(tournament.name, tournament.tournamentType)
-        .then(_ => {
-          this.router.navigate(['/admin/tournament']);
+        .then(result => {
+          this.router.navigate(['/admin/tournament', { id: result }]);
       });
     } else {
       this.tournaments.update(tournament);
