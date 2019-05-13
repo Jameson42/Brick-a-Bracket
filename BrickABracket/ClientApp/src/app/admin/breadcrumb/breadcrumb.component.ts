@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 
 class BreadcrumbLink {
   public route: string;
@@ -14,19 +14,28 @@ class BreadcrumbLink {
 export class BreadcrumbComponent implements OnInit {
   private links: Array<BreadcrumbLink>;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(
+    private router: Router
+    ) { }
 
   ngOnInit() {
-    this.route.url.subscribe(e => {
-      const length = e.length;
-      this.links = new Array<BreadcrumbLink>();
-      for (var i=0;i<length;i++) {
-        this.links.push({
-          route: e.slice(0,i+1).map(u => u.path).join('/'),
-          name: e[i].path
-        });
+    this.processUrl(this.router.url);
+    this.router.events.subscribe(e => {
+      if (e instanceof NavigationEnd) {
+        this.processUrl(e.urlAfterRedirects);
       }
     });
   }
 
+  processUrl(url:string) {
+    const urlParts = url.substr(1).split('/');
+    const length = urlParts.length;
+    this.links = new Array<BreadcrumbLink>();
+    for (var i=0;i<length;i++) {
+      this.links.push({
+        route: urlParts.slice(0,i+1).join('/'),
+        name: urlParts[i]
+      });
+    }
+  }
 }

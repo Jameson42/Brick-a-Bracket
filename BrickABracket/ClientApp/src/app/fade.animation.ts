@@ -13,7 +13,7 @@ export const fadeAnimation =
                 position: 'absolute',
                 width: 'calc(100% - 30px)'
               })
-            ]),
+            ], { optional: true }),
 
             query(':enter', 
                 [

@@ -1,13 +1,8 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item">
-      <a routerLink="/admin">Admin</a>
-    </li>
     <ng-container *ngFor="let link of links; last as isLast">
       <li class="breadcrumb-item" [class.active]="isLast">
-        <a *ngIf="!isLast" routerLink="/admin/{{link.route}}" class="text-capitalize">
-          {{link.name}}
-        </a>
+        <a *ngIf="!isLast" routerLink="/{{link.route}}" class="text-capitalize">{{link.name}}</a>
         <span *ngIf="isLast" class="text-capitalize">{{link.name}}</span>
       </li>
     </ng-container>

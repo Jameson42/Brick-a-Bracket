@@ -17,6 +17,7 @@ import { HomeComponent } from './home/home.component';
 import { DeviceListComponent } from './device-list/device-list.component';
 import { DeviceComponent } from './device/device.component';
 import { ClassificationListComponent } from './classification-list/classification-list.component';
+import { LayoutComponent } from './layout/layout.component';
 
 @NgModule({
   imports: [
@@ -39,6 +40,7 @@ import { ClassificationListComponent } from './classification-list/classificatio
     DeviceListComponent,
     DeviceComponent,
     ClassificationListComponent,
+    LayoutComponent,
   ]
 })
 export class AdminModule { }

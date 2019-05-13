@@ -1,0 +1,12 @@
+<breadcrumb></breadcrumb>
+<div class="row">
+  <div class="col" [@fadeAnimation]="getRouterOutletState(o)">
+    <router-outlet #o="outlet"></router-outlet>
+  </div>
+  <div class="col" [@fadeAnimation]="getRouterOutletState(s)">
+    <router-outlet name="second" #s="outlet"></router-outlet>
+  </div>
+  <div class="col" [@fadeAnimation]="getRouterOutletState(t)">
+    <router-outlet name="third" #t="outlet"></router-outlet>
+  </div>
+</div>

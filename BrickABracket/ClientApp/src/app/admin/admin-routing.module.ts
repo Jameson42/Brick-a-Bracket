@@ -12,24 +12,27 @@ import { ClassificationListComponent } from './classification-list/classificatio
 import { DeviceListComponent } from './device-list/device-list.component';
 import { DeviceComponent } from './device/device.component';
 import { CompetitorComponent } from './competitor/competitor.component';
+import { LayoutComponent } from './layout/layout.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'tournament', component: TournamentListComponent },
-  { path: 'tournament/new', component: TournamentComponent },
-  { path: 'tournament/:id', component: TournamentComponent },
-  { path: 'competitor', component: CompetitorListComponent },
-  { path: 'competitor/new', component: CompetitorComponent },
-  { path: 'competitor/:id', component: CompetitorComponent },
-  { path: 'moc', component: MocListComponent },
-  { path: 'moc/new', component: MocComponent },
-  { path: 'moc/:id', component: MocComponent },
-  { path: 'classification', component: ClassificationListComponent },
-  { path: 'classification/new', component: ClassificationComponent },
-  { path: 'classification/:id', component: ClassificationComponent },
-  { path: 'device', component: DeviceListComponent },
-  { path: 'device/new', component: DeviceComponent },
-  { path: 'device/:id', component: DeviceComponent },
+  { path: '', component: LayoutComponent, children: [
+    { path: '', component: HomeComponent },
+    { path: 'tournament', component: TournamentListComponent },
+    { path: 'tournament/new', component: TournamentComponent },
+    { path: 'tournament/:id', component: TournamentComponent },
+    { path: 'competitor', component: CompetitorListComponent },
+    { path: 'competitor/new', component: CompetitorComponent },
+    { path: 'competitor/:id', component: CompetitorComponent },
+    { path: 'moc', component: MocListComponent },
+    { path: 'moc/new', component: MocComponent },
+    { path: 'moc/:id', component: MocComponent },
+    { path: 'classification', component: ClassificationListComponent },
+    { path: 'classification/new', component: ClassificationComponent },
+    { path: 'classification/:id', component: ClassificationComponent },
+    { path: 'device', component: DeviceListComponent },
+    { path: 'device/new', component: DeviceComponent },
+    { path: 'device/:id', component: DeviceComponent },
+  ] },
 ];
 
 @NgModule({
