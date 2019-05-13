@@ -1,16 +1,16 @@
 export interface Device {
-    Connected: boolean;
-    Connection: string;
-    BatteryLevel: number;
-    BrickName: string;
-    Program: string;
-    Programs: Array<string>;
+    connected: boolean;
+    connection: string;
+    batteryLevel: number;
+    brickName: string;
+    program: string;
+    programs: Array<string>;
 }
-export interface DeviceMetadata {
-    Device: Device;
-    Role: DeviceRole;
-    ConnectionString: string;
-    Program: string;
+export class DeviceMetadata {
+    device: Device;
+    role: DeviceRole;
+    connectionString: string;
+    program: string;
 }
 export enum DeviceRole {
     None = 0,

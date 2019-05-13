@@ -2,25 +2,25 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 
-import {Device} from './device';
+import {Device, DeviceMetadata} from './device';
 import {SignalrService} from '../signalr.service';
 
 @Injectable()
 export class DeviceService {
-    private devices$: Observable<Array<Device>>;
+    private devices$: Observable<Array<DeviceMetadata>>;
 
     constructor(private _signalR: SignalrService) { }
 
-    get devices(): Observable<Array<Device>> {
+    get devices(): Observable<Array<DeviceMetadata>> {
         if (!this.devices$) {
-            this.devices$ = this._signalR.invokeAndListenFor<Array<Device>>('GetDevices', 'ReceiveDevices');
+            this.devices$ = this._signalR.invokeAndListenFor<Array<DeviceMetadata>>('GetDevices', 'ReceiveDevices');
         }
         return this.devices$;
     }
 
-    get(connection: string): Observable<Device> {
+    get(connection: string): Observable<DeviceMetadata> {
         return this.devices.pipe(
-            map(deviceArray => deviceArray.filter(d => d.Connection === connection)[0]),
+            map(deviceArray => deviceArray.filter(d => d.connectionString === connection)[0]),
             shareReplay(1)
         );
     }

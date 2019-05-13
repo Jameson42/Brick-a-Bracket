@@ -1,3 +1,22 @@
-<p>
-  device-list works!
-</p>
+<breadcrumb></breadcrumb>
+<div class="d-flex mb-2">
+    <a class="btn btn-outline-success btn-sm float-left" routerLink="/admin/device/new">
+      <i class="fas fa-plus"></i> Add new device
+    </a>
+  </div>
+  <div *ngIf="(devices$ | async) as devices" class="list-group">
+    <ng-container *ngFor="let deviceData of devices">
+      <a class="list-group-item list-group-item-action" routerLink="/admin/device/{{deviceData.connectionString}}">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">{{ deviceData.device.brickName }}</h5>
+          <small>{{ deviceData.device.batteryLevel }}</small>
+        </div>
+        <small class="badge badge-primary">
+          {{ deviceData.connectionString }}
+        </small>
+        <a class="btn btn-danger btn-sm float-right" (click)="delete(deviceData.connectionString)" routerLink="/admin/device">
+          <i class="far fa-trash-alt"></i>
+        </a>
+      </a>
+    </ng-container>
+  </div>

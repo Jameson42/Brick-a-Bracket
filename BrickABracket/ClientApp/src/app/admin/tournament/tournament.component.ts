@@ -30,9 +30,7 @@ export class TournamentComponent implements OnInit {
           observer.complete();
         });
       } else {
-        if (path !== 'tournament') {
-          this.tournaments.setActive(Number(path));
-        }
+        this.tournaments.setActive(Number(path));
         this.tournament$ = this.tournaments.tournament;
       }
     });
