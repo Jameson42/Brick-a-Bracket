@@ -43,6 +43,8 @@ namespace BrickABracket.Core.Services
             get => _tournament;
             set
             {
+                if (_tournament == value)
+                    return;
                 _tournament = value;
                 CategoryIndex = DEFAULTINDEX;
                 if (_tournament==null)
@@ -57,6 +59,8 @@ namespace BrickABracket.Core.Services
             get => _categoryIndex;
             set
             {
+                if (_categoryIndex == value)
+                    return;
                 if (value < -1 || value >= (Tournament?.Categories?.Count ?? 0))
                     return;
                 _categoryIndex = value;
@@ -68,6 +72,8 @@ namespace BrickABracket.Core.Services
             get => _roundIndex;
             set
             {
+                if (_roundIndex == value)
+                    return;
                 if (value < -1 || value >= (Category?.Rounds?.Count ?? 0))
                     return;
                 _roundIndex = value;
@@ -79,6 +85,8 @@ namespace BrickABracket.Core.Services
             get => _matchIndex;
             set
             {
+                if (_matchIndex == value)
+                    return;
                 if (value < -1 || value >= (Round?.Matches?.Count ?? 0))
                     return;
                 _matchIndex = value;
