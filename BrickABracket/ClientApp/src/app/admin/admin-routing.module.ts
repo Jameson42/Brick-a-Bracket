@@ -23,6 +23,7 @@ const routes: Routes = [
     { path: 'tournament/category/round/match/:id', component: MatchComponent },
     { path: 'tournament/category/round/:id', component: RoundComponent },
     { path: 'tournament/category/:id', component: CategoryComponent },
+    { path: 'tournament/moc', redirectTo: 'tournament/0', pathMatch: 'full' },
     { path: 'tournament/moc/new', component: MocComponent },
     { path: 'tournament/moc/:id', component: MocComponent },
     { path: 'tournament/new', component: TournamentComponent },

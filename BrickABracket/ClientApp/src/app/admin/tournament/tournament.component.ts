@@ -26,9 +26,14 @@ export class TournamentComponent implements OnInit {
     this.tournament$ = this.route.paramMap.pipe(
       tap(params => {
         this.id = Number(params.get('id'));
-        this.isNew = this.id <= 0;
+        this.isNew = this.id < 0;
       }),
       switchMap(_ => {
+        if (this.id === 0) {
+          return this.tournaments.tournament.pipe(
+            tap(t => this.router.navigate(['/admin/tournament/' + t._id], { replaceUrl: true }))
+          );
+        }
         if (this.isNew) {
           return new Observable<Tournament>(
             (observer: Observer<Tournament>) => {
@@ -36,7 +41,9 @@ export class TournamentComponent implements OnInit {
             observer.complete();
           });
         }
-        this.tournaments.setActive(this.id);
+        if (this.id) {
+          this.tournaments.setActive(this.id);
+        }
         return this.tournaments.tournament;
       })
     );

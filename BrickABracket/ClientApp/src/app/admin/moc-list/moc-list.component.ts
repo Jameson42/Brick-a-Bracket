@@ -4,6 +4,7 @@ import { Observable, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Moc } from 'src/app/core/mocs/moc';
 import { TournamentService } from 'src/app/core/tournaments/tournament.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-moc-list',
@@ -18,12 +19,14 @@ export class MocListComponent implements OnInit {
   constructor(
     private mocs: MocService,
     private tournaments: TournamentService,
+    private router: Router,
+    private route: ActivatedRoute,
     ) { }
 
   ngOnInit() {
     if (this.tournamentId) {
       this.mocs$ = combineLatest(
-        this.mocs.mocs, 
+        this.mocs.mocs,
         this.tournaments.tournament
         ).pipe(
           map(([ma, t]) => ma.filter(m => t.mocIds.indexOf(m._id) >= 0))
@@ -35,7 +38,7 @@ export class MocListComponent implements OnInit {
   }
 
   addMoc() {
-    // TODO: Go to new moc page based on current router url
+    this.router.navigate(['../moc/new'], { relativeTo: this.route });
   }
 
 }
