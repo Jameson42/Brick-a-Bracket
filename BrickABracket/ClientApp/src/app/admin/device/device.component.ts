@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DeviceService } from 'src/app/core/devices/device.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Observer } from 'rxjs';
 import { Device, DeviceMetadata } from 'src/app/core/devices/device';
 import { tap, switchMap } from 'rxjs/operators';
 
@@ -30,7 +30,8 @@ export class DeviceComponent implements OnInit {
       }),
       switchMap(_ => {
         if (this.isNew) {
-          return Observable.create(observer => {
+          return new Observable<DeviceMetadata>(
+            (observer: Observer<DeviceMetadata>)  => {
             observer.next(new DeviceMetadata());
             observer.complete();
           });

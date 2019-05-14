@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Tournament } from '../../core/tournaments/tournament';
-import { Observable } from 'rxjs';
+import { Observable, Observer } from 'rxjs';
 import { TournamentService } from '../../core/tournaments/tournament.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap, tap } from 'rxjs/operators';
@@ -30,7 +30,8 @@ export class TournamentComponent implements OnInit {
       }),
       switchMap(_ => {
         if (this.isNew) {
-          return Observable.create(observer => {
+          return new Observable<Tournament>(
+            (observer: Observer<Tournament>) => {
             observer.next(new Tournament());
             observer.complete();
           });
