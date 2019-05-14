@@ -20,12 +20,14 @@ import { ClassificationListComponent } from './classification-list/classificatio
 import { LayoutComponent } from './layout/layout.component';
 import { CategoryListComponent } from './category-list/category-list.component';
 import { CategoryComponent } from './category/category.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    SharedModule,
   ],
   declarations: [
     TournamentListComponent,

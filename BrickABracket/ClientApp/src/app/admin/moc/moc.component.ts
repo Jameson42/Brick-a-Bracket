@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MocService } from 'src/app/core/mocs/moc.service';
+import { CompetitorService } from 'src/app/core/competitors/competitor.service';
+import { Observable } from 'rxjs';
+import { Moc } from 'src/app/core/mocs/moc';
+import { ActivatedRoute, Router } from '@angular/router';
+import { tap, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-moc',
@@ -6,10 +12,46 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./moc.component.css']
 })
 export class MocComponent implements OnInit {
+  private moc$: Observable<Moc>;
+  private isNew: boolean;
+  private id: number;
 
-  constructor() { }
+  constructor(
+    private mocs: MocService,
+    private competitors: CompetitorService,
+    private route: ActivatedRoute,
+    private router: Router,
+    ) { }
 
   ngOnInit() {
+    // TODO: Set competitor name from id
+    // Classification name too?
+    this.moc$ = this.route.paramMap.pipe(
+      tap(params => {
+        this.id = Number(params.get('id'));
+        this.isNew = this.id <= 0;
+      }),
+      switchMap(_ => {
+        if (this.isNew) {
+          return new Observable<Moc>(
+            (observer => {
+              observer.next(new Moc());
+              observer.complete();
+            })
+          );
+        }
+        return this.mocs.get(this.id);
+      })
+    );
+  }
+
+  async save(moc: Moc) {
+    if (this.isNew) {
+      const result = await this.mocs.create(moc);
+      this.router.navigate(['../' + result], { relativeTo: this.route });
+    } else {
+      return this.mocs.update(moc);
+    }
   }
 
 }

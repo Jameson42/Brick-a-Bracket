@@ -5,7 +5,6 @@ import { HttpClientModule } from '@angular/common/http';
 // SignalR
 import '@aspnet/signalr';
 
-import { ConnectionResolver } from './signalr-connection.resolver';
 import { SignalrService } from './signalr.service';
 import { ClassificationService } from './classifications/classification.service';
 import { CompetitorService } from './competitors/competitor.service';
@@ -19,13 +18,12 @@ import { TournamentService } from './tournaments/tournament.service';
     HttpClientModule,
   ],
   providers: [
-    ConnectionResolver,
     SignalrService,
     ClassificationService,
     CompetitorService,
     DeviceService,
     MocService,
     TournamentService,
-  ]
+  ],
 })
 export class CoreModule { }

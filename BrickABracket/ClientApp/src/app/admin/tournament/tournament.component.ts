@@ -49,15 +49,12 @@ export class TournamentComponent implements OnInit {
     );
   }
 
-  save(tournament: Tournament) {
+  async save(tournament: Tournament) {
     if (this.isNew) {
-      this.tournaments.create(tournament.name, tournament.tournamentType)
-        .then(result => {
-          this.router.navigate(['/admin/tournament', { id: result }]);
-      });
+      const result = await this.tournaments.create(tournament.name, tournament.tournamentType);
+      this.router.navigate(['/admin/tournament', { id: result }]);
     } else {
-      this.tournaments.update(tournament);
+      return this.tournaments.update(tournament);
     }
-    console.log(tournament);
   }
 }

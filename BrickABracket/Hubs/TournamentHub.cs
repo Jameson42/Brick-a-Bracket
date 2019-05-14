@@ -127,10 +127,12 @@ namespace BrickABracket.Hubs
         // CRUD Classifications
         #region Classification CRUD
         public async Task SendClassifications() => await Clients.All.SendAsync("ReceiveClassifications",_classes.ReadAll());
-        public async Task CreateClassification(string name)
+        public async Task<int> CreateClassification(string name)
         {
-            if(_classes.Create(new Classification(){Name = name})>0)
+            var result = _classes.Create(new Classification(){Name = name});
+            if(result>0)
                 await SendClassifications();
+            return result;
         }
         public async Task GetClassifications()
         {
@@ -150,10 +152,12 @@ namespace BrickABracket.Hubs
         // CRUD Competitors
         #region Competitor CRUD
         public async Task SendCompetitors() => await Clients.All.SendAsync("ReceiveCompetitors",_competitors.ReadAll());
-        public async Task CreateCompetitor(Competitor competitor)
+        public async Task<int> CreateCompetitor(Competitor competitor)
         {
-            if(_competitors.Create(competitor)>0)
+            var result = _competitors.Create(competitor);
+            if(result>0)
                 await SendCompetitors();
+            return result;
         }
         public async Task GetCompetitors()
         {
@@ -173,10 +177,12 @@ namespace BrickABracket.Hubs
         // CRUD Mocs
         #region MOC CRUD
         public async Task SendMocs() => await Clients.All.SendAsync("ReceiveMocs", _mocs.ReadAll());
-        public async Task CreateMoc(Moc moc)
+        public async Task<int> CreateMoc(Moc moc)
         {
-            if(_mocs.Create(moc)>0)
+            var result = _mocs.Create(moc);
+            if(result>0)
                 await SendMocs();
+            return result;
         }
         public async Task GetMocs()
         {
