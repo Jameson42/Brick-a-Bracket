@@ -1,3 +1,14 @@
-<p>
-  moc-list works!
-</p>
+<div class="d-flex mb-2">
+  <a class="btn btn-outline-success btn-sm float-left" routerLink="" (click)="addMoc()">
+    <i class="fas fa-plus"></i> Add MOC
+  </a>
+</div>
+<div *ngIf="(mocs$ | async) as mocs" class="list-group">
+  <ng-container *ngFor="let moc of mocs">
+    <a class="list-group-item list-group-item-action" routerLink="/admin/tournament/moc/{{moc._id}}">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">{{ moc.name }}</h5>
+      </div>
+    </a>
+  </ng-container>
+</div>
