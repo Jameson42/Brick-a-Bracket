@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MocService } from 'src/app/core/mocs/moc.service';
-import { CompetitorService } from 'src/app/core/competitors/competitor.service';
-import { Observable } from 'rxjs';
-import { Moc } from 'src/app/core/mocs/moc';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { tap, switchMap } from 'rxjs/operators';
+
+import { MocService, Moc } from '@bab/core';
 
 @Component({
   selector: 'app-moc',
@@ -18,7 +17,6 @@ export class MocComponent implements OnInit {
 
   constructor(
     private mocs: MocService,
-    private competitors: CompetitorService,
     private route: ActivatedRoute,
     private router: Router,
     ) { }
@@ -48,8 +46,12 @@ export class MocComponent implements OnInit {
   async save(moc: Moc) {
     if (this.isNew) {
       const result = await this.mocs.create(moc);
+      if (this.router.url.indexOf('tournament') > 0)
+        await this.mocs.addToTournament(result);
       this.router.navigate(['../' + result], { relativeTo: this.route });
     } else {
+      if (this.router.url.indexOf('tournament') > 0)
+        await this.mocs.addToTournament(moc._id);
       return this.mocs.update(moc);
     }
   }

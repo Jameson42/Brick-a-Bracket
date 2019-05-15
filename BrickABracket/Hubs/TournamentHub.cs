@@ -206,6 +206,16 @@ namespace BrickABracket.Hubs
             _runner.Tournament = _tournaments.Read(id);
             await SendTournaments();
         }
+        public async Task AddMocToTournament(int id)
+        {
+            var mocs = _runner.Tournament.MocIds;
+            if (!mocs.Contains(id))
+            {
+                mocs.Add(id);
+                _tournaments.Update(_runner.Tournament);
+                await SendTournaments();
+            }
+        }
         public async Task GenerateCategories()
         {
             _runner.GenerateCategories();

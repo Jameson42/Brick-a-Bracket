@@ -38,6 +38,10 @@ export class MocService {
         return this._signalR.invoke('DeleteMoc', id);
     }
 
+    addToTournament(id: number) {
+        return this._signalR.invoke('AddMocToTournament', id);
+    }
+
     getImage(id: number): Observable<Blob> {
         return this._httpClient.get('/api/mocs/' + id, { responseType: 'blob' });
     }
