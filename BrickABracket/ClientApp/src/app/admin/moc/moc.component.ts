@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { tap, switchMap } from 'rxjs/operators';
 
-import { MocService, Moc } from '@bab/core';
+import { MocService, Moc, Competitor, CompetitorService } from '@bab/core';
 
 @Component({
   selector: 'app-moc',
@@ -17,6 +17,7 @@ export class MocComponent implements OnInit {
 
   constructor(
     private mocs: MocService,
+    private competitors: CompetitorService,
     private route: ActivatedRoute,
     private router: Router,
     ) { }
@@ -43,16 +44,43 @@ export class MocComponent implements OnInit {
     );
   }
 
-  async save(moc: Moc) {
+  async save(moc: Moc, competitor: Competitor) {
+    moc.competitorId = await this.saveCompetitor(competitor);
+    return await this.saveMoc(moc);
+  }
+
+  async saveMoc(moc: Moc) {
     if (this.isNew) {
       const result = await this.mocs.create(moc);
-      if (this.router.url.indexOf('tournament') > 0)
+      if (this.router.url.indexOf('tournament') > 0) {
         await this.mocs.addToTournament(result);
+      }
       this.router.navigate(['../' + result], { relativeTo: this.route });
     } else {
-      if (this.router.url.indexOf('tournament') > 0)
+      if (this.router.url.indexOf('tournament') > 0) {
         await this.mocs.addToTournament(moc._id);
+      }
       return this.mocs.update(moc);
+    }
+  }
+
+  async saveCompetitor(competitor: Competitor): Promise<number> {
+    if (!competitor) {
+      return 0;
+    }
+    if (competitor._id) {
+      return competitor._id;
+    }
+    return this.competitors.create(competitor);
+  }
+
+  foundCompetitor(event, competitor: Competitor) {
+    if (event.target) {
+      return;
+    } else if (typeof event === 'string') {
+      competitor.name = event;
+    } else {
+      competitor = event;
     }
   }
 

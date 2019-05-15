@@ -1,0 +1,6 @@
+<input type="text" class="form-control" [(ngModel)]="competitor" 
+[ngbTypeahead]="search" [resultTemplate]="rt" [inputFormatter]="formatter">
+
+<ng-template #rt let-r="result" let-t="term">
+  {{r.name}}
+</ng-template>

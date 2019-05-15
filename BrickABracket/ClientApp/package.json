@@ -23,6 +23,7 @@
     "@angular/platform-server": "7.2.15",
     "@angular/router": "7.2.15",
     "@aspnet/signalr": "^1.1.0",
+    "@ng-bootstrap/ng-bootstrap": "^4.1.3",
     "@nguniversal/module-map-ngfactory-loader": "6.0.0",
     "aspnet-prerendering": "^3.0.1",
     "bootstrap": "^4.1.3",

@@ -1,39 +1,41 @@
 <form *ngIf="(moc$ | async) as moc">
+  <ng-container *ngIf="(moc.competitorId | competitor | async) as competitor">
     <div class="form-group row">
       <label for="mocName" class="col-sm-4 col-form-label">MOC Name</label>
       <div class="col-sm-8">
         <input type="text" id="mocName" class="form-control" 
           [(ngModel)]="moc.name" name="mocName">
       </div>
-    </div>
-    <div class="form-group row">
-      <label for="compName" class="col-sm-4 col-form-label">Competitor Name</label>
-      <div class="col-sm-8">
-        <input type="text" id="compName" class="form-control" readonly
-          name="compName" value="{{moc.competitorId | competitor | async}}">
       </div>
-    </div>
-    <div class="form-group row">
-      <label for="mocClass" class="col-sm-4 col-form-label">MOC  Classification</label>
-      <div class="col-sm-8">
-        <select class="form-control" id="mocClass" 
-          [(ngModel)]="moc.classificationId"  name="mocClass">
-          <option value="1">Derby</option>
-          <option value="2">Round Robin</option>
-          <option value="3">Single Elimination</option>
-          <option value="4">Swiss System</option>
-        </select>
+      <div class="form-group row">
+        <label for="compName" class="col-sm-4 col-form-label">Competitor Name</label>
+        <div class="col-sm-8">
+          <app-competitor-typeahead [competitor]="competitor" 
+          (change)="foundCompetitor($event, competitor)"></app-competitor-typeahead>
+        </div>
       </div>
-    </div>
-    <div class="form-group row">
-      <label for="mocId" class="col-sm-4 col-form-label">ID</label>
-      <div class="col-sm-4">
-        <input type="text" id="mocId" class="form-control" readonly  
-          [(ngModel)]="moc._id" name="mocId">
+      <div class="form-group row">
+        <label for="mocClass" class="col-sm-4 col-form-label">MOC  Classification</label>
+        <div class="col-sm-8">
+          <select class="form-control" id="mocClass" 
+            [(ngModel)]="moc.classificationId"  name="mocClass">
+            <option value="1">Derby</option>
+            <option value="2">Round Robin</option>
+            <option value="3">Single Elimination</option>
+            <option value="4">Swiss System</option>
+          </select>
+        </div>
       </div>
-      <div class="col-sm-2">&nbsp;</div>
-      <div class="col-sm-2">
-        <button type="submit" class="btn btn-primary" (click)="save(moc)">Save</button>
+      <div class="form-group row">
+        <label for="mocId" class="col-sm-4 col-form-label">ID</label>
+        <div class="col-sm-4">
+          <input type="text" id="mocId" class="form-control" readonly  
+            [(ngModel)]="moc._id" name="mocId">
+        </div>
+        <div class="col-sm-2">&nbsp;</div>
+        <div class="col-sm-2">
+          <button type="submit" class="btn btn-primary" (click)="save(moc, competitor)">Save</button>
+        </div>
       </div>
-    </div>
+    </ng-container>
   </form>

@@ -36,4 +36,14 @@ export class CompetitorService {
     delete(id: number) {
         return this._signalR.invoke('DeleteCompetitor', id);
     }
+
+    searchNames(term: string): Observable<Array<Competitor>> {
+        return this.competitors.pipe(
+            map(cs =>
+                cs.filter(c =>
+                    c.name.toLowerCase().indexOf(term.toLowerCase()) > -1
+                    ).slice(0, 10)
+                )
+        );
+    }
 }
