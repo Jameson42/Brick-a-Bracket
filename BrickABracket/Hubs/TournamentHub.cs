@@ -181,7 +181,10 @@ namespace BrickABracket.Hubs
         {
             var result = _mocs.Create(moc);
             if(result>0)
+            {
                 await SendMocs();
+                await AddMocToTournament(result);
+            }
             return result;
         }
         public async Task GetMocs()
@@ -191,22 +194,20 @@ namespace BrickABracket.Hubs
         public async Task UpdateMoc(Moc moc)
         {
             if(_mocs.Update(moc))
+            {
+                await AddMocToTournament(moc._id);
                 await SendMocs();
+            }
         }
         public async Task DeleteMoc(int id)
         {
             if(_mocs.Delete(id))
+            {
+                await RemoveMocFromTournament(id);
                 await SendMocs();
+            }
         }
-        #endregion
-        // Tournament running
-        #region Run Tournaments
-        public async Task SetActiveTournament(int id)
-        {
-            _runner.Tournament = _tournaments.Read(id);
-            await SendTournaments();
-        }
-        public async Task AddMocToTournament(int id)
+        private async Task AddMocToTournament(int id)
         {
             var mocs = _runner.Tournament.MocIds;
             if (!mocs.Contains(id))
@@ -215,6 +216,24 @@ namespace BrickABracket.Hubs
                 _tournaments.Update(_runner.Tournament);
                 await SendTournaments();
             }
+        }
+        private async Task RemoveMocFromTournament(int id)
+        {
+            var mocs = _runner.Tournament.MocIds;
+            if (mocs.Contains(id))
+            {
+                mocs.Remove(id);
+                _tournaments.Update(_runner.Tournament);
+                await SendTournaments();
+            }
+        }
+        #endregion
+        // Tournament running
+        #region Run Tournaments
+        public async Task SetActiveTournament(int id)
+        {
+            _runner.Tournament = _tournaments.Read(id);
+            await SendTournaments();
         }
         public async Task GenerateCategories()
         {

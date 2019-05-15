@@ -55,15 +55,9 @@ export class MocComponent implements OnInit {
   async saveMoc(moc: Moc) {
     if (this.isNew) {
       const result = await this.mocs.create(moc);
-      if (this.router.url.indexOf('tournament') > 0) {
-        await this.mocs.addToTournament(result);
-      }
       await this.saveImage(result);
       this.router.navigate(['../' + result], { relativeTo: this.route });
     } else {
-      if (this.router.url.indexOf('tournament') > 0) {
-        await this.mocs.addToTournament(moc._id);
-      }
       await this.saveImage(moc._id);
       return this.mocs.update(moc);
     }

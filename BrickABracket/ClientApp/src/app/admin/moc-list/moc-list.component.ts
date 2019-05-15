@@ -34,7 +34,6 @@ export class MocListComponent implements OnInit {
     } else {
       this.mocs$ = this.mocs.mocs;
     }
-    // TODO: Get competitor name!
   }
 
   addMoc() {

@@ -38,10 +38,6 @@ export class MocService {
         return this._signalR.invoke('DeleteMoc', id);
     }
 
-    addToTournament(id: number) {
-        return this._signalR.invoke('AddMocToTournament', id);
-    }
-
     getImageUrl(id: string): string {
         return '/api/mocs/' + id;
     }
@@ -53,13 +49,6 @@ export class MocService {
     uploadImage(id: number, image: Blob) {
         const formData: FormData = new FormData();
         formData.append('file', image);
-        return this._httpClient.post('/api/mocs/' + id, formData).subscribe(
-            data => {
-                console.log(data);
-            },
-            error => {
-                console.log(error);
-            }
-        );
+        return this._httpClient.post('/api/mocs/' + id, formData).subscribe();
     }
 }
