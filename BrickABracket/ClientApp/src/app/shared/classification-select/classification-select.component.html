@@ -1,0 +1,6 @@
+<select class="form-control" [id]="elementId"
+  *ngIf="(classifications$ | async) as classifications"
+  [ngModel]="_selected"  (ngModelChange)="onChange($event)"
+  [name]="elementId">
+  <option [value]="c._id" *ngFor="let c of classifications">{{c.name}}</option>
+</select>

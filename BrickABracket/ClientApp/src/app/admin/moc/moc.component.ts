@@ -14,6 +14,7 @@ export class MocComponent implements OnInit {
   private moc$: Observable<Moc>;
   private isNew: boolean;
   private id: number;
+  private image: File;
 
   constructor(
     private mocs: MocService,
@@ -44,6 +45,10 @@ export class MocComponent implements OnInit {
     );
   }
 
+  changeImage(event) {
+    this.image = event.target.files[0];
+  }
+
   async save(moc: Moc, competitor: Competitor) {
     moc.competitorId = await this.saveCompetitor(competitor);
     return await this.saveMoc(moc);
@@ -55,12 +60,21 @@ export class MocComponent implements OnInit {
       if (this.router.url.indexOf('tournament') > 0) {
         await this.mocs.addToTournament(result);
       }
+      await this.saveImage(result);
       this.router.navigate(['../' + result], { relativeTo: this.route });
     } else {
       if (this.router.url.indexOf('tournament') > 0) {
         await this.mocs.addToTournament(moc._id);
       }
+      await this.saveImage(moc._id);
       return this.mocs.update(moc);
+    }
+  }
+
+  async saveImage(id: number) {
+    console.log(this.image);
+    if (this.image) {
+      return this.mocs.uploadImage(id, this.image);
     }
   }
 

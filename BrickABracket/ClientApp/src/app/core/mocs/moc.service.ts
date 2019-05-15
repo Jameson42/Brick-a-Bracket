@@ -42,8 +42,12 @@ export class MocService {
         return this._signalR.invoke('AddMocToTournament', id);
     }
 
-    getImage(id: number): Observable<Blob> {
-        return this._httpClient.get('/api/mocs/' + id, { responseType: 'blob' });
+    getImageUrl(id: string): string {
+        return '/api/mocs/' + id;
+    }
+
+    getImageBlob(id: number): Observable<Blob> {
+        return this._httpClient.get(this.getImageUrl(id.toString()), { responseType: 'blob' });
     }
 
     uploadImage(id: number, image: Blob) {

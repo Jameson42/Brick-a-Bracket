@@ -5,7 +5,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { ClassificationPipe, CompetitorPipe,
   MocPipe, ConnectionResolver,
-  CompetitorTypeaheadComponent } from '@bab/shared';
+  CompetitorTypeaheadComponent,
+  ClassificationSelectComponent,
+  MocImageComponent } from '@bab/shared';
 
 @NgModule({
   imports: [
@@ -21,12 +23,16 @@ import { ClassificationPipe, CompetitorPipe,
     MocPipe,
     ClassificationPipe,
     CompetitorTypeaheadComponent,
+    ClassificationSelectComponent,
+    MocImageComponent,
   ],
   exports: [
     CompetitorPipe,
     MocPipe,
     ClassificationPipe,
     CompetitorTypeaheadComponent,
+    ClassificationSelectComponent,
+    MocImageComponent,
   ]
 })
 export class SharedModule { }

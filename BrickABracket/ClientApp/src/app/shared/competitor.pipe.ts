@@ -13,7 +13,7 @@ export class CompetitorPipe implements PipeTransform {
     private competitors: CompetitorService
   ) {}
 
-  transform(value: number, args?: any): Observable<Competitor> {
+  transform(value: number): Observable<Competitor> {
     return this.competitors.get(value).pipe(
       map(c => c || new Competitor())
     );

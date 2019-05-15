@@ -1,0 +1,8 @@
+<ng-container *ngIf="_file; else serverImage">
+    <img [attr.src]="_fileUrl" [attr.class]="_classes">
+</ng-container>
+<ng-template #serverImage>
+    <img *ngIf="_url" [attr.src]="_url" [attr.class]="_classes">
+</ng-template>
+
+
