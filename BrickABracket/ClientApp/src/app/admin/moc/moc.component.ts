@@ -24,8 +24,6 @@ export class MocComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    // TODO: Set competitor name from id
-    // Classification name too?
     this.moc$ = this.route.paramMap.pipe(
       tap(params => {
         this.id = Number(params.get('id'));
@@ -34,10 +32,10 @@ export class MocComponent implements OnInit {
       switchMap(_ => {
         if (this.isNew) {
           return new Observable<Moc>(
-            (observer => {
+            observer => {
               observer.next(new Moc());
               observer.complete();
-            })
+            }
           );
         }
         return this.mocs.get(this.id);
@@ -95,6 +93,16 @@ export class MocComponent implements OnInit {
       competitor.name = event;
     } else {
       competitor = event;
+    }
+  }
+
+  setClass(event, moc: Moc) {
+    if (event.target) {
+      return;
+    }
+    const id = Number(event);
+    if (id) {
+      moc.classificationId = id;
     }
   }
 

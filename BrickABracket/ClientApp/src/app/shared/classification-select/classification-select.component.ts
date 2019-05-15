@@ -32,7 +32,6 @@ export class ClassificationSelectComponent implements OnInit {
   }
 
   onChange(newValue) {
-    console.log(newValue);
     this.classificationId = newValue;
   }
 }
