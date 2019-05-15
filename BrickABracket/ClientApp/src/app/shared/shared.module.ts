@@ -1,10 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MocPipe } from './moc.pipe';
-import { ClassificationPipe } from './classification.pipe';
-import { CompetitorPipe } from './competitor.pipe';
-import { CoreModule } from '../core/core.module';
-import { ConnectionResolver } from './signalr-connection.resolver';
+import { ClassificationPipe, CompetitorPipe, MocPipe, ConnectionResolver } from '@bab/shared';
 
 @NgModule({
   imports: [

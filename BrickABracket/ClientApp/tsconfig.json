@@ -15,6 +15,15 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@bab/admin": ["src/app/admin/index"],
+      "@bab/core": ["src/app/core/index"],
+      "@bab/core/*": ["src/app/core/*"],
+      "@bab/shared": ["src/app/shared/index"],
+      "@bab/shared/*": ["src/app/shared/*"],
+      "@bab/primary": ["src/app/primary/index"],
+      "@bab/secondary": ["src/app/secondary/index"],
+    }
   }
 }

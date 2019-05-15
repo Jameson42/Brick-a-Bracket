@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ConnectionResolver } from './shared/signalr-connection.resolver';
+import { ConnectionResolver } from '@bab/shared';
 
 const appRoutes: Routes = [
   { path: 'admin',

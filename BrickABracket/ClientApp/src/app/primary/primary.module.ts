@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { PrimaryRoutingModule } from './primary-routing.module';
+import { PrimaryRoutingModule } from '@bab/primary';
 
 @NgModule({
   imports: [

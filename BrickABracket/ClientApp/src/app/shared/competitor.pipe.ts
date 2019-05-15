@@ -1,7 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { CompetitorService } from '../core/competitors/competitor.service';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+
+import { CompetitorService } from '@bab/core';
 
 @Pipe({
   name: 'competitor'
