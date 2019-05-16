@@ -27,4 +27,8 @@ export class CompetitorListComponent implements OnInit {
     this.router.navigate(['./new'], { relativeTo: this.route });
   }
 
+  delete(id: number) {
+    this.competitors.delete(id);
+  }
+
 }

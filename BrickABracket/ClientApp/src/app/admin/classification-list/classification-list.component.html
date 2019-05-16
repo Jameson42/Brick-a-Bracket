@@ -9,6 +9,9 @@
         <div class="d-flex w-100 justify-content-between">
           <h5 class="mb-1">{{ classification.name }}</h5>
         </div>
+        <a class="btn btn-danger btn-sm float-right" (click)="delete(classification._id)" routerLink="/admin/classification">
+          <i class="far fa-trash-alt"></i>
+        </a>
       </a>
     </ng-container>
   </div>

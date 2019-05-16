@@ -27,4 +27,8 @@ export class ClassificationListComponent implements OnInit {
     this.router.navigate(['./new'], { relativeTo: this.route });
   }
 
+  delete(id: number) {
+    this.classifications.delete(id);
+  }
+
 }
