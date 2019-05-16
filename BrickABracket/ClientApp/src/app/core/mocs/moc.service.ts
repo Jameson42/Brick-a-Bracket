@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
+import { map, shareReplay, distinctUntilChanged } from 'rxjs/operators';
 
 import {Moc} from './moc';
 import {SignalrService} from '../signalr.service';
@@ -22,7 +22,11 @@ export class MocService {
     get(id: number): Observable<Moc> {
         return this.mocs.pipe(
             map(mocArray => mocArray.filter(m => m._id === id)[0]),
-            shareReplay(1)
+            distinctUntilChanged((x: Moc, y: Moc) => {
+                return x._id === y._id && x.classificationId === y.classificationId && 
+                x.competitorId === y.competitorId && x.name === y.name && x.weight === y.weight;
+            }),
+            shareReplay(1),
         );
     }
 

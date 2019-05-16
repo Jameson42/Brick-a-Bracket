@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
+import { map, shareReplay, distinctUntilKeyChanged } from 'rxjs/operators';
 
 import { Competitor } from './competitor';
 import { SignalrService } from '../signalr.service';
@@ -21,6 +21,7 @@ export class CompetitorService {
     get(id: number): Observable<Competitor> {
         return this.competitors.pipe(
             map(competitorArray => competitorArray.filter(c => c._id === id)[0]),
+            distinctUntilKeyChanged('name'),
             shareReplay(1)
         );
     }
