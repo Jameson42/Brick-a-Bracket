@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 
 import { ClassificationService, Classification } from '@bab/core';
-import { Observable } from 'rxjs';
-import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-classification-list',
@@ -16,7 +16,7 @@ export class ClassificationListComponent implements OnInit {
   constructor(
     private classifications: ClassificationService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
     ) { }
 
   ngOnInit() {

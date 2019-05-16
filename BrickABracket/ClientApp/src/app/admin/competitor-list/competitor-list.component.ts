@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+
+import { Competitor, CompetitorService } from '@bab/core';
 
 @Component({
   selector: 'app-competitor-list',
@@ -7,9 +11,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CompetitorListComponent implements OnInit {
 
-  constructor() { }
+  private competitors$: Observable<Array<Competitor>>;
+
+  constructor(
+    private competitors: CompetitorService,
+    private router: Router,
+    private route: ActivatedRoute,
+  ) { }
 
   ngOnInit() {
+    this.competitors$ = this.competitors.competitors;
+  }
+
+  add() {
+    this.router.navigate(['./new'], { relativeTo: this.route });
   }
 
 }

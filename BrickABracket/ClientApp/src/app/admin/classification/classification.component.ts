@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { tap, switchMap } from 'rxjs/operators';
 
 import { Classification, ClassificationService } from '@bab/core';
-import { tap, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-classification',

@@ -1,3 +1,23 @@
-<p>
-  competitor works!
-</p>
+<form *ngIf="(competitor$ | async) as competitor">
+  <!--MOC Name-->
+  <div class="form-group row">
+    <label for="name" class="col-sm-4 col-form-label">Competitor Name</label>
+    <div class="col-sm-8">
+      <input type="text" id="name" class="form-control" 
+        [(ngModel)]="competitor.name" name="name">
+    </div>
+  </div>
+  <!--ID, save-->
+  <div class="form-group row">
+    <label for="classId" class="col-sm-4 col-form-label">ID</label>
+    <div class="col-sm-4">
+      <input type="text" id="classId" class="form-control" readonly  
+        [(ngModel)]="competitor._id" name="classId">
+    </div>
+    <div class="col-sm-2">&nbsp;</div>
+    <div class="col-sm-2">
+      <button type="submit" class="btn btn-primary" (click)="save(competitor)">Save</button>
+    </div>
+  </div>
+</form>
+  
