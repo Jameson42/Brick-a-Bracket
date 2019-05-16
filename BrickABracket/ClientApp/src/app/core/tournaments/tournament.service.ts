@@ -4,6 +4,9 @@ import { map, shareReplay } from 'rxjs/operators';
 
 import {Tournament, TournamentMetadata, TournamentSummary} from './tournament';
 import {SignalrService} from '../signalr.service';
+import { Category } from './category';
+import { Round } from './round';
+import { Match } from './match';
 
 @Injectable()
 export class TournamentService {
@@ -30,6 +33,42 @@ export class TournamentService {
     get tournament(): Observable<Tournament> {
         return this.metadata.pipe(
             map(tm => tm.tournament),
+            shareReplay(1)
+        );
+    }
+
+    get category(): Observable<Category> {
+        return this.metadata.pipe(
+            map(tm => {
+                if (tm.categoryIndex >= 0) {
+                    return tm.tournament.categories[tm.categoryIndex];
+                }
+                return null;
+            }),
+            shareReplay(1)
+        );
+    }
+
+    get round(): Observable<Round> {
+        return this.metadata.pipe(
+            map(tm => {
+                if (tm.categoryIndex >= 0 && tm.roundIndex >= 0) {
+                    return tm.tournament.categories[tm.categoryIndex].rounds[tm.roundIndex];
+                }
+                return null;
+            }),
+            shareReplay(1)
+        );
+    }
+
+    get match(): Observable<Match> {
+        return this.metadata.pipe(
+            map(tm => {
+                if (tm.categoryIndex >= 0 && tm.roundIndex >= 0 && tm.matchIndex >= 0 ) {
+                    return tm.tournament.categories[tm.categoryIndex].rounds[tm.matchIndex].matches[tm.matchIndex];
+                }
+                return null;
+            }),
             shareReplay(1)
         );
     }
