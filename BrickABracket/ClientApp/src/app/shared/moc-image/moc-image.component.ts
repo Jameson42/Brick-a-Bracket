@@ -20,6 +20,9 @@ export class MocImageComponent implements OnInit {
 
   @Input()
   set alternate(value: File) {
+    if (!value) {
+      return;
+    }
     const reader = new FileReader();
     reader.readAsDataURL(value);
     reader.onload = _ => {
