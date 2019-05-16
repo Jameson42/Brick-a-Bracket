@@ -49,14 +49,14 @@ export class MocComponent implements OnInit {
 
   async save(moc: Moc, competitor: Competitor) {
     moc.competitorId = await this.saveCompetitor(competitor);
-    return await this.saveMoc(moc);
+    await this.saveMoc(moc);
+    this.router.navigate(['../'], { relativeTo: this.route });
   }
 
   async saveMoc(moc: Moc) {
     if (this.isNew) {
       const result = await this.mocs.create(moc);
       await this.saveImage(result);
-      this.router.navigate(['../' + result], { relativeTo: this.route });
     } else {
       await this.saveImage(moc._id);
       return this.mocs.update(moc);
