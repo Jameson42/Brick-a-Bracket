@@ -1,16 +1,16 @@
 <form *ngIf="(classification$ | async) as classification">
   <!--MOC Name-->
   <div class="form-group row">
-    <label for="className" class="col-sm-4 col-form-label">Classification Name</label>
-    <div class="col-sm-8">
+    <label for="className" class="col-4 col-form-label">Classification Name</label>
+    <div class="col-8">
       <input type="text" id="className" class="form-control" 
         [(ngModel)]="classification.name" name="className">
     </div>
   </div>
   <!--ID, save-->
   <div class="form-group row">
-    <label for="classId" class="col-sm-4 col-form-label">ID</label>
-    <div class="col-sm-4">
+    <label for="classId" class="col-4 col-form-label">ID</label>
+    <div class="col-4">
       <input type="text" id="classId" class="form-control" readonly  
         [(ngModel)]="classification._id" name="classId">
     </div>

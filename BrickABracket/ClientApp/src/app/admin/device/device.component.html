@@ -1,14 +1,14 @@
 <form *ngIf="(device$ | async) as device">
   <div class="form-group row">
-    <label for="connectionString" class="col-sm-4 col-form-label">Connection String</label>
-    <div class="col-sm-8">
+    <label for="connectionString" class="col-4 col-form-label">Connection String</label>
+    <div class="col-8">
       <input type="text" id="connectionString" class="form-control" 
         [(ngModel)]="device.connectionString" name="connectionString">
     </div>
   </div>
   <div class="form-group row">
-    <label for="deviceRole" class="col-sm-4 col-form-label">Device Role</label>
-    <div class="col-sm-8">
+    <label for="deviceRole" class="col-4 col-form-label">Device Role</label>
+    <div class="col-8">
       <select class="form-control" name="deviceRole" id="deviceRole" [(ngModel)]="device.deviceRole">
         <option value="none">None</option>
         <option value="statusProvider">Status Provider</option>
@@ -21,8 +21,8 @@
     </div>
   </div>
   <div class="form-group row">
-    <label for="program" class="col-sm-4 col-form-label">Program</label>
-    <div class="col-sm-5">
+    <label for="program" class="col-4 col-form-label">Program</label>
+    <div class="col-8 col-sm-5">
       <input type="text" id="program" class="form-control"  
         [(ngModel)]="device.program" name="program">
     </div>

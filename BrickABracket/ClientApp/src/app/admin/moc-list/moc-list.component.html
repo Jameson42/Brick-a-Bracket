@@ -7,13 +7,17 @@
   <ng-container *ngFor="let moc of mocs">
     <a class="list-group-item list-group-item-action" routerLink="/admin/tournament/moc/{{moc._id}}">
       <div class="d-flex w-100 justify-content-between">
-        <h5 class="mb-1">{{ moc.name }}</h5>
+        <div>
+          <small class="badge badge-primary" *ngIf="(moc.classificationId | classification | async) as c">{{ c.name }}</small>
+          <span *ngIf="(moc.competitorId | competitor | async) as c"> {{ c.name }} - </span>
+          <small class="d-inline-block">{{ moc.name }}</small>
+        </div>
+        <div>
+          <a class="btn btn-danger btn-sm float-right" (click)="delete(moc._id)" routerLink="/admin/tournament/moc">
+            <i class="far fa-trash-alt"></i>
+          </a>
+        </div>
       </div>
-      <small class="badge badge-primary" *ngIf="(moc.classificationId | classification | async) as c">{{ c.name }}</small>
-      <small *ngIf="(moc.competitorId | competitor | async) as c"> {{ c.name }}</small>
-      <a class="btn btn-danger btn-sm float-right" (click)="delete(moc._id)" routerLink="/admin/tournament/moc">
-        <i class="far fa-trash-alt"></i>
-      </a>
     </a>
   </ng-container>
 </div>

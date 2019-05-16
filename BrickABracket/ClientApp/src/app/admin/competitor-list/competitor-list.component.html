@@ -8,10 +8,10 @@
     <a class="list-group-item list-group-item-action" routerLink="/admin/competitor/{{competitor._id}}">
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1">{{ competitor.name }}</h5>
+        <a class="btn btn-danger btn-sm float-right" (click)="delete(competitor._id)" routerLink="/admin/competitor">
+          <i class="far fa-trash-alt"></i>
+        </a>
       </div>
-      <a class="btn btn-danger btn-sm float-right" (click)="delete(competitor._id)" routerLink="/admin/competitor">
-        <i class="far fa-trash-alt"></i>
-      </a>
     </a>
   </ng-container>
 </div>

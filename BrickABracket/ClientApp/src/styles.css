@@ -24,3 +24,7 @@ code, kbd, samp {
     background-color: #ea7317;
     border-color: #ea7317;
 }
+
+label.col-form-label {
+    font-weight: bold;
+}
