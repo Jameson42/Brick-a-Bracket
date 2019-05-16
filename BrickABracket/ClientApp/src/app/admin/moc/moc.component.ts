@@ -80,13 +80,14 @@ export class MocComponent implements OnInit {
     return this.competitors.create(competitor);
   }
 
-  foundCompetitor(event, competitor: Competitor) {
+  foundCompetitor(event, competitor: Competitor, moc: Moc) {
     if (event.target) {
       return;
     } else if (typeof event === 'string') {
       competitor.name = event;
     } else {
       competitor = event;
+      moc.competitorId = competitor._id;
     }
   }
 

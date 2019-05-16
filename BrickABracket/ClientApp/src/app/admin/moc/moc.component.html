@@ -13,7 +13,7 @@
         <label for="compName" class="col-sm-4 col-form-label">Competitor Name</label>
         <div class="col-sm-8">
           <app-competitor-typeahead [competitor]="competitor" 
-          (change)="foundCompetitor($event, competitor)"></app-competitor-typeahead>
+          (change)="foundCompetitor($event, competitor, moc)"></app-competitor-typeahead>
         </div>
       </div>
       <!--Classification-->
