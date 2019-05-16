@@ -20,8 +20,11 @@ import { CategoryComponent } from './category/category.component';
 const routes: Routes = [
   { path: '', component: LayoutComponent, children: [
     { path: '', component: HomeComponent },
+    { path: 'tournament/category/round/match', redirectTo: 'tournament/category/round/0', pathMatch: 'full' },
     { path: 'tournament/category/round/match/:id', component: MatchComponent },
+    { path: 'tournament/category/round', redirectTo: 'tournament/category/0', pathMatch: 'full' },
     { path: 'tournament/category/round/:id', component: RoundComponent },
+    { path: 'tournament/category', redirectTo: 'tournament/0', pathMatch: 'full' },
     { path: 'tournament/category/:id', component: CategoryComponent },
     { path: 'tournament/moc', redirectTo: 'tournament/0', pathMatch: 'full' },
     { path: 'tournament/moc/new', component: MocComponent },

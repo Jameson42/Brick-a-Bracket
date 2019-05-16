@@ -43,15 +43,19 @@ namespace BrickABracket.Core.Services
             get => _tournament;
             set
             {
-                if (_tournament == value)
+                if (value == null)
+                {
+                    _tournament = null;
+                    CategoryIndex = DEFAULTINDEX;
                     return;
+                }
+                if (_tournament?.TournamentType != value.TournamentType)
+                    _strategy = _tournamentStrategies
+                        .FirstOrDefault(ts => (string)ts.Metadata["Type"] == value.TournamentType)
+                        ?.Value(value);
+                if (_tournament != value) 
+                    CategoryIndex = DEFAULTINDEX;
                 _tournament = value;
-                CategoryIndex = DEFAULTINDEX;
-                if (_tournament==null)
-                    return;
-                _strategy = _tournamentStrategies
-                    .FirstOrDefault(ts => (string)ts.Metadata["Type"] == _tournament.TournamentType)
-                    ?.Value(_tournament);
             }
         }
         public int CategoryIndex
@@ -108,11 +112,12 @@ namespace BrickABracket.Core.Services
                 };
             }
         }
-        private void SaveTournament()
+        private bool SaveTournament()
         {
             if (Tournament != null && Tournament._id>0)
                 using (var _tournaments = _tournamentServiceFactory())
-                    _tournaments.Update(Tournament);
+                    return _tournaments.Update(Tournament);
+            return false;
         }
         public IObservable<Status> Statuses {get;}
         public void FollowScores(IObservable<Score> scores)
