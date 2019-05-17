@@ -1,4 +1,4 @@
-<div class="d-flex mb-2">
+<div class="d-flex mb-2" *ngIf="editable">
   <a class="btn btn-outline-success btn-sm float-left" routerLink="" (click)="addMoc()">
     <i class="fas fa-plus"></i> Add MOC
   </a>
@@ -22,7 +22,7 @@
       </a>
     </ng-container>
     <ng-template #basicMoc>
-      <div class="list-group-item list-group-item-action">
+      <div class="list-group-item">
         <span *ngIf="(moc.competitorId | competitor | async) as c"> {{ c.name }} - </span>
         <small class="d-inline-block">{{ moc.name }}</small>
       </div>

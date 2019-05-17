@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TournamentService } from 'src/app/core/tournaments/tournament.service';
 import { Observable } from 'rxjs';
 import { Category } from 'src/app/core/tournaments/category';
-import { map } from 'rxjs/operators';
+import { map, filter } from 'rxjs/operators';
 import { ClassificationService } from 'src/app/core/classifications/classification.service';
 
 @Component({
@@ -21,6 +21,7 @@ export class CategoryListComponent implements OnInit {
 
   ngOnInit() {
     this.categories$ = this.tournaments.tournament.pipe(
+      filter(t => !!t),
       map(t => t.categories)
     );
   }

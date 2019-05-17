@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Tournament } from '../../core/tournaments/tournament';
-import { Observable, Observer } from 'rxjs';
-import { TournamentService } from '../../core/tournaments/tournament.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { switchMap, tap, map } from 'rxjs/operators';
+import { Observable, Observer } from 'rxjs';
+import { switchMap, tap, map, shareReplay, filter } from 'rxjs/operators';
+
+import { Tournament, TournamentService } from '@bab/core';
 
 @Component({
   selector: 'app-tournament',
@@ -32,7 +32,7 @@ export class TournamentComponent implements OnInit {
       switchMap(_ => {
         if (this.id === 0) {
           return this.tournaments.tournament.pipe(
-            tap(t => this.router.navigate(['../' + t._id], { replaceUrl: true, relativeTo:this.route }))
+            tap(t => this.router.navigate(['../' + t._id], { replaceUrl: true, relativeTo: this.route }))
           );
         }
         if (this.isNew) {
@@ -46,9 +46,10 @@ export class TournamentComponent implements OnInit {
           this.tournaments.setActive(this.id);
         }
         return this.tournaments.tournament;
-      })
+      }), shareReplay(1)
     );
     this.mocIds$ = this.tournament$.pipe(
+      filter(t => !!t),
       map(t => t.mocIds)
     );
   }

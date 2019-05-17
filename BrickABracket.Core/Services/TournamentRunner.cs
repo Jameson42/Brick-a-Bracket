@@ -193,7 +193,9 @@ namespace BrickABracket.Core.Services
             // Select first unfinished round
             RoundIndex = _strategy.GenerateRound(CategoryIndex);
             // Select next match
-            MatchIndex = _strategy.GenerateMatch(CategoryIndex, RoundIndex);
+            MatchIndex = Round?.Matches?.FindIndex(m => m?.Results?.Count() == 0) ?? -1;
+            if (MatchIndex == -1)
+                MatchIndex = _strategy.GenerateMatch(CategoryIndex, RoundIndex);
             SaveTournament();
             return MatchIndex > -1;
         }

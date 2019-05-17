@@ -1,3 +1,23 @@
-<h3 *ngIf="(category$ | async) as category">
-  {{ (category?.classificationId | classification | async)?.name }}
-</h3>
+<div class="row" *ngIf="(category$ | async) as category">
+  <div class="col-12">
+    <h3>
+      {{ (category?.classificationId | classification | async)?.name }} Category
+    </h3>
+  </div>
+  <div class="col-lg-4">
+    <div class="d-flex mb-2">
+      <button class="btn btn-outline-success btn-sm float-left" (click)="nextMatch()">
+        <i class="fas fa-forward"></i> Next Match
+      </button>
+    </div>
+    <div class="list-group mb-2" *ngFor="let round of category.rounds; index as index">
+      <a class="list-group-item list-group-item-action" routerLink="../rounds/{{index}}">
+        <span>Round {{index}}</span>
+      </a>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <h5>MOCs</h5>
+      <app-moc-list [mocIds]="mocIds$" [editable]="false"></app-moc-list>
+    </div>
+</div>
