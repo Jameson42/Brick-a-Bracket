@@ -3,7 +3,7 @@ import { Tournament } from '../../core/tournaments/tournament';
 import { Observable, Observer } from 'rxjs';
 import { TournamentService } from '../../core/tournaments/tournament.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { switchMap, tap } from 'rxjs/operators';
+import { switchMap, tap, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-tournament',
@@ -13,6 +13,7 @@ import { switchMap, tap } from 'rxjs/operators';
 export class TournamentComponent implements OnInit {
 
   private tournament$: Observable<Tournament>;
+  private mocIds$: Observable<Array<number>>;
   private isNew: boolean;
   private id: number;
 
@@ -46,6 +47,9 @@ export class TournamentComponent implements OnInit {
         }
         return this.tournaments.tournament;
       })
+    );
+    this.mocIds$ = this.tournament$.pipe(
+      map(t => t.mocIds)
     );
   }
 

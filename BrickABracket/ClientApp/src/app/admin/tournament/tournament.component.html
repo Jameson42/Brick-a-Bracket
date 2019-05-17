@@ -37,6 +37,6 @@
       <app-category-list *ngIf="!isNew"></app-category-list>
   </div>
   <div class="col-lg-4">
-      <app-moc-list *ngIf="!isNew && id" [tournamentId]="id"></app-moc-list>
+      <app-moc-list *ngIf="!isNew && id" [mocIds]="mocIds$" [editable]="true"></app-moc-list>
     </div>
 </div>

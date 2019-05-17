@@ -5,19 +5,27 @@
 </div>
 <div *ngIf="(mocs$ | async) as mocs" class="list-group">
   <ng-container *ngFor="let moc of mocs">
-    <a class="list-group-item list-group-item-action" routerLink="/admin/tournaments/mocs/{{moc._id}}">
-      <div class="d-flex w-100 justify-content-between">
-        <div>
-          <small class="badge badge-primary" *ngIf="(moc.classificationId | classification | async) as c">{{ c.name }}</small>
-          <span *ngIf="(moc.competitorId | competitor | async) as c"> {{ c.name }} - </span>
-          <small class="d-inline-block">{{ moc.name }}</small>
+    <ng-container *ngIf="editable; else basicMoc">
+      <a class="list-group-item list-group-item-action" routerLink="/admin/tournaments/mocs/{{moc._id}}">
+        <div class="d-flex w-100 justify-content-between">
+          <div>
+            <small class="badge badge-primary" *ngIf="(moc.classificationId | classification | async) as c">{{ c.name }}</small>
+            <span *ngIf="(moc.competitorId | competitor | async) as c"> {{ c.name }} - </span>
+            <small class="d-inline-block">{{ moc.name }}</small>
+          </div>
+          <div>
+            <button class="btn btn-danger btn-sm float-right" (click)="delete(moc._id)">
+              <i class="far fa-trash-alt"></i>
+            </button>
+          </div>
         </div>
-        <div>
-          <button class="btn btn-danger btn-sm float-right" (click)="delete(moc._id)">
-            <i class="far fa-trash-alt"></i>
-          </button>
-        </div>
+      </a>
+    </ng-container>
+    <ng-template #basicMoc>
+      <div class="list-group-item list-group-item-action">
+        <span *ngIf="(moc.competitorId | competitor | async) as c"> {{ c.name }} - </span>
+        <small class="d-inline-block">{{ moc.name }}</small>
       </div>
-    </a>
+    </ng-template>
   </ng-container>
 </div>

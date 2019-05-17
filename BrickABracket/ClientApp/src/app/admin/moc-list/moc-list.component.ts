@@ -1,10 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MocService } from 'src/app/core/mocs/moc.service';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Observable, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Moc } from 'src/app/core/mocs/moc';
-import { TournamentService } from 'src/app/core/tournaments/tournament.service';
-import { Router, ActivatedRoute } from '@angular/router';
+
+import { Moc, MocService } from '@bab/core';
 
 @Component({
   selector: 'app-moc-list',
@@ -13,27 +12,27 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class MocListComponent implements OnInit {
 
-  @Input() tournamentId: number;
+  @Input()
+  mocIds: Observable<Array<number>>;
+
+  @Input()
+  editable: boolean;
+
   private mocs$: Observable<Array<Moc>>;
 
   constructor(
     private mocs: MocService,
-    private tournaments: TournamentService,
     private router: Router,
     private route: ActivatedRoute,
     ) { }
 
   ngOnInit() {
-    if (this.tournamentId) {
-      this.mocs$ = combineLatest(
-        this.mocs.mocs,
-        this.tournaments.tournament
-        ).pipe(
-          map(([ma, t]) => ma.filter(m => t.mocIds.indexOf(m._id) >= 0))
-        );
-    } else {
-      this.mocs$ = this.mocs.mocs;
-    }
+    this.mocs$ = combineLatest(
+      this.mocs.mocs,
+      this.mocIds
+      ).pipe(
+        map(([mocs, ids]) => mocs.filter(m => ids.indexOf(m._id) >= 0))
+      );
   }
 
   addMoc() {
