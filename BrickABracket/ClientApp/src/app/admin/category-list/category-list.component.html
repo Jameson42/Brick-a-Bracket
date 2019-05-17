@@ -5,7 +5,7 @@
 </div>
 <div *ngIf="(categories$ | async) as categories" class="list-group mb-2">
   <ng-container *ngFor="let category of categories; let i = index">
-    <a class="list-group-item list-group-item-action" routerLink="/admin/tournament/category/{{i}}">
+    <a class="list-group-item list-group-item-action" routerLink="/admin/tournaments/categories/{{i}}">
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mt-2">{{ (category?.classificationId | classification | async)?.name }}</h5>
         <div>

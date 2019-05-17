@@ -6,7 +6,6 @@ import { TournamentComponent } from './tournament/tournament.component';
 import { HomeComponent } from './home/home.component';
 import { CompetitorListComponent } from './competitor-list/competitor-list.component';
 import { MocComponent } from './moc/moc.component';
-import { MocListComponent } from './moc-list/moc-list.component';
 import { ClassificationComponent } from './classification/classification.component';
 import { ClassificationListComponent } from './classification-list/classification-list.component';
 import { DeviceListComponent } from './device-list/device-list.component';
@@ -20,27 +19,27 @@ import { CategoryComponent } from './category/category.component';
 const routes: Routes = [
   { path: '', component: LayoutComponent, children: [
     { path: '', component: HomeComponent },
-    { path: 'tournament/category/round/match', redirectTo: 'tournament/category/round/0', pathMatch: 'full' },
-    { path: 'tournament/category/round/match/:id', component: MatchComponent },
-    { path: 'tournament/category/round', redirectTo: 'tournament/category/0', pathMatch: 'full' },
-    { path: 'tournament/category/round/:id', component: RoundComponent },
-    { path: 'tournament/category', redirectTo: 'tournament/0', pathMatch: 'full' },
-    { path: 'tournament/category/:id', component: CategoryComponent },
-    { path: 'tournament/moc', redirectTo: 'tournament/0', pathMatch: 'full' },
-    { path: 'tournament/moc/new', component: MocComponent },
-    { path: 'tournament/moc/:id', component: MocComponent },
-    { path: 'tournament/new', component: TournamentComponent },
-    { path: 'tournament/:id', component: TournamentComponent },
-    { path: 'tournament', component: TournamentListComponent },
-    { path: 'competitor/new', component: CompetitorComponent },
-    { path: 'competitor/:id', component: CompetitorComponent },
-    { path: 'competitor', component: CompetitorListComponent },
-    { path: 'classification/new', component: ClassificationComponent },
-    { path: 'classification/:id', component: ClassificationComponent },
-    { path: 'classification', component: ClassificationListComponent },
-    { path: 'device/new', component: DeviceComponent },
-    { path: 'device/:id', component: DeviceComponent },
-    { path: 'device', component: DeviceListComponent },
+    { path: 'tournaments/categories/round/match', redirectTo: 'tournaments/categories/rounds/0', pathMatch: 'full' },
+    { path: 'tournaments/categories/round/match/:id', component: MatchComponent },
+    { path: 'tournaments/categories/round', redirectTo: 'tournaments/categories/0', pathMatch: 'full' },
+    { path: 'tournaments/categories/round/:id', component: RoundComponent },
+    { path: 'tournaments/categories', redirectTo: 'tournaments/0', pathMatch: 'full' },
+    { path: 'tournaments/categories/:id', component: CategoryComponent },
+    { path: 'tournaments/mocs', redirectTo: 'tournaments/0', pathMatch: 'full' },
+    { path: 'tournaments/mocs/new', component: MocComponent },
+    { path: 'tournaments/mocs/:id', component: MocComponent },
+    { path: 'tournaments/new', component: TournamentComponent },
+    { path: 'tournaments/:id', component: TournamentComponent },
+    { path: 'tournaments', component: TournamentListComponent },
+    { path: 'competitors/new', component: CompetitorComponent },
+    { path: 'competitors/:id', component: CompetitorComponent },
+    { path: 'competitors', component: CompetitorListComponent },
+    { path: 'classifications/new', component: ClassificationComponent },
+    { path: 'classifications/:id', component: ClassificationComponent },
+    { path: 'classifications', component: ClassificationListComponent },
+    { path: 'devices/new', component: DeviceComponent },
+    { path: 'devices/:id', component: DeviceComponent },
+    { path: 'devices', component: DeviceListComponent },
   ] },
 ];
 

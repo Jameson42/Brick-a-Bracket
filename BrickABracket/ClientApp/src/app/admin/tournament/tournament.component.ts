@@ -31,7 +31,7 @@ export class TournamentComponent implements OnInit {
       switchMap(_ => {
         if (this.id === 0) {
           return this.tournaments.tournament.pipe(
-            tap(t => this.router.navigate(['/admin/tournament/' + t._id], { replaceUrl: true }))
+            tap(t => this.router.navigate(['/admin/tournaments/' + t._id], { replaceUrl: true }))
           );
         }
         if (this.isNew) {

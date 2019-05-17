@@ -5,7 +5,7 @@
 </div>
 <div *ngIf="(mocs$ | async) as mocs" class="list-group">
   <ng-container *ngFor="let moc of mocs">
-    <a class="list-group-item list-group-item-action" routerLink="/admin/tournament/moc/{{moc._id}}">
+    <a class="list-group-item list-group-item-action" routerLink="/admin/tournaments/mocs/{{moc._id}}">
       <div class="d-flex w-100 justify-content-between">
         <div>
           <small class="badge badge-primary" *ngIf="(moc.classificationId | classification | async) as c">{{ c.name }}</small>
@@ -13,9 +13,9 @@
           <small class="d-inline-block">{{ moc.name }}</small>
         </div>
         <div>
-          <a class="btn btn-danger btn-sm float-right" (click)="delete(moc._id)" routerLink="/admin/tournament/moc">
+          <button class="btn btn-danger btn-sm float-right" (click)="delete(moc._id)">
             <i class="far fa-trash-alt"></i>
-          </a>
+          </button>
         </div>
       </div>
     </a>

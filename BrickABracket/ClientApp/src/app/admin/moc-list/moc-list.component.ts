@@ -37,7 +37,7 @@ export class MocListComponent implements OnInit {
   }
 
   addMoc() {
-    this.router.navigate(['../moc/new'], { relativeTo: this.route });
+    this.router.navigate(['../mocs/new'], { relativeTo: this.route });
   }
 
   delete(id: number) {
