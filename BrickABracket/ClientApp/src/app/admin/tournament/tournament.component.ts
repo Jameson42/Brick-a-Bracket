@@ -26,15 +26,14 @@ export class TournamentComponent implements OnInit {
   ngOnInit() {
     this.tournament$ = this.route.paramMap.pipe(
       tap(params => {
+        if (params.get('id') == null) {
+          this.isNew = true;
+          return;
+        }
         this.id = Number(params.get('id'));
         this.isNew = this.id < 0;
       }),
       switchMap(_ => {
-        if (this.id === 0) {
-          return this.tournaments.tournament.pipe(
-            tap(t => this.router.navigate(['../' + t._id], { replaceUrl: true, relativeTo: this.route }))
-          );
-        }
         if (this.isNew) {
           return new Observable<Tournament>(
             (observer: Observer<Tournament>) => {
@@ -42,9 +41,12 @@ export class TournamentComponent implements OnInit {
             observer.complete();
           });
         }
-        if (this.id) {
-          this.tournaments.setActive(this.id);
+        if (this.id === 0) {
+          return this.tournaments.tournament.pipe(
+            tap(t => this.router.navigate(['../' + t._id], { replaceUrl: true, relativeTo: this.route }))
+          );
         }
+        this.tournaments.setActive(this.id);
         return this.tournaments.tournament;
       }), shareReplay(1)
     );
@@ -57,7 +59,7 @@ export class TournamentComponent implements OnInit {
   async save(tournament: Tournament) {
     if (this.isNew) {
       const result = await this.tournaments.create(tournament.name, tournament.tournamentType);
-      this.router.navigate(['../' + result, { relativeTo: this.route }]);
+      this.router.navigate(['../' + result], { relativeTo: this.route });
     } else {
       return this.tournaments.update(tournament);
     }

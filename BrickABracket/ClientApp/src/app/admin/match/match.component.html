@@ -1,3 +1,18 @@
-<p>
-  match works!
-</p>
+<div class="row" *ngIf="(category$ | async) as category">
+  <div class="col-12">
+    <h3>
+      {{ (category?.classificationId | classification | async)?.name }} - Round {{(roundId$ | async)}} - Match {{id}}
+    </h3>
+  </div>
+  <div class="col-lg-4">
+    <div class="d-flex mb-2">
+      <button class="btn btn-outline-success btn-sm float-left" (click)="nextMatch()">
+        <i class="fas fa-forward"></i> Next Match
+      </button>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <h5>MOCs</h5>
+      <app-moc-list [mocIds]="mocIds$" [editable]="false"></app-moc-list>
+    </div>
+</div>

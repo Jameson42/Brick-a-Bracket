@@ -1,7 +1,7 @@
 <div class="row" *ngIf="(category$ | async) as category">
     <div class="col-12">
       <h3>
-        {{ (category?.classificationId | classification | async)?.name }} Category - Round {{id}}
+        {{ (category?.classificationId | classification | async)?.name }} - Round {{id}}
       </h3>
     </div>
     <div class="col-lg-4">

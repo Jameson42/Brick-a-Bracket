@@ -20,7 +20,7 @@
       <div class="form-group row">
         <label for="mocClass" class="col-4 col-form-label">MOC  Classification</label>
         <div class="col-8">
-          <app-classification-select [classificationId]="moc.classificationId" 
+          <app-classification-select [classificationId]="moc?.classificationId" 
             elementId="mocClass" (change)="setClass($event, moc)"></app-classification-select>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { TournamentService } from 'src/app/core/tournaments/tournament.service';
 import { Observable } from 'rxjs';
-import { TournamentSummary } from 'src/app/core/tournaments/tournament';
+
+import { TournamentService, TournamentSummary } from '@bab/core';
 
 @Component({
   selector: 'app-tournament-list',
@@ -12,13 +12,15 @@ export class TournamentListComponent implements OnInit {
 
   private summaries$: Observable<Array<TournamentSummary>>;
 
-  constructor(private tournaments: TournamentService) { }
+  constructor(
+    private tournaments: TournamentService,
+    ) { }
 
   ngOnInit() {
     this.summaries$ = this.tournaments.summaries;
   }
 
-  delete(id: number) {
-    this.tournaments.delete(id);
+  async delete(id: number) {
+    await this.tournaments.delete(id);
   }
 }
