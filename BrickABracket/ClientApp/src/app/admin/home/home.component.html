@@ -2,28 +2,28 @@
   <a class="list-group-item list-group-item-action" routerLink="/admin/tournaments">
     <div class="d-flex w-100 justify-content-between">
       <h5 class="mb-1">Tournaments</h5>
-      <small>{{tournamentCount}}</small>
+      <small>{{tournamentCount$ | async}}</small>
     </div>
     <small>Run a tournament</small>
   </a>
   <a class="list-group-item list-group-item-action" routerLink="/admin/competitors">
     <div class="d-flex w-100 justify-content-between">
       <h5 class="mb-1">Competitors</h5>
-      <small>{{competitorCount}}</small>
+      <small>{{competitorCount$ | async}}</small>
     </div>
     <small>Add competitors</small>
   </a>
   <a class="list-group-item list-group-item-action" routerLink="/admin/classifications">
     <div class="d-flex w-100 justify-content-between">
       <h5 class="mb-1">Classifications</h5>
-      <small>{{classificationCount}}</small>
+      <small>{{classificationCount$ | async}}</small>
     </div>
     <small>Edit available classifications</small>
   </a>
   <a class="list-group-item list-group-item-action" routerLink="/admin/devices">
     <div class="d-flex w-100 justify-content-between">
       <h5 class="mb-1">Devices</h5>
-      <small>{{deviceCount}}</small>
+      <small>{{deviceCount$ | async}}</small>
     </div>
     <small>Connect scoring devices</small>
   </a>
