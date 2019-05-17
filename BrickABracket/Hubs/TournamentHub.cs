@@ -257,8 +257,8 @@ namespace BrickABracket.Hubs
         }
         public async Task NextMatch()
         {
-            if (_runner.NextMatch())
-                await SendTournaments();
+            _runner.NextMatch();
+            await SendTournaments();
         }
         public void ReadyMatch() => _runner.ReadyMatch();
         public void StartMatch() => _runner.StartMatch();
