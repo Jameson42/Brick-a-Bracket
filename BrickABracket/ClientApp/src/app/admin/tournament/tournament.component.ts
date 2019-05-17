@@ -31,7 +31,7 @@ export class TournamentComponent implements OnInit {
       switchMap(_ => {
         if (this.id === 0) {
           return this.tournaments.tournament.pipe(
-            tap(t => this.router.navigate(['/admin/tournaments/' + t._id], { replaceUrl: true }))
+            tap(t => this.router.navigate(['../' + t._id], { replaceUrl: true, relativeTo:this.route }))
           );
         }
         if (this.isNew) {
@@ -52,7 +52,7 @@ export class TournamentComponent implements OnInit {
   async save(tournament: Tournament) {
     if (this.isNew) {
       const result = await this.tournaments.create(tournament.name, tournament.tournamentType);
-      this.router.navigate(['/admin/tournament', { id: result }]);
+      this.router.navigate(['../' + result, { relativeTo: this.route }]);
     } else {
       return this.tournaments.update(tournament);
     }
