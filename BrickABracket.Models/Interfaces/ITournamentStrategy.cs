@@ -10,7 +10,7 @@ namespace BrickABracket.Models.Interfaces
         /// Entering an existing round index recreates that round.
         /// </summary>
         /// <returns>Returns round index, or -1 on a failure</returns>
-        int GenerateRound(int categoryIndex, int roundIndex = -1);
+        int GenerateRound(Category category, int roundIndex = -1);
         /// <summary>
         /// Generates a match within the given round. 
         /// Defaults to next match if no match index or round index specified.
@@ -18,8 +18,8 @@ namespace BrickABracket.Models.Interfaces
         /// at the end of the match list.
         /// </summary>
         /// <returns>Returns new match index, or -1 on a failure</returns>
-        int GenerateMatch(int categoryIndex, int roundIndex = -1, int matchIndex = -1);
-        bool GenerateCategoryStandings(int categoryIndex);
-        bool GenerateRoundStandings(int categoryIndex, int roundIndex);
+        int GenerateMatch(Round round, int matchIndex = -1);
+        bool GenerateCategoryStandings(Category category);
+        bool GenerateRoundStandings(Round round);
     }
 }

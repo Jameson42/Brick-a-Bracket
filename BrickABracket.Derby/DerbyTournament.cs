@@ -11,66 +11,26 @@ namespace BrickABracket.Derby
     {
         public int MatchSize {get;} = 4;
         private const string patternPrefix = "derby";
-        private Tournament _tournament; 
-        private TournamentService _tournamentService;
-        private MocService _mocService;
-        private CompetitorService _competitorService;
-        public DerbyTournament(TournamentService tournamentService, 
-            MocService mocService, CompetitorService competitorService, 
-            Tournament tournament)
+        public int GenerateRound(Category category, int roundIndex = -1)
         {
-            _tournamentService = tournamentService;
-            _mocService = mocService;
-            _competitorService = competitorService;
-            _tournament = tournament;
-        }
-        public DerbyTournament(TournamentService tournamentService, 
-            MocService mocService, CompetitorService competitorService, 
-            int tournamentId):this(tournamentService, mocService, competitorService, 
-            tournamentService.Read(tournamentId))
-        {}
-        public int GenerateRound(int categoryIndex, int roundIndex = -1)
-        {
-            //Ensure category exists
-            var category = _tournament.Categories.ElementAtOrDefault(categoryIndex);
             if (category == null)
                 return -1;
-            return GenerateRound(category, roundIndex);
-        }
-        private int GenerateRound(Category category, int roundIndex, bool removeOld = false)
-        {
             //Ensure only one round exists
             //Derby tournaments only have one round with all matches and MOCs in it
             if (category.Rounds.Count>1)
                 category.Rounds.RemoveRange(1, category.Rounds.Count-1);
-            if (roundIndex == 0 && category.Rounds.Count == 1 && removeOld)
+            if (roundIndex == 0 && category.Rounds.Count == 1)
                 category.Rounds[0] = new Round(){
-                    MocIds = category.MocIds
+                    MocIds = category.MocIds.ToList()
                 };
             if (category.Rounds.Count == 0)
                 category.Rounds.Add(new Round(){
-                    MocIds = category.MocIds
+                    MocIds = category.MocIds.ToList()
                 });
             return 0;
         }
-        public int GenerateMatch(int categoryIndex, int roundIndex = -1, int matchIndex = -1)
-        {
-            //Ensure category exists
-            var category = _tournament.Categories.ElementAtOrDefault(categoryIndex);
-            if (category == null)
-                return -1;
-
-            //Ensure only one round exists
-            //Derby tournaments only have one round with all matches in it
-            if (category.Rounds.Count == 0)
-                category.Rounds.Add(new Round());
-            if (category.Rounds.Count>1)
-                category.Rounds.RemoveRange(1, category.Rounds.Count-1);
-            roundIndex = 0;
-            var round = category.Rounds[roundIndex];
-            return GenerateMatch(round, matchIndex);
-        }
-        private int GenerateMatch(Round round, int matchIndex, int retryAttempts = 10)
+        public int GenerateMatch(Round round, int matchIndex = -1) => GenerateMatch(round, matchIndex, 10);
+        public int GenerateMatch(Round round, int matchIndex, int retryAttempts)
         {
             if (retryAttempts<=0)
                 return -1;
@@ -89,10 +49,14 @@ namespace BrickABracket.Derby
                     var pickList = round.MocIds
                         .Where(p => !match.MocIds.Contains(p));
 
+                    // Remove MOCs that have already been in this lane
+                    pickList = pickList
+                        .Where(pl => !round.Matches.Any(m => m.MocIds.ElementAtOrDefault(i) == pl));
+
                     // If pickList is empty, we've reached a bad 
                     // state due to pickList randomness. 
                     // Restart the selection for the current match.
-                    if (!pickList.Any())
+                    if (!pickList.Any() && round.MocIds.Count>=MatchSize)
                     {
                         try 
                         {
@@ -104,18 +68,28 @@ namespace BrickABracket.Derby
                         }
                     }
 
-                    var matchCounts = round.Matches
-                        .SelectMany(p => p.MocIds)
-                        .GroupBy(m => m)
-                        .Select(m => new { Count = m.Count(), Moc = m.Key });
+
+                    // How many times each MOC in the picklist is in existing Matches
+                    var matchCounts = pickList
+                        .GroupJoin(round.Matches
+                            .SelectMany(p => p.MocIds)
+                            .GroupBy(m => m), 
+                            p => p, m => m.Key, 
+                            (p,m) => new { Count = m?.Count() ?? 0, Moc = p }
+                        );
+                    
+                    // Lowest number of matches for each MOC
                     var fewestMatches = matchCounts.Any() ? matchCounts
                         .Select(m => m.Count)
                         .Min() : 0;
+
+                    // MOCs with fewest matches
                     var availableMocs = matchCounts
                         .Where(m => m.Count == fewestMatches)
                         .Select(m => m.Moc);
-                    pickList = pickList
-                        .Intersect(availableMocs)
+
+                    // Reduce picklist
+                    pickList = availableMocs
                         .OrderBy(p => FacingCount(round, match, p))
                         .ThenBy(p => System.Guid.NewGuid()); // Random
                     if (fewestMatches > 0)
@@ -128,15 +102,10 @@ namespace BrickABracket.Derby
                 round.Matches.Add(match);
                 return matchIndex;
         }
-        public bool GenerateCategoryStandings(int categoryIndex)
+        public bool GenerateCategoryStandings(Category category)
         {
-            var category = _tournament.Categories.ElementAtOrDefault(categoryIndex);
             if (category == null)
                 return false;
-            return GenerateCategoryStandings(category);
-        }
-        private bool GenerateCategoryStandings(Category category)
-        {
             foreach (var round in category.Rounds)
                 GenerateRoundStandings(round);
             // Derby tournaments should only have 1 Round
@@ -145,18 +114,10 @@ namespace BrickABracket.Derby
                 return false;
             return true;
         }
-        public bool GenerateRoundStandings(int categoryIndex, int roundIndex)
+        public bool GenerateRoundStandings(Round round)
         {
-            var category = _tournament.Categories.ElementAtOrDefault(categoryIndex);
-            if (category == null)
-                return false;
-            var round = category.Rounds.ElementAtOrDefault(roundIndex);
             if (round == null)
                 return false;
-            return GenerateRoundStandings(round);
-        }
-        private bool GenerateRoundStandings(Round round)
-        {
             round.Standings = round.Matches
                 .Where(m => m.Results.Any())
                 .SelectMany(m => m.Results.LastOrDefault()?.Scores

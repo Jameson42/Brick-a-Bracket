@@ -28,10 +28,10 @@ namespace BrickABracket.Core.Services
         private IDisposable _followScoreSubscription;
         private Func<MocService> _mocServiceFactory;
         private Func<TournamentService> _tournamentServiceFactory;
-        private IEnumerable<Meta<Func<Tournament, ITournamentStrategy>>> _tournamentStrategies;
+        private IEnumerable<Meta<ITournamentStrategy>> _tournamentStrategies;
         #endregion
         public TournamentRunner(Func<MocService> mocs, Func<TournamentService> tournaments,
-            IEnumerable<Meta<Func<Tournament, ITournamentStrategy>>> tournamentStrategies)
+            IEnumerable<Meta<ITournamentStrategy>> tournamentStrategies)
         {
             _mocServiceFactory = mocs;
             _tournamentServiceFactory = tournaments;
@@ -52,7 +52,7 @@ namespace BrickABracket.Core.Services
                 if (_tournament?.TournamentType != value.TournamentType)
                     _strategy = _tournamentStrategies
                         .FirstOrDefault(ts => (string)ts.Metadata["Type"] == value.TournamentType)
-                        ?.Value(value);
+                        ?.Value;
                 if (_tournament != value) 
                     CategoryIndex = DEFAULTINDEX;
                 _tournament = value;
@@ -191,11 +191,11 @@ namespace BrickABracket.Core.Services
             if (Category == null)
                 return false;
             // Select first unfinished round
-            RoundIndex = _strategy.GenerateRound(CategoryIndex);
+            RoundIndex = _strategy.GenerateRound(Category);
             // Select next match
             MatchIndex = Round?.Matches?.FindIndex(m => m?.Results?.Count() == 0) ?? -1;
             if (MatchIndex == -1)
-                MatchIndex = _strategy.GenerateMatch(CategoryIndex, RoundIndex);
+                MatchIndex = _strategy.GenerateMatch(Round);
             SaveTournament();
             return MatchIndex > -1;
         }
@@ -235,19 +235,27 @@ namespace BrickABracket.Core.Services
         public bool GenerateRoundStandings(int categoryIndex = -1, int roundIndex = -1)
         {
             if (categoryIndex == -1 || roundIndex == -1)
-                return _strategy.GenerateRoundStandings(this.CategoryIndex, this.RoundIndex);
-            return _strategy.GenerateRoundStandings(categoryIndex, roundIndex);
+                return _strategy.GenerateRoundStandings(this.Round);
+            var round = Tournament?.Categories
+                ?.ElementAtOrDefault(categoryIndex)
+                ?.Rounds?.ElementAtOrDefault(roundIndex);
+            if (round == null)
+                return false;
+            return _strategy.GenerateRoundStandings(round);
         }
         public bool GenerateCategoryStandings(int categoryIndex = -1)
         {
             if (categoryIndex == -1)
-                return _strategy.GenerateCategoryStandings(this.CategoryIndex);
-            return _strategy.GenerateCategoryStandings(categoryIndex);
+                return _strategy.GenerateCategoryStandings(this.Category);
+            var category = Tournament?.Categories?.ElementAtOrDefault(categoryIndex);
+            if (category == null)
+                return false;
+            return _strategy.GenerateCategoryStandings(category);
         }
         public bool GenerateAllStandings()
         {
-            for (int i=0; i<Tournament?.Categories?.Count; i++)
-                _strategy.GenerateCategoryStandings(i);
+            foreach(var category in Tournament?.Categories)
+                _strategy.GenerateCategoryStandings(category);
             SaveTournament();
             return true;
         }

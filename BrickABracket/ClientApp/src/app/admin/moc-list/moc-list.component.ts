@@ -16,9 +16,10 @@ export class MocListComponent implements OnInit {
   mocIds: Observable<Array<number>>;
 
   @Input()
-  editable: boolean;
+  editable: boolean = false;
 
   private mocs$: Observable<Array<Moc>>;
+  private bye: Moc;
 
   constructor(
     private mocs: MocService,
@@ -27,11 +28,20 @@ export class MocListComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+    this.bye = new Moc;
+    this.bye._id = -1;
+    this.bye.name = 'Bye';
     this.mocs$ = combineLatest(
-      this.mocs.mocs,
+      this.mocs.mocs.pipe(map(mocs => mocs.concat(this.bye))),
       this.mocIds
       ).pipe(
-        map(([mocs, ids]) => mocs.filter(m => ids.indexOf(m._id) >= 0))
+        map(([mocs, ids]) => {
+          let mocList = new Array<Moc>();
+          ids.forEach(id => {
+            mocList.push(mocs.find(m => m._id === id));
+          });
+          return mocList;
+        })
       );
   }
 

@@ -7,19 +7,19 @@ namespace BrickABracket.SingleElimination
     public class SingleEliminationTournament: ITournamentStrategy
     {
         public int MatchSize {get;} = 2;
-        public int GenerateRound(int categoryIndex, int roundIndex = -1)
+        public int GenerateRound(Category category, int roundIndex = -1)
         {
             return -1;
         }
-        public int GenerateMatch(int categoryIndex, int roundIndex = -1, int matchIndex = -1)
+        public int GenerateMatch(Round round, int matchIndex = -1)
         {
             return -1;
         }
-        public bool GenerateCategoryStandings(int categoryIndex)
+        public bool GenerateCategoryStandings(Category category)
         {
             return false;
         }
-        public bool GenerateRoundStandings(int categoryIndex, int roundIndex)
+        public bool GenerateRoundStandings(Round round)
         {
             return false;
         }
