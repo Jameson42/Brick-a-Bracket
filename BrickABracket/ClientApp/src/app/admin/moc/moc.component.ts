@@ -43,10 +43,6 @@ export class MocComponent implements OnInit {
     );
   }
 
-  changeImage(event) {
-    this.image = event.target.files[0];
-  }
-
   async save(moc: Moc, competitor: Competitor) {
     moc.competitorId = await this.saveCompetitor(competitor);
     await this.saveMoc(moc);
@@ -63,8 +59,11 @@ export class MocComponent implements OnInit {
     }
   }
 
+  changeImage(event) {
+    this.image = event.target.files[0];
+  }
+
   async saveImage(id: number) {
-    console.log(this.image);
     if (this.image) {
       return this.mocs.uploadImage(id, this.image);
     }

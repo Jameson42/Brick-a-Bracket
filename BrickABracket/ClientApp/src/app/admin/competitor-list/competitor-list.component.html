@@ -1,7 +1,17 @@
 <div class="d-flex mb-2">
-  <a class="btn btn-outline-success btn-sm float-left" routerLink="" (click)="add()">
+  <button class="btn btn-outline-success btn-sm float-left" (click)="add()">
     <i class="fas fa-plus"></i> Add Competitor
-  </a>
+  </button>
+</div>
+<div class="input-group mb-2">
+  <div class="custom-file">
+    <input type="file" class="custom-file-input" id="importFile"
+      accept=".csv, .txt" (change)="changeImportFile($event)">
+    <label class="custom-file-label" for="importFile">{{ import?.name || "Choose Import CSV" }}</label>
+  </div>
+  <div class="input-group-append">
+    <button class="btn btn-outline-success" (click)="uploadImport()">Upload</button>
+  </div>
 </div>
 <div *ngIf="(competitors$ | async) as competitors" class="list-group">
   <ng-container *ngFor="let competitor of competitors">

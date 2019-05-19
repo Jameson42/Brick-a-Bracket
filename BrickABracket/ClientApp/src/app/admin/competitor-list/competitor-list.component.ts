@@ -12,6 +12,7 @@ import { Competitor, CompetitorService } from '@bab/core';
 export class CompetitorListComponent implements OnInit {
 
   private competitors$: Observable<Array<Competitor>>;
+  private import: File;
 
   constructor(
     private competitors: CompetitorService,
@@ -29,6 +30,16 @@ export class CompetitorListComponent implements OnInit {
 
   delete(id: number) {
     this.competitors.delete(id);
+  }
+
+  changeImportFile(event) {
+    this.import = event.target.files[0];
+  }
+
+  async uploadImport() {
+    if (this.import) {
+      return this.competitors.uploadCompetitorCSV(this.import);
+    }
   }
 
 }

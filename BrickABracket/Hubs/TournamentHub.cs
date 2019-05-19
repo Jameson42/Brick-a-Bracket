@@ -85,6 +85,10 @@ namespace BrickABracket.Hubs
         }
         public async Task DeleteTournament(int id)
         {
+            foreach (var mId in _tournaments.Read(id)?.MocIds)
+            {
+                _mocs.Delete(mId);
+            }
             if (_tournaments.Delete(id))
             {
                 _runner.Tournament = null;

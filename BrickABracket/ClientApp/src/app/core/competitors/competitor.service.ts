@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map, shareReplay, distinctUntilKeyChanged } from 'rxjs/operators';
 
@@ -9,7 +10,10 @@ import { SignalrService } from '../signalr.service';
 export class CompetitorService {
     private competitors$: Observable<Array<Competitor>>;
 
-    constructor(private _signalR: SignalrService) { }
+    constructor(
+        private _signalR: SignalrService,
+        private _httpClient: HttpClient
+    ) { }
 
     get competitors(): Observable<Array<Competitor>> {
         if (!this.competitors$) {
@@ -36,6 +40,12 @@ export class CompetitorService {
 
     delete(id: number) {
         return this._signalR.invoke('DeleteCompetitor', id);
+    }
+
+    uploadCompetitorCSV(file: Blob) {
+        const formData: FormData = new FormData();
+        formData.append('file', file);
+        return this._httpClient.post('/api/import/competitors', formData).subscribe();
     }
 
     searchNames(term: string): Observable<Array<Competitor>> {
