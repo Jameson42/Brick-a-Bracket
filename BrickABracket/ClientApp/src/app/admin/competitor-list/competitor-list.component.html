@@ -1,5 +1,5 @@
 <div class="d-flex mb-2">
-  <button class="btn btn-outline-success btn-sm float-left" (click)="add()">
+  <button class="btn btn-outline-success float-left" (click)="add()">
     <i class="fas fa-plus"></i> Add Competitor
   </button>
 </div>
@@ -13,15 +13,18 @@
     <button class="btn btn-outline-success" (click)="uploadImport()">Upload</button>
   </div>
 </div>
-<div *ngIf="(competitors$ | async) as competitors" class="list-group">
-  <ng-container *ngFor="let competitor of competitors">
-    <a class="list-group-item list-group-item-action" routerLink="/admin/competitors/{{competitor._id}}">
-      <div class="d-flex w-100 justify-content-between">
-        <h5 class="mb-1">{{ competitor.name }}</h5>
-        <button class="btn btn-danger btn-sm float-right" (click)="delete(competitor._id)">
-          <i class="far fa-trash-alt"></i>
-        </button>
-      </div>
-    </a>
-  </ng-container>
+<div *ngIf="(competitors$ | async) as competitors">
+  <div *ngFor="let competitor of competitors" class="input-group input-group-sm mb-1">
+    <div class="input-group-prepend">
+      <button class="btn btn-success" routerLink="/admin/competitors/{{competitor._id}}">
+        <i class="fas fa-edit"></i>
+      </button>
+    </div>
+    <span type="text" class="form-control">{{ competitor.name }}</span>
+    <div class="input-group-append">
+      <button class="btn btn-danger" (click)="delete(competitor._id)">
+        <i class="far fa-trash-alt"></i>
+      </button>
+    </div>
+  </div>
 </div>
