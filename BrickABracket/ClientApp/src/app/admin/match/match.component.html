@@ -5,9 +5,18 @@
     </h3>
   </div>
   <div class="col-lg-4">
-    <div class="d-flex mb-2">
-      <button class="btn btn-outline-success btn-sm float-left" (click)="nextMatch()">
-        <i class="fas fa-forward"></i> Next Match
+    <div>
+      <button class="btn btn-outline-success float-left mr-2 mb-2" (click)="nextMatch()">
+        <i class="fas fa-forward mr-2"></i>Next Match
+      </button>
+      <button type="button" class="btn mr-2 mb-2 {{readyColor}}" (click)="readyToggle()">
+        <i class="fas fa-check mr-2"></i>Ready to Start
+      </button>
+      <button class="btn btn-outline-success mr-2 mb-2" (click)="startMatch()">
+        <i class="fas fa-flag-checkered mr-2"></i>Start Match
+      </button>
+      <button class="btn btn-outline-danger mr-2 mb-2" (click)="stopMatch()">
+        <i class="fas fa-hand-paper mr-2"></i>Stop Match
       </button>
     </div>
   </div>

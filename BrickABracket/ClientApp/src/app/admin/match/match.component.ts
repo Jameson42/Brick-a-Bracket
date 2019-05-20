@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { switchMap, shareReplay, tap, map, filter, take, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 import { TournamentService, Category, Match } from '@bab/core';
+import { ReadyState } from '@angular/http';
 
 @Component({
   selector: 'app-match',
@@ -17,6 +18,7 @@ export class MatchComponent implements OnInit {
   private mocIds$: Observable<Array<number>>;
   private roundId$: Observable<number>;
   private id: number;
+  private readyColor: string = 'btn-outline-success';
 
   constructor(
     private tournaments: TournamentService,
@@ -59,6 +61,24 @@ export class MatchComponent implements OnInit {
 
   delete() {
     
+  }
+
+  async readyToggle() {
+    await this.tournaments.readyMatch();
+    this.readyColor = 'btn-success';
+  }
+
+  async startMatch(seconds: number) {
+    await this.tournaments.readyMatch();
+    if (seconds > 0) {
+      return this.tournaments.startTimedMatch(seconds * 1000);
+    } else {
+      return this.tournaments.startMatch();
+    }
+  }
+
+  stopMatch() {
+    return this.tournaments.stopMatch();
   }
 
 }
