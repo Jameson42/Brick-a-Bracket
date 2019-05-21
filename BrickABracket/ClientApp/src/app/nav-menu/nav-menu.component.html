@@ -10,11 +10,25 @@
       </button>
       <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" [ngClass]='{"show": isExpanded}'>
         <ul class="navbar-nav flex-grow">
-          <li class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-            <a class="nav-link text-dark" [routerLink]='["/"]'>Home</a>
+          <li class="nav-item" [routerLinkActive]='["link-active"]' title="Primary Screen">
+            <a class="nav-link text-dark" [routerLink]='["/primary"]' (click)="collapse()">
+              <i class="fas fa-desktop fa-fw"></i> 1<span class="d-sm-none">st Screen</span>
+            </a>
           </li>
-          <li class="nav-item" [routerLinkActive]='["link-active"]'>
-            <a class="nav-link text-dark" [routerLink]='["/admin"]'>Admin</a>
+          <li class="nav-item" [routerLinkActive]='["link-active"]' title="Secondary Screen">
+            <a class="nav-link text-dark" [routerLink]='["/secondary"]' (click)="collapse()">
+              <i class="fas fa-desktop fa-fw"></i> 2<span class="d-sm-none">nd Screen</span>
+            </a>
+          </li>
+          <li class="nav-item" [routerLinkActive]='["link-active"]' title="Administration">
+            <a class="nav-link text-dark" [routerLink]='["/admin"]' (click)="collapse()">
+              <i class="fas fa-cogs fa-fw"></i><span class="d-sm-none"> Administration</span>
+            </a>
+          </li>
+          <li class="nav-item" [routerLinkActive]='["link-active"]' title="About Brick-a-Bracket">
+            <a class="nav-link text-dark" [routerLink]='["/about"]' (click)="collapse()">
+              <i class="fas fa-info-circle fa-fw"></i><span class="d-sm-none"> About Brick-a-Bracket</span>
+            </a>
           </li>
         </ul>
       </div>
