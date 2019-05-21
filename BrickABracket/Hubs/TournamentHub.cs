@@ -268,6 +268,11 @@ namespace BrickABracket.Hubs
         public void StartMatch() => _runner.StartMatch();
         public void StartTimedMatch(long milliseconds) => _runner.StartTimedMatch(milliseconds);
         public void StopMatch() => _runner.StopMatch();
+        public async Task DeleteCurrentMatch()
+        {
+            _runner.DeleteCurrentMatch();
+            await SendTournaments();
+        }
         #endregion
     }
 }

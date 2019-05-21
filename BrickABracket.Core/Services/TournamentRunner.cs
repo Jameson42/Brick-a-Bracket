@@ -232,6 +232,15 @@ namespace BrickABracket.Core.Services
                 });
             return true;
         }
+        public bool DeleteCurrentMatch()
+        {
+            if (Match == null)
+                return false;
+            Round.Matches.RemoveAt(MatchIndex);
+            MatchIndex = DEFAULTINDEX;
+            SaveTournament();
+            return true;
+        }
         public bool GenerateRoundStandings(int categoryIndex = -1, int roundIndex = -1)
         {
             if (categoryIndex == -1 || roundIndex == -1)

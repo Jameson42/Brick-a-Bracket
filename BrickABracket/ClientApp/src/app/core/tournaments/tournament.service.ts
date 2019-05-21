@@ -65,7 +65,7 @@ export class TournamentService {
         return this.metadata.pipe(
             map(tm => {
                 if (tm.categoryIndex >= 0 && tm.roundIndex >= 0 && tm.matchIndex >= 0 ) {
-                    return tm.tournament.categories[tm.categoryIndex].rounds[tm.matchIndex].matches[tm.matchIndex];
+                    return tm.tournament.categories[tm.categoryIndex].rounds[tm.roundIndex].matches[tm.matchIndex];
                 }
                 return null;
             }),
@@ -83,6 +83,10 @@ export class TournamentService {
 
     delete(id: number) {
         return this._signalR.invoke('DeleteTournament', id);
+    }
+
+    deleteCurrentMatch() {
+        return this._signalR.invoke('DeleteCurrentMatch');
     }
 
     setActive(id: number) {

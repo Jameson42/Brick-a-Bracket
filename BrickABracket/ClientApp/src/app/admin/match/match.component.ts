@@ -60,7 +60,9 @@ export class MatchComponent implements OnInit {
   }
 
   delete() {
-    
+    this.tournaments.deleteCurrentMatch().then(_ => {
+      this.router.navigate(['../'], {relativeTo: this.route});
+    });
   }
 
   async readyToggle() {
