@@ -5,9 +5,11 @@ import { HttpClientModule } from '@angular/common/http';
 // SignalR
 import '@aspnet/signalr';
 
-import { SignalrService,ClassificationService,
-  CompetitorService,DeviceService,
-  MocService,TournamentService } from '@bab/core';
+import { SignalrService, ClassificationService,
+  CompetitorService, DeviceService,
+  MocService, TournamentService,
+  RedirectService,
+ } from '@bab/core';
 
 @NgModule({
   imports: [
@@ -21,6 +23,7 @@ import { SignalrService,ClassificationService,
     DeviceService,
     MocService,
     TournamentService,
+    RedirectService,
   ],
 })
 export class CoreModule { }

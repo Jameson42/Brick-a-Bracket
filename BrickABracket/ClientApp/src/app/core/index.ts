@@ -13,3 +13,4 @@ export * from './tournaments/round';
 export * from './tournaments/standing';
 export * from './tournaments/tournament';
 export * from './tournaments/tournament.service';
+export * from './redirects/redirect.service';
