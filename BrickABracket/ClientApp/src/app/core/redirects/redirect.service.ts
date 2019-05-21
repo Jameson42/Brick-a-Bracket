@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil, distinctUntilChanged } from 'rxjs/operators';
 
-import { TournamentService } from '@bab/core';
+import { TournamentService } from '@bab/core/tournaments/tournament.service';
 
 @Injectable({
   providedIn: 'root'

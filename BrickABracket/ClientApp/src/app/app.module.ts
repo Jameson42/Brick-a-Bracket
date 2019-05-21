@@ -9,11 +9,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { CoreModule } from '@bab/core/core.module';
 import { SharedModule } from '@bab/shared/shared.module';
+import { AboutComponent } from './about/about.component';
+import { NavFooterComponent } from './nav-footer/nav-footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
+    AboutComponent,
+    NavFooterComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

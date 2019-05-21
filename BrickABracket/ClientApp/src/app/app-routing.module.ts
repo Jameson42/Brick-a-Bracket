@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { ConnectionResolver } from '@bab/shared';
+import { AboutComponent } from './about/about.component';
 
 const appRoutes: Routes = [
   { path: 'admin',
@@ -13,6 +14,7 @@ const appRoutes: Routes = [
   { path: 'secondary',
                 loadChildren: './secondary/secondary.module#SecondaryModule',
                 resolve: {connection: ConnectionResolver}},
+  { path: 'about', component: AboutComponent },
   { path: '', redirectTo: '/primary', pathMatch: 'full' }
 ];
 
