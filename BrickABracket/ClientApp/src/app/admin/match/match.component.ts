@@ -30,7 +30,6 @@ export class MatchComponent implements OnInit {
     this.category$ = this.tournaments.category;
     this.roundId$ = this.tournaments.metadata.pipe(
       filter(md => !!md),
-      tap(md => console.log(md)),
       map(md => md.roundIndex),
       distinctUntilChanged(),
       shareReplay(1)
