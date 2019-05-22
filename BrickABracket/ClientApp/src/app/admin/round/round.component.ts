@@ -42,7 +42,11 @@ export class RoundComponent implements OnInit {
   nextMatch() {
     this.tournaments.nextMatch().then(_ => {
       this.tournaments.metadata.pipe(take(1)).subscribe(md => {
-        this.router.navigate(['../matches/' + md.matchIndex], { relativeTo: this.route });
+        if (md.matchIndex > -1) {
+          this.router.navigate(['../matches/' + md.matchIndex], { relativeTo: this.route });
+        } else {
+          this.router.navigate(['../matches'], { relativeTo: this.route });
+        }
       });
     });
   }

@@ -53,7 +53,11 @@ export class MatchComponent implements OnInit {
   nextMatch() {
     this.tournaments.nextMatch().then(_ => {
       this.tournaments.metadata.pipe(take(1)).subscribe(md => {
-        this.router.navigate(['../' + md.matchIndex], { relativeTo: this.route });
+        if (md.matchIndex > -1) {
+          this.router.navigate(['../' + md.matchIndex], { relativeTo: this.route });
+        } else {
+          this.router.navigate(['../'], { relativeTo: this.route });
+        }
       });
     });
   }
