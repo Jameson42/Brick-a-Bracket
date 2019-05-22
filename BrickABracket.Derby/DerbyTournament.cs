@@ -29,8 +29,8 @@ namespace BrickABracket.Derby
                 });
             return 0;
         }
-        public int GenerateMatch(Round round, int matchIndex = -1) => GenerateMatch(round, matchIndex, 10);
-        public int GenerateMatch(Round round, int matchIndex, int retryAttempts)
+        public int GenerateMatch(Round round, int matchIndex = -1) => GenerateMatch(round, matchIndex, 25);
+        private int GenerateMatch(Round round, int matchIndex, int retryAttempts)
         {
             if (retryAttempts<=0)
                 return -1;
@@ -44,63 +44,74 @@ namespace BrickABracket.Derby
                 matchIndex = round.Matches.Count;
             }
             var match = new Match();
-            for (int i=0;i<MatchSize;i++)
-                {
-                    var pickList = round.MocIds
-                        .Where(p => !match.MocIds.Contains(p));
+            match.MocIds = new List<int>(new int[] {0, 0, 0, 0});
+            if (!GenerateMatchLanes(round, match, 0))
+                return -1;
 
-                    // Remove MOCs that have already been in this lane
-                    pickList = pickList
-                        .Where(pl => !round.Matches.Any(m => m.MocIds.ElementAtOrDefault(i) == pl));
+            round.Matches.Add(match);
+            return matchIndex;
+        }
 
-                    // If pickList is empty, we've reached a bad 
-                    // state due to pickList randomness. 
-                    // Restart the selection for the current match.
-                    if (!pickList.Any() && round.MocIds.Count>=MatchSize)
-                    {
-                        try 
-                        {
-                            return GenerateMatch(round, matchIndex, retryAttempts - 1);
-                        }
-                        catch
-                        {
-                            return -1;
-                        }
-                    }
+        private bool GenerateMatchLanes(Round round, Match match, int matchLane)
+        {
+            // If we successfully got past the final lane, the match is good
+            if (matchLane >= MatchSize)
+                return true;
+
+            var pickList = round.MocIds
+                .Where(p => !match.MocIds.Contains(p));
+
+            // Remove MOCs that have already been in this lane
+            pickList = pickList
+                .Where(pl => !round.Matches.Any(m => m.MocIds.ElementAtOrDefault(matchLane) == pl));
+
+            // If pickList is empty, we've reached a bad 
+            // state due to pickList randomness. 
+            if (!pickList.Any() && round.MocIds.Count>=MatchSize)
+            {
+                return false;
+            }
 
 
-                    // How many times each MOC in the picklist is in existing Matches
-                    var matchCounts = pickList
-                        .GroupJoin(round.Matches
-                            .SelectMany(p => p.MocIds)
-                            .GroupBy(m => m), 
-                            p => p, m => m.Key, 
-                            (p,m) => new { Count = m?.Count() ?? 0, Moc = p }
-                        );
-                    
-                    // Lowest number of matches for each MOC
-                    var fewestMatches = matchCounts.Any() ? matchCounts
-                        .Select(m => m.Count)
-                        .Min() : 0;
+            // How many times each MOC in the picklist is in existing Matches
+            var matchCounts = pickList
+                .GroupJoin(round.Matches
+                    .SelectMany(p => p.MocIds)
+                    .GroupBy(m => m), 
+                    p => p, m => m.Key, 
+                    (p,m) => new { Count = m?.Count() ?? 0, Moc = p }
+                );
+            
+            // Lowest number of matches for each MOC
+            var fewestMatches = matchCounts.Any() ? matchCounts
+                .Select(m => m.Count)
+                .Min() : 0;
 
-                    // MOCs with fewest matches
-                    var availableMocs = matchCounts
-                        .Where(m => m.Count == fewestMatches)
-                        .Select(m => m.Moc);
+            // MOCs with fewest matches
+            var availableMocs = matchCounts
+                .Where(m => m.Count == fewestMatches)
+                .Select(m => m.Moc);
 
-                    // Reduce picklist
-                    pickList = availableMocs
-                        .OrderBy(p => FacingCount(round, match, p))
-                        .ThenBy(p => System.Guid.NewGuid()); // Random
-                    if (fewestMatches > 0)
-                        pickList = pickList
-                            .Where(m => !round.Matches.Last().MocIds.Contains(m));
-                    match.MocIds.Add(pickList.Count()>0
-                        ? pickList.First()
-                        : -1);
-                }
-                round.Matches.Add(match);
-                return matchIndex;
+            // Reduce picklist
+            pickList = availableMocs
+                .OrderBy(p => FacingCount(round, match, p))
+                .ThenBy(p => System.Guid.NewGuid()); // Random
+            if (pickList?.Any(m => !round?.Matches?.LastOrDefault()?.MocIds?.Contains(m) ?? false) ?? false)
+                pickList = pickList
+                    .Where(m => !round.Matches.Last().MocIds.Contains(m));
+            
+            if (!pickList.Any())
+            {
+                match.MocIds[matchLane] = -1;
+                return GenerateMatchLanes(round, match, matchLane + 1);
+            }
+            foreach(var moc in pickList.Union(availableMocs))
+            {
+                match.MocIds[matchLane] = moc;
+                if (GenerateMatchLanes(round, match, matchLane + 1))
+                    return true;
+            }
+            return false;
         }
         public bool GenerateCategoryStandings(Category category)
         {
