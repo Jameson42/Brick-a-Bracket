@@ -1,5 +1,7 @@
 using Autofac;
 using BrickABracket.Models.Base;
+using BrickABracket.Models.Interfaces;
+using BrickABracket.Models.Mock;
 
 namespace BrickABracket.Models
 {
@@ -14,6 +16,9 @@ namespace BrickABracket.Models
             builder.RegisterType<Round>();
             builder.RegisterType<Score>();
             builder.RegisterType<Tournament>();
+            builder.RegisterType<MockDevice>()
+                .As<IDevice>()
+                .WithMetadata("Type", "Mock");
         }
     }
 }

@@ -68,7 +68,7 @@ export class MocListComponent implements OnInit {
           const mocList = new Array<MocDisplay>();
           for (let i = 0; i < ids.length; i++ ) {
             const temp = mocs.find(m => m._id === ids[i]) as MocDisplay;
-            temp.scores = results.map(r => r.scores.find(s => s.player === ids[i]));
+            temp.scores = results.map(r => r.scores.find(s => s.player === i));
             mocList.push(temp);
           }
           return mocList;
