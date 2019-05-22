@@ -8,8 +8,9 @@ namespace BrickABracket.Models.Base
         {
             if (s == null || s.Length<3)
                 return;
+            // NXT code starts with 1, not 0
             if (int.TryParse(s.Substring(0,1), out int player))
-                Player = player;
+                Player = player-1;
             if (double.TryParse(s.Substring(2), out double time))
                 Time = time;
         }
@@ -31,12 +32,7 @@ namespace BrickABracket.Models.Base
         public static implicit operator string(Score s) => s?.ToString() ?? string.Empty;
         public static implicit operator Score(string s)
         {
-            if (s == null || s.Length<3)
-                return null;
-            if (int.TryParse(s.Substring(0,1), out int player)
-            && double.TryParse(s.Substring(2), out double time))
-                return new Score(player, time);
-            return null;
+            return new Score(s);
         }
     }
 }

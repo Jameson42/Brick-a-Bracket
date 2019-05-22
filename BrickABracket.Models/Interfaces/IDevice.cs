@@ -11,6 +11,7 @@ namespace BrickABracket.Models.Interfaces
         ushort BatteryLevel {get;}
         string BrickName {get;}
         string Program {get;set;}
-        IEnumerable<string> Programs {get;}
+
+        IEnumerable<string> GetPrograms();
     }
 }

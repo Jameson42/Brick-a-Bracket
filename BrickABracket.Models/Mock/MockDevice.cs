@@ -10,7 +10,7 @@ namespace BrickABracket.Models.Mock
     public class MockDevice : IDevice
     {
         private Subject<Score> _scores;
-        private Subject<Status> _statuses;
+        private BehaviorSubject<Status> _statuses;
         private IDisposable _followSubscription;
         public IObservable<Score> Scores { get; private set; }
         public IObservable<Status> Statuses { get; private set; }
@@ -19,9 +19,9 @@ namespace BrickABracket.Models.Mock
         {
             _scoreFactory = scoreFactory;
             _scores = new Subject<Score>();
-            _statuses = new Subject<Status>();
+            _statuses = new BehaviorSubject<Status>(Status.Ready);
             Scores = _scores.AsObservable();
-            Statuses = _statuses.Replay(1);
+            Statuses = _statuses.AsObservable();
         }
         public bool Connected => true;
 
@@ -33,7 +33,10 @@ namespace BrickABracket.Models.Mock
 
         public string Program { get ; set; }
 
-        public IEnumerable<string> Programs => new string[] {"Mock Program", "Another Program"};
+        public IEnumerable<string> GetPrograms()
+        {
+            return new string[] { "Mock Program", "Another Program" };
+        }
 
         public bool Connect() => true;
 
@@ -46,16 +49,17 @@ namespace BrickABracket.Models.Mock
             _statuses?.Dispose();
         }
 
-        public void FollowStatus(IObservable<Status> Statuses)
+        public void FollowStatus(IObservable<Status> statuses)
         {
             UnFollowStatus();
-            _followSubscription = Statuses.Subscribe(s => {
+            _followSubscription = statuses.Subscribe(s => {
                 switch (s)
                 {
                     case Status.Start:
                         var random = new Random();
                         for (int i = 0; i<4; i++)
-                            _scores.OnNext(new Score(i, random.NextDouble() * 5.0));
+                            _scores.OnNext(new Score(i, Math.Round(random.NextDouble() * 5.0, 3)));
+                        _statuses.OnNext(Status.Stop);
                         break;
                     case Status.Ready:
                         _statuses.OnNext(Status.Ready);

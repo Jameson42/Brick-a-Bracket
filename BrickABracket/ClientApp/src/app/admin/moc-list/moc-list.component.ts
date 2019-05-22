@@ -13,15 +13,31 @@ import { Moc, MocService, MatchResult, Standing, MocDisplay } from '@bab/core';
 export class MocListComponent implements OnInit {
 
   @Input()
-  mocIds: Observable<Array<number>>;
+  set mocIds(mocIds: Observable<Array<number>>) {
+    this._mocIds = mocIds;
+    this.initMocs();
+  }
   @Input()
-  results: Observable<Array<MatchResult>>;
+  set results(results: Observable<Array<MatchResult>>) {
+    this._results = results;
+    this._standings = null;
+    console.log('results Set');
+    this.initMocs();
+  }
   @Input()
-  standings: Observable<Array<Standing>>;
+  set standings(standings: Observable<Array<Standing>>) {
+    this._standings = standings;
+    this._results = null;
+    console.log('standings Set');
+    this.initMocs();
+  }
   @Input()
   editable = false;
 
   private mocs$: Observable<Array<MocDisplay>>;
+  private _mocIds: Observable<Array<number>>;
+  private _results: Observable<Array<MatchResult>>;
+  private _standings: Observable<Array<Standing>>;
   private bye: Moc;
 
   constructor(
@@ -34,6 +50,10 @@ export class MocListComponent implements OnInit {
     this.bye = new Moc;
     this.bye._id = -1;
     this.bye.name = 'Bye';
+    this.initMocs();
+  }
+
+  initMocs() {
     if (this.standings) {
       this.mocs$ = this.getMocStandings();
     } else if (this.results) {
@@ -46,7 +66,7 @@ export class MocListComponent implements OnInit {
   getMocs(): Observable<Array<MocDisplay>> {
     return combineLatest(
       this.mocs.mocs.pipe(map(mocs => mocs.concat(this.bye))),
-      this.mocIds
+      this._mocIds
       ).pipe(
         map(([mocs, ids]) => {
           const mocList = new Array<MocDisplay>();
@@ -61,8 +81,8 @@ export class MocListComponent implements OnInit {
   getMocResults(): Observable<Array<MocDisplay>> {
     return combineLatest(
       this.mocs.mocs.pipe(map(mocs => mocs.concat(this.bye))),
-      this.mocIds,
-      this.results,
+      this._mocIds,
+      this._results,
       ).pipe(
         map(([mocs, ids, results]) => {
           const mocList = new Array<MocDisplay>();
@@ -79,8 +99,8 @@ export class MocListComponent implements OnInit {
   getMocStandings(): Observable<Array<MocDisplay>> {
     return combineLatest(
       this.mocs.mocs.pipe(map(mocs => mocs.concat(this.bye))),
-      this.mocIds,
-      this.standings,
+      this._mocIds,
+      this._standings,
       ).pipe(
         map(([mocs, ids, standings]) => {
           const mocList = new Array<MocDisplay>();

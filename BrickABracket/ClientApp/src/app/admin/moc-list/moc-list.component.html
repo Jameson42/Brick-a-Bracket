@@ -12,6 +12,14 @@
             <small class="badge badge-primary" *ngIf="(moc.classificationId | classification | async) as c">{{ c.name }}</small>
             <span *ngIf="(moc.competitorId | competitor | async) as c"> {{ c.name }} - </span>
             <small class="d-inline-block">{{ moc.name }}</small>
+            <ng-container *ngFor="let score of moc.scores">
+              <span class="badge badge-primary ml-5" *ngIf="score">
+                {{ score.time }}
+              </span>
+            </ng-container>
+            <span class="badge badge-primary float-right" *ngIf="moc.standing">
+              {{ moc.standing.score }} - {{ moc.standing.averageTime }}
+            </span>
           </div>
           <div>
             <button class="btn btn-danger btn-sm float-right" (click)="delete(moc._id)">

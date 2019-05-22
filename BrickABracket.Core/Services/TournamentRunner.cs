@@ -23,7 +23,7 @@ namespace BrickABracket.Core.Services
         private int _categoryIndex = DEFAULTINDEX;
         private int _roundIndex = DEFAULTINDEX;
         private int _matchIndex = DEFAULTINDEX;
-        private Subject<Status> _statuses = new Subject<Status>();
+        private BehaviorSubject<Status> _statuses = new BehaviorSubject<Status>(Status.Unknown);
         private IDisposable _followStatusSubscription;
         private IDisposable _followScoreSubscription;
         private Func<MocService> _mocServiceFactory;
@@ -36,7 +36,7 @@ namespace BrickABracket.Core.Services
             _mocServiceFactory = mocs;
             _tournamentServiceFactory = tournaments;
             _tournamentStrategies = tournamentStrategies;
-            Statuses = _statuses.Replay(1);
+            Statuses = _statuses.AsObservable();
         }
         public Tournament Tournament
         {
@@ -275,7 +275,7 @@ namespace BrickABracket.Core.Services
         {
             if (MatchIsNull)
                 return;
-            if (score.Player>_strategy.MatchSize || score.Player<=0)
+            if (score.Player>_strategy.MatchSize || score.Player<0)
                 return;
             if (!Match.Results.Any())
                 return; //Should be unreachable, Ready should always be sent before Start or scores

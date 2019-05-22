@@ -11,6 +11,7 @@ export class DeviceMetadata {
     role: string;
     connectionString: string;
     program: string;
+    deviceType: string;
 }
 export enum DeviceRole {
     None = 0,

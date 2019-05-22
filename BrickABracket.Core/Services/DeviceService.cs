@@ -38,7 +38,7 @@ namespace BrickABracket.Core.Services
                 .Value(connectionString);
             if (!device.Connect())
                 return false;
-            _devices.Add(connectionString, new DeviceMetadata(device, DeviceRole.None, connectionString, program));
+            _devices.Add(connectionString, new DeviceMetadata(device, DeviceRole.None, connectionString, program, deviceType));
             SetRole(connectionString, role);
             SetProgram(connectionString, program);
             return true;
@@ -110,17 +110,19 @@ namespace BrickABracket.Core.Services
 
         public class DeviceMetadata
         {
-            public DeviceMetadata(IDevice device, DeviceRole role, string connectionString, string program)
+            public DeviceMetadata(IDevice device, DeviceRole role, string connectionString, string program, string deviceType)
             {
                 Device = device;
                 Role = role;
                 ConnectionString = connectionString;
                 Program = program;
+                DeviceType = deviceType;
             }
             public IDevice Device {get;}
             public DeviceRole Role {get;set;}
             public string ConnectionString {get;}
             public string Program {get;set;}
+            public string DeviceType {get;set;}
         }
     }
 }

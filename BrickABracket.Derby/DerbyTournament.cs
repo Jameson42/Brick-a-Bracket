@@ -134,7 +134,7 @@ namespace BrickABracket.Derby
                 .SelectMany(m => m.Results.LastOrDefault()?.Scores
                     ?.OrderBy(s => s.Time)
                     ?.Select((s, index) => new Standing(){
-                        MocId = m.MocIds[s.Player-1],
+                        MocId = m.MocIds[s.Player],
                         Place = index + 1,
                         Score = 4 - index,
                         TotalTime = s.Time,

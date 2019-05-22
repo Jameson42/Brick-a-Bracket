@@ -25,8 +25,9 @@ export class DeviceService {
         );
     }
 
-    create(connection: string, program: string, type: string, role: string) {
-        return this._signalR.invoke('CreateDevice', connection, program, type, role);
+    create(deviceData: DeviceMetadata) {
+        return this._signalR.invoke('CreateDevice', deviceData.connectionString,
+            deviceData.program, deviceData.deviceType, deviceData.role);
     }
 
     setRole(connection: string, role: string) {

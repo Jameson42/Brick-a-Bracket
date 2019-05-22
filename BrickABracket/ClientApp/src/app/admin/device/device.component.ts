@@ -37,21 +37,23 @@ export class DeviceComponent implements OnInit {
           });
         }
         return this.devices.get(this.connection);
-      })
+      }),
+      tap(device => console.log(device)),
     );
   }
 
-  save(deviceData: DeviceMetadata, type: string) {
+  async save(deviceData: DeviceMetadata, type: string) {
     if (this.isNew) {
-      this.create(deviceData.connectionString, deviceData.program, type, deviceData.role);
+      await this.create(deviceData);
     } else {
-      this.setRole(deviceData.connectionString, deviceData.role);
-      this.setProgram(deviceData.connectionString, deviceData.program);
+      await this.setRole(deviceData.connectionString, deviceData.role);
+      await this.setProgram(deviceData.connectionString, deviceData.program);
     }
+    return this.router.navigate(['../'], { relativeTo: this.route });
   }
 
-  create(connection: string, program: string, type: string, role: string) {
-    return this.devices.create(connection, program, type, role);
+  create(deviceData: DeviceMetadata) {
+    return this.devices.create(deviceData);
   }
 
   setRole(connection: string, role: string) {

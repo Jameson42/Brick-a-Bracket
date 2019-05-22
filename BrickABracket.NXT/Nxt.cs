@@ -18,7 +18,7 @@ namespace BrickABracket.NXT
         private static readonly object MessageLock = new object();
         private IDisposable _followSubscription;
         private Subject<Score> _scores;
-        private Subject<Status> _statuses;
+        private BehaviorSubject<Status> _statuses;
         public IObservable<Score> Scores { get; private set; }
         public IObservable<Status> Statuses { get; private set; }
         private CancellationTokenSource _messageTokenSource;
@@ -29,12 +29,9 @@ namespace BrickABracket.NXT
         {
             _scoreFactory = scoreFactory;
             _scores = new Subject<Score>();
-            // call _scores.OnNext() with each new IScore
-            _statuses = new Subject<Status>();
-            // call _start.OnNext() with true with each NXT-triggered start. 
-            // Core will aggregate with false on each stop.
+            _statuses = new BehaviorSubject<Status>(Status.Unknown);
             Scores = _scores.AsObservable();
-            Statuses = _statuses.Replay(1); //Always provide current status to new subscribers
+            Statuses = _statuses.AsObservable();
 
             Connection = connectionString;
         }
@@ -58,14 +55,13 @@ namespace BrickABracket.NXT
             }
         }
         public string Program {get;set;}
-        public IEnumerable<string> Programs {
-            get
-            {
-                lock(MessageLock)
-                    return _brick.FileSystem.FileList()
-                        .Where(bf => bf.FileType == MonoBrick.FileType.Program)
-                        .Select(bf => bf.Name);
-            }
+
+        public IEnumerable<string> GetPrograms()
+        {
+            lock (MessageLock)
+                return _brick.FileSystem.FileList()
+                    .Where(bf => bf.FileType == MonoBrick.FileType.Program)
+                    .Select(bf => bf.Name);
         }
         public void FollowStatus(IObservable<Status> Statuses)
         {

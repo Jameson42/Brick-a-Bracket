@@ -23,8 +23,8 @@ namespace BrickABracket.Core.Services
 
             _runner = runner;
             // Runner needs to follow scores from external score sources to update the active tournament
-            _runner.FollowScores(Scores);
             Scores = _scores.AsObservable();
+            _runner.FollowScores(Scores);
         }
         public bool Add(IScoreProvider device)
         {

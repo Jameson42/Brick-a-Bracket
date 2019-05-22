@@ -1,8 +1,11 @@
 using System;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace BrickABracket.Models.Base
 {
     [Flags]
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum DeviceRole
     {
         None = 0x0,
