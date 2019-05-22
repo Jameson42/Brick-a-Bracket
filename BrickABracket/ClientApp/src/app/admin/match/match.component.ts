@@ -3,8 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { switchMap, shareReplay, tap, map, filter, take, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
-import { TournamentService, Category, Match } from '@bab/core';
-import { ReadyState } from '@angular/http';
+import { TournamentService, Category, Match, MatchResult } from '@bab/core';
 
 @Component({
   selector: 'app-match',
@@ -16,9 +15,10 @@ export class MatchComponent implements OnInit {
   private category$: Observable<Category>;
   private match$: Observable<Match>;
   private mocIds$: Observable<Array<number>>;
+  private results$: Observable<Array<MatchResult>>;
   private roundId$: Observable<number>;
   private id: number;
-  private readyColor: string = 'btn-outline-success';
+  private readyColor = 'btn-outline-success';
 
   constructor(
     private tournaments: TournamentService,
@@ -47,7 +47,11 @@ export class MatchComponent implements OnInit {
     this.mocIds$ = this.match$.pipe(
       filter(m => !!m),
       map(m => m.mocIds),
-      );
+    );
+    this.results$ = this.match$.pipe(
+      filter(m => !!m),
+      map(m => m.results),
+    );
   }
 
   nextMatch() {

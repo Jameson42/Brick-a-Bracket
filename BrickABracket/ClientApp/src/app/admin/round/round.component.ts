@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { switchMap, shareReplay, tap, map, filter, take } from 'rxjs/operators';
 
-import { TournamentService, Category, Round } from '@bab/core';
+import { TournamentService, Category, Round, Standing } from '@bab/core';
 
 @Component({
   selector: 'app-round',
@@ -15,6 +15,7 @@ export class RoundComponent implements OnInit {
   private category$: Observable<Category>;
   private round$: Observable<Round>;
   private mocIds$: Observable<Array<number>>;
+  private standings$: Observable<Array<Standing>>;
   private id: number;
 
   constructor(
@@ -36,7 +37,11 @@ export class RoundComponent implements OnInit {
     this.mocIds$ = this.round$.pipe(
       filter(r => !!r),
       map(r => r.mocIds),
-      );
+    );
+    this.standings$ = this.round$.pipe(
+      filter(r => !!r),
+      map(r => r.standings),
+    );
   }
 
   nextMatch() {

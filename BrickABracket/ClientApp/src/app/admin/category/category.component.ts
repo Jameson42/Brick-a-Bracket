@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { switchMap, tap, shareReplay, map, filter, take } from 'rxjs/operators';
 
-import { TournamentService, Category, TournamentMetadata } from '@bab/core';
+import { TournamentService, Category, TournamentMetadata, Standing } from '@bab/core';
 
 @Component({
   selector: 'app-category',
@@ -14,6 +14,7 @@ export class CategoryComponent implements OnInit {
 
   private category$: Observable<Category>;
   private mocIds$: Observable<Array<number>>;
+  private standings$: Observable<Array<Standing>>;
   private id: number;
 
   constructor(
@@ -34,7 +35,11 @@ export class CategoryComponent implements OnInit {
     this.mocIds$ = this.category$.pipe(
       filter(c => !!c),
       map(c => c.mocIds),
-      );
+    );
+    this.standings$ = this.category$.pipe(
+      filter(c => !!c),
+      map(c => c.standings),
+    );
   }
 
   nextMatch() {

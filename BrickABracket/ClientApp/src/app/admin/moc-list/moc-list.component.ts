@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Observable, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { Moc, MocService } from '@bab/core';
+import { Moc, MocService, MatchResult, Standing, MocDisplay } from '@bab/core';
 
 @Component({
   selector: 'app-moc-list',
@@ -14,11 +14,14 @@ export class MocListComponent implements OnInit {
 
   @Input()
   mocIds: Observable<Array<number>>;
-
   @Input()
-  editable: boolean = false;
+  results: Observable<Array<MatchResult>>;
+  @Input()
+  standings: Observable<Array<Standing>>;
+  @Input()
+  editable = false;
 
-  private mocs$: Observable<Array<Moc>>;
+  private mocs$: Observable<Array<MocDisplay>>;
   private bye: Moc;
 
   constructor(
@@ -31,16 +34,67 @@ export class MocListComponent implements OnInit {
     this.bye = new Moc;
     this.bye._id = -1;
     this.bye.name = 'Bye';
-    this.mocs$ = combineLatest(
+    if (this.standings) {
+      this.mocs$ = this.getMocStandings();
+    } else if (this.results) {
+      this.mocs$ = this.getMocResults();
+    } else {
+      this.mocs$ = this.getMocs();
+    }
+  }
+
+  getMocs(): Observable<Array<MocDisplay>> {
+    return combineLatest(
       this.mocs.mocs.pipe(map(mocs => mocs.concat(this.bye))),
       this.mocIds
       ).pipe(
         map(([mocs, ids]) => {
-          let mocList = new Array<Moc>();
+          const mocList = new Array<MocDisplay>();
           ids.forEach(id => {
-            mocList.push(mocs.find(m => m._id === id));
+            mocList.push(mocs.find(m => m._id === id) as MocDisplay);
           });
           return mocList;
+        })
+      );
+  }
+
+  getMocResults(): Observable<Array<MocDisplay>> {
+    return combineLatest(
+      this.mocs.mocs.pipe(map(mocs => mocs.concat(this.bye))),
+      this.mocIds,
+      this.results,
+      ).pipe(
+        map(([mocs, ids, results]) => {
+          const mocList = new Array<MocDisplay>();
+          for (let i = 0; i < ids.length; i++ ) {
+            const temp = mocs.find(m => m._id === ids[i]) as MocDisplay;
+            temp.scores = results.map(r => r.scores.find(s => s.player === ids[i]));
+            mocList.push(temp);
+          }
+          return mocList;
+        })
+      );
+  }
+
+  getMocStandings(): Observable<Array<MocDisplay>> {
+    return combineLatest(
+      this.mocs.mocs.pipe(map(mocs => mocs.concat(this.bye))),
+      this.mocIds,
+      this.standings,
+      ).pipe(
+        map(([mocs, ids, standings]) => {
+          const mocList = new Array<MocDisplay>();
+          for (let i = 0; i < ids.length; i++ ) {
+            const temp = mocs.find(m => m._id === ids[i]) as MocDisplay;
+            temp.standing = standings.find(s => s.mocId === ids[i]);
+            mocList.push(temp);
+          }
+          return mocList.sort((a, b) => {
+            if (!a.standing || !b.standing) {
+              return 0;
+            }
+            return a.standing.place - b.standing.place;
+          });
         })
       );
   }
