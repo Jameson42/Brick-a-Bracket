@@ -9,7 +9,7 @@ namespace BrickABracket.RoundRobin
         {
             builder.RegisterType<RoundRobinTournament>()
                 .As<ITournamentStrategy>()
-                .WithMetadata("Type", "roundrobin");
+                .WithMetadata("Type", "Round Robin");
         }
     }
 }

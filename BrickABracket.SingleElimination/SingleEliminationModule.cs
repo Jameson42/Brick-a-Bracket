@@ -9,7 +9,7 @@ namespace BrickABracket.SingleElimination
         {
             builder.RegisterType<SingleEliminationTournament>()
                 .As<ITournamentStrategy>()
-                .WithMetadata("Type", "singleelimination");
+                .WithMetadata("Type", "Single Elimination");
         }
     }
 }

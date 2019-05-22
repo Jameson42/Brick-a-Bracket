@@ -10,7 +10,7 @@ namespace BrickABracket.Derby
     public class DerbyTournament: ITournamentStrategy
     {
         public int MatchSize {get;} = 4;
-        private const string patternPrefix = "derby";
+        private const string patternPrefix = "Derby";
         public int GenerateRound(Category category, int roundIndex = -1)
         {
             if (category == null)

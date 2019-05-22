@@ -9,7 +9,7 @@ namespace BrickABracket.SwissSystem
         {
             builder.RegisterType<SwissSystemTournament>()
                 .As<ITournamentStrategy>()
-                .WithMetadata("Type", "swisssystem");
+                .WithMetadata("Type", "Swiss System");
         }
     }
 }

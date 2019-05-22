@@ -9,7 +9,7 @@ namespace BrickABracket.Derby
         {
             builder.RegisterType<DerbyTournament>()
                 .As<ITournamentStrategy>()
-                .WithMetadata("Type", "derby");
+                .WithMetadata("Type", "Derby");
         }
     }
 }
