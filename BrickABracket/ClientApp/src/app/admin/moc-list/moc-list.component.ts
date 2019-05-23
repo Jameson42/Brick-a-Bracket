@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable, combineLatest } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 import { Moc, MocService, MatchResult, Standing, MocDisplay } from '@bab/core';
 
@@ -64,7 +64,6 @@ export class MocListComponent implements OnInit {
       this.mocIds,
       this.results,
       ).pipe(
-        tap(([mocs, ids, results]) => console.log(mocs, ids, results)),
         map(([mocs, ids, results]) => {
           const mocList = new Array<MocDisplay>();
           for (let i = 0; i < ids.length; i++ ) {
@@ -74,7 +73,6 @@ export class MocListComponent implements OnInit {
           }
           return mocList;
         }),
-        tap(ml => console.log(ml))
       );
   }
 

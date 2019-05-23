@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using BrickABracket.Models.Base;
 namespace BrickABracket.Models.Interfaces
 {

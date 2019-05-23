@@ -10,6 +10,7 @@ namespace BrickABracket.Derby
     public class DerbyTournament: ITournamentStrategy
     {
         public int MatchSize {get;} = 4;
+        private double MaxTime {get;} = 5.0;
         private const string patternPrefix = "Derby";
         public int GenerateRound(Category category, int roundIndex = -1)
         {
@@ -129,6 +130,7 @@ namespace BrickABracket.Derby
         {
             if (round == null)
                 return false;
+            EnsureMatchScores(round);
             round.Standings = round.Matches
                 .Where(m => m.Results.Any())
                 .SelectMany(m => m.Results.LastOrDefault()?.Scores
@@ -136,7 +138,7 @@ namespace BrickABracket.Derby
                     ?.Select((s, index) => new Standing(){
                         MocId = m.MocIds[s.Player],
                         Place = index + 1,
-                        Score = 4 - index,
+                        Score = s.Time == MaxTime ? 0 : 4 - index,
                         TotalTime = s.Time,
                         AverageTime = s.Time
                     })
@@ -147,11 +149,32 @@ namespace BrickABracket.Derby
                 .Select((g, index) => new Standing(){
                     MocId = g.Key,
                     Score = g.Sum(s => s.Score),
-                    TotalTime = g.Sum(s => s.TotalTime),
-                    AverageTime = g.Sum(s => s.TotalTime)/Convert.ToDouble(g.Count()),
+                    TotalTime = g.Sum(s => Math.Round(s.TotalTime, 3)),
+                    AverageTime = Math.Round(g.Sum(s => s.TotalTime)/Convert.ToDouble(g.Count()),3),
                     Place = index + 1
                 }).ToList();
             return true;
+        }
+        private void EnsureMatchScores(Round round)
+        {
+            foreach (var match in round?.Matches)
+            {
+                foreach (var result in match?.Results)
+                {
+                    if (result.Scores == null)
+                        continue;
+                    for (int i = 0; i < MatchSize; i++)
+                    {
+                        if (!(result.Scores.Any(s => s.Player == i)))
+                            result.Scores.Add(new Score(i, MaxTime));
+                    }
+                    foreach (var score in result.Scores)
+                    {
+                        if (score.Time > MaxTime)
+                            score.Time = MaxTime;
+                    }
+                }
+            }
         }
         /// <summary>
         /// Find how many times id has faced other mocs from the current match

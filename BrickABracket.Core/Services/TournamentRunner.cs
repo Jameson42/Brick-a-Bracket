@@ -220,6 +220,7 @@ namespace BrickABracket.Core.Services
         public void StopMatch()
         {
             _statuses.OnNext(Status.Stop);
+            _strategy.GenerateCategoryStandings(Category);
             SaveTournament();
         }
         public bool StartTimedMatch(long milliseconds)
