@@ -24,8 +24,8 @@ namespace BrickABracket.Models.Base
             Player = 0;
             Time = 0.0;
         }
-        public int Player {get;}
-        public double Time {get;}
+        public int Player {get;set;}
+        public double Time {get;set;}
 
         public override string ToString() => $"{Player}-{Time}";
 

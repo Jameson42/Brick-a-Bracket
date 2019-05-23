@@ -38,7 +38,6 @@ export class DeviceComponent implements OnInit {
         }
         return this.devices.get(this.connection);
       }),
-      tap(device => console.log(device)),
     );
   }
 

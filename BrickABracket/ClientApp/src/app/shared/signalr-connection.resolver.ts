@@ -10,7 +10,7 @@ export class ConnectionResolver implements Resolve<HubConnection> {
     constructor(private signalrService: SignalrService)  { }
 
     resolve() {
-        console.log('ConnectionResolver. Resolving...');
+        console.log('ConnectionResolver: Resolving...');
         return this.signalrService.connect();
     }
 }

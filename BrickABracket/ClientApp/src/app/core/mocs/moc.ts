@@ -11,6 +11,15 @@ export class Moc {
 }
 
 export class MocDisplay extends Moc {
+
+    constructor(moc: Moc) {
+        super();
+        this._id = moc._id;
+        this.classificationId = moc.classificationId;
+        this.competitorId = moc.competitorId;
+        this.name = moc.name;
+        this.weight = moc.weight;
+    }
     standing: Standing;
     scores: Array<Score>;
 }

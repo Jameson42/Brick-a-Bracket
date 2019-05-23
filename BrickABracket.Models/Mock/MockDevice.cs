@@ -32,6 +32,7 @@ namespace BrickABracket.Models.Mock
         public string BrickName => "Mock Device";
 
         public string Program { get ; set; }
+        public IEnumerable<string> Programs => GetPrograms();
 
         public IEnumerable<string> GetPrograms()
         {
