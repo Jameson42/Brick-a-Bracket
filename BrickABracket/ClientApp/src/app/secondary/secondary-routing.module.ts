@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { TournamentComponent, CategoryComponent,
+  RoundComponent, MatchComponent } from '@bab/secondary';
+
 const routes: Routes = [
   { path: '', redirectTo: 'tournament', pathMatch: 'full'},
-  { path: 'tournament' },
-  { path: 'category' },
-  { path: 'round' },
-  { path: 'match' },
+  { path: 'tournament', component: TournamentComponent },
+  { path: 'category', component: CategoryComponent },
+  { path: 'round', component: RoundComponent },
+  { path: 'match', component: MatchComponent },
 ];
 
 @NgModule({

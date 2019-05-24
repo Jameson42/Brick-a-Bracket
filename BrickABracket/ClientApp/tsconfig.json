@@ -23,7 +23,9 @@
       "@bab/shared": ["src/app/shared/index"],
       "@bab/shared/*": ["src/app/shared/*"],
       "@bab/primary": ["src/app/primary/index"],
+      "@bab/primary/*": ["src/app/primary/*"],
       "@bab/secondary": ["src/app/secondary/index"],
+      "@bab/secondary/*": ["src/app/secondary/*"],
     }
   }
 }
