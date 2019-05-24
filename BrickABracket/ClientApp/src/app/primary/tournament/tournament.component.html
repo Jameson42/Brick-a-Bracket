@@ -1,3 +1,10 @@
-<p>
-  tournament works!
-</p>
+<ng-container *ngIf="(tournament$ | async) as tournament">
+  <div class="row">
+    <div class="col">Tournament details here</div>
+  </div>
+  <div class="row" *ngIf="tournament.categories.length === 0">
+    <div class="col" *ngFor="let grouping of (mocGroupings$ | async)">
+      {{ (grouping.classificationId | classification | async)?.name }}
+    </div>
+  </div>
+</ng-container>

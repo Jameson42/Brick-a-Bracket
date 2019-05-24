@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { TournamentService, MocService, MocClassificationGrouping, Tournament, RedirectService } from '@bab/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-tournament',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TournamentComponent implements OnInit {
 
-  constructor() { }
+  private mocGroupings$: Observable<Array<MocClassificationGrouping>>;
+  private tournament$: Observable<Tournament>;
+
+  constructor(
+    private tournaments: TournamentService,
+    private mocs: MocService,
+    private redirect: RedirectService,
+  ) { }
 
   ngOnInit() {
+    this.tournament$ = this.tournaments.tournament;
+    this.mocGroupings$ = this.mocs.getClassificationGroupings(
+      this.tournament$.pipe(map(t => t.mocIds)));
   }
 
 }

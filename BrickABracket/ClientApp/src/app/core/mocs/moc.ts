@@ -23,3 +23,13 @@ export class MocDisplay extends Moc {
     standing: Standing;
     scores: Array<Score>;
 }
+
+export class MocClassificationGrouping {
+    classificationId: number;
+    mocs: Array<Moc>;
+
+    constructor(moc: Moc) {
+        this.classificationId = moc.classificationId;
+        this.mocs = new Array<Moc>(moc);
+    }
+}

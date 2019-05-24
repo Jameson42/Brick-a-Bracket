@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map, shareReplay, distinctUntilChanged } from 'rxjs/operators';
+import { map, shareReplay, distinctUntilChanged, groupBy, switchMap } from 'rxjs/operators';
 
-import {Moc} from './moc';
+import {Moc, MocClassificationGrouping} from './moc';
 import {SignalrService} from '../signalr.service';
 
 @Injectable()
@@ -23,7 +23,7 @@ export class MocService {
         return this.mocs.pipe(
             map(mocArray => mocArray.filter(m => m._id === id)[0]),
             distinctUntilChanged((x: Moc, y: Moc) => {
-                return x._id === y._id && x.classificationId === y.classificationId && 
+                return x._id === y._id && x.classificationId === y.classificationId &&
                 x.competitorId === y.competitorId && x.name === y.name && x.weight === y.weight;
             }),
             shareReplay(1),
@@ -55,4 +55,24 @@ export class MocService {
         formData.append('file', image);
         return this._httpClient.post('/api/mocs/' + id, formData).subscribe();
     }
+
+    getClassificationGroupings(mocIds$: Observable<Array<number>>): Observable<Array<MocClassificationGrouping>> {
+        return mocIds$.pipe(
+            switchMap(ids => this.mocs.pipe(
+                map(mocs => ids.map(id => mocs.find(moc => moc._id === id)))
+            )),
+            map(mocs =>
+                mocs.reduce<Array<MocClassificationGrouping>>((accumulation, moc) => {
+                    const index = accumulation.findIndex(mcg => mcg.classificationId === moc.classificationId);
+                    if (index > -1) {
+                        accumulation[index].mocs.push(moc);
+                    } else {
+                        accumulation.push(new MocClassificationGrouping(moc));
+                    }
+                    return accumulation;
+                }, new Array<MocClassificationGrouping>()).sort((a, b) => a.classificationId - b.classificationId)
+            )
+        );
+    }
+
 }
