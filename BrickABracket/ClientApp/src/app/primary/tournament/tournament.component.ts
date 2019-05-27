@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { TournamentService, MocService, MocClassificationGrouping, Tournament, RedirectService } from '@bab/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+
+import { TournamentService, MocService, 
+  MocClassificationGrouping, Tournament, 
+  RedirectService } from '@bab/core';
 
 @Component({
   selector: 'app-tournament',

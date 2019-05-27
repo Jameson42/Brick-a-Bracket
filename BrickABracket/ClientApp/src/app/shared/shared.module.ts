@@ -7,7 +7,7 @@ import { ClassificationPipe, CompetitorPipe,
   MocPipe, ConnectionResolver,
   CompetitorTypeaheadComponent,
   ClassificationSelectComponent,
-  MocImageComponent } from '@bab/shared';
+  MocImageComponent, LogPipe } from '@bab/shared';
 
 @NgModule({
   imports: [
@@ -25,11 +25,13 @@ import { ClassificationPipe, CompetitorPipe,
     CompetitorTypeaheadComponent,
     ClassificationSelectComponent,
     MocImageComponent,
+    LogPipe,
   ],
   exports: [
     CompetitorPipe,
     MocPipe,
     ClassificationPipe,
+    LogPipe,
     CompetitorTypeaheadComponent,
     ClassificationSelectComponent,
     MocImageComponent,

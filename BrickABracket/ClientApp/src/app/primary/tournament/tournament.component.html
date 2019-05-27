@@ -1,10 +1,38 @@
 <ng-container *ngIf="(tournament$ | async) as tournament">
   <div class="row">
-    <div class="col">Tournament details here</div>
+    <div class="col"><h1>{{ tournament.name }}</h1></div>
   </div>
-  <div class="row" *ngIf="tournament.categories.length === 0">
+  <div class="row" *ngIf="tournament.categories.length === 0; else categories">
     <div class="col" *ngFor="let grouping of (mocGroupings$ | async)">
-      {{ (grouping.classificationId | classification | async)?.name }}
+      <div class="card">
+        <h5 class="card-header">
+          {{ (grouping.classificationId | classification | async)?.name }}
+        </h5>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item py-2" *ngFor="let moc of grouping.mocs">
+            {{ (moc.competitorId | competitor | async)?.name }} - {{ moc.name }}
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
+  <ng-template #categories>
+    <div class="row">
+      <div class="col" *ngFor="let category of tournament.categories">
+        <div class="card">
+          <h5 class="card-header">
+            {{ (category.classificationId | classification | async)?.name }}
+          </h5>
+          <ul class="list-group list-group-flush">
+            <ng-container *ngFor="let mocId of category.mocIds">
+              <li class="list-group-item py-2" *ngIf="(mocId | moc$ | async) as moc">
+                {{ (moc.competitorId | competitor | async)?.name }} - {{ moc?.name }}
+              </li>
+            </ng-container>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </ng-template>
 </ng-container>
