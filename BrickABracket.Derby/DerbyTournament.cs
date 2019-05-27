@@ -143,6 +143,7 @@ namespace BrickABracket.Derby
                         AverageTime = s.Time
                     })
                 )
+                .Where(s => s.MocId != -1)  // Remove byes
                 .GroupBy(s => s.MocId)
                 .OrderByDescending(g => g.Sum(s => s.Score))  //Higher = better
                 .ThenBy(g => g.Sum(s => s.TotalTime))   //Total time breaks ties

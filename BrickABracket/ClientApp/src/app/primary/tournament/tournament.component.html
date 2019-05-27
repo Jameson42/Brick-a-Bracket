@@ -24,11 +24,21 @@
             {{ (category.classificationId | classification | async)?.name }}
           </h5>
           <ul class="list-group list-group-flush">
-            <ng-container *ngFor="let mocId of category.mocIds">
-              <li class="list-group-item py-2" *ngIf="(mocId | moc$ | async) as moc">
-                {{ (moc.competitorId | competitor | async)?.name }} - {{ moc?.name }}
-              </li>
+            <ng-container *ngIf="category?.standings?.length > 0; else mocids">
+              <ng-container *ngFor="let standing of category.standings">
+                <li class="list-group-item py-2" *ngIf="(standing.mocId | moc | async) as moc">
+                  {{ (moc.competitorId | competitor | async)?.name }} - {{ moc?.name }}
+                  <span class="float-right badge badge-primary">{{standing.score}} - {{standing.averageTime}}s</span>
+                </li>
+              </ng-container>
             </ng-container>
+            <ng-template #mocids>
+              <ng-container *ngFor="let mocId of category.mocIds">
+                <li class="list-group-item py-2" *ngIf="(mocId | moc | async) as moc">
+                  {{ (moc.competitorId | competitor | async)?.name }} - {{ moc?.name }}
+                </li>
+              </ng-container>
+            </ng-template>
           </ul>
         </div>
       </div>

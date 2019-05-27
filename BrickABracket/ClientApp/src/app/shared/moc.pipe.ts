@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Pipe({
-  name: 'moc$'
+  name: 'moc'
 })
 export class MocPipe implements PipeTransform {
 
