@@ -6,6 +6,7 @@ import { TournamentComponent, CategoryComponent,
 
 const routes: Routes = [
   { path: '', redirectTo: 'tournament', pathMatch: 'full'},
+  { path: '', component: TournamentComponent },
   { path: 'tournament', component: TournamentComponent },
   { path: 'category', component: CategoryComponent },
   { path: 'round', component: RoundComponent },

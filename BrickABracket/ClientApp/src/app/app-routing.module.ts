@@ -15,7 +15,7 @@ const appRoutes: Routes = [
                 loadChildren: './secondary/secondary.module#SecondaryModule',
                 resolve: {connection: ConnectionResolver}},
   { path: 'about', component: AboutComponent },
-  { path: '', redirectTo: '/primary', pathMatch: 'full' }
+  { path: '', redirectTo: '/primary/tournament', pathMatch: 'full' }
 ];
 
 @NgModule({

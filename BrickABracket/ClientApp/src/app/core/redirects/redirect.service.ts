@@ -1,4 +1,4 @@
-import { Injectable, OnDestroy, OnInit } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil, distinctUntilChanged } from 'rxjs/operators';
@@ -8,7 +8,7 @@ import { TournamentService } from '@bab/core/tournaments/tournament.service';
 @Injectable({
   providedIn: 'root'
 })
-export class RedirectService implements OnInit, OnDestroy {
+export class RedirectService implements OnDestroy {
 
   private destroy$: Subject<boolean> = new Subject<boolean>();
 
@@ -16,28 +16,26 @@ export class RedirectService implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private router: Router,
     private tournaments: TournamentService
-  ) { }
-
-  ngOnInit() {
+  ) {
     this.tournaments.metadata.pipe(
       takeUntil(this.destroy$),
       distinctUntilChanged((x, y) => x.matchIndex === y.matchIndex &&
         x.roundIndex === y.roundIndex && x.categoryIndex === y.categoryIndex),
     ).subscribe(data => {
       if (data.matchIndex > -1) {
-        this.navigate('../match');
+        this.navigate('match');
       } else if (data.roundIndex > -1) {
-        this.navigate('../round');
+        this.navigate('round');
       } else if (data.categoryIndex > -1) {
-        this.navigate('../category');
+        this.navigate('category');
       } else {
-        this.navigate('../tournament');
+        this.navigate('tournament');
       }
     });
   }
 
   navigate(path: string) {
-    this.router.navigate([path], { skipLocationChange: true, relativeTo: this.route });
+    this.router.navigate(['/' + this.route.outlet + '/' + path], { skipLocationChange: true });
   }
 
   ngOnDestroy(): void {
