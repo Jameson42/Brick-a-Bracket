@@ -10,13 +10,21 @@ import { TournamentService } from '@bab/core/tournaments/tournament.service';
 })
 export class RedirectService implements OnDestroy {
 
-  private destroy$: Subject<boolean> = new Subject<boolean>();
+  private destroy$: Subject<boolean>;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private tournaments: TournamentService
   ) {
+  }
+
+  start() {
+    if (this.destroy$ != null && !this.destroy$.isStopped) {
+      return;
+    }
+    this.cancel();
+    this.destroy$ = new Subject<boolean>();
     this.tournaments.metadata.pipe(
       takeUntil(this.destroy$),
       distinctUntilChanged((x, y) => x.matchIndex === y.matchIndex &&
@@ -38,9 +46,16 @@ export class RedirectService implements OnDestroy {
     this.router.navigate(['/' + this.route.outlet + '/' + path]);
   }
 
-  ngOnDestroy(): void {
+  cancel() {
+    if (this.destroy$ == null) {
+      return;
+    }
     this.destroy$.next(true);
     this.destroy$.unsubscribe();
+  }
+
+  ngOnDestroy(): void {
+    this.cancel();
   }
 
 }

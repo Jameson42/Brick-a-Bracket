@@ -23,6 +23,7 @@ export class TournamentComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.redirect.start();
     this.tournament$ = this.tournaments.tournament;
     this.mocGroupings$ = this.mocs.getClassificationGroupings(
       this.tournament$.pipe(map(t => t.mocIds)));

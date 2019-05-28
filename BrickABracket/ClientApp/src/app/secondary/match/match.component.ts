@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Match, TournamentService, RedirectService } from '@bab/core';
 
 @Component({
   selector: 'app-match',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MatchComponent implements OnInit {
 
-  constructor() { }
+  private match$: Observable<Match>;
+
+  constructor(
+    private tournaments: TournamentService,
+    private redirect: RedirectService,
+  ) { }
 
   ngOnInit() {
+    this.redirect.cancel();
+    this.match$ = this.tournaments.match;
   }
 
 }

@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 
 import { SecondaryRoutingModule } from '@bab/secondary/secondary-routing.module';
 import { TournamentComponent, CategoryComponent,
-  RoundComponent, MatchComponent } from '@bab/primary';
+  RoundComponent, MatchComponent } from '@bab/secondary';
+import { SharedModule } from '@bab/shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    SecondaryRoutingModule
+    SecondaryRoutingModule,
+    SharedModule,
   ],
   declarations: [
     TournamentComponent,

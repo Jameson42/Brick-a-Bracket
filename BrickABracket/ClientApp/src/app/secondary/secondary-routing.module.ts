@@ -5,7 +5,7 @@ import { TournamentComponent, CategoryComponent,
   RoundComponent, MatchComponent } from '@bab/secondary';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'tournament', pathMatch: 'full'},
+  { path: '', redirectTo: 'match', pathMatch: 'full'},
   { path: 'tournament', component: TournamentComponent },
   { path: 'category', component: CategoryComponent },
   { path: 'round', component: RoundComponent },

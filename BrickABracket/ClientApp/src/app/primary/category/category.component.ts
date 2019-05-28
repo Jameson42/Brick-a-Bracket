@@ -19,6 +19,7 @@ export class CategoryComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.redirect.start();
     this.tournament$ = this.tournaments.tournament;
     this.category$ = this.tournaments.category;
   }

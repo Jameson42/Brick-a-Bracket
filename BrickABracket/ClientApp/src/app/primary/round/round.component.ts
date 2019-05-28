@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { TournamentMetadata, TournamentService, 
+import { TournamentMetadata, TournamentService,
   Category, Round, RedirectService } from '@bab/core';
 
 @Component({
@@ -21,6 +21,7 @@ export class RoundComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.redirect.start();
     this.tournamentData$ = this.tournaments.metadata;
     this.category$ = this.tournaments.category;
     this.round$ = this.tournaments.round;

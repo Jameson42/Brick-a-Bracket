@@ -1,3 +1,14 @@
-<p>
-  match works!
-</p>
+<div class="row" *ngIf="(match$ | async) as match">
+  <div class="col card-group">
+    <ng-container *ngFor="let mocId of match?.mocIds">
+      <div class="card border-danger" *ngIf="(mocId | moc | async) as moc">
+        <h5 class="card-header">{{ moc?.name }}</h5>
+        <app-moc-image [mocId]="mocId" classes="card-img-top"></app-moc-image>
+        <div class="card-body p-0"></div>
+        <div class="card-footer">
+          <h5 class="card-title">{{ (moc.competitorId | competitor | async)?.name }}</h5>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

@@ -22,6 +22,7 @@ export class MatchComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.redirect.start();
     this.tournamentData$ = this.tournaments.metadata;
     this.category$ = this.tournaments.category;
     this.match$ = this.tournaments.match;
@@ -43,7 +44,7 @@ export class MatchComponent implements OnInit {
         }
         return filteredScores[0];
       }),
-    )
+    );
   }
 
 }
