@@ -1,3 +1,36 @@
-<p>
-  match works!
-</p>
+<ng-container *ngIf="(category$ | async) as category">
+  <div class="row">
+    <div class="col">
+      <h1 *ngIf="(tournamentData$ | async) as data">
+        {{ data?.tournament?.name }} - 
+        {{ (category.classificationId | classification | async)?.name }} - 
+        Round {{ data?.roundIndex + 1 }} - 
+        Match {{ data?.matchIndex + 1 }}
+      </h1>
+    </div>
+  </div>
+  <div class="row" *ngIf="(match$ | async) as match">
+    <div class="col">
+      <table class="table table-sm">
+        <thead>
+          <tr>
+            <th scope="col">Position</th>
+            <th scope="col">Name</th>
+            <th scope="col">MOC</th>
+            <th scope="col" *ngIf="match?.results?.length > 0">Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let mocId of match.mocIds; let i = index">
+            <ng-container *ngIf="(mocId | moc | async) as moc">
+              <td>{{ i + 1 }}</td>
+              <td>{{ (moc.competitorId | competitor | async)?.name }}</td>
+              <td>{{ moc?.name }}</td>
+              <td *ngIf="(score$(i) | async) as score">{{ score?.time | number }}</td>
+            </ng-container>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</ng-container>

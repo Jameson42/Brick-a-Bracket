@@ -35,7 +35,7 @@ export class RedirectService implements OnDestroy {
   }
 
   navigate(path: string) {
-    this.router.navigate(['/' + this.route.outlet + '/' + path], { skipLocationChange: true });
+    this.router.navigate(['/' + this.route.outlet + '/' + path]);
   }
 
   ngOnDestroy(): void {

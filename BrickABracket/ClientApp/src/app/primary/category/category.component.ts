@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { TournamentService, Category } from '@bab/core';
+import { TournamentService, Category,
+  Tournament, RedirectService } from '@bab/core';
 
 @Component({
   selector: 'app-category',
@@ -9,13 +10,16 @@ import { TournamentService, Category } from '@bab/core';
 })
 export class CategoryComponent implements OnInit {
 
+  private tournament$: Observable<Tournament>;
   private category$: Observable<Category>;
 
   constructor(
-    private tournaments: TournamentService
+    private tournaments: TournamentService,
+    private redirect: RedirectService,
   ) { }
 
   ngOnInit() {
+    this.tournament$ = this.tournaments.tournament;
     this.category$ = this.tournaments.category;
   }
 

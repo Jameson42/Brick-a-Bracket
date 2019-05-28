@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Moc, Standing } from '@bab/core';
+import { Moc, Standing, Score } from '@bab/core';
 
 @Component({
   selector: 'app-standings-table',

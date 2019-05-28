@@ -1,3 +1,17 @@
-<p>
-  round works!
-</p>
+<ng-container *ngIf="(category$ | async) as category">
+    <div class="row">
+        <div class="col">
+            <h1 *ngIf="(tournamentData$ | async) as data">
+                {{ data?.tournament?.name }} - 
+                {{ (category.classificationId | classification | async)?.name }} - 
+                Round {{ data?.roundIndex + 1}}
+            </h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <app-standings-table [mocIds]="category.mocIds"
+                [standings]="category.standings"></app-standings-table>
+        </div>
+    </div>
+</ng-container>

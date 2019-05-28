@@ -1,4 +1,16 @@
 <ng-container *ngIf="(category$ | async) as category">
-    <app-standings-table [mocIds]="category.mocIds" [standings]="category.standings">
-    </app-standings-table>
+    <div class="row">
+        <div class="col">
+            <h1>
+                {{ (tournament$ | async)?.name }} - 
+                {{ (category.classificationId | classification | async)?.name }}
+            </h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <app-standings-table [mocIds]="category.mocIds"
+                [standings]="category.standings"></app-standings-table>
+        </div>
+    </div>
 </ng-container>

@@ -18,8 +18,8 @@
           <td>{{moc?.name}}</td>
         </ng-container>
         <td>{{standing.score}}</td>
-        <td>{{standing.totalTime}}</td>
-        <td>{{standing.averageTime}}</td>
+        <td>{{standing.totalTime | number}}s</td>
+        <td>{{standing.averageTime | number}}s</td>
       </tr>
     </ng-container>
     <ng-template #mocs>
