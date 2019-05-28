@@ -1,3 +1,4 @@
-<p>
-  category works!
-</p>
+<ng-container *ngIf="(category$ | async) as category">
+    <app-standings-table [mocIds]="category.mocIds" [standings]="category.standings">
+    </app-standings-table>
+</ng-container>

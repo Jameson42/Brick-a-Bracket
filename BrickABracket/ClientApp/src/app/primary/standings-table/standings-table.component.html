@@ -1,0 +1,34 @@
+<table class="table table-sm">
+  <thead>
+    <tr>
+      <th scope="col" *ngIf="standings?.length > 0">Place</th>
+      <th scope="col">Name</th>
+      <th scope="col">MOC</th>
+      <th scope="col" *ngIf="standings?.length > 0">Score</th>
+      <th scope="col" *ngIf="standings?.length > 0">Total Time</th>
+      <th scope="col" *ngIf="standings?.length > 0">Average Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngIf="standings?.length > 0; else mocs">
+      <tr *ngFor="let standing of standings">
+        <th scope="row">{{standing.place}}</th>
+        <ng-container *ngIf="(standing.mocId | moc | async) as moc">
+          <td>{{(moc.competitorId | competitor | async)?.name}}</td>
+          <td>{{moc?.name}}</td>
+        </ng-container>
+        <td>{{standing.score}}</td>
+        <td>{{standing.totalTime}}</td>
+        <td>{{standing.averageTime}}</td>
+      </tr>
+    </ng-container>
+    <ng-template #mocs>
+      <tr *ngFor="let mocId of mocIds">
+        <ng-container *ngIf="(mocId | moc | async) as moc">
+          <td>{{(moc.competitorId | competitor | async)?.name}}</td>
+          <td>{{moc?.name}}</td>
+        </ng-container>
+      </tr>
+    </ng-template>
+  </tbody>
+</table>

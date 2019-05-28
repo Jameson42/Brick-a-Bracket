@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { PrimaryRoutingModule } from '@bab/primary/primary-routing.module';
 import { TournamentComponent, CategoryComponent,
-  RoundComponent, MatchComponent } from '@bab/primary';
+  RoundComponent, MatchComponent, StandingsTableComponent } from '@bab/primary';
 import { SharedModule } from '@bab/shared/shared.module';
 
 @NgModule({
@@ -16,7 +16,8 @@ import { SharedModule } from '@bab/shared/shared.module';
     TournamentComponent,
     CategoryComponent,
     RoundComponent,
-    MatchComponent
+    MatchComponent,
+    StandingsTableComponent
   ]
 })
 export class PrimaryModule { }
