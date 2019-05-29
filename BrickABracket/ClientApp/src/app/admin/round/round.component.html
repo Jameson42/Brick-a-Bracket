@@ -1,7 +1,7 @@
 <div class="row" *ngIf="(category$ | async) as category">
     <div class="col-12">
       <h3>
-        {{ (category?.classificationId | classification | async)?.name }} - Round {{id}}
+        {{ (category?.classificationId | classification | async)?.name }} - Round {{id + 1}}
       </h3>
     </div>
     <div class="col-lg-4">
@@ -13,7 +13,7 @@
       <ng-container *ngIf="(round$ | async) as round">
         <div class="list-group mb-2" *ngFor="let match of round.matches; index as index">
           <a class="list-group-item list-group-item-action" routerLink="../matches/{{index}}">
-            <span>Match {{index}}</span>
+            <span>Match {{index + 1}}</span>
           </a>
         </div>
       </ng-container>
