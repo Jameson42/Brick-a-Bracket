@@ -1,9 +1,12 @@
 <form *ngIf="(device$ | async) as device">
   <div class="form-group row">
-    <label for="connectionString" class="col-4 col-form-label">Connection String</label>
+    <label for="devicetype" class="col-4 col-form-label">Device Type</label>
     <div class="col-8">
-      <input type="text" id="connectionString" class="form-control" 
-        [(ngModel)]="device.connectionString" name="connectionString">
+      <select type="text" id="devicetype" class="form-control" 
+        [(ngModel)]="device.deviceType" name="devicetype">
+        <option value="NXT">NXT</option>
+        <option value="Mock">Mock Device</option>
+      </select>
     </div>
   </div>
   <div class="form-group row">
@@ -21,10 +24,11 @@
     </div>
   </div>
   <div class="form-group row">
-    <label for="devicetype" class="col-4 col-form-label">Device Type</label>
+    <label for="connectionString" class="col-4 col-form-label">Connection String</label>
     <div class="col-8">
-      <input type="text" id="devicetype" class="form-control" 
-        [(ngModel)]="device.deviceType" name="devicetype">
+      <input type="text" id="connectionString" class="form-control" 
+        [(ngModel)]="device.connectionString" name="connectionString">
+      <small class="text-muted">i.e. "COM3", "USB", "/dev/rfcomm0", "Mock"</small>
     </div>
   </div>
   <div class="form-group row">
