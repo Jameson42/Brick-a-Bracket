@@ -1,0 +1,24 @@
+TODO:
+
+- Core service that can be called from hub to submit scores
+    - Should probably convert start/stop calls to a service as well?
+- Improve device add frontend interface
+    - Device type dropdown
+    - Connection string options? Can we sense and auto-fill depending on OS? Or at least add help text
+    - Device Role - simplify?
+    - Program - once device connected, select from available programs on device
+- Other tournament types
+- Expand Statuses to include source
+- Send all statuses to frontend, add toasts to Admin?
+- Allow runoffs - bring X results from finished tournament to "sub" tournament
+    - Allow derby "Round 2" after all?
+- Add help texts to admin screens
+- Specialized Primary displays for tournament types
+    - "Single Elimination" would benefit from a bracket view
+- Add round/match numbers to Secondary match display?
+- Authentication to limit admins
+- Delete category, round? Regenerate Categories
+- Live camera view?
+- Record MOC weight
+    - Integrate with USB scale?
+- NXT battery/connection icons
