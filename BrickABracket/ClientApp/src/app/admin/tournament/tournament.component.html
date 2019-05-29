@@ -1,6 +1,9 @@
-<div class="row">
+<div class="row" *ngIf="(tournament$ | async) as tournament">
+  <div class="col-12">
+    <h4>Tournament - {{tournament?.name}}</h4>
+  </div>
   <div class="col-lg-4">
-    <form *ngIf="(tournament$ | async) as tournament">
+    <form>
       <div class="form-group row">
         <label for="tournamentName" class="col-4 col-form-label">Tournament Name</label>
         <div class="col-8">

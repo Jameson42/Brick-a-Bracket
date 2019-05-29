@@ -1,10 +1,10 @@
 <div class="row" *ngIf="(category$ | async) as category">
     <div class="col-12">
-      <h3>
+      <h4>
         {{ (category?.classificationId | classification | async)?.name }} - Round {{id + 1}}
-      </h3>
+      </h4>
     </div>
-    <div class="col-lg-4">
+    <div class="col-md-6">
       <div class="d-flex mb-2">
         <button class="btn btn-outline-success btn-sm float-left" (click)="nextMatch()">
           <i class="fas fa-forward"></i> Next Match
@@ -18,7 +18,7 @@
         </div>
       </ng-container>
     </div>
-    <div class="col-lg-4">
+    <div class="col-md-6">
       <h5>MOCs</h5>
         <app-moc-list [mocIds]="mocIds$" [editable]="false" [standings]="standings$" [results]="null"></app-moc-list>
       </div>

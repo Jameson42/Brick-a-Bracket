@@ -31,7 +31,7 @@ export class BreadcrumbComponent implements OnInit {
     const urlParts = url.substr(1).split('/');
     const length = urlParts.length;
     this.links = new Array<BreadcrumbLink>();
-    for (var i=0;i<length;i++) {
+    for (var i=0;i<length-1;i++) {
       this.links.push({
         route: urlParts.slice(0,i+1).join('/'),
         name: urlParts[i]

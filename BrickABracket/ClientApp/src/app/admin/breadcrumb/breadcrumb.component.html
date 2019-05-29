@@ -2,8 +2,7 @@
   <ol class="breadcrumb">
     <ng-container *ngFor="let link of links; last as isLast">
       <li class="breadcrumb-item" [class.active]="isLast">
-        <a *ngIf="!isLast" routerLink="/{{link.route}}" class="text-capitalize">{{link.name}}</a>
-        <span *ngIf="isLast" class="text-capitalize">{{link.name}}</span>
+        <a routerLink="/{{link.route}}" class="text-capitalize">{{link.name}}</a>
       </li>
     </ng-container>
   </ol>
