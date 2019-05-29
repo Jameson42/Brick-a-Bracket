@@ -30,11 +30,8 @@ namespace BrickABracket.Derby
                 });
             return 0;
         }
-        public int GenerateMatch(Round round, int matchIndex = -1) => GenerateMatch(round, matchIndex, 25);
-        private int GenerateMatch(Round round, int matchIndex, int retryAttempts)
+        public int GenerateMatch(Round round, int matchIndex = -1)
         {
-            if (retryAttempts<=0)
-                return -1;
             if (matchIndex<0)
                 matchIndex = round.Matches.Count;
             if (matchIndex>=round.MocIds.Count && matchIndex>=MatchSize)
