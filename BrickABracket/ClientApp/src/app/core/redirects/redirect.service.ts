@@ -1,5 +1,5 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil, distinctUntilChanged } from 'rxjs/operators';
 
@@ -13,14 +13,13 @@ export class RedirectService implements OnDestroy {
   private destroy$: Subject<boolean>;
 
   constructor(
-    private route: ActivatedRoute,
     private router: Router,
     private tournaments: TournamentService
   ) {
   }
 
-  start() {
-    if (this.destroy$ != null && !this.destroy$.isStopped) {
+  start(prefix: string) {
+    if (this.destroy$ != null && !this.destroy$.closed) {
       return;
     }
     this.cancel();
@@ -31,23 +30,23 @@ export class RedirectService implements OnDestroy {
         x.roundIndex === y.roundIndex && x.categoryIndex === y.categoryIndex),
     ).subscribe(data => {
       if (data.matchIndex > -1) {
-        this.navigate('match');
+        this.navigate('match', prefix);
       } else if (data.roundIndex > -1) {
-        this.navigate('round');
+        this.navigate('round', prefix);
       } else if (data.categoryIndex > -1) {
-        this.navigate('category');
+        this.navigate('category', prefix);
       } else {
-        this.navigate('tournament');
+        this.navigate('tournament', prefix);
       }
     });
   }
 
-  navigate(path: string) {
-    this.router.navigate(['/' + this.route.outlet + '/' + path]);
+  navigate(path: string, prefix: string) {
+    this.router.navigate(['/' + prefix + '/' + path]);
   }
 
   cancel() {
-    if (this.destroy$ == null) {
+    if (this.destroy$ == null || this.destroy$.closed) {
       return;
     }
     this.destroy$.next(true);

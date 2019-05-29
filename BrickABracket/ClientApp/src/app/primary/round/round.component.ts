@@ -21,7 +21,7 @@ export class RoundComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.redirect.start();
+    this.redirect.start('primary');
     this.tournamentData$ = this.tournaments.metadata;
     this.category$ = this.tournaments.category;
     this.round$ = this.tournaments.round;
