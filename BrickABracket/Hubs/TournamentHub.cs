@@ -17,6 +17,8 @@ namespace BrickABracket.Hubs
         private MocService _mocs;
         private TournamentService _tournaments;
         private TournamentRunner _runner;
+        private ScorePasser _scores;
+        private StatusPasser _statuses;
         #endregion
         public TournamentHub(ClassificationService classes,
             CompetitorService competitors,
@@ -24,7 +26,9 @@ namespace BrickABracket.Hubs
             MocService mocs,
             TournamentService tournaments,
             TournamentRunner runner,
-            MatchWatcher watcher)
+            MatchWatcher watcher,
+            ScorePasser scores,
+            StatusPasser statuses)
         {
             _classes = classes;
             _competitors = competitors;
@@ -32,6 +36,8 @@ namespace BrickABracket.Hubs
             _mocs = mocs;
             _tournaments = tournaments;
             _runner = runner;
+            _scores = scores;
+            _statuses = statuses;
             // Don't need to use anything in MatchWatcher,
             // only including it here to ensure
             // an instance gets created.
@@ -277,6 +283,19 @@ namespace BrickABracket.Hubs
         {
             _runner.DeleteCurrentMatch();
             await SendTournaments();
+        }
+        public void PassScore(int player, double time)
+        {
+            _scores.PassScore(new Score(player, time));
+        }
+        public void PassStatus(string status)
+        {
+            PassStatus(status.ToStatus());
+        }
+        private void PassStatus(Status status)
+        {
+            _statuses.PassStatus(status);
+            // TODO: Convert ReadyMatch, StartMatch, StopMatch to PassStatus calls
         }
         #endregion
     }

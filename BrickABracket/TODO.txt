@@ -2,6 +2,7 @@ TODO:
 
 - Record MOC weight
     - Integrate with USB scale?
+    - Look at HIDSharp, might be able to use it to detect NXTs as well?
 - Delete category, round? Regenerate Categories
 - Other tournament types
 - Core service that can be called from hub to submit scores
