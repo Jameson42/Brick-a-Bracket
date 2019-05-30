@@ -1,7 +1,5 @@
 TODO:
 
-- Allow runoffs - bring X results from finished tournament to "sub" tournament
-    - Allow derby "Round 2" after all?
 - Record MOC weight
     - Integrate with USB scale?
 - Delete category, round? Regenerate Categories

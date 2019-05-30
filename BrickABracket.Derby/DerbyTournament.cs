@@ -12,23 +12,60 @@ namespace BrickABracket.Derby
         public int MatchSize {get;} = 4;
         private double MaxTime {get;} = 5.0;
         private const string patternPrefix = "Derby";
-        public int GenerateRound(Category category, int roundIndex = -1)
+        public int GenerateRound(Category category, int roundIndex = -1, int runoff = 0)
         {
             if (category == null)
                 return -1;
-            //Ensure only one round exists
-            //Derby tournaments only have one round with all matches and MOCs in it
-            if (category.Rounds.Count>1)
-                category.Rounds.RemoveRange(1, category.Rounds.Count-1);
-            if (roundIndex == 0 && category.Rounds.Count == 1)
-                category.Rounds[0] = new Round(){
-                    MocIds = category.MocIds.ToList()
-                };
+            var mocIds = category.MocIds.ToList();
             if (category.Rounds.Count == 0)
+            {
                 category.Rounds.Add(new Round(){
-                    MocIds = category.MocIds.ToList()
+                    MocIds = mocIds
                 });
-            return 0;
+                return 0;
+            }
+            if (roundIndex == 0 && category.Rounds.Count == 1)
+            {
+                category.Rounds[0] = new Round(){
+                    MocIds = mocIds
+                };
+                return 0;
+            }
+            // Ensure first round has all mocs from category
+            if (mocIds.Count > category.Rounds[0].MocIds.Count)
+                category.Rounds[0].MocIds = mocIds;
+            if (roundIndex == -1)
+            {
+                roundIndex = FirstUnfinishedRound(category);
+                if (roundIndex > -1)
+                    return roundIndex;
+                roundIndex = category.Rounds.Count;
+            }
+            if (runoff > 0  && roundIndex <= category.Rounds.Count)
+                mocIds = category.Rounds[roundIndex-1].Standings
+                    .Select(s => s.MocId).Take(runoff).ToList();
+            if (roundIndex < category.Rounds.Count)
+                category.Rounds[roundIndex] = new Round(){
+                    MocIds = mocIds
+                };
+            else if (roundIndex == category.Rounds.Count && runoff > 0)
+                category.Rounds.Add(new Round(){
+                    MocIds = mocIds
+                });
+            else return -1;
+            return roundIndex;
+        }
+        private int FirstUnfinishedRound(Category category)
+        {
+            for (int i=0; i<category.Rounds.Count; i++)
+            {
+                var round = category.Rounds[i];
+                if (round.Matches.Count < round.MocIds.Count ||
+                    round.Matches.Count < MatchSize ||
+                    round.Matches.Any(m => !m.Results.Any()))
+                    return i;
+            }
+            return -1;
         }
         public int GenerateMatch(Round round, int matchIndex = -1)
         {
@@ -117,14 +154,26 @@ namespace BrickABracket.Derby
                 return false;
             foreach (var round in category.Rounds)
                 GenerateRoundStandings(round);
-            // Derby tournaments should only have 1 Round
-            category.Standings = category.Rounds.FirstOrDefault()?.Standings;
+            category.Standings = category.Rounds
+                .SelectMany(r => r.Standings)
+                .GroupBy(s => s.MocId)
+                .OrderByDescending(g => g.Sum(s => s.Score))  //Higher = better
+                .ThenBy(g => g.Sum(s => s.TotalTime))   //Total time breaks ties
+                .Select((g, index) => new Standing(){
+                    MocId = g.Key,
+                    Score = g.Sum(s => s.Score),
+                    TotalTime = Math.Round(g.Sum(s => s.TotalTime),3),
+                    AverageTime = Math.Round(g.Sum(s => s.TotalTime)/
+                        Convert.ToDouble(MatchSize*g.Count()),3),
+                    Place = index + 1
+                }).ToList();
             if (category.Standings == null)
                 return false;
             return true;
         }
         public bool GenerateRoundStandings(Round round)
         {
+            // TODO: Don't count mocId -1 in placement
             if (round == null)
                 return false;
             EnsureMatchScores(round);

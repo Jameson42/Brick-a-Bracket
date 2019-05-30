@@ -6,8 +6,11 @@
   </div>
   <div class="col-md-6">
     <div class="d-flex mb-2">
-      <button class="btn btn-outline-success btn-sm float-left" (click)="nextMatch()">
+      <button class="btn btn-outline-success btn-sm mr-2" (click)="nextMatch()">
         <i class="fas fa-forward"></i> Next Match
+      </button>
+      <button class="btn btn-outline-success btn-sm mr-2" (click)="runoff(4)">
+        <i class="fas fa-forward"></i> Runoff(4)  <!-- TODO: Convert to Input Group -->
       </button>
     </div>
     <div class="list-group mb-2" *ngFor="let round of category.rounds; index as index">

@@ -53,7 +53,14 @@ export class CategoryComponent implements OnInit {
       });
     });
   }
-
-  // TODO: Standings display
-
+  
+  runoff(count: number) {
+    this.tournaments.runoff(count).then(_ => {
+      this.tournaments.metadata.pipe(take(1)).subscribe(md => {
+        if (md.roundIndex > -1) {
+          this.router.navigate(['../rounds/' + md.roundIndex], { relativeTo: this.route });
+        }
+      });
+    })
+  }
 }

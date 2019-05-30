@@ -185,6 +185,14 @@ namespace BrickABracket.Core.Services
                 
             SaveTournament();
         }
+        public bool Runoff(int count)
+        {
+            if (Category == null)
+                return false;
+            RoundIndex = _strategy.GenerateRound(Category, -1, count);
+            SaveTournament();
+            return RoundIndex != -1;
+        }
         public bool NextMatch()
         {
             // Create next match in category and activate

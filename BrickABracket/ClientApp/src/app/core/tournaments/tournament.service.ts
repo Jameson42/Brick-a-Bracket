@@ -109,6 +109,10 @@ export class TournamentService {
         return this._signalR.invoke('SetMatchIndex', index);
     }
 
+    runoff(count: number) {
+        return this._signalR.invoke('Runoff', count);
+    }
+
     nextMatch() {
         return this._signalR.invoke('NextMatch');
     }

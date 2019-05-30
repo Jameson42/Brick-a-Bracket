@@ -259,6 +259,11 @@ namespace BrickABracket.Hubs
             _runner.MatchIndex = i;
             await SendTournaments();
         }
+        public async Task Runoff(int count)
+        {
+            _runner.Runoff(count);
+            await SendTournaments();
+        }
         public async Task NextMatch()
         {
             _runner.NextMatch();

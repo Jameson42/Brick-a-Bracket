@@ -7,7 +7,7 @@ namespace BrickABracket.RoundRobin
     public class RoundRobinTournament: ITournamentStrategy
     {
         public int MatchSize {get;} = 2;
-        public int GenerateRound(Category category, int roundIndex = -1)
+        public int GenerateRound(Category category, int roundIndex = -1, int runoff = 0)
         {
             return -1;
         }
