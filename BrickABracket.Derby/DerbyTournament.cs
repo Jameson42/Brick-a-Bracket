@@ -11,7 +11,7 @@ namespace BrickABracket.Derby
     {
         public int MatchSize {get;} = 4;
         private double MaxTime {get;} = 5.0;
-        private const string patternPrefix = "Derby";
+        private const string patternPrefix = "Derby";   // TODO: Remove this?
         public int GenerateRound(Category category, int roundIndex = -1, int runoff = 0)
         {
             if (category == null)
