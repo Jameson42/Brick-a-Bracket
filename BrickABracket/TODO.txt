@@ -10,10 +10,9 @@ TODO:
 - Send all statuses to frontend, add toasts to Admin?
 - Add help texts to admin screens
 - Improve device add frontend interface
-    - Device type dropdown
-    - Connection string options? Can we sense and auto-fill depending on OS? Or at least add help text
+    - Connection string options? Can we sense and auto-fill depending on OS?
     - Device Role - simplify?
-    - Program - once device connected, select from available programs on device
+    - Program - once device connected, select from available programs on device - try connecting once type, connection entered?
 - Specialized Primary displays for tournament types
     - "Single Elimination" would benefit from a bracket view
 - Add round/match numbers to Secondary match display?

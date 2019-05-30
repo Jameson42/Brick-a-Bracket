@@ -33,6 +33,19 @@
             <app-moc-image [mocId]="moc._id" classes="img-thumbnail mt-3" [alternate]="image"></app-moc-image>
           </div>
         </div>
+        <!--MOC Weight-->
+        <div class="form-group row">
+          <label for="mocWeight" class="col-4 col-form-label">MOC Weight</label>
+          <div class="col-8">
+            <div class="input-group">
+              <input type="number" id="mocWeight" class="form-control" 
+                [(ngModel)]="moc.weight" name="mocWeight">
+                <div class="input-group-append">
+                  <span class="input-group-text">oz</span>
+                </div>
+            </div>
+          </div>
+          </div>
       <!--ID, save-->
       <div class="form-group row">
         <label for="mocId" class="col-4 col-form-label">ID</label>
