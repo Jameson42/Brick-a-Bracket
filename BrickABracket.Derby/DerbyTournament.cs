@@ -57,6 +57,8 @@ namespace BrickABracket.Derby
         }
         private int FirstUnfinishedRound(Category category)
         {
+            if (category == null)
+                return -1;
             for (int i=0; i<category.Rounds.Count; i++)
             {
                 var round = category.Rounds[i];
@@ -69,6 +71,8 @@ namespace BrickABracket.Derby
         }
         public int GenerateMatch(Round round, int matchIndex = -1)
         {
+            if (round == null)
+                return -1;
             if (matchIndex<0)
                 matchIndex = round.Matches.Count;
             if (matchIndex>=round.MocIds.Count && matchIndex>=MatchSize)
@@ -173,7 +177,6 @@ namespace BrickABracket.Derby
         }
         public bool GenerateRoundStandings(Round round)
         {
-            // TODO: Don't count mocId -1 in placement
             if (round == null)
                 return false;
             EnsureMatchScores(round);
