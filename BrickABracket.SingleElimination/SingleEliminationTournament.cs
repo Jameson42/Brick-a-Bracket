@@ -33,7 +33,12 @@ namespace BrickABracket.SingleElimination
             {
                 roundIndex = FirstUnfinishedRound(category);
                 if (roundIndex > -1) return roundIndex;
-                if (category.Rounds.Last().Matches.Count == 1) return -1;
+                if (category.Rounds.Last().Matches.Count == 1) 
+                {
+                    if (runoff > 0) //Only allow runoff after 1st place achieved
+                        return GenerateRunoffRound(category);
+                    return -1;
+                }
                 roundIndex = category.Rounds.Count;
             }
             if (!GenerateRoundStandings(category.Rounds[roundIndex-1]))
@@ -51,6 +56,29 @@ namespace BrickABracket.SingleElimination
             category.Rounds[roundIndex] = round;
             return roundIndex;
         }
+
+        private int GenerateRunoffRound(Category category)
+        {
+            if (!GenerateCategoryStandings(category))
+                return -1;
+            var tiedScoreDifference = 4;
+            var topTiedScore = category.Standings.First().Score + 1 - tiedScoreDifference;
+            var tiedStandings = category.Standings.Where(s => s.Score == topTiedScore);
+            while (tiedStandings.Count() < 2)
+            {
+                topTiedScore -= tiedScoreDifference;
+                if (topTiedScore < 0)
+                    return -1;
+                tiedStandings = category.Standings.Where(s => s.Score == topTiedScore);
+                tiedScoreDifference *= 2;
+            }
+            var round = new Round(){
+                MocIds = tiedStandings.Select(s => s.MocId).ToList()
+            };
+            category.Rounds.Add(round);
+            return category.Rounds.Count-1;
+        }
+
         private int FirstUnfinishedRound(Category category)
         {
             if (category == null)
@@ -110,7 +138,10 @@ namespace BrickABracket.SingleElimination
             if (matchIndex<0)
                 matchIndex = round.Matches.Count;
             if (matchIndex >= (round.MocIds.Count/2))
+            {
+                GenerateRoundStandings(round);
                 return -1;
+            }
             var match = new Match();
             match.MocIds = round.MocIds.GetRange(matchIndex*2, 2);
             if (round.Matches.Count == matchIndex)
@@ -157,12 +188,15 @@ namespace BrickABracket.SingleElimination
         {
             if (round == null)
                 return false;
+            // Ensure 1st, 2nd place stay when doing runoffs of lower place values
+            // i.e. in 8-moc, 1st has 7pts, 2nd has 6pts, 3rd/4th tie has 4pts and can only get 5 at most
+            var roundScore = round.MocIds.Count / 2;
             // Assume first to score wins
             round.Standings = round.Matches
                 .Where(m => m?.Results?.LastOrDefault()?.Scores?.FirstOrDefault() != null)
                 .SelectMany(m => m.MocIds.Select(moc => new Standing(){
                         MocId = moc,
-                        Score = m.MocIds[m.Results.Last().Scores.First().Player] == moc ? 1 : 0,
+                        Score = m.MocIds[m.Results.Last().Scores.First().Player] == moc ? roundScore : 0,
                         TotalTime = m.Results.Last().Scores.First().Time,
                         AverageTime = m.Results.Last().Scores.First().Time
                     })
