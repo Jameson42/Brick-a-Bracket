@@ -97,6 +97,8 @@ namespace BrickABracket
             builder.RegisterModule(new SingleEliminationModule());
             builder.RegisterModule(new SwissSystemModule());
             builder.RegisterType<MatchWatcher>().SingleInstance();
+            builder.RegisterType<ScorePasser>().SingleInstance();
+            builder.RegisterType<StatusPasser>().SingleInstance();
         }
     }
 }

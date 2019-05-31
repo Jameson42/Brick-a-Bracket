@@ -91,7 +91,7 @@ export class MocComponent implements OnInit {
   }
 
   setClass(event, moc: Moc) {
-    if (event.target) {
+    if (!event || !moc || event.target) {
       return;
     }
     const id = Number(event);

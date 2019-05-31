@@ -165,11 +165,11 @@ namespace BrickABracket.Derby
                 .ThenBy(g => g.Sum(s => s.TotalTime))   //Total time breaks ties
                 .Select((g, index) => new Standing(){
                     MocId = g.Key,
+                    Place = index + 1,
                     Score = g.Sum(s => s.Score),
                     TotalTime = Math.Round(g.Sum(s => s.TotalTime),3),
                     AverageTime = Math.Round(g.Sum(s => s.TotalTime)/
-                        Convert.ToDouble(MatchSize*g.Count()),3),
-                    Place = index + 1
+                        Convert.ToDouble(g.Count(s => s.MocId == g.Key)),3)
                 }).ToList();
             if (category.Standings == null)
                 return false;
