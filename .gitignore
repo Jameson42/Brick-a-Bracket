@@ -232,3 +232,6 @@ _Pvt_Extensions
 
 # LiteDB Databases
 *.db
+
+# Bricx Command Center build files
+*.sym

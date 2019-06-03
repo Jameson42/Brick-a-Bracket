@@ -307,15 +307,9 @@ namespace BrickABracket.Core.Services
                 case Status.Stop:
                     StopMatch();
                     break;
-                case Status.Ready:
-                    // Only send Ready once in a row
-                    if (_statuses.Latest().FirstOrDefault() != Status.Ready)
-                        ReadyMatch();
-                    break;
                 case Status.Running:
                 case Status.Stopped:
-                    _statuses.OnNext(status);
-                    break;
+                case Status.Ready:  //Don't forward Ready status
                 case Status.Unknown:
                 default:
                     // TODO: Log status?

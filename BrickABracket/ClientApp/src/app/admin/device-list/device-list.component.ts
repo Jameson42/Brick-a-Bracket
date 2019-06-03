@@ -18,7 +18,8 @@ export class DeviceListComponent implements OnInit {
     this.devices$ = this.devices.devices;
   }
 
-  delete(connection: string) {
+  delete(event:any, connection: string) {
+    event.stopPropogation();
     this.devices.delete(connection);
   }
 

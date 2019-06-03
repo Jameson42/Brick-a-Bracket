@@ -13,7 +13,7 @@
         <small class="badge badge-primary">
           {{ deviceData.connectionString }}
         </small>
-        <button class="btn btn-danger btn-sm float-right" (click)="delete(deviceData.connectionString)">
+        <button class="btn btn-danger btn-sm float-right" (click)="delete($event,deviceData.connectionString)">
           <i class="far fa-trash-alt"></i>
         </button>
       </a>

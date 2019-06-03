@@ -24,12 +24,17 @@ namespace BrickABracket.NXT
         private CancellationTokenSource _messageTokenSource;
         private Task _messageTask;
         private Func<string, Score> _scoreFactory;
+        private bool _running { get; set; } = false;
+        private IDeviceRemover _remover;
 
-        public Nxt(string connectionString, Func<string, Score> scoreFactory)
+        public Nxt(string connectionString, 
+            Func<string, Score> scoreFactory, 
+            IDeviceRemover remover)
         {
             _scoreFactory = scoreFactory;
             _scores = new Subject<Score>();
             _statuses = new BehaviorSubject<Status>(Status.Unknown);
+            _remover = remover;
             Scores = _scores.AsObservable();
             Statuses = _statuses.AsObservable();
 
@@ -104,7 +109,15 @@ namespace BrickABracket.NXT
                 _brick.Connection.Open();
                 StartReadMailboxes();
                 lock(MessageLock)
+                {
+                    try
+                    {
+                        _brick.StopProgram();
+                    }
+                    catch
+                    {}
                     return _brick.Connection.IsConnected;
+                }
             }
             catch
             {
@@ -138,44 +151,78 @@ namespace BrickABracket.NXT
             if (ProgramIsRunning)
                 return;
             if (Connected)
-                lock (MessageLock)
-                    _brick?.StartProgram(Program);
+            {
+                try
+                {
+                    lock (MessageLock)
+                        _brick?.StartProgram(Program);
+                    _running = true;  
+                }
+                catch (MonoBrick.ConnectionException)
+                {
+                    Remove();
+                }
+            }
+        }
+        private void Remove()
+        {
+            _remover.Remove(Connection);
         }
         private void StopProgram()
         {
             if (Connected)
-                lock (MessageLock)
-                    _brick?.StopProgram();
+            {
+                try
+                {
+                    lock (MessageLock)
+                        _brick?.StopProgram();
+                    _running = false;
+                }
+                catch (MonoBrick.ConnectionException)
+                {
+                    Remove();
+                }
+            }
         }
         private bool ProgramIsRunning
         {
             get
             {
+                if (!_running)
+                    return false;
                 lock (MessageLock)
-                    return string.Equals(_brick.GetRunningProgram(), Program, 
-                        StringComparison.InvariantCultureIgnoreCase);
+                    try
+                    {
+                        return !string.IsNullOrWhiteSpace(_brick.GetRunningProgram().TrimEnd('\0'));
+                    }
+                    catch
+                    {
+                        return false;
+                    }
             }
         }
 
         private void ReadMailboxes(CancellationToken token)
         {
-            while(!token.IsCancellationRequested)
+            while (!token.IsCancellationRequested)
             {
-                while(!Connected)
+                while (!Connected)
                     Thread.Sleep(500);
+                if (!ProgramIsRunning)
+                    continue;
                 // Post all queued statuses
-                lock(MessageLock)
+                lock (MessageLock)
                     try
                     {
-                        while (PostStatus(_brick.Mailbox.ReadString(Box.Box0, true)));
+                        while (PostStatus(_brick.Mailbox.ReadString(Box.Box0, true).TrimEnd('\0')));
                     }
                     catch{}
                 // Post all queued scores
-                lock(MessageLock)
+                lock (MessageLock)
                     try
                     {
                         while (_scoreFactory!=null 
-                            && PostScore(_scoreFactory(_brick.Mailbox.ReadString(Box.Box1, true))));
+                            && PostScore(_scoreFactory(_brick.Mailbox.ReadString(Box.Box1, true).TrimEnd('\0'))));
                     }
                     catch{}
                 Thread.Sleep(100);

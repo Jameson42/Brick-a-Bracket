@@ -7,7 +7,7 @@ using BrickABracket.Models.Interfaces;
 
 namespace BrickABracket.Core.Services
 {
-    public class DeviceService
+    public class DeviceService: IDeviceRemover
     {
         private IEnumerable<Meta<Func<string, IDevice>>> _deviceFactory {get;}
         private ScoreTracker _scoreTracker;
@@ -64,7 +64,7 @@ namespace BrickABracket.Core.Services
                 return false;
             var device = _devices[connectionString];
             DeviceRole rolesToAdd = (role ^ device.Role) & role;
-            DeviceRole rolesToRemove = (role & device.Role);
+            DeviceRole rolesToRemove = (role ^ device.Role) & (~ role);
             AddRoles(device, rolesToAdd);
             RemoveRoles(device, rolesToRemove);
             return true;
