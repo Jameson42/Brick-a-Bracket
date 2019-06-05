@@ -29,7 +29,7 @@ export class CategoryComponent implements OnInit {
         this.id = Number(params.get('id'));
         if (this.id >= 0) {
           this.tournaments.setCategory(this.id);
-        }
+        } // TODO: Route to correct index
       }),
       switchMap(_ => this.tournaments.category),
       shareReplay(1)

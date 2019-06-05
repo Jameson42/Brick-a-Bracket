@@ -32,7 +32,7 @@ export class RoundComponent implements OnInit {
         this.id = Number(params.get('id'));
         if (this.id >= 0) {
           this.tournaments.setRound(this.id);
-        }
+        } // TODO: route to correct index
       }),
       switchMap(_ => this.tournaments.round),
       shareReplay(1)
