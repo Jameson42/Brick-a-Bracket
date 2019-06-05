@@ -27,7 +27,9 @@ export class CategoryComponent implements OnInit {
     this.category$ = this.route.paramMap.pipe(
       tap(params => {
         this.id = Number(params.get('id'));
-        this.tournaments.setCategory(this.id);
+        if (this.id >= 0) {
+          this.tournaments.setCategory(this.id);
+        }
       }),
       switchMap(_ => this.tournaments.category),
       shareReplay(1)
@@ -53,7 +55,7 @@ export class CategoryComponent implements OnInit {
       });
     });
   }
-  
+
   runoff(count: number) {
     this.tournaments.runoff(count).then(_ => {
       this.tournaments.metadata.pipe(take(1)).subscribe(md => {
@@ -61,6 +63,6 @@ export class CategoryComponent implements OnInit {
           this.router.navigate(['../rounds/' + md.roundIndex], { relativeTo: this.route });
         }
       });
-    })
+    });
   }
 }

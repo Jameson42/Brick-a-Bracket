@@ -1,17 +1,20 @@
-<div class="d-flex mb-2">
-    <a class="btn btn-outline-success btn-sm float-left" routerLink="" (click)="add()">
-      <i class="fas fa-plus"></i> Add Classification
-    </a>
-  </div>
-  <div *ngIf="(classifications$ | async) as classifications" class="list-group">
-    <ng-container *ngFor="let classification of classifications">
-      <a class="list-group-item list-group-item-action" routerLink="/admin/classifications/{{classification._id}}">
-        <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1">{{ classification.name }}</h5>
-          <button class="btn btn-danger btn-sm float-right" (click)="delete(classification._id)">
-            <i class="far fa-trash-alt"></i>
-          </button>
-        </div>
+<div class="card mb-3">
+  <div class="d-flex card-header justify-content-between">
+    <h5>Classifications</h5>
+      <a class="btn btn-success btn-sm float-left" routerLink="" (click)="add()">
+        <i class="fas fa-plus"></i>
       </a>
-    </ng-container>
-  </div>
+    </div>
+    <div *ngIf="(classifications$ | async) as classifications" class="list-group list-group-flush">
+      <ng-container *ngFor="let classification of classifications">
+        <a class="list-group-item list-group-item-action" routerLink="/admin/classifications/{{classification._id}}">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{ classification.name }}</h5>
+            <button class="btn btn-danger btn-sm float-right" (click)="delete(classification._id)">
+              <i class="far fa-trash-alt"></i>
+            </button>
+          </div>
+        </a>
+      </ng-container>
+    </div>
+</div>

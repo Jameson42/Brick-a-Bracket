@@ -5,26 +5,25 @@
     </h4>
   </div>
   <div class="col-md-6">
-    <div>
-      <button class="btn btn-outline-success float-left mr-2 mb-2" (click)="nextMatch()">
-        <i class="fas fa-forward mr-2"></i>Next Match
+    <div class="btn-group mb-3">
+      <button class="btn btn-success float-left" (click)="nextMatch()">
+        <i class="fas fa-forward mr-1"></i>Next
       </button>
-      <button type="button" class="btn mr-2 mb-2 {{readyColor}}" (click)="readyToggle()">
-        <i class="fas fa-check mr-2"></i>Ready to Start
+      <button type="button" class="btn {{readyColor}}" (click)="readyToggle()">
+        <i class="fas fa-check mr-1"></i>Ready
       </button>
-      <button class="btn btn-outline-success mr-2 mb-2" (click)="startMatch()">
-        <i class="fas fa-flag-checkered mr-2"></i>Start Match
+      <button class="btn btn-success" (click)="startMatch()">
+        <i class="fas fa-flag-checkered mr-1"></i>Start
       </button>
-      <button class="btn btn-outline-danger mr-2 mb-2" (click)="stopMatch()">
-        <i class="fas fa-hand-paper mr-2"></i>Stop Match
+      <button class="btn btn-outline-danger" (click)="stopMatch()">
+        <i class="fas fa-hand-paper mr-1"></i>Stop
       </button>
-      <button class="btn btn-danger mr-2 mb-2" (click)="delete()">
-        <i class="fas fa-trash-alt mr-2"></i>Delete Match
+      <button class="btn btn-danger" (click)="delete()">
+        <i class="fas fa-trash-alt"></i>
       </button>
     </div>
   </div>
   <div class="col-md-6">
-    <h5>MOCs</h5>
-      <app-moc-list [mocIds]="mocIds$" [standings]="null" [results]="results$"></app-moc-list>
-    </div>
+    <app-moc-list [mocIds]="mocIds$" [standings]="null" [results]="results$"></app-moc-list>
+  </div>
 </div>

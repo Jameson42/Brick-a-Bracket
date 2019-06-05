@@ -1,5 +1,5 @@
 <div class="d-flex mb-2">
-  <button class="btn btn-outline-success float-left" (click)="add()">
+  <button class="btn btn-success float-left" (click)="add()">
     <i class="fas fa-plus"></i> Add Competitor
   </button>
 </div>
@@ -10,7 +10,7 @@
     <label class="custom-file-label" for="importFile">{{ import?.name || "Choose Import CSV" }}</label>
   </div>
   <div class="input-group-append">
-    <button class="btn btn-outline-success" (click)="uploadImport()">Upload</button>
+    <button class="btn btn-success" (click)="uploadImport()">Upload</button>
   </div>
 </div>
 <div *ngIf="(competitors$ | async) as competitors">

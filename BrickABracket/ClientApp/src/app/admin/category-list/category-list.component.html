@@ -1,18 +1,21 @@
-<div class="d-flex mb-2">
-  <button class="btn btn-outline-success btn-sm float-left" (click)="generateCategories()">
-    <i class="fas fa-sync-alt"></i> Generate categories
-  </button>
-</div>
-<div *ngIf="(categories$ | async) as categories" class="list-group mb-2">
-  <ng-container *ngFor="let category of categories; let i = index">
-    <a class="list-group-item list-group-item-action" routerLink="/admin/tournaments/categories/{{i}}">
-      <div class="d-flex w-100 justify-content-between">
-        <h5 class="mt-2">{{ (category?.classificationId | classification | async)?.name }}</h5>
-        <div>
-          <small class="badge badge-primary d-block mb-1">{{ category?.rounds?.length }} Rounds</small>
-          <small class="badge badge-primary d-block">{{ category?.mocIds?.length }} MOCs</small>
-        </div>        
-      </div>
-    </a>
-  </ng-container>
+<div class="card mb-3">
+  <div class="d-flex card-header justify-content-between">
+    <h5>Categories</h5>
+    <button class="btn btn-success btn-sm" (click)="generateCategories()">
+      <i class="fas fa-sync-alt"></i> Generate
+    </button>
+  </div>
+  <div *ngIf="(categories$ | async) as categories" class="list-group list-group-flush">
+    <ng-container *ngFor="let category of categories; let i = index">
+      <a class="list-group-item list-group-item-action" routerLink="/admin/tournaments/categories/{{i}}">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mt-2">{{ (category?.classificationId | classification | async)?.name }}</h5>
+          <div>
+            <small class="badge badge-primary d-block mb-1">{{ category?.rounds?.length }} Rounds</small>
+            <small class="badge badge-primary d-block">{{ category?.mocIds?.length }} MOCs</small>
+          </div>        
+        </div>
+      </a>
+    </ng-container>
+  </div>
 </div>

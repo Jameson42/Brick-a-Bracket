@@ -1,47 +1,50 @@
-<div class="d-flex mb-2" *ngIf="editable">
-  <a class="btn btn-outline-success btn-sm float-left" routerLink="" (click)="addMoc()">
-    <i class="fas fa-plus"></i> Add MOC
-  </a>
-</div>
-<div *ngIf="(mocs$ | async) as mocs" class="list-group">
-  <ng-container *ngFor="let moc of mocs">
-    <ng-container *ngIf="editable; else basicMoc">
-      <a class="list-group-item list-group-item-action" routerLink="/admin/tournaments/mocs/{{moc._id}}">
-        <div class="d-flex w-100 justify-content-between">
-          <div>
-            <small class="badge badge-primary" *ngIf="(moc.classificationId | classification | async) as c">{{ c.name }}</small>
-            <span *ngIf="(moc.competitorId | competitor | async) as c"> {{ c.name }} - </span>
-            <small class="d-inline-block">{{ moc.name }}</small>
-            <ng-container *ngFor="let score of moc.scores">
-              <span class="badge badge-primary ml-5" *ngIf="score">
-                {{ score.time }}
+<div class="card mb-3">
+  <div class="d-flex card-header justify-content-between">
+    <h5>MOCs</h5>
+    <a class="btn btn-success btn-sm" *ngIf="editable" routerLink="" (click)="addMoc()">
+      <i class="fas fa-plus"></i>
+    </a>
+  </div>
+  <div *ngIf="(mocs$ | async) as mocs" class="list-group list-group-flush">
+    <ng-container *ngFor="let moc of mocs">
+      <ng-container *ngIf="editable; else basicMoc">
+        <a class="list-group-item list-group-item-action" routerLink="/admin/tournaments/mocs/{{moc._id}}">
+          <div class="d-flex w-100 justify-content-between">
+            <div class="w-100">
+              <ng-container *ngFor="let score of moc.scores">
+                <span class="badge badge-primary float-right ml-2 mt-1" *ngIf="score">
+                  {{ score.time }}
+                </span>
+              </ng-container>
+              <span class="badge badge-primary float-right ml-2 mt-1" *ngIf="moc.standing">
+                {{ moc.standing.score }} - {{ moc.standing.averageTime }}
               </span>
-            </ng-container>
-            <span class="badge badge-primary float-right" *ngIf="moc.standing">
-              {{ moc.standing.score }} - {{ moc.standing.averageTime }}
+              <small class="badge badge-primary" *ngIf="(moc.classificationId | classification | async) as c">{{ c.name }}</small>
+              <span *ngIf="(moc.competitorId | competitor | async) as c"> {{ c.name }} - </span>
+              <small class="d-inline-block">{{ moc.name }}</small>
+            </div>
+            <div>
+              <button class="btn btn-danger btn-sm float-right ml-2" (click)="delete(moc._id)">
+                <i class="far fa-trash-alt"></i>
+              </button>
+            </div>
+          </div>
+        </a>
+      </ng-container>
+      <ng-template #basicMoc>
+        <div class="list-group-item">
+          <ng-container *ngFor="let score of moc.scores">
+            <span class="badge badge-primary float-right mt-1 ml-2" *ngIf="score">
+              {{ score.time }}
             </span>
-          </div>
-          <div>
-            <button class="btn btn-danger btn-sm float-right" (click)="delete(moc._id)">
-              <i class="far fa-trash-alt"></i>
-            </button>
-          </div>
-        </div>
-      </a>
-    </ng-container>
-    <ng-template #basicMoc>
-      <div class="list-group-item">
-        <span *ngIf="(moc.competitorId | competitor | async) as c"> {{ c.name }} - </span>
-        <small class="d-inline-block">{{ moc.name }}</small>
-        <ng-container *ngFor="let score of moc.scores">
-          <span class="badge badge-primary ml-5" *ngIf="score">
-            {{ score.time }}
+          </ng-container>
+          <span class="badge badge-primary float-right mt-1 ml-2" *ngIf="moc.standing">
+            {{ moc.standing.score }} - {{ moc.standing.averageTime }}
           </span>
-        </ng-container>
-        <span class="badge badge-primary float-right mt-1" *ngIf="moc.standing">
-          {{ moc.standing.score }} - {{ moc.standing.averageTime }}
-        </span>
-      </div>
-    </ng-template>
-  </ng-container>
+          <span *ngIf="(moc.competitorId | competitor | async) as c"> {{ c.name }} - </span>
+          <small class="d-inline-block">{{ moc.name }}</small>
+        </div>
+      </ng-template>
+    </ng-container>
+  </div>
 </div>

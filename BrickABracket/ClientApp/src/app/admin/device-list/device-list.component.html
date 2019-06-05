@@ -1,9 +1,11 @@
-<div class="d-flex mb-2">
-    <a class="btn btn-outline-success btn-sm float-left" routerLink="/admin/devices/new">
-      <i class="fas fa-plus"></i> Add new device
+<div class="card mb-3">
+  <div class="d-flex card-header justify-content-between">
+    <h5>Devices</h5>
+    <a class="btn btn-success btn-sm float-left" routerLink="/admin/devices/new">
+      <i class="fas fa-plus"></i>
     </a>
   </div>
-  <div *ngIf="(devices$ | async) as devices" class="list-group">
+  <div *ngIf="(devices$ | async) as devices" class="list-group list-group-flush">
     <ng-container *ngFor="let deviceData of devices">
       <a class="list-group-item list-group-item-action" routerLink="/admin/devices/{{deviceData.connectionString}}">
         <div class="d-flex w-100 justify-content-between">
@@ -19,3 +21,4 @@
       </a>
     </ng-container>
   </div>
+</div>

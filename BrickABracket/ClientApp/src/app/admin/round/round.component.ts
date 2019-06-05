@@ -16,6 +16,7 @@ export class RoundComponent implements OnInit {
   private round$: Observable<Round>;
   private mocIds$: Observable<Array<number>>;
   private standings$: Observable<Array<Standing>>;
+  private id$: Observable<number>;
   private id: number;
 
   constructor(
@@ -29,7 +30,9 @@ export class RoundComponent implements OnInit {
     this.round$ = this.route.paramMap.pipe(
       tap(params => {
         this.id = Number(params.get('id'));
-        this.tournaments.setRound(this.id);
+        if (this.id >= 0) {
+          this.tournaments.setRound(this.id);
+        }
       }),
       switchMap(_ => this.tournaments.round),
       shareReplay(1)
@@ -41,6 +44,9 @@ export class RoundComponent implements OnInit {
     this.standings$ = this.round$.pipe(
       filter(r => !!r),
       map(r => r.standings),
+    );
+    this.id$ = this.tournaments.metadata.pipe(
+      map(m => m.roundIndex)
     );
   }
 

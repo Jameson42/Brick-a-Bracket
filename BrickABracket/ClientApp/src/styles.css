@@ -15,8 +15,8 @@ code, kbd, samp {
 
 .btn-primary {
     color:#000;
-    background-color: #fec601;
-    border-color:#fec601;
+    background-color: #ea7317;
+    border-color:#ea7317;
 }
 
 .btn-primary:hover{
@@ -25,6 +25,80 @@ code, kbd, samp {
     border-color: #ea7317;
 }
 
+.btn-outline-primary {
+    color: #ea7317;
+    border-color: #ea7317;
+}
+.btn-outline-primary:hover {
+    color: #fff;
+    background-color: #ea7317;
+    border-color: #ea7317;
+}
+
+.btn-outline-success {
+    color: #6cc04a;
+    border-color: #6cc04a;
+}
+.btn-outline-success:hover {
+    color: #000;
+    background-color: #6cc04a;
+    border-color: #6cc04a;
+}
+.btn-success {
+    color: #000;
+    background-color: #6cc04a;
+    border-color: #6cc04a;
+}
+
 label.col-form-label {
     font-weight: bold;
+}
+
+.list-group-item:first-child, .table {
+    border-top: 4px solid #ea7317!important;
+}
+
+.badge-primary {
+    background-color: #ea7317;
+    color: #000;
+}
+
+.card {
+    border-color: #ea7317;
+}
+
+.navbar.fixed-bottom {
+    border-top:1px solid #000!important;
+}
+
+.navbar.fixed-top {
+    border-bottom:1px solid #000!important;
+}
+
+.text-dark {
+    color:#000!important;
+}
+
+.btn-group > .btn {
+    border-color: #ea7317!important;
+}
+
+.breadcrumb, .card-header {
+    background-color: rgba(108,192,74,.2);
+}
+
+.card-header, .card-header > h5 {
+    margin-bottom:0;
+}
+
+.nav-item.link-active {
+    border-bottom: 3px solid #ea7317;
+    pointer-events: none;
+    cursor: default;
+}
+.nav-item:hover {
+    border-bottom: 3px solid #6cc04a;
+}
+.nav-item.link-active {
+    border-bottom: 3px solid #ea7317;
 }

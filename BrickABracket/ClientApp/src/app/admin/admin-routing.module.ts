@@ -19,9 +19,9 @@ import { CategoryComponent } from './category/category.component';
 const routes: Routes = [
   { path: '', component: LayoutComponent, children: [
     { path: '', component: HomeComponent },
-    { path: 'tournaments/categories/rounds/matches', redirectTo: 'tournaments/categories/rounds/0', pathMatch: 'full' },
+    { path: 'tournaments/categories/rounds/matches', redirectTo: 'tournaments/categories/rounds/-1', pathMatch: 'full' },
     { path: 'tournaments/categories/rounds/matches/:id', component: MatchComponent },
-    { path: 'tournaments/categories/rounds', redirectTo: 'tournaments/categories/0', pathMatch: 'full' },
+    { path: 'tournaments/categories/rounds', redirectTo: 'tournaments/categories/-1', pathMatch: 'full' },
     { path: 'tournaments/categories/rounds/:id', component: RoundComponent },
     { path: 'tournaments/categories', redirectTo: 'tournaments/0', pathMatch: 'full' },
     { path: 'tournaments/categories/:id', component: CategoryComponent },
