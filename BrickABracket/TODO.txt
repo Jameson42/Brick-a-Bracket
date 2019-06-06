@@ -14,9 +14,11 @@ TODO:
     - Connection string options? Can we sense and auto-fill depending on OS?
     - Device Role - simplify?
     - Program - once device connected, select from available programs on device - try connecting once type, connection entered?
+    - Device discovery would be great - pair BT connections and create IDevice objects automatically
 - Specialized Primary displays for tournament types
     - "Single Elimination" would benefit from a bracket view
 - Add round/match numbers to Secondary match display?
 - Authentication to limit admins
 - Live camera view?
-- NXT battery/connection icons
+- Write programs to NXT?
+- Send occasional IDevice status updates to frontend

@@ -7,13 +7,13 @@
   <div class="col-md-6">
     <div class="card mb-2">
       <div class="d-flex card-header justify-content-between">
-        <button class="btn -success btn-sm mr-2" (click)="nextMatch()">
+        <button class="btn btn-success btn-sm mr-2" (click)="nextMatch()">
           <i class="fas fa-forward"></i> Next Match
         </button>
         <div class="input-group">
           <input type="number" class="form-control" [(ngModel)]="runoffCount" placeholder="Qty">
           <div class="input-group-append">
-            <button class="btn -success" (click)="runoff(runoffCount || 4)">Runoff top {{runoffCount || 4}}</button>
+            <button class="btn btn-success" (click)="runoff(runoffCount || 4)">Runoff top {{runoffCount || 4}}</button>
           </div>
         </div>
       </div>

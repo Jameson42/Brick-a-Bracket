@@ -79,7 +79,11 @@ label.col-form-label {
     color:#000!important;
 }
 
-.btn-group > .btn {
+.btn-group > .btn ,
+.input-group>.custom-file>.custom-file-label,
+.input-group>.custom-file>.custom-file-label:after,
+.input-group>.input-group-append>.btn,
+.input-group>.form-control {
     border-color: #ea7317!important;
 }
 
@@ -99,6 +103,16 @@ label.col-form-label {
 .nav-item:hover {
     border-bottom: 3px solid #6cc04a;
 }
-.nav-item.link-active {
-    border-bottom: 3px solid #ea7317;
+
+.fa-battery-full,
+.fa-battery-three-quarters,
+.fa-battery-half {
+    color: #6cc04a;
+    font-size: 125%;
+}
+
+.fa-battery-quarter,
+.fa-battery-empty {
+    font-size: 125%;
+    color: #dc3545;
 }

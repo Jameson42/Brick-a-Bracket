@@ -1,24 +1,25 @@
 <div class="card mb-3">
   <div class="d-flex card-header justify-content-between">
     <h5>Devices</h5>
-    <a class="btn btn-success btn-sm float-left" routerLink="/admin/devices/new">
+    <a class="btn btn-success btn-sm" routerLink="/admin/devices/new">
       <i class="fas fa-plus"></i>
     </a>
   </div>
   <div *ngIf="(devices$ | async) as devices" class="list-group list-group-flush">
-    <ng-container *ngFor="let deviceData of devices">
-      <a class="list-group-item list-group-item-action" routerLink="/admin/devices/{{deviceData.connectionString}}">
-        <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1">{{ deviceData.device.brickName }}</h5>
-          <small>{{ deviceData.device.batteryLevel }}</small>
-        </div>
-        <small class="badge badge-primary">
-          {{ deviceData.connectionString }}
-        </small>
-        <button class="btn btn-danger btn-sm float-right" (click)="delete($event,deviceData.connectionString)">
+    <div class="list-group-item" *ngFor="let deviceData of devices">
+      <div class="w-100">
+        <button class="btn btn-success btn-sm mr-2 float-left" routerLink="/admin/devices/{{deviceData.connectionString}}">
+          <i class="fas fa-arrow-right"></i>
+        </button>
+        <button class="btn btn-danger btn-sm float-right" (click)="delete(deviceData.connectionString)">
           <i class="far fa-trash-alt"></i>
         </button>
-      </a>
-    </ng-container>
+        <h5>{{ deviceData.device.brickName }}</h5>
+      </div>
+      <div class="w-100">
+        <span class="badge badge-primary">{{ deviceData.connectionString }}</span>
+        <span class="float-right" style="margin: 2px;"><i class="{{ deviceData.device.batteryLevel | battery }}"></i></span>
+    </div>
+  </div>
   </div>
 </div>
