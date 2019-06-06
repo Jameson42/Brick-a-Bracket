@@ -1,5 +1,6 @@
 TODO:
 
+- Add layout component to Primary, Secondary like the Admin one to give fading between routes
 - Record MOC weight
     - Integrate with USB scale?
     - Look at HIDSharp, might be able to use it to detect NXTs as well?

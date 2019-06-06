@@ -8,7 +8,7 @@ import { ClassificationPipe, CompetitorPipe,
   CompetitorTypeaheadComponent,
   ClassificationSelectComponent,
   MocImageComponent, LogPipe,
-  BatteryPipe } from '@bab/shared';
+  BatteryPipe, LogoFullscreenComponent } from '@bab/shared';
 
 @NgModule({
   imports: [
@@ -28,6 +28,7 @@ import { ClassificationPipe, CompetitorPipe,
     MocImageComponent,
     LogPipe,
     BatteryPipe,
+    LogoFullscreenComponent,
   ],
   exports: [
     CompetitorPipe,
@@ -38,6 +39,7 @@ import { ClassificationPipe, CompetitorPipe,
     CompetitorTypeaheadComponent,
     ClassificationSelectComponent,
     MocImageComponent,
+    LogoFullscreenComponent,
   ]
 })
 export class SharedModule { }

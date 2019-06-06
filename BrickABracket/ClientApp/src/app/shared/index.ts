@@ -7,3 +7,4 @@ export * from './classification-select/classification-select.component';
 export * from './moc-image/moc-image.component';
 export * from './log.pipe';
 export * from './battery.pipe';
+export * from './logo-fullscreen/logo-fullscreen.component';
