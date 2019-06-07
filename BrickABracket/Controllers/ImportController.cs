@@ -61,7 +61,9 @@ namespace BrickABracket.Controllers
     public class CompetitorMapping
     {
         public string Name;
+        [FieldOptional]
         public string Location;
+        [FieldOptional]
         public string LUG;
     }
 

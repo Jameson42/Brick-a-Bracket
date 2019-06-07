@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { ClassificationService, CompetitorService, 
-  DeviceService, TournamentService } from '@bab/core';
+  DeviceService, TournamentService, RedirectService } from '@bab/core';
 import { map } from 'rxjs/operators';
 
 @Component({
@@ -20,10 +20,12 @@ export class HomeComponent implements OnInit {
     private tournaments: TournamentService,
     private competitors: CompetitorService,
     private classifications: ClassificationService,
-    private devices: DeviceService
+    private devices: DeviceService,
+    private redirect: RedirectService,
   ) { }
 
   ngOnInit() {
+    this.redirect.cancel();
     this.tournamentCount$ = this.tournaments.summaries.pipe(
       map(t => t.length)
     );
