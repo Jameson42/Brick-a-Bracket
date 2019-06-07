@@ -25,7 +25,10 @@ export class DeviceComponent implements OnInit {
   ngOnInit() {
     this.device$ = this.route.paramMap.pipe(
       tap(params => {
-        this.connection = params.get('id');
+        this.connection = params.get('id')
+        if (this.connection) {
+          this.connection = this.connection.replace(/\./g, '/');
+        }
         this.isNew = !this.connection;
       }),
       switchMap(_ => {

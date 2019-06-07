@@ -8,7 +8,7 @@
   <div *ngIf="(devices$ | async) as devices" class="list-group list-group-flush">
     <div class="list-group-item" *ngFor="let deviceData of devices">
       <div class="w-100">
-        <button class="btn btn-success btn-sm mr-2 float-left" routerLink="/admin/devices/{{deviceData.connectionString}}">
+        <button class="btn btn-success btn-sm mr-2 float-left" routerLink="/admin/devices/{{deviceData.connectionString | devicePath}}">
           <i class="fas fa-arrow-right"></i>
         </button>
         <button class="btn btn-danger btn-sm float-right" (click)="delete(deviceData.connectionString)">
