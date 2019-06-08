@@ -263,10 +263,12 @@ namespace BrickABracket.NXT
             try
             {
                 _messageTokenSource?.Cancel();
-                _messageTask?.Wait();
             }
+            catch 
+            {}
             finally
             {
+                _messageTask?.Wait();
                 _messageTokenSource?.Dispose();
             }
         }

@@ -37,12 +37,12 @@ inline void Display(string ms, int lane)
 inline void Send(string ms, int lane)
 {
    string message = StrCat(NumToStr(lane), "-", ms);
-   SendMessage(MAILBOX2, message);
+   SendResponseString(MAILBOX2, message);
 }
 
 inline void SendStatus(string status)
 {
-   SendMessage(MAILBOX1, status);
+   SendResponseString(MAILBOX1, status);
 }
 
 string MSToString(long ms)

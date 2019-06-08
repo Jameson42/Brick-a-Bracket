@@ -22,7 +22,7 @@ task L4();
 task ButtonWatch();
 task MessageWatch();
 task RaceStart();
-task PostRaceStart();
+task StartMotor();
 task RaceStop();
 
 inline void Display(string ms, int lane)
@@ -153,19 +153,19 @@ task L4()
 task RaceStart()
 {
    // Start lane counters after init
-   Precedes(L1,L2,L3,L4,PostRaceStart);
+   Precedes(L1,L2,L3,L4,StartMotor);
 
    RaceScreen();
    SendStatus("Running");
    Racing = true;
-   OffEx(OUT_A,RESET_ALL);
    StartTick = CurrentTick();
-   RotateMotor(OUT_A,90,180);
-   OffEx(OUT_A,RESET_ALL);
 }
 
-task PostRaceStart()
+task StartMotor()
 {
+   OffEx(OUT_A,RESET_ALL);
+   RotateMotor(OUT_A,90,180);
+   OffEx(OUT_A,RESET_ALL);
    Wait(100);
    CoastEx(OUT_A,RESET_ALL);
 }

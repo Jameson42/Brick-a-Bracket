@@ -8,14 +8,14 @@ Index	Identifier	Type	Flag	Data	Size	RefCount
 5	__D0RaceLane_inline_L3	6	1	20	4	3
 6	__signed_stack_001RaceScreen	6	1	24	4	8
 7	__signed_stack_002RaceScreen	6	1	28	4	8
-8	__signed_stack_001RaceStart	6	1	32	4	2
+8	__signed_stack_001StartMotor	6	1	32	4	2
 9	__signed_stack_001MSToString	6	1	36	4	2
 10	__signed_stack_001PreRaceScreen	6	1	40	4	4
 11	__signed_stack_002PreRaceScreen	6	1	44	4	4
 12	__D0SendStatus_inline_ButtonWatch	6	1	48	4	2
 13	__D0PreRaceScreen	6	1	52	4	4
 14	__D0RaceScreen	6	1	56	4	6
-15	__D0RaceStart	6	1	60	4	2
+15	__D0StartMotor	6	1	60	4	2
 16	__D0MessageWatch	6	1	64	4	11
 17	__DU0MessageWatch	5	1	68	4	4
 18	__D0MSToString	6	1	72	4	7
@@ -196,16 +196,16 @@ Index	Identifier	Type	Flag	Data	Size	RefCount
 193	__Send_7qG2_ms_7qG2_000_inline_RaceLane_inline_L4.__Send_7qG2_ms_7qG2_000_inline_RaceLane_inline_L4_type	1	0	0	1	0
 194	__Send_7qG2_message_7qG2_000_inline_RaceLane_inline_L4	7	0	394	4	2
 195	__Send_7qG2_message_7qG2_000_inline_RaceLane_inline_L4.__Send_7qG2_message_7qG2_000_inline_RaceLane_inline_L4_type	1	0	0	1	0
-196	__strbufRaceStop	7	0	396	4	2
-197	__strbufRaceStop.__strbufRaceStop_type	1	0	0	1	0
+196	__ArrHelper__Send_244_1	7	0	396	4	8
+197	__ArrHelper__Send_244_1.__ArrHelper__Send_244_1_type	1	0	0	1	0
 198	__ArrHelper__Send_244_0	7	0	398	4	8
 199	__ArrHelper__Send_244_0.__ArrHelper__Send_244_0_type	1	0	0	1	0
-200	__strbufRaceStart	7	0	400	4	2
-201	__strbufRaceStart.__strbufRaceStart_type	1	0	0	1	0
+200	__strbufRaceStop	7	0	400	4	2
+201	__strbufRaceStop.__strbufRaceStop_type	1	0	0	1	0
 202	__strbufRaceScreen	7	0	402	4	8
 203	__strbufRaceScreen.__strbufRaceScreen_type	1	0	0	1	0
-204	__ArrHelper__Send_244_1	7	0	404	4	8
-205	__ArrHelper__Send_244_1.__ArrHelper__Send_244_1_type	1	0	0	1	0
+204	__strbufRaceStart	7	0	404	4	2
+205	__strbufRaceStart.__strbufRaceStart_type	1	0	0	1	0
 206	__strbufRaceLane_inline_L1	7	0	406	4	6
 207	__strbufRaceLane_inline_L1.__strbufRaceLane_inline_L1_type	1	0	0	1	0
 208	__strretvalRaceLane_inline_L1	7	0	408	4	2
@@ -1622,55 +1622,55 @@ Clump	Line	PC	Source
 12	161	19		set Racing, 1
 12	160	22	#line 160 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
 12	160	22	#line 160 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
-12	161	22	#line 161 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
-12	162	22	#pragma macro 7
-12	162	22		setout __constVal0, 2, __constVal0, 1, __constVal3, 8, __constVal0, 6, __constVal32, 7, __constVal0, 5, __constVal0, 10, __constVal96, 11, __constVal32, 12, __constVal32, 0, __constVal127
-12	10129	45	#line 10129 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
-12	161	45	#line 161 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
-12	161	45	#line 161 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
-12	162	45		gettick StartTick
-12	161	47	#line 161 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
-12	161	47	#line 161 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
-12	161	47	#line 161 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
-12	162	47	#line 162 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
-12	163	47		set __signed_stack_001RaceStart, 90
-12	162	50	#line 162 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
-12	162	50	#line 162 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
-12	163	50		set __D0RaceStart, 180
-12	163	53	#line 163 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
-12	164	53	#pragma macro 33
-12	164	53		acquire __rotateMutex0
-12	164	54		arrbuild __rotate_ports0, __constVal0
-12	164	58		mov __rotate_power0, __signed_stack_001RaceStart
-12	164	60		mov __rotate_angle0, __D0RaceStart
-12	164	62		mov __rotate_turnpct0, __constVal0
-12	164	64		mov __rotate_sync0, __constVal0
-12	164	66		mov __rotate_stop0, __constVal1
-12	164	68		mov __rotate_theRVP0, __constVal32
-12	164	70		mov __rotate_theRVI0, __constVal0
-12	164	72		mov __rotate_theRVD0, __constVal96
-12	164	74		subcall __RotateMotor0, ____RotateMotor0_return
-12	164	76		release __rotateMutex0
-12	10150	77	#line 10150 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
-12	163	77	#line 163 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
-12	164	77	#line 164 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
-12	165	77	#pragma macro 7
-12	165	77		setout __constVal0, 2, __constVal0, 1, __constVal3, 8, __constVal0, 6, __constVal32, 7, __constVal0, 5, __constVal0, 10, __constVal96, 11, __constVal32, 12, __constVal32, 0, __constVal127
-12	10153	100	#line 10153 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
-12	164	100	#line 164 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
-12	165	100		exit 0, 4
-13	168	0	#line 168 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
-13	168	0	#line 168 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
-13	7921	0	#line 7921 "NXCDefs.h"
-13	7922	0		wait 100
-13	7921	2	#line 7921 "NXCDefs.h"
-13	169	2	#line 169 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
-13	170	2	#line 170 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
-13	171	2	#pragma macro 7
-13	171	2		setout __constVal0, 2, __constVal0, 1, __constVal2, 8, __constVal0, 6, __constVal0, 7, __constVal0, 5, __constVal0, 10, __constVal96, 11, __constVal32, 12, __constVal32, 0, __constVal127
-13	10173	25	#line 10173 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
-13	170	25	#line 170 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
-13	171	25		exit -1, -1
+12	160	22	#line 160 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+12	161	22		gettick StartTick
+12	160	24	#line 160 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+12	160	24	#line 160 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+12	160	24	#line 160 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+12	161	24		exit 0, 4
+13	166	0	#line 166 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+13	167	0	#pragma macro 7
+13	167	0		setout __constVal0, 2, __constVal0, 1, __constVal3, 8, __constVal0, 6, __constVal32, 7, __constVal0, 5, __constVal0, 10, __constVal96, 11, __constVal32, 12, __constVal32, 0, __constVal127
+13	10140	23	#line 10140 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+13	166	23	#line 166 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+13	166	23	#line 166 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+13	167	23		set __signed_stack_001StartMotor, 90
+13	166	26	#line 166 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+13	166	26	#line 166 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+13	167	26		set __D0StartMotor, 180
+13	167	29	#line 167 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+13	168	29	#pragma macro 33
+13	168	29		acquire __rotateMutex0
+13	168	30		arrbuild __rotate_ports0, __constVal0
+13	168	34		mov __rotate_power0, __signed_stack_001StartMotor
+13	168	36		mov __rotate_angle0, __D0StartMotor
+13	168	38		mov __rotate_turnpct0, __constVal0
+13	168	40		mov __rotate_sync0, __constVal0
+13	168	42		mov __rotate_stop0, __constVal1
+13	168	44		mov __rotate_theRVP0, __constVal32
+13	168	46		mov __rotate_theRVI0, __constVal0
+13	168	48		mov __rotate_theRVD0, __constVal96
+13	168	50		subcall __RotateMotor0, ____RotateMotor0_return
+13	168	52		release __rotateMutex0
+13	10153	53	#line 10153 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+13	167	53	#line 167 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+13	168	53	#line 168 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+13	169	53	#pragma macro 7
+13	169	53		setout __constVal0, 2, __constVal0, 1, __constVal3, 8, __constVal0, 6, __constVal32, 7, __constVal0, 5, __constVal0, 10, __constVal96, 11, __constVal32, 12, __constVal32, 0, __constVal127
+13	10156	76	#line 10156 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+13	168	76	#line 168 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+13	168	76	#line 168 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+13	168	76	#line 168 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+13	7921	76	#line 7921 "NXCDefs.h"
+13	7922	76		wait 100
+13	7921	78	#line 7921 "NXCDefs.h"
+13	169	78	#line 169 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+13	170	78	#line 170 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+13	171	78	#pragma macro 7
+13	171	78		setout __constVal0, 2, __constVal0, 1, __constVal2, 8, __constVal0, 6, __constVal0, 7, __constVal0, 5, __constVal0, 10, __constVal96, 11, __constVal32, 12, __constVal32, 0, __constVal127
+13	10173	101	#line 10173 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+13	170	101	#line 170 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
+13	171	101		exit -1, -1
 14	175	0	#line 175 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
 14	176	0		stopthread L1
 14	175	2	#line 175 "C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc"
@@ -1723,6 +1723,6 @@ Clump	Name	Offset	File
 10	L3	1188	C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc
 11	L4	1352	C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc
 12	RaceStart	1516	C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc
-13	PostRaceStart	1619	C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc
+13	StartMotor	1543	C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc
 14	RaceStop	1647	C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc
 15	__initialize_global_data	1680	C:\Users\james\Projects\Brick-a-Bracket\BrickABracket.NXT\_Dependencies\BabDerby.nxc
