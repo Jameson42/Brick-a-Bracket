@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reactive;
 using System.Reactive.Linq;
 using System.Reactive.Subjects;
 using System.Threading;
@@ -15,7 +14,7 @@ namespace BrickABracket.NXT
     public class Nxt : IDevice, IEquatable<Nxt>
     {
         private Brick<I2CSensor,I2CSensor,I2CSensor,I2CSensor> _brick;
-        private static readonly object MessageLock = new object();
+        private readonly object MessageLock = new object();
         private IDisposable _followSubscription;
         private Subject<Score> _scores;
         private BehaviorSubject<Status> _statuses;
