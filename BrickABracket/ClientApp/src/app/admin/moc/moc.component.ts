@@ -15,6 +15,7 @@ export class MocComponent implements OnInit {
   private isNew: boolean;
   private id: number;
   private image: File;
+  private saveable = true;
 
   constructor(
     private mocs: MocService,
@@ -50,13 +51,18 @@ export class MocComponent implements OnInit {
   }
 
   async saveMoc(moc: Moc) {
+    if (!this.saveable) {
+      return;
+    }
+    this.saveable = false;
     if (this.isNew) {
       const result = await this.mocs.create(moc);
       await this.saveImage(result);
     } else {
       await this.saveImage(moc._id);
-      return this.mocs.update(moc);
+      await this.mocs.update(moc);
     }
+    this.saveable = true;
   }
 
   changeImage(event) {

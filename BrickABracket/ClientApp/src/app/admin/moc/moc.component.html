@@ -55,7 +55,7 @@
         </div>
         <div class="col-sm-2">&nbsp;</div>
         <div class="col-sm-2">
-          <button type="submit" class="btn btn-primary" (click)="save(moc, competitor)">Save</button>
+          <button type="submit" class="btn btn-primary" (click)="save(moc, competitor)" [disabled]="!saveable">Save</button>
         </div>
       </div>
     </ng-container>
