@@ -9,7 +9,8 @@ namespace BrickABracket.NXT
         {
             builder.RegisterType<Nxt>()
                 .As<IDevice>()
-                .WithMetadata("Type", "NXT");
+                .WithMetadata("Type", "NXT")
+                .WithMetadata("BluetoothPorts", Nxt.BluetoothPorts);
         }
     }
 }

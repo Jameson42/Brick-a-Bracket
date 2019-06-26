@@ -40,6 +40,13 @@ namespace BrickABracket.NXT
             Connection = connectionString;
         }
 
+        public static string[] BluetoothPorts {
+            get
+            {
+                return MonoBrick.Bluetooth<Command, Reply>.GetPortNames();
+            }
+        }
+
         public bool Connected => Connect();
         public string Connection { get; private set; }
         public ushort BatteryLevel {
