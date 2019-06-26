@@ -17,6 +17,7 @@
     <PackageReference Include="FileHelpers" Version="3.4.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="1.0.0-beta0006" />
     <ProjectReference Include="..\BrickABracket.Core\BrickABracket.Core.csproj" />
     <ProjectReference Include="..\BrickABracket.Models\BrickABracket.Models.csproj" />
     <ProjectReference Include="..\BrickABracket.Derby\BrickABracket.Derby.csproj" />

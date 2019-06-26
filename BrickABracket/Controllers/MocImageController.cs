@@ -1,7 +1,10 @@
+using System.Drawing;
 using System.IO;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Processing;
 using BrickABracket.Core.Services;
 
 namespace BrickABracket.Controllers
@@ -16,15 +19,25 @@ namespace BrickABracket.Controllers
             _images = images;
         }
         [HttpPost("{mocId}")]
-        public async Task<IActionResult> UploadFile(int mocId, IFormFile file)
+        public IActionResult UploadFile(int mocId, IFormFile file)
         {
             if (file == null || file.Length == 0)
                 return Content("error");
             var path = pathPrefix + mocId;
             var filename = "" + mocId;
-            using (var stream = _images.WriteStream(path, filename))
+            using (var readStream = file.OpenReadStream())
             {
-                await file.CopyToAsync(stream);
+                using (var image = Image.Load(readStream))
+                {
+                    // Probably worth experimenting with later, crop based on entropy threshold
+                    // image.Mutate(ctx => ctx.EntropyCrop());
+
+                    image.Mutate(ctx => ctx.Resize(640,0));
+                    using (var writeStream = _images.WriteStream(path, filename))
+                    {
+                        image.SaveAsJpeg(writeStream);
+                    }
+                }
             }
             return Content("success");
         }
@@ -43,7 +56,7 @@ namespace BrickABracket.Controllers
                 await stream.CopyToAsync(memory);
             }
             memory.Position = 0;
-            return File(memory, fileInfo.MimeType,fileInfo.Filename);
+            return File(memory, "image/jpeg", fileInfo.Filename + ".jpg");
         }
         [HttpGet("form")]
         public IActionResult Form()
