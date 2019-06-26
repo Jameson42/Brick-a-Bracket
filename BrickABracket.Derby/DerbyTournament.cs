@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using BrickABracket.Core.Services;
 using BrickABracket.Models.Base;
 using BrickABracket.Models.Interfaces;
 
@@ -10,8 +9,6 @@ namespace BrickABracket.Derby
     public class DerbyTournament: ITournamentStrategy
     {
         public int MatchSize {get;} = 4;
-        private double MaxTime {get;} = 5.0;
-        private const string patternPrefix = "Derby";   // TODO: Remove this?
         public int GenerateRound(Category category, int roundIndex = -1, int runoff = 0)
         {
             if (category == null)
@@ -187,7 +184,7 @@ namespace BrickABracket.Derby
                     ?.Select((s, index) => new Standing(){
                         MocId = m.MocIds[s.Player],
                         Place = index + 1,
-                        Score = s.Time == MaxTime ? 0 : 4 - index,
+                        Score = s.Time == 0.0 ? 0 : 4 - index,
                         TotalTime = s.Time,
                         AverageTime = s.Time
                     })
@@ -200,7 +197,7 @@ namespace BrickABracket.Derby
                     MocId = g.Key,
                     Score = g.Sum(s => s.Score),
                     TotalTime = g.Sum(s => Math.Round(s.TotalTime, 3)),
-                    AverageTime = Math.Round(g.Sum(s => s.TotalTime)/Convert.ToDouble(g.Count()),3),
+                    AverageTime = Math.Round(g.Sum(s => s.TotalTime)/Convert.ToDouble(g.Where(s => s.TotalTime > 0.0).Count()),3),
                     Place = index + 1
                 }).ToList();
             return true;
@@ -215,13 +212,9 @@ namespace BrickABracket.Derby
                         continue;
                     for (int i = 0; i < MatchSize; i++)
                     {
+                        // Empty scores = DNF (Did Not Finish)
                         if (!(result.Scores.Any(s => s.Player == i)))
-                            result.Scores.Add(new Score(i, MaxTime));
-                    }
-                    foreach (var score in result.Scores)
-                    {
-                        if (score.Time > MaxTime)
-                            score.Time = MaxTime;
+                            result.Scores.Add(new Score(i, 0.0));
                     }
                 }
             }
