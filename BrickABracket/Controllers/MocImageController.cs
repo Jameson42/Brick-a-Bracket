@@ -32,7 +32,8 @@ namespace BrickABracket.Controllers
                     // Probably worth experimenting with later, crop based on entropy threshold
                     // image.Mutate(ctx => ctx.EntropyCrop());
 
-                    image.Mutate(ctx => ctx.Resize(640,0));
+                    image.Mutate(c => c.AutoOrient());
+                    image.Mutate(c => c.Resize(640,0));
                     using (var writeStream = _images.WriteStream(path, filename))
                     {
                         image.SaveAsJpeg(writeStream);
