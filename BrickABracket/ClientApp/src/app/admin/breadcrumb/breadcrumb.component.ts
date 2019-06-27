@@ -27,13 +27,13 @@ export class BreadcrumbComponent implements OnInit {
     });
   }
 
-  processUrl(url:string) {
+  processUrl(url: string) {
     const urlParts = url.substr(1).split('/');
     const length = urlParts.length;
     this.links = new Array<BreadcrumbLink>();
-    for (var i=0;i<length-1;i++) {
+    for (let i = 0; i < length - 1; i++) {
       this.links.push({
-        route: urlParts.slice(0,i+1).join('/'),
+        route: urlParts.slice(0, i + 1).join('/'),
         name: urlParts[i]
       });
     }

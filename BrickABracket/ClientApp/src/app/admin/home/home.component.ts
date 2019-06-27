@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { ClassificationService, CompetitorService, 
+import { ClassificationService, CompetitorService,
   DeviceService, TournamentService, RedirectService } from '@bab/core';
 import { map } from 'rxjs/operators';
 

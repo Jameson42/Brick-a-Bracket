@@ -13,7 +13,7 @@ export class LayoutComponent implements OnInit {
 
   ngOnInit() {
   }
-  
+
   public getRouterOutletState(outlet) {
     return outlet.isActivated ? outlet.activatedRoute : '';
   }
