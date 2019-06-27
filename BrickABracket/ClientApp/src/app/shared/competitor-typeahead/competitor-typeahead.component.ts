@@ -12,20 +12,14 @@ export class CompetitorTypeaheadComponent implements OnInit {
   get competitor(): Competitor {
     return this._competitor;
   }
-
-  @Input()
-  set competitor(value) {
+  @Input() set competitor(value) {
     this._competitor = value;
     this.change.emit(value);
   }
-
-  @Output()
-  change = new EventEmitter<Competitor>();
+  @Output() change = new EventEmitter<Competitor>();
 
   private _competitor: Competitor;
-
   private formatter = (x: Competitor) => x.name;
-
   private search = (text$: Observable<string>) => {
     return text$.pipe(
       debounceTime(300),

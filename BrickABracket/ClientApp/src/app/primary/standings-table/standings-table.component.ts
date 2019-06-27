@@ -8,10 +8,8 @@ import { Moc, Standing, Score } from '@bab/core';
 })
 export class StandingsTableComponent implements OnInit {
 
-  @Input()
-  mocIds: Array<Moc>;
-  @Input()
-  standings: Array<Standing>;
+  @Input() mocIds: Array<Moc>;
+  @Input() standings: Array<Standing>;
 
   constructor() { }
 

@@ -8,18 +8,13 @@ import { MocService } from '@bab/core';
 })
 export class MocImageComponent implements OnInit {
 
-  @Input()
-  set classes(value: string) {
+  @Input() set classes(value: string) {
     this._classes = value;
   }
-
-  @Input()
-  set mocId(value: string) {
+  @Input() set mocId(value: string) {
     this._url = this.mocs.getImageUrl(value);
   }
-
-  @Input()
-  set alternate(value: File) {
+  @Input() set alternate(value: File) {
     if (!value) {
       return;
     }
