@@ -14,6 +14,8 @@ namespace BrickABracket.Derby
             if (category == null)
                 return -1;
             var mocIds = category.MocIds.ToList();
+            if (mocIds.Count == 3) // Avoid deadlock on exactly 3 MOCs
+                mocIds.Add(-1);
             if (category.Rounds.Count == 0)
             {
                 category.Rounds.Add(new Round(){
@@ -41,6 +43,8 @@ namespace BrickABracket.Derby
             if (runoff > 0  && roundIndex <= category.Rounds.Count)
                 mocIds = category.Rounds[roundIndex-1].Standings
                     .Select(s => s.MocId).Take(runoff).ToList();
+            if (mocIds.Count == 3) // Avoid deadlock on exactly 3 MOCs
+                mocIds.Add(-1);
             if (roundIndex < category.Rounds.Count)
                 category.Rounds[roundIndex] = new Round(){
                     MocIds = mocIds
