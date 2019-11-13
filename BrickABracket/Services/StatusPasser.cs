@@ -9,8 +9,8 @@ namespace BrickABracket.Services
 {
     public class StatusPasser : IStatusProvider, IDisposable
     {
-        private Subject<Status> _statuses;
-        private StatusTracker _tracker;
+        private readonly Subject<Status> _statuses;
+        private readonly StatusTracker _tracker;
         public StatusPasser(StatusTracker tracker)
         {
             _statuses = new Subject<Status>();

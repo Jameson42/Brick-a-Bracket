@@ -9,12 +9,12 @@ namespace BrickABracket.Models.Mock
 {
     public class MockDevice : IDevice
     {
-        private Subject<Score> _scores;
-        private BehaviorSubject<Status> _statuses;
+        private readonly Subject<Score> _scores;
+        private readonly BehaviorSubject<Status> _statuses;
         private IDisposable _followSubscription;
         public IObservable<Score> Scores { get; private set; }
         public IObservable<Status> Statuses { get; private set; }
-        private Func<string, Score> _scoreFactory;
+        private readonly Func<string, Score> _scoreFactory;
         public MockDevice(string connectionString, Func<string, Score> scoreFactory)
         {
             _scoreFactory = scoreFactory;
@@ -31,7 +31,7 @@ namespace BrickABracket.Models.Mock
 
         public string BrickName => "Mock Device";
 
-        public string Program { get ; set; }
+        public string Program { get; set; }
         public IEnumerable<string> Programs => GetPrograms();
 
         public IEnumerable<string> GetPrograms()
@@ -53,12 +53,13 @@ namespace BrickABracket.Models.Mock
         public void FollowStatus(IObservable<Status> statuses)
         {
             UnFollowStatus();
-            _followSubscription = statuses.Subscribe(s => {
+            _followSubscription = statuses.Subscribe(s =>
+            {
                 switch (s)
                 {
                     case Status.Start:
                         var random = new Random();
-                        for (int i = 0; i<4; i++)
+                        for (int i = 0; i < 4; i++)
                             _scores.OnNext(new Score(i, Math.Round(random.NextDouble() * 5.0, 3)));
                         _statuses.OnNext(Status.Stop);
                         break;

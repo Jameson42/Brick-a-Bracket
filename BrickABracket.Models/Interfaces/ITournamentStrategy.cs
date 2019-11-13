@@ -1,10 +1,9 @@
-using System.Collections.Generic;
 using BrickABracket.Models.Base;
 namespace BrickABracket.Models.Interfaces
 {
     public interface ITournamentStrategy
     {
-        int MatchSize {get;}
+        int MatchSize { get; }
         /// <summary>
         /// Generates a round within the given category. 
         /// Defaults to next unfinished round if no round index specified.

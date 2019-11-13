@@ -17,9 +17,9 @@ namespace BrickABracket.Controllers
     [Route("api/import")]
     public class ImportController : Controller
     {
-        private CompetitorService _competitors;
+        private readonly CompetitorService _competitors;
         private readonly IHubContext<TournamentHub> _hub;
-        private IHostingEnvironment _hostingEnvironment;
+        private readonly IHostingEnvironment _hostingEnvironment;
         public ImportController(CompetitorService competitors,
             IHubContext<TournamentHub> hub, IHostingEnvironment environment)
         {

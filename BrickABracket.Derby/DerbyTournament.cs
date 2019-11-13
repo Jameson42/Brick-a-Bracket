@@ -83,8 +83,10 @@ namespace BrickABracket.Derby
                 round.Matches.RemoveAt(matchIndex);
                 matchIndex = round.Matches.Count;
             }
-            var match = new Match();
-            match.MocIds = new List<int>(new int[] {0, 0, 0, 0});
+            var match = new Match
+            {
+                MocIds = new List<int>(new int[] { 0, 0, 0, 0 })
+            };
             if (!GenerateMatchLanes(round, match, 0))
                 return -1;
 

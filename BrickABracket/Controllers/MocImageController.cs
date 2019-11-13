@@ -12,7 +12,7 @@ namespace BrickABracket.Controllers
     [Route("api/mocs")]
     public class MocImageController : Controller
     {
-        private MocImageService _images;
+        private readonly MocImageService _images;
         private const string pathPrefix = "$/mocs/";
         public MocImageController(MocImageService images)
         {
@@ -27,25 +27,21 @@ namespace BrickABracket.Controllers
             var filename = "" + mocId;
             using (var readStream = file.OpenReadStream())
             {
-                using (var image = Image.Load(readStream))
-                {
-                    // Probably worth experimenting with later, crop based on entropy threshold
-                    // image.Mutate(ctx => ctx.EntropyCrop());
+                using var image = Image.Load(readStream);
+                // Probably worth experimenting with later, crop based on entropy threshold
+                // image.Mutate(ctx => ctx.EntropyCrop());
 
-                    image.Mutate(c => c.AutoOrient());
-                    image.Mutate(c => c.Resize(640,0));
-                    using (var writeStream = _images.WriteStream(path, filename))
-                    {
-                        image.SaveAsJpeg(writeStream);
-                    }
-                }
+                image.Mutate(c => c.AutoOrient());
+                image.Mutate(c => c.Resize(640, 0));
+                using var writeStream = _images.WriteStream(path, filename);
+                image.SaveAsJpeg(writeStream);
             }
             return Content("success");
         }
         [HttpGet("{mocId}")]
         public async Task<IActionResult> DownloadFile(int mocId)
         {
-            if (mocId<1)
+            if (mocId < 1)
                 return Content("error - invalid id");
             var path = pathPrefix + mocId;
             var memory = new MemoryStream();

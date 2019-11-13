@@ -7,18 +7,18 @@ using BrickABracket.Models.Interfaces;
 
 namespace BrickABracket.Core.Services
 {
-    public class ScoreTracker: IScoreProvider
+    public class ScoreTracker : IScoreProvider
     {
-        private Dictionary<IScoreProvider,IDisposable> _scoreSubscriptions;
-        private Subject<Score> _scores;
-        private HashSet<IScoreProvider> _scoreProviders {get;}
-        private TournamentRunner _runner;
+        private readonly Dictionary<IScoreProvider, IDisposable> _scoreSubscriptions;
+        private readonly Subject<Score> _scores;
+        private HashSet<IScoreProvider> ScoreProviders { get; }
+        private readonly TournamentRunner _runner;
         public IObservable<Score> Scores { get; private set; }
 
         public ScoreTracker(TournamentRunner runner)
         {
             _scores = new Subject<Score>();
-            _scoreProviders = new HashSet<IScoreProvider>();
+            ScoreProviders = new HashSet<IScoreProvider>();
             _scoreSubscriptions = new Dictionary<IScoreProvider, IDisposable>();
 
             _runner = runner;
@@ -28,25 +28,22 @@ namespace BrickABracket.Core.Services
         }
         public bool Add(IScoreProvider device)
         {
-            if (_scoreProviders.Contains(device) || _scoreSubscriptions.ContainsKey(device))
+            if (ScoreProviders.Contains(device) || _scoreSubscriptions.ContainsKey(device))
                 return false;
-            _scoreProviders.Add(device);
+            ScoreProviders.Add(device);
             _scoreSubscriptions.Add(device, device.Scores.Subscribe(PassScore));
             return true;
         }
         public void Remove(IScoreProvider device)
         {
-            if (_scoreProviders.Contains(device))
-                _scoreProviders.Remove(device);
+            if (ScoreProviders.Contains(device))
+                ScoreProviders.Remove(device);
             if (_scoreSubscriptions.ContainsKey(device))
             {
                 _scoreSubscriptions[device].Dispose();
                 _scoreSubscriptions.Remove(device);
             }
         }
-        private void PassScore(Score score)
-        {
-            _scores.OnNext(score);
-        }
+        private void PassScore(Score score) => _scores.OnNext(score);
     }
 }

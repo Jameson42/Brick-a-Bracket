@@ -7,18 +7,18 @@ using BrickABracket.Models.Interfaces;
 
 namespace BrickABracket.Core.Services
 {
-    public class StatusTracker: IStatusProvider
+    public class StatusTracker : IStatusProvider
     {
-        private Dictionary<IStatusProvider,IDisposable> _statusSubscriptions;
-        private Subject<Status> _statuses;
-        private HashSet<IStatusProvider> _statusProviders {get;}
-        private TournamentRunner _runner;
+        private readonly Dictionary<IStatusProvider, IDisposable> _statusSubscriptions;
+        private readonly Subject<Status> _statuses;
+        private HashSet<IStatusProvider> StatusProviders { get; }
+        private readonly TournamentRunner _runner;
         public IObservable<Status> Statuses { get; private set; }
 
         public StatusTracker(TournamentRunner runner)
         {
             _statuses = new Subject<Status>();
-            _statusProviders = new HashSet<IStatusProvider>();
+            StatusProviders = new HashSet<IStatusProvider>();
             _statusSubscriptions = new Dictionary<IStatusProvider, IDisposable>();
 
             _runner = runner;
@@ -29,16 +29,16 @@ namespace BrickABracket.Core.Services
         }
         public bool Add(IStatusProvider device)
         {
-            if (_statusProviders.Contains(device) || _statusSubscriptions.ContainsKey(device))
+            if (StatusProviders.Contains(device) || _statusSubscriptions.ContainsKey(device))
                 return false;
-            _statusProviders.Add(device);
+            StatusProviders.Add(device);
             _statusSubscriptions.Add(device, device.Statuses.Subscribe(PassStatus));
             return true;
         }
         public void Remove(IStatusProvider device)
         {
-            if (_statusProviders.Contains(device))
-                _statusProviders.Remove(device);
+            if (StatusProviders.Contains(device))
+                StatusProviders.Remove(device);
             if (_statusSubscriptions.ContainsKey(device))
             {
                 _statusSubscriptions[device].Dispose();

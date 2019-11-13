@@ -1,32 +1,26 @@
 using System;
 using System.Collections.Generic;
-using Autofac.Features.Metadata;
 using LiteDB;
-using BrickABracket.Models.Interfaces;
 using BrickABracket.Models.Base;
 
 namespace BrickABracket.Core.Services
 {
-    public class TournamentService: IDisposable
+    public class TournamentService : IDisposable
     {
-        private LiteRepository db {get;}
+        private LiteRepository Db { get; }
         public TournamentService(LiteRepository repository)
         {
-            db = repository;
+            Db = repository;
         }
 
-        public int Create(Tournament t) => db.Insert<Tournament>(t);
-        public Tournament Read(int id) => db.Query<Tournament>().SingleById(id);
-        public IEnumerable<Tournament> ReadAll() => db.Query<Tournament>().ToEnumerable();
-        public IEnumerable<TournamentSummary> ReadAllSummaries() => db.Database
+        public int Create(Tournament t) => Db.Insert(t);
+        public Tournament Read(int id) => Db.Query<Tournament>().SingleById(id);
+        public IEnumerable<Tournament> ReadAll() => Db.Query<Tournament>().ToEnumerable();
+        public IEnumerable<TournamentSummary> ReadAllSummaries() => Db.Database
             .GetCollection<TournamentSummary>(typeof(Tournament).Name)
             .FindAll();
-
-        public bool Update(Tournament t) => db.Update<Tournament>(t);
-        public bool Delete(int id) => db.Delete<Tournament>(id);
-        public void Dispose()
-        {
-            db?.Dispose();
-        }
+        public bool Update(Tournament t) => Db.Update(t);
+        public bool Delete(int id) => Db.Delete<Tournament>(id);
+        public void Dispose() => Db?.Dispose();
     }
 }

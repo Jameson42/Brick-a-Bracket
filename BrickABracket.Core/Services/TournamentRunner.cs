@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +13,7 @@ namespace BrickABracket.Core.Services
     // - Change active portion of tournament
     // - Follow score/status providers
     // - Provide status to follower devices
-    public class TournamentRunner: IStatusFollower, IStatusProvider, IDisposable
+    public class TournamentRunner : IStatusFollower, IStatusProvider, IDisposable
     {
         #region BackerVariables
         private Tournament _tournament;
@@ -23,12 +22,12 @@ namespace BrickABracket.Core.Services
         private int _categoryIndex = DEFAULTINDEX;
         private int _roundIndex = DEFAULTINDEX;
         private int _matchIndex = DEFAULTINDEX;
-        private BehaviorSubject<Status> _statuses = new BehaviorSubject<Status>(Status.Unknown);
+        private readonly BehaviorSubject<Status> _statuses = new BehaviorSubject<Status>(Status.Unknown);
         private IDisposable _followStatusSubscription;
         private IDisposable _followScoreSubscription;
-        private Func<MocService> _mocServiceFactory;
-        private Func<TournamentService> _tournamentServiceFactory;
-        private IEnumerable<Meta<ITournamentStrategy>> _tournamentStrategies;
+        private readonly Func<MocService> _mocServiceFactory;
+        private readonly Func<TournamentService> _tournamentServiceFactory;
+        private readonly IEnumerable<Meta<ITournamentStrategy>> _tournamentStrategies;
         #endregion
         public TournamentRunner(Func<MocService> mocs, Func<TournamentService> tournaments,
             IEnumerable<Meta<ITournamentStrategy>> tournamentStrategies)
@@ -53,7 +52,7 @@ namespace BrickABracket.Core.Services
                     _strategy = _tournamentStrategies
                         .FirstOrDefault(ts => (string)ts.Metadata["Type"] == value.TournamentType)
                         ?.Value;
-                if (_tournament != value) 
+                if (_tournament != value)
                     CategoryIndex = DEFAULTINDEX;
                 _tournament = value;
             }
@@ -114,12 +113,12 @@ namespace BrickABracket.Core.Services
         }
         private bool SaveTournament()
         {
-            if (Tournament != null && Tournament._id>0)
+            if (Tournament != null && Tournament._id > 0)
                 using (var _tournaments = _tournamentServiceFactory())
                     return _tournaments.Update(Tournament);
             return false;
         }
-        public IObservable<Status> Statuses {get;}
+        public IObservable<Status> Statuses { get; }
         public void FollowScores(IObservable<Score> scores)
         {
             UnFollowScores();
@@ -182,7 +181,7 @@ namespace BrickABracket.Core.Services
                         Tournament.Categories.Remove(category);
                 }
             }
-                
+
             SaveTournament();
         }
         public bool Runoff(int count)
@@ -218,7 +217,7 @@ namespace BrickABracket.Core.Services
             _statuses.OnNext(Status.Ready);
             SaveTournament();
         }
-        public bool StartMatch() 
+        public bool StartMatch()
         {
             if (MatchIsNull)
                 return false;
@@ -236,7 +235,8 @@ namespace BrickABracket.Core.Services
             if (!StartMatch())
                 return false;
             Observable.Timer(TimeSpan.FromMilliseconds(milliseconds))
-                .Subscribe(x => {
+                .Subscribe(x =>
+                {
                     ProcessStatus(Status.Stop);
                 });
             return true;
@@ -272,7 +272,7 @@ namespace BrickABracket.Core.Services
         }
         public bool GenerateAllStandings()
         {
-            foreach(var category in Tournament?.Categories)
+            foreach (var category in Tournament?.Categories)
                 _strategy.GenerateCategoryStandings(category);
             SaveTournament();
             return true;
@@ -284,7 +284,7 @@ namespace BrickABracket.Core.Services
         {
             if (MatchIsNull)
                 return;
-            if (score.Player>_strategy.MatchSize || score.Player<0)
+            if (score.Player > _strategy.MatchSize || score.Player < 0)
                 return;
             if (!Match.Results.Any())
                 return; //Should be unreachable, Ready should always be sent before Start or scores

@@ -9,8 +9,8 @@ namespace BrickABracket.Services
 {
     public class ScorePasser : IScoreProvider, IDisposable
     {
-        private Subject<Score> _scores;
-        private ScoreTracker _tracker;
+        private readonly Subject<Score> _scores;
+        private readonly ScoreTracker _tracker;
         public ScorePasser(ScoreTracker tracker)
         {
             _scores = new Subject<Score>();

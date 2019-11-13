@@ -5,6 +5,6 @@ namespace BrickABracket.Models.Interfaces
 {
     public interface IScoreProvider
     {
-        IObservable<Score> Scores {get;}
+        IObservable<Score> Scores { get; }
     }
 }

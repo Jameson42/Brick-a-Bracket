@@ -1,7 +1,6 @@
 using Autofac;
 using LiteDB;
 using BrickABracket.Core.Services;
-using BrickABracket.Models.Base;
 
 namespace BrickABracket.Core
 {
@@ -12,7 +11,7 @@ namespace BrickABracket.Core
             // LiteDB Entities
             builder.RegisterInstance(new ConnectionString("BrickABracket.db"));
             builder.RegisterType<LiteRepository>();
-            
+
             // Services
             builder.RegisterType<ScoreTracker>().SingleInstance();
             builder.RegisterType<StatusTracker>().SingleInstance();

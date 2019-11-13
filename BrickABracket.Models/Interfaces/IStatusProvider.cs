@@ -3,8 +3,8 @@ using BrickABracket.Models.Base;
 
 namespace BrickABracket.Models.Interfaces
 {
-    public interface IStatusProvider 
+    public interface IStatusProvider
     {
-        IObservable<Status> Statuses {get;}
+        IObservable<Status> Statuses { get; }
     }
 }

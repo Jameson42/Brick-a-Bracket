@@ -8,33 +8,25 @@ namespace BrickABracket.Models.Base
         Stopped,
         Start,
         Stop,
-        ScoreReceived     
+        ScoreReceived
     }
     public static class StatusExtensions
     {
         public static Status ToStatus(this string status)
         {
-            switch (status.ToLower())
+            return (status.ToLower()) switch
             {
-                case "ready":
-                    return Status.Ready;
-                case "start":
-                    return Status.Start;
-                case "stop":
-                    return Status.Stop;
-                case "running":
-                    return Status.Running;
-                case "stopped":
-                    return Status.Stopped;
-                default:
-                    return Status.Unknown;
-            }
+                "ready" => Status.Ready,
+                "start" => Status.Start,
+                "stop" => Status.Stop,
+                "running" => Status.Running,
+                "stopped" => Status.Stopped,
+                _ => Status.Unknown,
+            };
         }
         public static Status ParseStatus(string status)
         {
-            if (status == null)
-                return Status.Unknown;
-            return status.ToStatus();
+            return status == null ? Status.Unknown : status.ToStatus();
         }
     }
 }

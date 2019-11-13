@@ -2,13 +2,11 @@ using Microsoft.AspNetCore.SignalR;
 using System;
 using System.Reactive.Linq;
 using BrickABracket.Core.Services;
-using BrickABracket.Models.Base;
-using BrickABracket.Models.Interfaces;
 using BrickABracket.Hubs;
 
 namespace BrickABracket.Services
 {
-    public class MatchWatcher: IDisposable
+    public class MatchWatcher : IDisposable
     {
         private readonly TournamentRunner _runner;
         private readonly ScoreTracker _scores;
@@ -26,7 +24,8 @@ namespace BrickABracket.Services
                 .Select(s => new object())  // Don't need the data, this is so merge works
                 .Merge(_scores.Scores)
                 .Throttle(TimeSpan.FromMilliseconds(500))
-                .Subscribe(x => {
+                .Subscribe(x =>
+                {
                     _hub.Clients.All
                         .SendAsync("ReceiveTournament", _runner.Metadata);
                 });
