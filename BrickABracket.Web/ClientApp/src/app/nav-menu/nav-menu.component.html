@@ -1,41 +1,34 @@
 <header>
-  <nav
-    class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3"
-  >
-    <div class="container">
-      <a class="navbar-brand" [routerLink]="['/']">BrickABracket.Web</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target=".navbar-collapse"
-        aria-label="Toggle navigation"
-        [attr.aria-expanded]="isExpanded"
-        (click)="toggle()"
-      >
+  <nav class='navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 fixed-top'>
+    <div class="container-fluid">
+      <a class="navbar-brand" [routerLink]='["/"]'>
+        <span class="logo"><img src="/img/navlogo.png" alt="" class="d-inline-block"></span>
+        <span class="logo-name">Brick-a-Bracket</span></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-label="Toggle navigation"
+        [attr.aria-expanded]="isExpanded" (click)="toggle()">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div
-        class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse"
-        [ngClass]="{ show: isExpanded }"
-      >
+      <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" [ngClass]='{"show": isExpanded}'>
         <ul class="navbar-nav flex-grow">
-          <li
-            class="nav-item"
-            [routerLinkActive]="['link-active']"
-            [routerLinkActiveOptions]="{ exact: true }"
-          >
-            <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
+          <li class="nav-item" [routerLinkActive]='["link-active"]' title="Primary Screen">
+            <a class="nav-link text-dark" [routerLink]='["/primary"]' (click)="collapse()">
+              <i class="fas fa-desktop fa-fw"></i> 1<span class="d-sm-none">st Screen</span>
+            </a>
           </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/counter']"
-              >Counter</a
-            >
+          <li class="nav-item" [routerLinkActive]='["link-active"]' title="Secondary Screen">
+            <a class="nav-link text-dark" [routerLink]='["/secondary"]' (click)="collapse()">
+              <i class="fas fa-desktop fa-fw"></i> 2<span class="d-sm-none">nd Screen</span>
+            </a>
           </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/fetch-data']"
-              >Fetch data</a
-            >
+          <li class="nav-item" [routerLinkActive]='["link-active"]' title="Administration">
+            <a class="nav-link text-dark" [routerLink]='["/admin"]' (click)="collapse()">
+              <i class="fas fa-cogs fa-fw"></i><span class="d-sm-none"> Administration</span>
+            </a>
+          </li>
+          <li class="nav-item" [routerLinkActive]='["link-active"]' title="About Brick-a-Bracket">
+            <a class="nav-link text-dark" [routerLink]='["/about"]' (click)="collapse()">
+              <i class="fas fa-info-circle fa-fw"></i><span class="d-sm-none"> About Brick-a-Bracket</span>
+            </a>
           </li>
         </ul>
       </div>

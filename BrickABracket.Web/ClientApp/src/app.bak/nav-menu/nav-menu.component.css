@@ -16,16 +16,3 @@ html {
 .box-shadow {
   box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
-
-.navbar-light {
-  background-color:#3da5d9!important;
-}
-
-.logo {
-  position: absolute;
-  margin-top:-5px;
-}
-
-.logo-name {
-  padding-left: 60px;
-}

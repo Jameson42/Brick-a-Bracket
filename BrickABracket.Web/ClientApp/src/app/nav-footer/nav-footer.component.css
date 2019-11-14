@@ -18,7 +18,7 @@ html {
 }
 
 .navbar-light {
-  background-color:#3da5d9!important;
+  background-color:#6cc04a!important;
 }
 
 .logo {
@@ -29,3 +29,10 @@ html {
 .logo-name {
   padding-left: 60px;
 }
+
+i.fa-font-awesome { color: rgb(34, 139, 230); }
+i.fa-angular { color: #f44336; }
+i.fa-bootstrap { color: #563d7c; }
+i.fa-css3 { color: #2965f1; }
+i.fa-html5 { color: #e44d26; }
+i.fa-raspberry-pi { color: black; }

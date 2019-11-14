@@ -5,6 +5,16 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Autofac;
+using BrickABracket.Core;
+using BrickABracket.Hubs;
+using BrickABracket.Models;
+using BrickABracket.Services;
+using BrickABracket.NXT;
+using BrickABracket.Derby;
+using BrickABracket.RoundRobin;
+using BrickABracket.SingleElimination;
+using BrickABracket.SwissSystem;
 
 namespace BrickABracket.Web
 {
@@ -26,11 +36,22 @@ namespace BrickABracket.Web
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+            services.AddSignalR();
         }
 
         public void ConfigureContainer(ContainerBuilder builder)
         {
             // Register things directly with Autofac here
+            builder.RegisterModule(new ModelsModule());
+            builder.RegisterModule(new CoreModule());
+            builder.RegisterModule(new NxtModule());
+            builder.RegisterModule(new DerbyModule());
+            builder.RegisterModule(new RoundRobinModule());
+            builder.RegisterModule(new SingleEliminationModule());
+            builder.RegisterModule(new SwissSystemModule());
+            builder.RegisterType<MatchWatcher>().SingleInstance();
+            builder.RegisterType<ScorePasser>().SingleInstance();
+            builder.RegisterType<StatusPasser>().SingleInstance();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -61,6 +82,7 @@ namespace BrickABracket.Web
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller}/{action=Index}/{id?}");
+                endpoints.MapHub<TournamentHub>("/tournamentHub");
             });
 
             app.UseSpa(spa =>
