@@ -1,9 +1,9 @@
-using Microsoft.AspNetCore.SignalR;
-using System.Threading.Tasks;
-using System.Reactive.Linq;
 using BrickABracket.Core.Services;
 using BrickABracket.Models.Base;
 using BrickABracket.Services;
+using Microsoft.AspNetCore.SignalR;
+using System.Reactive.Linq;
+using System.Threading.Tasks;
 
 namespace BrickABracket.Hubs
 {

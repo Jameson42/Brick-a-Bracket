@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Processing;
-using System.Drawing;
 using System.IO;
 using System.Threading.Tasks;
 

@@ -2,7 +2,6 @@ using BrickABracket.Core.Services;
 using BrickABracket.Hubs;
 using BrickABracket.Models.Base;
 using FileHelpers;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
@@ -31,9 +30,10 @@ namespace BrickABracket.Controllers
             if (file == null || file.Length <= 0)
                 return Content("error");
             IEnumerable<CompetitorMapping> results;
-            
+
             var engine = new FileHelperEngine<CompetitorMapping>();
-            using (var fileStream = new StreamReader(file.OpenReadStream())) {
+            using (var fileStream = new StreamReader(file.OpenReadStream()))
+            {
                 results = engine.ReadStream(fileStream).AsEnumerable()
                     .Where(r => !string.IsNullOrWhiteSpace(r.Name))
                     .DistinctBy(r => r.Name);
@@ -41,11 +41,12 @@ namespace BrickABracket.Controllers
 
             var competitors = _competitors.ReadAll();
 
-            foreach(var result in results)
+            foreach (var result in results)
             {
                 if (!competitors.Any(c => c.Name == result.Name))
                 {
-                    _competitors.Create(new Competitor(){
+                    _competitors.Create(new Competitor()
+                    {
                         Name = result.Name
                     });
                 }
