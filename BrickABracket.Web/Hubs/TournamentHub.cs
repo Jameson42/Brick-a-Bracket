@@ -25,7 +25,6 @@ namespace BrickABracket.Hubs
             MocService mocs,
             TournamentService tournaments,
             TournamentRunner runner,
-            MatchWatcher watcher,
             ScorePasser scores,
             StatusPasser statuses)
         {

@@ -49,7 +49,8 @@ namespace BrickABracket.Web
             builder.RegisterModule(new RoundRobinModule());
             builder.RegisterModule(new SingleEliminationModule());
             builder.RegisterModule(new SwissSystemModule());
-            builder.RegisterType<MatchWatcher>().SingleInstance();
+            builder.RegisterType<MatchWatcher>()
+                .As<IHostedService>().SingleInstance();
             builder.RegisterType<ScorePasser>().SingleInstance();
             builder.RegisterType<StatusPasser>().SingleInstance();
         }

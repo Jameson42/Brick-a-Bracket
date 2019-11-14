@@ -3,7 +3,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using BrickABracket.Core;
-using BrickABracket.Core.Services;
 using BrickABracket.Models;
 using BrickABracket.Models.Interfaces;
 using BrickABracket.NXT;
@@ -51,13 +50,9 @@ namespace BrickABracket.Console
 
         private static void DisposeServices()
         {
-            if(_serviceProvider == null)
+            if (_serviceProvider is IDisposable disposable)
             {
-                return;
-            }
-            if (_serviceProvider is IDisposable)
-            {
-                ((IDisposable)_serviceProvider).Dispose();
+                disposable.Dispose();
             }
         }
     }
