@@ -1,8 +1,6 @@
 using BrickABracket.Core.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using SixLabors.ImageSharp;
-using SixLabors.ImageSharp.Processing;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -22,37 +20,18 @@ namespace BrickABracket.Controllers
         {
             if (file == null || file.Length == 0)
                 return Content("error");
-            var path = pathPrefix + mocId;
-            var filename = "" + mocId;
-            using (var readStream = file.OpenReadStream())
-            {
-                using var image = Image.Load(readStream);
-                // Probably worth experimenting with later, crop based on entropy threshold
-                // image.Mutate(ctx => ctx.EntropyCrop());
-
-                image.Mutate(c => c.AutoOrient());
-                image.Mutate(c => c.Resize(640, 0));
-                using var writeStream = _images.WriteStream(path, filename);
-                image.SaveAsJpeg(writeStream);
-            }
-            return Content("success");
+            using var readStream = file.OpenReadStream();
+            if (_images.UploadFile(mocId, readStream))
+                return Content("success");
+            return Content("error");
         }
         [HttpGet("{mocId}")]
         public async Task<IActionResult> DownloadFile(int mocId)
         {
-            if (mocId < 1)
-                return Content("error - invalid id");
-            var path = pathPrefix + mocId;
-            var memory = new MemoryStream();
-            var fileInfo = _images.ReadFileInfo(path);
-            if (fileInfo == null)
-                return Content("error - no image");
-            using (var stream = _images.ReadStream(path))
-            {
-                await stream.CopyToAsync(memory);
-            }
-            memory.Position = 0;
-            return File(memory, "image/jpeg", fileInfo.Filename + ".jpg");
+            var (stream, contentType, fileName, error) = await _images.DownloadFile(mocId);
+            if (error != null)
+                return Content(error);
+            return File(stream, contentType, fileName);
         }
         [HttpGet("form")]
         public IActionResult Form()
