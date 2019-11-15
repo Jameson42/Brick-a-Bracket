@@ -19,6 +19,7 @@ namespace BrickABracket.Core.Services
         public Competitor Read(int id) => Db.Query<Competitor>().SingleById(id);
         public IEnumerable<Competitor> Read(IEnumerable<int> ids) => ids.Select(Read);
         public IEnumerable<Competitor> ReadAll() => Db.Query<Competitor>().ToEnumerable();
+        public bool Exists(string name) => Db.Query<Competitor>().Where(c => c.Name == name).Exists();
         public bool Update(Competitor t) => Db.Update(t);
         public bool Delete(int id) => Db.Delete<Competitor>(id);
         public void Dispose() => Db?.Dispose();

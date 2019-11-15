@@ -21,26 +21,20 @@ namespace BrickABracket.FileProcessing
         {
             IEnumerable<CompetitorMapping> results;
 
-            var engine = new FileHelperEngine<CompetitorMapping>();
-            using (var fileStreamReader = new StreamReader(fileStream))
-            {
-                results = engine
-                    .ReadStream(fileStreamReader)
-                    .Where(r => !string.IsNullOrWhiteSpace(r.Name))
-                    .DistinctBy(r => r.Name);
-            }
-
-            var competitors = _competitors.ReadAll();
+            var engine = new FileHelperAsyncEngine<CompetitorMapping>();
+            using var fileStreamReader = new StreamReader(fileStream);
+            using var stream = engine.BeginReadStream(fileStreamReader);
+            results = engine
+                .Where(r => !string.IsNullOrWhiteSpace(r.Name))
+                .DistinctBy(r => r.Name)
+                .Where(r => !_competitors.Exists(r.Name));
 
             foreach (var result in results)
             {
-                if (!competitors.Any(c => c.Name == result.Name))
+                _competitors.Create(new Competitor()
                 {
-                    _competitors.Create(new Competitor()
-                    {
-                        Name = result.Name
-                    });
-                }
+                    Name = result.Name
+                });
             }
         }
     }
