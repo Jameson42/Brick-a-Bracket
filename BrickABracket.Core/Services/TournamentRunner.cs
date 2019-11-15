@@ -326,10 +326,10 @@ namespace BrickABracket.Core.Services
 
         public class TournamentMetadata
         {
-            public Tournament Tournament;
-            public int CategoryIndex;
-            public int RoundIndex;
-            public int MatchIndex;
+            public Tournament Tournament { get; set; }
+            public int CategoryIndex { get; set; }
+            public int RoundIndex { get; set; }
+            public int MatchIndex { get; set; }
         }
     }
 }

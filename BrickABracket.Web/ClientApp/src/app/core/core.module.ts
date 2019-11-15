@@ -2,9 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
-// SignalR
-import '@aspnet/signalr';
-
 import { SignalrService, ClassificationService,
   CompetitorService, DeviceService,
   MocService, TournamentService,
