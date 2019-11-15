@@ -114,6 +114,10 @@ namespace BrickABracket.Hubs
         {
             await Clients.Caller.SendAsync("ReceiveDevices", _devices.Devices);
         }
+        public async Task GetDeviceOptions()
+        {
+            await Clients.Caller.SendAsync("ReceiveDeviceOptions", _devices.GetDeviceOptions());
+        }
         public async Task SetDeviceRole(string connectionString, string role)
         {
             if (!_devices.SetRole(connectionString, role))

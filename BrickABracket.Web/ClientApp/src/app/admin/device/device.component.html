@@ -1,4 +1,5 @@
 <form *ngIf="(device$ | async) as device">
+  <div *ngIf="(deviceOptions$ | async | log) as deviceOptions"></div>
   <div class="form-group row">
     <label for="devicetype" class="col-4 col-form-label">Device Type</label>
     <div class="col-8">

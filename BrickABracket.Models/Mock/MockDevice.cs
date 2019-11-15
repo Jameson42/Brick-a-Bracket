@@ -28,6 +28,7 @@ namespace BrickABracket.Models.Mock
             Scores = _scores.AsObservable();
             Statuses = _statuses.AsObservable();
         }
+        public static string[] Ports => new[] { "Mock" };
         public bool Connected => true;
 
         public string Connection => "mock";

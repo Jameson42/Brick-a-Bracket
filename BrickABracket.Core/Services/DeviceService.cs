@@ -43,6 +43,8 @@ namespace BrickABracket.Core.Services
             SetProgram(connectionString, program);
             return true;
         }
+        public IEnumerable<DeviceOptions> GetDeviceOptions() => DeviceFactory
+            .Select(df => new DeviceOptions((string)df.Metadata["Type"], (string[])df.Metadata["Ports"]));
         public bool SetProgram(string connectionString, string program)
         {
             if (!DeviceDictionary.ContainsKey(connectionString))
@@ -123,6 +125,17 @@ namespace BrickABracket.Core.Services
             public string ConnectionString { get; }
             public string Program { get; set; }
             public string DeviceType { get; set; }
+        }
+
+        public class DeviceOptions
+        {
+            public DeviceOptions(string deviceType, IEnumerable<string> ports)
+            {
+                DeviceType = deviceType;
+                Ports = ports;
+            }
+            public string DeviceType { get; }
+            public IEnumerable<string> Ports { get; }
         }
     }
 }

@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 
-import {Device, DeviceMetadata} from './device';
-import {SignalrService} from '../signalr.service';
+import { DeviceOptions, DeviceMetadata } from './device';
+import { SignalrService } from '../signalr.service';
 
 @Injectable()
 export class DeviceService {
@@ -16,6 +16,10 @@ export class DeviceService {
             this.devices$ = this._signalR.invokeAndListenFor<Array<DeviceMetadata>>('GetDevices', 'ReceiveDevices');
         }
         return this.devices$;
+    }
+
+    getDeviceOptions(): Observable<Array<DeviceOptions>> {
+        return this._signalR.invokeAndListenFor<Array<DeviceOptions>>('GetDeviceOptions', 'ReceiveDeviceOptions');
     }
 
     get(connection: string): Observable<DeviceMetadata> {

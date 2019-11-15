@@ -18,7 +18,8 @@ namespace BrickABracket.Models
             builder.RegisterType<Tournament>();
             builder.RegisterType<MockDevice>()
                 .As<IDevice>()
-                .WithMetadata("Type", "Mock");
+                .WithMetadata("Type", "Mock")
+                .WithMetadata("Ports", MockDevice.Ports);
         }
     }
 }

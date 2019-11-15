@@ -24,3 +24,7 @@ export enum DeviceRole {
     All = StatusFollower | StatusProvider | ScoreProvider
     // tslint:enable:no-bitwise
 }
+export interface DeviceOptions {
+    deviceType: string;
+    ports: Array<string>;
+}

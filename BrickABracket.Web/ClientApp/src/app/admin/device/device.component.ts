@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DeviceService } from 'src/app/core/devices/device.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Observer } from 'rxjs';
-import { Device, DeviceMetadata } from 'src/app/core/devices/device';
+import { Device, DeviceMetadata, DeviceOptions } from 'src/app/core/devices/device';
 import { tap, switchMap } from 'rxjs/operators';
 
 @Component({
@@ -13,6 +13,7 @@ import { tap, switchMap } from 'rxjs/operators';
 export class DeviceComponent implements OnInit {
 
   private device$: Observable<DeviceMetadata>;
+  private deviceOptions$: Observable<Array<DeviceOptions>>;
   private isNew: boolean;
   private connection: string;
 
@@ -42,9 +43,10 @@ export class DeviceComponent implements OnInit {
         return this.devices.get(this.connection);
       }),
     );
+    this.deviceOptions$ = this.devices.getDeviceOptions();
   }
 
-  async save(deviceData: DeviceMetadata, type: string) {
+  async save(deviceData: DeviceMetadata) {
     if (this.isNew) {
       await this.create(deviceData);
     } else {
