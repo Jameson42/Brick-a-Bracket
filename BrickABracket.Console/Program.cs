@@ -13,11 +13,12 @@ using BrickABracket.SwissSystem;
 
 namespace BrickABracket.Console
 {
-    class Program
+    public class Program
     {
         private static IServiceProvider _serviceProvider;
         private static IContainer _container;
-        static void Main(string[] args)
+
+        public static void Main()
         {
             RegisterServices();
             

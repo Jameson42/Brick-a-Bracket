@@ -26,6 +26,7 @@ namespace BrickABracket.Web.Pages
         public void OnGet()
         {
             RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
+            _logger.LogError("Some error occurred!");
         }
     }
 }

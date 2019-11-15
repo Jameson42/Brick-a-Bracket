@@ -28,7 +28,7 @@ namespace BrickABracket.Controllers
             if (file == null || file.Length <= 0)
                 return Content("error");
             using var fileStream = file.OpenReadStream();
-            await _competitorImport.UploadCompetitors(fileStream);
+            _competitorImport.UploadCompetitors(fileStream);
             await _hub.Clients.All.SendAsync("ReceiveCompetitors", _competitors.ReadAll());
             return Content("success");
         }

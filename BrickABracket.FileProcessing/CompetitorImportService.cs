@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using BrickABracket.Core.Services;
 using BrickABracket.Models.Base;
 using FileHelpers;
@@ -17,7 +16,7 @@ namespace BrickABracket.FileProcessing
             _competitors = competitors;
         }
 
-        public async Task UploadCompetitors(Stream fileStream)
+        public void UploadCompetitors(Stream fileStream)
         {
             IEnumerable<CompetitorMapping> results;
 

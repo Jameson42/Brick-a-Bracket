@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Reactive.Linq;
 using System.Reactive.Subjects;
 using BrickABracket.Models.Base;
@@ -14,7 +15,11 @@ namespace BrickABracket.Models.Mock
         private IDisposable _followSubscription;
         public IObservable<Score> Scores { get; private set; }
         public IObservable<Status> Statuses { get; private set; }
+        // _scoreFactory is ununsed here, but still a good example to include.
+        [SuppressMessage("", "IDE0052")]
         private readonly Func<string, Score> _scoreFactory;
+        // connectionString isn't used by this class, but it's necessary for Autofac instantiation
+        [SuppressMessage("", "IDE0060")]
         public MockDevice(string connectionString, Func<string, Score> scoreFactory)
         {
             _scoreFactory = scoreFactory;
