@@ -1,4 +1,5 @@
 using BrickABracket.FileProcessing;
+using Hangfire;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.IO;
@@ -21,7 +22,11 @@ namespace BrickABracket.Controllers
                 return Content("error");
             using var readStream = file.OpenReadStream();
             if (_images.UploadFile(mocId, readStream))
+            {
+                BackgroundJob.Enqueue(() => _images.ProcessImage(mocId));
                 return Content("success");
+            }
+
             return Content("error");
         }
         [HttpGet("{mocId}")]

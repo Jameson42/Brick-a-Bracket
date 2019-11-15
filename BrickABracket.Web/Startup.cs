@@ -15,6 +15,9 @@ using BrickABracket.Derby;
 using BrickABracket.RoundRobin;
 using BrickABracket.SingleElimination;
 using BrickABracket.SwissSystem;
+using Hangfire;
+using Hangfire.MemoryStorage;
+using Microsoft.AspNetCore.StaticFiles;
 
 namespace BrickABracket.Web
 {
@@ -37,6 +40,13 @@ namespace BrickABracket.Web
                 configuration.RootPath = "ClientApp/dist";
             });
             services.AddSignalR();
+            services.AddHangfire(configuration => configuration
+                .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
+                .UseSimpleAssemblyNameTypeSerializer()
+                .UseRecommendedSerializerSettings()
+                .UseMemoryStorage()
+                );
+            services.AddHangfireServer();
         }
 
         public void ConfigureContainer(ContainerBuilder builder)
@@ -70,12 +80,19 @@ namespace BrickABracket.Web
                 app.UseHsts();
             }
 
+            var provider = new FileExtensionContentTypeProvider();
+            provider.Mappings[".webmanifest"] = "application/manifest+json";
+
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions{
+                ContentTypeProvider = provider
+            });
             if (!env.IsDevelopment())
             {
                 app.UseSpaStaticFiles();
             }
+
+            app.UseHangfireDashboard("/jobs");
 
             app.UseRouting();
 
