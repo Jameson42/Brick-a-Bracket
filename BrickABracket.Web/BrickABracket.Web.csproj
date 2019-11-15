@@ -14,9 +14,9 @@
 
   <ItemGroup>
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="5.0.1" />
-    <PackageReference Include="FileHelpers" Version="3.4.1" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.0.0" />
     <ProjectReference Include="..\BrickABracket.Core\BrickABracket.Core.csproj" />
+    <ProjectReference Include="..\BrickABracket.FileProcessing\BrickABracket.FileProcessing.csproj" />
     <ProjectReference Include="..\BrickABracket.Models\BrickABracket.Models.csproj" />
     <ProjectReference Include="..\BrickABracket.Derby\BrickABracket.Derby.csproj" />
     <ProjectReference Include="..\BrickABracket.NXT\BrickABracket.NXT.csproj" />

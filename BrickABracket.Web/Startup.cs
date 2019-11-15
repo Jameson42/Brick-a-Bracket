@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Autofac;
 using BrickABracket.Core;
+using BrickABracket.FileProcessing;
 using BrickABracket.Hubs;
 using BrickABracket.Models;
 using BrickABracket.Services;
@@ -43,6 +44,7 @@ namespace BrickABracket.Web
             // Register things directly with Autofac here
             builder.RegisterModule(new ModelsModule());
             builder.RegisterModule(new CoreModule());
+            builder.RegisterModule(new FileProcessingModule());
             builder.RegisterModule(new NxtModule());
             builder.RegisterModule(new DerbyModule());
             builder.RegisterModule(new RoundRobinModule());

@@ -1,4 +1,4 @@
-using BrickABracket.Core.Services;
+using BrickABracket.FileProcessing;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.IO;
@@ -10,7 +10,6 @@ namespace BrickABracket.Controllers
     public class MocImageController : Controller
     {
         private readonly MocImageService _images;
-        private const string pathPrefix = "$/mocs/";
         public MocImageController(MocImageService images)
         {
             _images = images;
