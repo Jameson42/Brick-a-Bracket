@@ -119,11 +119,13 @@ namespace BrickABracket.Core.Services
                 ConnectionString = connectionString;
                 Program = program;
                 DeviceType = deviceType;
+                Programs = device.GetPrograms();
             }
             public IDevice Device { get; }
             public DeviceRole Role { get; set; }
             public string ConnectionString { get; }
             public string Program { get; set; }
+            public IEnumerable<string> Programs { get; }
             public string DeviceType { get; set; }
         }
 

@@ -12,6 +12,7 @@ export class DeviceMetadata {
     connectionString: string;
     program: string;
     deviceType: string;
+    programs: Array<string>;
 }
 export enum DeviceRole {
     None = 0,

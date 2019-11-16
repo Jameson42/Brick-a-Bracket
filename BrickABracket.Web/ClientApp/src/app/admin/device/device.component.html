@@ -1,12 +1,13 @@
-<form *ngIf="(device$ | async) as device">
-  <div *ngIf="(deviceOptions$ | async | log) as deviceOptions"></div>
+<form *ngIf="(device$ | async | log) as device">
   <div class="form-group row">
     <label for="devicetype" class="col-4 col-form-label">Device Type</label>
     <div class="col-8">
       <select type="text" id="devicetype" class="form-control" 
         [(ngModel)]="device.deviceType" name="devicetype">
-        <option value="NXT">NXT</option>
-        <option value="Mock">Mock Device</option>
+        <option></option>
+        <ng-container *ngFor="let deviceOption of (deviceOptions$ | async)">
+          <option value="{{ deviceOption.deviceType }}">{{ deviceOption.deviceType }}</option>
+        </ng-container>
       </select>
     </div>
   </div>

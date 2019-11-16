@@ -36,9 +36,6 @@ namespace BrickABracket.Hubs
             _runner = runner;
             _scores = scores;
             _statuses = statuses;
-            // Don't need to use anything in MatchWatcher,
-            // only including it here to ensure
-            // an instance gets created.
         }
 
         // CRUD Tournaments
