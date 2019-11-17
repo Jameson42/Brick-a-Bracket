@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DeviceService } from 'src/app/core/devices/device.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Observer } from 'rxjs';
-import { Device, DeviceMetadata, DeviceOptions } from 'src/app/core/devices/device';
+import { Device, DeviceMetadata, DeviceOptions, DeviceRole } from 'src/app/core/devices/device';
 import { tap, switchMap } from 'rxjs/operators';
 
 @Component({
@@ -60,7 +60,7 @@ export class DeviceComponent implements OnInit {
     return this.devices.create(deviceData);
   }
 
-  setRole(connection: string, role: string) {
+  setRole(connection: string, role: DeviceRole) {
     return this.devices.setRole(connection, role);
   }
 

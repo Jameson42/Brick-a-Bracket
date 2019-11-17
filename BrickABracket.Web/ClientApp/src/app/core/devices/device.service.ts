@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 
-import { DeviceOptions, DeviceMetadata } from './device';
+import { DeviceOptions, DeviceMetadata, DeviceRole } from './device';
 import { SignalrService } from '../signalr.service';
 
 @Injectable()
@@ -34,7 +34,7 @@ export class DeviceService {
             deviceData.program, deviceData.deviceType, deviceData.role);
     }
 
-    setRole(connection: string, role: string) {
+    setRole(connection: string, role: DeviceRole) {
         return this._signalR.invoke('SetDeviceRole', connection, role);
     }
     setProgram(connection: string, program: string) {

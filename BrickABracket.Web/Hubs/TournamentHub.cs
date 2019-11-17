@@ -1,3 +1,4 @@
+using System;
 using BrickABracket.Core.Services;
 using BrickABracket.Models.Base;
 using BrickABracket.Services;
@@ -36,6 +37,11 @@ namespace BrickABracket.Hubs
             _runner = runner;
             _scores = scores;
             _statuses = statuses;
+        }
+
+        public async Task KeepAlive()
+        {
+            await Clients.Caller.SendAsync("KeepAlive");
         }
 
         // CRUD Tournaments
@@ -101,9 +107,11 @@ namespace BrickABracket.Hubs
         // CRUD Devices
         #region Device CRUD
         public async Task SendDevices() => await Clients.All.SendAsync("ReceiveDevices", _devices.Devices);
-        public async Task CreateDevice(string connectionString, string program, string type = "NXT", string role = "All")
+        public async Task CreateDevice(string connectionString, string program, string type = "NXT", string role = "7")
         {
-            if (!_devices.Add(connectionString, program, type, role))
+            if (!int.TryParse(role, out int iRole))
+                return;
+            if (!_devices.Add(connectionString, program, type, iRole))
                 return;
             await SendDevices();
         }
@@ -115,7 +123,7 @@ namespace BrickABracket.Hubs
         {
             await Clients.Caller.SendAsync("ReceiveDeviceOptions", _devices.GetDeviceOptions());
         }
-        public async Task SetDeviceRole(string connectionString, string role)
+        public async Task SetDeviceRole(string connectionString, int role)
         {
             if (!_devices.SetRole(connectionString, role))
                 return;

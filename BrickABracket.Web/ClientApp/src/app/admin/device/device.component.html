@@ -15,13 +15,13 @@
     <label for="deviceRole" class="col-4 col-form-label">Device Role</label>
     <div class="col-8">
       <select class="form-control" name="deviceRole" id="deviceRole" [(ngModel)]="device.role">
-        <option value="None">None</option>
-        <option value="StatusProvider">Status Provider</option>
-        <option value="StatusFollower">Status Follower</option>
-        <option value="ScoreProvider">Score Provider</option>
-        <option value="StartButton">Start Button</option>
-        <option value="Timer">Timer</option>
-        <option value="All">All</option>
+        <option value=0>None</option>
+        <option value=1>Status Provider</option>
+        <option value=2>Status Follower</option>
+        <option value=4>Score Provider</option>
+        <option value=3>Start Button</option>
+        <option value=6>Timer</option>
+        <option value=7>All</option>
       </select>
     </div>
   </div>

@@ -23,6 +23,10 @@ namespace BrickABracket.Core.Services
             // TODO: Auto-connect to devices (or reconnect on restart)?
             // Should store last-known devices
         }
+        public bool Add(string connectionString, string program, string deviceType, int role)
+        {
+            return Add(connectionString, program, deviceType, (DeviceRole)role);
+        }
         public bool Add(string connectionString, string program, string deviceType, string role)
         {
             return Enum.TryParse(role, true, out DeviceRole deviceRole)
@@ -53,6 +57,10 @@ namespace BrickABracket.Core.Services
             device.Program = program;
             device.Device.Program = program;
             return true;
+        }
+        public bool SetRole(string connectionString, int role)
+        {
+            return SetRole(connectionString, (DeviceRole)role);
         }
         public bool SetRole(string connectionString, string role)
         {

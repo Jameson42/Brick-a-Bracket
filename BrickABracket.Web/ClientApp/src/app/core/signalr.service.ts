@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, combineLatest } from 'rxjs';
+import { Observable, combineLatest, interval } from 'rxjs';
 import { shareReplay, map } from 'rxjs/operators';
 
 // SignalR
@@ -23,7 +23,14 @@ export class SignalrService {
         .withUrl(this.url)
         .withAutomaticReconnect()
         .build();
+      this.connection.keepAliveIntervalInMilliseconds = 15000;
+      this.connection.serverTimeoutInMilliseconds = 30000;
       this.promise = this.connection.start().then(() => this.connection);
+      this.promise.then(() =>
+        interval(15000).subscribe(() => {
+          this.invoke('KeepAlive');
+        })
+      );
     }
     return await this.promise;
   }
