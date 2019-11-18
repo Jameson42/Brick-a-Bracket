@@ -1,6 +1,6 @@
 using BrickABracket.Core.Services;
 using BrickABracket.FileProcessing;
-using BrickABracket.Hubs;
+using BrickABracket.Web.Hubs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;

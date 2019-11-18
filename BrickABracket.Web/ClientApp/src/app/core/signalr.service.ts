@@ -26,11 +26,6 @@ export class SignalrService {
       this.connection.keepAliveIntervalInMilliseconds = 15000;
       this.connection.serverTimeoutInMilliseconds = 30000;
       this.promise = this.connection.start().then(() => this.connection);
-      this.promise.then(() =>
-        interval(15000).subscribe(() => {
-          this.invoke('KeepAlive');
-        })
-      );
     }
     return await this.promise;
   }

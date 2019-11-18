@@ -2,12 +2,13 @@ using Microsoft.AspNetCore.SignalR;
 using System;
 using System.Reactive.Linq;
 using BrickABracket.Core.Services;
-using BrickABracket.Hubs;
+using BrickABracket.Web.Hubs;
 using Microsoft.Extensions.Hosting;
 using System.Threading.Tasks;
 using System.Threading;
+using Hangfire;
 
-namespace BrickABracket.Services
+namespace BrickABracket.Web.Services
 {
     public class MatchWatcher : IHostedService, IDisposable
     {
@@ -33,9 +34,16 @@ namespace BrickABracket.Services
             _watch = null;
         }
 
-        public async Task StartAsync(CancellationToken cancellationToken)
+        public Task StartAsync(CancellationToken cancellationToken)
         {
             _cancellationToken = cancellationToken;
+            BackgroundJob.Enqueue(() => ExecuteAsync());
+            // All IHostedService need to complete StartAsync so the next service can run
+            return Task.CompletedTask;
+        }
+
+        public async Task ExecuteAsync()
+        {
             // Send tournament update to clients after 0.5 seconds of no status activity
             _observable = _runner.Statuses
                 .Select(s => new object())  // Don't need the data, this is so merge works

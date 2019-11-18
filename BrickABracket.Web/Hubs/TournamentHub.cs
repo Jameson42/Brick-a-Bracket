@@ -1,12 +1,11 @@
-using System;
 using BrickABracket.Core.Services;
 using BrickABracket.Models.Base;
-using BrickABracket.Services;
+using BrickABracket.Web.Services;
 using Microsoft.AspNetCore.SignalR;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
 
-namespace BrickABracket.Hubs
+namespace BrickABracket.Web.Hubs
 {
     public class TournamentHub : Hub
     {
@@ -37,11 +36,6 @@ namespace BrickABracket.Hubs
             _runner = runner;
             _scores = scores;
             _statuses = statuses;
-        }
-
-        public async Task KeepAlive()
-        {
-            await Clients.Caller.SendAsync("KeepAlive");
         }
 
         // CRUD Tournaments

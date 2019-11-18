@@ -7,9 +7,9 @@ using Microsoft.Extensions.Hosting;
 using Autofac;
 using BrickABracket.Core;
 using BrickABracket.FileProcessing;
-using BrickABracket.Hubs;
+using BrickABracket.Web.Hubs;
 using BrickABracket.Models;
-using BrickABracket.Services;
+using BrickABracket.Web.Services;
 using BrickABracket.NXT;
 using BrickABracket.Derby;
 using BrickABracket.RoundRobin;
@@ -60,10 +60,12 @@ namespace BrickABracket.Web
             builder.RegisterModule(new RoundRobinModule());
             builder.RegisterModule(new SingleEliminationModule());
             builder.RegisterModule(new SwissSystemModule());
-            builder.RegisterType<MatchWatcher>()
-                .As<IHostedService>().SingleInstance();
             builder.RegisterType<ScorePasser>().SingleInstance();
             builder.RegisterType<StatusPasser>().SingleInstance();
+
+            // Background Services
+            builder.RegisterType<MatchWatcher>()
+                .As<IHostedService>().SingleInstance();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

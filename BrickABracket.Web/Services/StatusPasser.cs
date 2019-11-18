@@ -5,7 +5,7 @@ using BrickABracket.Core.Services;
 using BrickABracket.Models.Base;
 using BrickABracket.Models.Interfaces;
 
-namespace BrickABracket.Services
+namespace BrickABracket.Web.Services
 {
     public class StatusPasser : IStatusProvider, IDisposable
     {
