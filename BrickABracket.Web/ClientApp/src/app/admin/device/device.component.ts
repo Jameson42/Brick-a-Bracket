@@ -3,7 +3,7 @@ import { DeviceService } from 'src/app/core/devices/device.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Observer } from 'rxjs';
 import { Device, DeviceMetadata, DeviceOptions, DeviceRole } from 'src/app/core/devices/device';
-import { tap, switchMap } from 'rxjs/operators';
+import { tap, switchMap, filter, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-device',
@@ -14,6 +14,7 @@ export class DeviceComponent implements OnInit {
 
   private device$: Observable<DeviceMetadata>;
   private deviceOptions$: Observable<Array<DeviceOptions>>;
+  private connectionStrings$: Observable<Array<string>>;
   private isNew: boolean;
   private connection: string;
 
@@ -42,6 +43,7 @@ export class DeviceComponent implements OnInit {
         }
         return this.devices.get(this.connection);
       }),
+      tap(d => this.changeDeviceType(d.deviceType)),
     );
     this.deviceOptions$ = this.devices.getDeviceOptions();
   }
@@ -66,5 +68,27 @@ export class DeviceComponent implements OnInit {
 
   setProgram(connection: string, program: string) {
     return this.devices.setProgram(connection, program);
+  }
+
+  // TODO: On change of each form element, act on that change and update
+  // observables for other elements
+  changeDeviceType(deviceType: string) {
+    console.log('Updating connectionString$');
+    // Device Type updated, update available connection strings
+    this.connectionStrings$ = this.deviceOptions$.pipe(
+      filter(o => o != null),
+      map(o => o.find(d => d.deviceType === deviceType)),
+      filter(o => o != null),
+      map(o => o.ports)
+    );
+  }
+  changeConnectionString(connectionString: string) {
+    // Connection String selected, get Program list
+  }
+  changeDeviceRole(deviceRole: DeviceRole) {
+    // Device Role updated
+  }
+  changeProgram(program: string) {
+    // Program updated
   }
 }

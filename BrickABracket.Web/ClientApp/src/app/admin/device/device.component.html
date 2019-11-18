@@ -3,7 +3,8 @@
     <label for="devicetype" class="col-4 col-form-label">Device Type</label>
     <div class="col-8">
       <select type="text" id="devicetype" class="form-control" 
-        [(ngModel)]="device.deviceType" name="devicetype">
+        [(ngModel)]="device.deviceType" name="devicetype"
+        (ngModelChange)="changeDeviceType($event)">
         <option></option>
         <ng-container *ngFor="let deviceOption of (deviceOptions$ | async)">
           <option value="{{ deviceOption.deviceType }}">{{ deviceOption.deviceType }}</option>
