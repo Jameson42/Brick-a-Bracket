@@ -89,6 +89,8 @@ export class DeviceComponent implements OnInit {
     this.isNew = false;
     this.deviceMetadata.connectionString = connectionString;
     await this.create(this.deviceMetadata);
+    // TODO: Should only nav on successful connection/creation!
+    // On fail, should allow continuing to change connectionString
     this.router.navigate(['../' + connectionString], { relativeTo: this.route });
   }
   changeDeviceRole(deviceRole: DeviceRole) {

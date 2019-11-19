@@ -22,6 +22,8 @@ namespace BrickABracket.Core.Services
             _statusTracker = statusTracker;
             // TODO: Auto-connect to devices (or reconnect on restart)?
             // Should store last-known devices
+
+            // TODO: Could try auto-creating devices for every known connection string
         }
         public bool Add(string connectionString, string program, string deviceType, int role)
         {

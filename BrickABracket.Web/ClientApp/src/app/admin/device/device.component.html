@@ -10,7 +10,12 @@
           <option value="{{ deviceOption.deviceType }}">{{ deviceOption.deviceType }}</option>
         </ng-container>
       </select>
-      <span *ngIf="!isNew">{{ device.deviceType }}</span>
+      <ng-container *ngIf="!isNew">
+        <span>{{ device.deviceType }}</span>
+        <span *ngIf="device.device" class="float-right" style="margin: 2px;">
+          <i class="{{ device.device.batteryLevel | battery }}"></i>
+        </span>
+      </ng-container>
     </div>
   </div>
   <div class="form-group row">
@@ -24,7 +29,11 @@
           <option value="{{ connection }}">{{ connection }}</option>
         </ng-container>
       </select>
-      <span *ngIf="!isNew">{{ device.connectionString }}</span>
+      <ng-container *ngIf="!isNew">
+        <span>{{ device.connectionString }}</span>
+        <span class="float-right badge badge-success" *ngIf="device.device && device.device.connected">Connected</span>
+        <span class="float-right badge badge-danger" *ngIf="!device.device || !device.device.connected">Disconnected</span>
+      </ng-container>
     </div>
   </div>
   <div class="form-group row">
