@@ -29,9 +29,33 @@ export class DeviceService {
         );
     }
 
-    create(deviceData: DeviceMetadata) {
-        return this._signalR.invoke('CreateDevice', deviceData.connectionString,
-            deviceData.program, deviceData.deviceType, deviceData.role);
+    create(deviceData: DeviceMetadata): Promise<any> {
+        if (!deviceData || !!deviceData.device ||
+            !deviceData.deviceType || !deviceData.connectionString) {
+            return;
+        }
+        if (!deviceData.role) {
+            return this._signalR.invoke('CreateDevice',
+                deviceData.deviceType,
+                deviceData.connectionString,
+                '0',
+                ''
+            );
+        }
+        if (!deviceData.program) {
+            return this._signalR.invoke('CreateDevice',
+                deviceData.deviceType,
+                deviceData.connectionString,
+                deviceData.role,
+                ''
+            );
+        }
+        return this._signalR.invoke('CreateDevice',
+            deviceData.deviceType,
+            deviceData.connectionString,
+            deviceData.role,
+            deviceData.program
+        );
     }
 
     setRole(connection: string, role: DeviceRole) {

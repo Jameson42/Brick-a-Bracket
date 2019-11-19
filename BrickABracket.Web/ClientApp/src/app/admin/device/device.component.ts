@@ -17,6 +17,7 @@ export class DeviceComponent implements OnInit {
   private connectionStrings$: Observable<Array<string>>;
   private isNew: boolean;
   private connection: string;
+  private deviceMetadata: DeviceMetadata;
 
   constructor(
     private devices: DeviceService,
@@ -36,13 +37,14 @@ export class DeviceComponent implements OnInit {
       switchMap(_ => {
         if (this.isNew) {
           return new Observable<DeviceMetadata>(
-            (observer: Observer<DeviceMetadata>)  => {
-            observer.next(new DeviceMetadata());
-            observer.complete();
-          });
+            (observer: Observer<DeviceMetadata>) => {
+              observer.next(new DeviceMetadata());
+              observer.complete();
+            });
         }
         return this.devices.get(this.connection);
       }),
+      tap(d => this.deviceMetadata = d),
       tap(d => this.changeDeviceType(d.deviceType)),
     );
     this.deviceOptions$ = this.devices.getDeviceOptions();
@@ -73,8 +75,8 @@ export class DeviceComponent implements OnInit {
   // TODO: On change of each form element, act on that change and update
   // observables for other elements
   changeDeviceType(deviceType: string) {
-    console.log('Updating connectionString$');
     // Device Type updated, update available connection strings
+    this.deviceMetadata.deviceType = deviceType;
     this.connectionStrings$ = this.deviceOptions$.pipe(
       filter(o => o != null),
       map(o => o.find(d => d.deviceType === deviceType)),
@@ -82,13 +84,19 @@ export class DeviceComponent implements OnInit {
       map(o => o.ports)
     );
   }
-  changeConnectionString(connectionString: string) {
+  async changeConnectionString(connectionString: string) {
     // Connection String selected, get Program list
+    this.isNew = false;
+    this.deviceMetadata.connectionString = connectionString;
+    await this.create(this.deviceMetadata);
+    this.router.navigate(['../' + connectionString], { relativeTo: this.route });
   }
   changeDeviceRole(deviceRole: DeviceRole) {
     // Device Role updated
+    this.deviceMetadata.role = deviceRole;
   }
   changeProgram(program: string) {
     // Program updated
+    this.deviceMetadata.program = program;
   }
 }

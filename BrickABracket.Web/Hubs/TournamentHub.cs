@@ -101,11 +101,11 @@ namespace BrickABracket.Web.Hubs
         // CRUD Devices
         #region Device CRUD
         public async Task SendDevices() => await Clients.All.SendAsync("ReceiveDevices", _devices.Devices);
-        public async Task CreateDevice(string connectionString, string program, string type = "NXT", string role = "7")
+        public async Task CreateDevice(string type, string connectionString, string roleString = "0", string program = "")
         {
-            if (!int.TryParse(role, out int iRole))
+            if (!int.TryParse(roleString, out int role))
                 return;
-            if (!_devices.Add(connectionString, program, type, iRole))
+            if (!_devices.Add(connectionString, program, type, role))
                 return;
             await SendDevices();
         }
@@ -117,8 +117,10 @@ namespace BrickABracket.Web.Hubs
         {
             await Clients.Caller.SendAsync("ReceiveDeviceOptions", _devices.GetDeviceOptions());
         }
-        public async Task SetDeviceRole(string connectionString, int role)
+        public async Task SetDeviceRole(string connectionString, string roleString)
         {
+            if (!int.TryParse(roleString, out int role))
+                return;
             if (!_devices.SetRole(connectionString, role))
                 return;
             await SendDevices();

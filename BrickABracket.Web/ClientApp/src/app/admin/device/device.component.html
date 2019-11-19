@@ -4,18 +4,34 @@
     <div class="col-8">
       <select type="text" id="devicetype" class="form-control" 
         [(ngModel)]="device.deviceType" name="devicetype"
-        (ngModelChange)="changeDeviceType($event)">
-        <option></option>
+        (ngModelChange)="changeDeviceType($event)"
+        *ngIf="isNew" >
         <ng-container *ngFor="let deviceOption of (deviceOptions$ | async)">
           <option value="{{ deviceOption.deviceType }}">{{ deviceOption.deviceType }}</option>
         </ng-container>
       </select>
+      <span *ngIf="!isNew">{{ device.deviceType }}</span>
     </div>
   </div>
   <div class="form-group row">
-    <label for="deviceRole" class="col-4 col-form-label">Device Role</label>
+    <label for="connectionString" class="col-4 col-form-label">Connection</label>
     <div class="col-8">
-      <select class="form-control" name="deviceRole" id="deviceRole" [(ngModel)]="device.role">
+      <select type="text" id="connectionString" class="form-control" 
+        [(ngModel)]="device.connectionString" name="connectionString"
+        (ngModelChange)="changeConnectionString($event)"
+        [disabled]="!device.deviceType" *ngIf="isNew">
+        <ng-container *ngFor="let connection of (connectionStrings$ | async)">
+          <option value="{{ connection }}">{{ connection }}</option>
+        </ng-container>
+      </select>
+      <span *ngIf="!isNew">{{ device.connectionString }}</span>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="deviceRole" class="col-4 col-form-label">Role</label>
+    <div class="col-8">
+      <select class="form-control" name="deviceRole" id="deviceRole"
+        [(ngModel)]="device.role" [disabled]="!device.deviceType || !device.connectionString">
         <option value=0>None</option>
         <option value=1>Status Provider</option>
         <option value=2>Status Follower</option>
@@ -27,18 +43,16 @@
     </div>
   </div>
   <div class="form-group row">
-    <label for="connectionString" class="col-4 col-form-label">Connection String</label>
-    <div class="col-8">
-      <input type="text" id="connectionString" class="form-control" 
-        [(ngModel)]="device.connectionString" name="connectionString">
-      <small class="text-muted">i.e. "COM3", "USB", "/dev/rfcomm0", "Mock"</small>
-    </div>
-  </div>
-  <div class="form-group row">
     <label for="program" class="col-4 col-form-label">Program</label>
     <div class="col-8 col-sm-5">
-      <input type="text" id="program" class="form-control"  
-        [(ngModel)]="device.program" name="program">
+      <select type="text" id="program" class="form-control" 
+        [(ngModel)]="device.program" name="program"
+        (ngModelChange)="changeProgram($event)"
+        [disabled]="!device.connectionString || !device.programs">
+        <ng-container *ngFor="let program of device.programs">
+          <option value="{{ program }}">{{ program }}</option>
+        </ng-container>
+      </select>
     </div>
     <div class="col-sm-1">&nbsp;</div>
     <div class="col-sm-2">
