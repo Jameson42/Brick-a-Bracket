@@ -6,7 +6,7 @@
 
 Brick-a-Bracket requires the following in order to run:
 
-- .NET Core >= 2.2.102
+- .NET Core >= 3.0
 - Node.JS >= 10.15.0
 
 The software is known to run on Raspberry Pi (Raspbian OS) and Windows 10. Please let me know if you get it running in other environments.
