@@ -72,8 +72,6 @@ export class DeviceComponent implements OnInit {
     return this.devices.setProgram(connection, program);
   }
 
-  // TODO: On change of each form element, act on that change and update
-  // observables for other elements
   changeDeviceType(deviceType: string) {
     // Device Type updated, update available connection strings
     this.deviceMetadata.deviceType = deviceType;

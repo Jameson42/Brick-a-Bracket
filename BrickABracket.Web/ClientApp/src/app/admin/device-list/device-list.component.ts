@@ -23,3 +23,8 @@ export class DeviceListComponent implements OnInit {
   }
 
 }
+// TODO: Add button to find all devices
+// TODO: Add role and program name to list
+// TODO: If no role/program, indicate incomplete device setup
+// TODO: Implement a popup warning on low battery?
+// TODO: Background service to poll device status regularly (between matches)
