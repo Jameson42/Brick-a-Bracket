@@ -9,8 +9,10 @@ namespace BrickABracket.Core
         protected override void Load(ContainerBuilder builder)
         {
             // LiteDB Entities
-            builder.RegisterInstance(new ConnectionString("BrickABracket.db"));
-            builder.RegisterType<LiteRepository>();
+            builder.RegisterInstance(
+                new ConnectionString("Filename=BrickABracket.db;Mode=Exclusive")
+            );
+            builder.RegisterType<LiteRepository>().SingleInstance();
 
             // Services
             builder.RegisterType<ScoreTracker>().SingleInstance();
