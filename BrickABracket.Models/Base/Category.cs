@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using BrickABracket.Models.Interfaces;
 
 namespace BrickABracket.Models.Base
 {
@@ -12,11 +11,11 @@ namespace BrickABracket.Models.Base
         {
             ClassificationId = classificationId;
         }
-        public Category() {}
-        public string Name {get;set;}
-        public int ClassificationId {get;set;}
-        public List<Round> Rounds {get;set;} = new List<Round>();
-        public List<int> MocIds {get;set;} = new List<int>();
-        public List<Standing> Standings {get;set;} = new List<Standing>();
+        public Category() { }
+        public string Name { get; set; }
+        public int ClassificationId { get; set; }
+        public List<Round> Rounds { get; set; } = new List<Round>();
+        public List<int> MocIds { get; set; } = new List<int>();
+        public List<Standing> Standings { get; set; } = new List<Standing>();
     }
 }
