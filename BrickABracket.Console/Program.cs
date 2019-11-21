@@ -25,7 +25,7 @@ namespace BrickABracket.Console
             using(var scope = _container.BeginLifetimeScope())
             {
                 var nxt = scope.Resolve<IDevice>(new NamedParameter("connectionString","loopback"));
-                System.Console.WriteLine(nxt.Connect());
+                System.Console.WriteLine(nxt.Connected);
             }
 
             System.Console.WriteLine("Hello World!");

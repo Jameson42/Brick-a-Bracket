@@ -34,7 +34,7 @@ namespace BrickABracket.Core.Services
             var device = DeviceFactory
                 .First(df => (string)df.Metadata["Type"] == deviceType)
                 .Value(connectionString);
-            if (!device.Connect())
+            if (!device.Connected)
                 return null;
             var metaData =  new DeviceMetadata(device, DeviceRole.None, connectionString, program, deviceType);
             DeviceDictionary.Add(connectionString, metaData);

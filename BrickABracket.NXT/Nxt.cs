@@ -49,7 +49,16 @@ namespace BrickABracket.NXT
             .Append("USB")
             .ToArray();
 
-        public bool Connected => Connect();
+        public bool Connected
+        {
+            get
+            {
+                var connectTask = Connect();
+                connectTask.Wait();
+                return connectTask.Result;
+            }
+        }
+
         public string Connection { get; private set; }
         public ushort BatteryLevel
         {
@@ -83,18 +92,18 @@ namespace BrickABracket.NXT
         public void FollowStatus(IObservable<Status> Statuses)
         {
             UnFollowStatus();
-            _followSubscription = Statuses.Subscribe(status =>
+            _followSubscription = Statuses.Subscribe(async status =>
             {
                 switch (status)
                 {
                     case Status.Start: // Start matach and start emitting scores
-                        StartMatch();
+                        await StartMatch();
                         break;
                     case Status.Stop: // Stop match and stop emitting scores
-                        StopMatch();
+                        await StopMatch();
                         break;
                     case Status.Ready: //Make sure Program is running
-                        StartProgram();
+                        await StartProgram();
                         break;
                     case Status.Unknown:
                         break;
@@ -114,18 +123,18 @@ namespace BrickABracket.NXT
             _followSubscription?.Dispose();
             _followSubscription = null;
         }
-        public bool Connect()
+        public async Task<bool> Connect()
         {
-            using (semaphore.Lock())
-                if (_brick?.Connection.IsConnected ?? false)
-                    return true;
             if (string.IsNullOrWhiteSpace(Connection))
                 return false;
+            using (await semaphore.LockAsync())
+                if (_brick?.Connection.IsConnected ?? false)
+                    return true;
             try
             {
                 _brick = new Brick<I2CSensor, I2CSensor, I2CSensor, I2CSensor>(Connection);
                 _brick.Connection.Open();
-                using (semaphore.Lock())
+                using (await semaphore.LockAsync())
                 {
                     try
                     {
@@ -144,19 +153,19 @@ namespace BrickABracket.NXT
             }
         }
 
-        private void StartMatch()
+        private async Task StartMatch()
         {
             // If match is already running, don't start it again
             if (MatchIsRunning)
                 return;
             // Start program, then wait for "Ready" before sending Start
-            StartProgram();
+            await StartProgram();
             _statuses.FirstAsync(s => s == Status.Ready)
-                .Subscribe(s =>
+                .Subscribe(async s =>
                 {
                     if (Connected)
                     {
-                        using (semaphore.Lock())
+                        using (await semaphore.LockAsync())
                         {
                             _brick?.Mailbox?.Send("Start", STATUS_INBOX);
                         }
@@ -164,17 +173,17 @@ namespace BrickABracket.NXT
                     }
                 });
         }
-        private void StopMatch()
+        private async Task StopMatch()
         {
             // If match/program is already stopped, don't stop it again
             if (!ProgramIsRunning)
                 return;
             if (Connected)
-                using (semaphore.Lock())
+                using (await semaphore.LockAsync())
                     _brick?.Mailbox?.Send("Stop", STATUS_INBOX);
-            StopProgram();
+            await StopProgram();
         }
-        private void StartProgram()
+        private async Task StartProgram()
         {
             if (ProgramIsRunning)
                 return;
@@ -182,10 +191,10 @@ namespace BrickABracket.NXT
             {
                 try
                 {
-                    using (semaphore.Lock())
+                    using (await semaphore.LockAsync())
                         _brick?.StartProgram(Program);
                     ProgramStarted = true;
-                    StartReadMailboxes();
+                    await StartReadMailboxes();
                 }
                 catch (MonoBrick.ConnectionException)
                 {
@@ -194,16 +203,16 @@ namespace BrickABracket.NXT
             }
         }
         private void Remove() => _remover.Remove(Connection);
-        private void StopProgram()
+        private async Task StopProgram()
         {
             if (Connected)
             {
                 try
                 {
-                    using (semaphore.Lock())
+                    using (await semaphore.LockAsync())
                         _brick?.StopProgram();
                     ProgramStarted = false;
-                    StopReadMailboxes();
+                    await StopReadMailboxes();
                     PostStatus(Status.Stopped);
                 }
                 catch (MonoBrick.ConnectionException)
@@ -233,30 +242,30 @@ namespace BrickABracket.NXT
 
         private bool MatchIsRunning => ProgramIsRunning && MatchStarted;
 
-        private void ReadMailboxes(CancellationToken token)
+        private async void ReadMailboxes(CancellationToken token)
         {
             while (!token.IsCancellationRequested)
             {
                 while (!Connected)
-                    Thread.Sleep(500);
+                    await Task.Delay(500);
                 if (!ProgramIsRunning)
                     continue;
                 // Post all queued statuses
-                using (semaphore.Lock())
+                using (await semaphore.LockAsync())
                     try
                     {
                         while (PostStatus(_brick.Mailbox.ReadString(STATUS_OUTBOX, true).TrimEnd('\0'))) ;
                     }
                     catch { }
                 // Post all queued scores
-                using (semaphore.Lock())
+                using (await semaphore.LockAsync())
                     try
                     {
                         while (_scoreFactory != null
                             && PostScore(_scoreFactory(_brick.Mailbox.ReadString(SCORE_OUTBOX, true).TrimEnd('\0')))) ;
                     }
                     catch { }
-                Thread.Sleep(100);
+                await Task.Delay(100);
             }
         }
         private bool PostScore(Score score)
@@ -278,15 +287,15 @@ namespace BrickABracket.NXT
             return true;
         }
 
-        private void StartReadMailboxes()
+        private async Task StartReadMailboxes()
         {
-            StopReadMailboxes();
+            await StopReadMailboxes();
             _messageTokenSource = new CancellationTokenSource();
             var token = _messageTokenSource.Token;
             _messageTask = Task.Factory.StartNew(() => ReadMailboxes(token), token);
         }
 
-        private void StopReadMailboxes()
+        private async Task StopReadMailboxes()
         {
             try
             {
@@ -296,15 +305,15 @@ namespace BrickABracket.NXT
             { }
             finally
             {
-                _messageTask?.Wait();
+                await _messageTask;
                 _messageTokenSource?.Dispose();
-                ClearOutboxes();
+                await ClearOutboxes();
             }
         }
 
-        private void ClearOutboxes()
+        private async Task ClearOutboxes()
         {
-            using (semaphore.Lock())
+            using (await semaphore.LockAsync())
             {
                 try
                 {
@@ -323,10 +332,10 @@ namespace BrickABracket.NXT
             }
         }
 
-        public void Dispose()
+        public async void Dispose()
         {
-            StopMatch();
-            StopReadMailboxes();
+            await StopMatch();
+            await StopReadMailboxes();
             UnFollowStatus();
             _brick?.Connection.Close();
             _scores?.OnCompleted();
