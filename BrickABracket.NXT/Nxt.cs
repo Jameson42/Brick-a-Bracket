@@ -17,8 +17,7 @@ namespace BrickABracket.NXT
         private static readonly Box SCORE_OUTBOX = Box.Box1;
         private static readonly Box STATUS_INBOX = Box.Box5;
         private Brick<I2CSensor, I2CSensor, I2CSensor, I2CSensor> _brick;
-        // TODO: Swap out locks for SemaphoreSlim
-        private readonly object MessageLock = new object();
+        private readonly SemaphoreSlim semaphore = new SemaphoreSlim(1,1);
         private IDisposable _followSubscription;
         private readonly Subject<Score> _scores;
         private readonly BehaviorSubject<Status> _statuses;
@@ -56,7 +55,7 @@ namespace BrickABracket.NXT
         {
             get
             {
-                lock (MessageLock)
+                using (semaphore.Lock())
                     try { return _brick?.GetBatteryLevel() ?? 0; }
                     catch { return 0; }
             }
@@ -65,7 +64,7 @@ namespace BrickABracket.NXT
         {
             get
             {
-                lock (MessageLock)
+                using (semaphore.Lock())
                     try { return _brick?.GetBrickName() ?? ""; }
                     catch { return ""; }
             }
@@ -74,10 +73,12 @@ namespace BrickABracket.NXT
 
         public IEnumerable<string> GetPrograms()
         {
-            lock (MessageLock)
-                return _brick.FileSystem.FileList()
-                    .Where(bf => bf.FileType == MonoBrick.FileType.Program)
-                    .Select(bf => bf.Name);
+            BrickFile[] files;
+            using (semaphore.Lock())
+                files = _brick.FileSystem.FileList();
+            return files
+                .Where(bf => bf.FileType == MonoBrick.FileType.Program)
+                .Select(bf => bf.Name);
         }
         public void FollowStatus(IObservable<Status> Statuses)
         {
@@ -115,7 +116,7 @@ namespace BrickABracket.NXT
         }
         public bool Connect()
         {
-            lock (MessageLock)
+            using (semaphore.Lock())
                 if (_brick?.Connection.IsConnected ?? false)
                     return true;
             if (string.IsNullOrWhiteSpace(Connection))
@@ -124,7 +125,7 @@ namespace BrickABracket.NXT
             {
                 _brick = new Brick<I2CSensor, I2CSensor, I2CSensor, I2CSensor>(Connection);
                 _brick.Connection.Open();
-                lock (MessageLock)
+                using (semaphore.Lock())
                 {
                     try
                     {
@@ -155,11 +156,11 @@ namespace BrickABracket.NXT
                 {
                     if (Connected)
                     {
-                        lock (MessageLock)
+                        using (semaphore.Lock())
                         {
                             _brick?.Mailbox?.Send("Start", STATUS_INBOX);
-                            MatchStarted = true;
                         }
+                        MatchStarted = true;
                     }
                 });
         }
@@ -169,7 +170,7 @@ namespace BrickABracket.NXT
             if (!ProgramIsRunning)
                 return;
             if (Connected)
-                lock (MessageLock)
+                using (semaphore.Lock())
                     _brick?.Mailbox?.Send("Stop", STATUS_INBOX);
             StopProgram();
         }
@@ -181,7 +182,7 @@ namespace BrickABracket.NXT
             {
                 try
                 {
-                    lock (MessageLock)
+                    using (semaphore.Lock())
                         _brick?.StartProgram(Program);
                     ProgramStarted = true;
                     StartReadMailboxes();
@@ -199,7 +200,7 @@ namespace BrickABracket.NXT
             {
                 try
                 {
-                    lock (MessageLock)
+                    using (semaphore.Lock())
                         _brick?.StopProgram();
                     ProgramStarted = false;
                     StopReadMailboxes();
@@ -218,7 +219,7 @@ namespace BrickABracket.NXT
             {
                 if (!ProgramStarted)
                     return false;
-                lock (MessageLock)
+                using (semaphore.Lock())
                     try
                     {
                         return !string.IsNullOrWhiteSpace(_brick.GetRunningProgram().TrimEnd('\0'));
@@ -241,14 +242,14 @@ namespace BrickABracket.NXT
                 if (!ProgramIsRunning)
                     continue;
                 // Post all queued statuses
-                lock (MessageLock)
+                using (semaphore.Lock())
                     try
                     {
                         while (PostStatus(_brick.Mailbox.ReadString(STATUS_OUTBOX, true).TrimEnd('\0'))) ;
                     }
                     catch { }
                 // Post all queued scores
-                lock (MessageLock)
+                using (semaphore.Lock())
                     try
                     {
                         while (_scoreFactory != null
@@ -303,7 +304,7 @@ namespace BrickABracket.NXT
 
         private void ClearOutboxes()
         {
-            lock (MessageLock)
+            using (semaphore.Lock())
             {
                 try
                 {
@@ -332,6 +333,7 @@ namespace BrickABracket.NXT
             _scores?.Dispose();
             _statuses?.OnCompleted();
             _statuses?.Dispose();
+            semaphore?.Dispose();
         }
 
         public bool Equals(Nxt other)
