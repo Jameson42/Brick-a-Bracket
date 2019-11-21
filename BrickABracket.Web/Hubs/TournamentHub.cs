@@ -1,3 +1,4 @@
+using System.Linq;
 using BrickABracket.Core.Services;
 using BrickABracket.Models.Base;
 using BrickABracket.Web.Services;
@@ -105,9 +106,14 @@ namespace BrickABracket.Web.Hubs
         {
             if (!int.TryParse(roleString, out int role))
                 return;
-            if (!_devices.Add(connectionString, program, type, role))
+            if (_devices.Add(type, connectionString, role, program) is null)
                 return;
             await SendDevices();
+        }
+        public async Task CreateAllDevices()
+        {
+            if (_devices.TryAddAll().Count() > 0)
+                await SendDevices();
         }
         public async Task GetDevices()
         {

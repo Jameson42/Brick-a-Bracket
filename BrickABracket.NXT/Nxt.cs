@@ -17,6 +17,7 @@ namespace BrickABracket.NXT
         private static readonly Box SCORE_OUTBOX = Box.Box1;
         private static readonly Box STATUS_INBOX = Box.Box5;
         private Brick<I2CSensor, I2CSensor, I2CSensor, I2CSensor> _brick;
+        // TODO: Swap out locks for SemaphoreSlim
         private readonly object MessageLock = new object();
         private IDisposable _followSubscription;
         private readonly Subject<Score> _scores;

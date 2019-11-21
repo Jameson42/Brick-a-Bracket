@@ -22,33 +22,38 @@ namespace BrickABracket.Core.Services
             _statusTracker = statusTracker;
             // TODO: Auto-connect to devices (or reconnect on restart)?
             // Should store last-known devices
-
-            // TODO: Could try auto-creating devices for every known connection string
         }
-        public bool Add(string connectionString, string program, string deviceType, int role)
+        public DeviceMetadata Add(string deviceType, string connectionString, int role, string program)
         {
-            return Add(connectionString, program, deviceType, (DeviceRole)role);
+            return Add(deviceType, connectionString, (DeviceRole)role, program);
         }
-        public bool Add(string connectionString, string program, string deviceType, string role)
-        {
-            return Enum.TryParse(role, true, out DeviceRole deviceRole)
-                ? Add(connectionString, program, deviceType, deviceRole)
-                : false;
-        }
-        public bool Add(string connectionString, string program, string deviceType = "NXT", DeviceRole role = DeviceRole.None)
+        public DeviceMetadata Add(string deviceType, string connectionString, DeviceRole role = DeviceRole.None, string program = "")
         {
             if (DeviceDictionary.ContainsKey(connectionString))
-                return false;
+                return DeviceDictionary[connectionString];
             var device = DeviceFactory
                 .First(df => (string)df.Metadata["Type"] == deviceType)
                 .Value(connectionString);
             if (!device.Connect())
-                return false;
-            DeviceDictionary.Add(connectionString, new DeviceMetadata(device, DeviceRole.None, connectionString, program, deviceType));
+                return null;
+            var metaData =  new DeviceMetadata(device, DeviceRole.None, connectionString, program, deviceType);
+            DeviceDictionary.Add(connectionString, metaData);
             SetRole(connectionString, role);
             SetProgram(connectionString, program);
-            return true;
+            return metaData;
         }
+
+        public IEnumerable<DeviceMetadata> TryAddAll()
+        {
+            foreach (var option in GetDeviceOptions())
+            {
+                foreach (var port in option.Ports)
+                {
+                    yield return Add(option.DeviceType, port);
+                }
+            }
+        }
+
         public IEnumerable<DeviceOptions> GetDeviceOptions() => DeviceFactory
             .Select(df => new DeviceOptions((string)df.Metadata["Type"], (string[])df.Metadata["Ports"]));
         public bool SetProgram(string connectionString, string program)
