@@ -1,11 +1,10 @@
-using System.Linq;
+using BrickABracket.Core.ORM;
 using BrickABracket.Core.Services;
 using BrickABracket.Models.Base;
-using BrickABracket.Web.Services;
 using Microsoft.AspNetCore.SignalR;
+using System.Linq;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
-using BrickABracket.Core.ORM;
 
 namespace BrickABracket.Web.Hubs
 {
@@ -18,8 +17,8 @@ namespace BrickABracket.Web.Hubs
         private readonly Repository<Tournament> _tournaments;
         private readonly DeviceService _devices;
         private readonly TournamentRunner _runner;
-        private readonly ScorePasser _scores;
-        private readonly StatusPasser _statuses;
+        private readonly ScoreTracker _scores;
+        private readonly StatusTracker _statuses;
         #endregion
         public TournamentHub(Repository<Classification> classes,
             Repository<Competitor> competitors,
@@ -27,8 +26,8 @@ namespace BrickABracket.Web.Hubs
             Repository<Moc> mocs,
             Repository<Tournament> tournaments,
             TournamentRunner runner,
-            ScorePasser scores,
-            StatusPasser statuses)
+            ScoreTracker scores,
+            StatusTracker statuses)
         {
             _classes = classes;
             _competitors = competitors;
@@ -62,19 +61,13 @@ namespace BrickABracket.Web.Hubs
         private async Task<int> CreateTournament(Tournament t)
         {
             var id = _tournaments.Create(t);
-            var tournament = _tournaments.Read(id);
-            _runner.Tournament = tournament;
-            await SendTournaments();
+            await SetActiveTournament(id);
             return id;
         }
-        public async Task GetTournament()
-        {
+        public async Task GetTournament() =>
             await Clients.Caller.SendAsync("ReceiveTournament", _runner.Metadata);
-        }
-        public async Task GetTournamentSummaries()
-        {
+        public async Task GetTournamentSummaries() =>
             await Clients.Caller.SendAsync("ReceiveTournamentSummaries", _tournaments.ReadAllSummaries());
-        }
         public async Task UpdateTournament(Tournament t)
         {
             var fullTournament = _tournaments.Read(t._id);
@@ -102,7 +95,8 @@ namespace BrickABracket.Web.Hubs
         #endregion
         // CRUD Devices
         #region Device CRUD
-        public async Task SendDevices() => await Clients.All.SendAsync("ReceiveDevices", _devices.Devices);
+        public async Task SendDevices() =>
+            await Clients.All.SendAsync("ReceiveDevices", _devices.Devices);
         public async Task CreateDevice(string type, string connectionString, string roleString = "0", string program = "")
         {
             if (!int.TryParse(roleString, out int role))
@@ -116,14 +110,10 @@ namespace BrickABracket.Web.Hubs
             if (_devices.TryAddAll().Count() > 0)
                 await SendDevices();
         }
-        public async Task GetDevices()
-        {
+        public async Task GetDevices() =>
             await Clients.Caller.SendAsync("ReceiveDevices", _devices.Devices);
-        }
-        public async Task GetDeviceOptions()
-        {
+        public async Task GetDeviceOptions() =>
             await Clients.Caller.SendAsync("ReceiveDeviceOptions", _devices.GetDeviceOptions());
-        }
         public async Task SetDeviceRole(string connectionString, string roleString)
         {
             if (!int.TryParse(roleString, out int role))
@@ -286,28 +276,24 @@ namespace BrickABracket.Web.Hubs
             _runner.NextMatch();
             await SendTournaments();
         }
-        public void ReadyMatch() => _runner.ReadyMatch();
-        public void StartMatch() => _runner.StartMatch();
-        public void StartTimedMatch(long milliseconds) => _runner.StartTimedMatch(milliseconds);
-        public void StopMatch() => _runner.StopMatch();
+        public void ReadyMatch() => PassStatus(Status.Ready);
+        public void StartMatch() => PassStatus(Status.Start);
+        public void StartTimedMatch(long milliseconds) =>
+            _runner.StartTimedMatch(milliseconds);
+        public void StopMatch() => PassStatus(Status.Stop);
         public async Task DeleteCurrentMatch()
         {
             _runner.DeleteCurrentMatch();
             await SendTournaments();
         }
-        public void PassScore(int player, double time)
-        {
-            _scores.PassScore(new Score(player, time));
-        }
-        public void PassStatus(string status)
-        {
+        public void PassScore(int player, double time) =>
+            PassScore(new Score(player, time));
+        private void PassScore(Score score) =>
+            _scores.PassScore(score);
+        public void PassStatus(string status) =>
             PassStatus(status.ToStatus());
-        }
-        private void PassStatus(Status status)
-        {
+        private void PassStatus(Status status) =>
             _statuses.PassStatus(status);
-            // TODO: Convert ReadyMatch, StartMatch, StopMatch to PassStatus calls
-        }
         #endregion
     }
 }

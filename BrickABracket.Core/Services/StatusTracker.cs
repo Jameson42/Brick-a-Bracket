@@ -1,9 +1,9 @@
+using BrickABracket.Models.Base;
+using BrickABracket.Models.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Reactive.Linq;
 using System.Reactive.Subjects;
-using BrickABracket.Models.Base;
-using BrickABracket.Models.Interfaces;
 
 namespace BrickABracket.Core.Services
 {
@@ -32,7 +32,10 @@ namespace BrickABracket.Core.Services
             if (StatusProviders.Contains(device) || _statusSubscriptions.ContainsKey(device))
                 return false;
             StatusProviders.Add(device);
-            _statusSubscriptions.Add(device, device.Statuses.Subscribe(PassStatus));
+            // Don't pass Ready status to runner, it can cause a loop
+            _statusSubscriptions.Add(device,
+                device.Statuses.Where(s => s != Status.Ready).Subscribe(PassStatus)
+            );
             return true;
         }
         public void Remove(IStatusProvider device)
@@ -45,7 +48,7 @@ namespace BrickABracket.Core.Services
                 _statusSubscriptions.Remove(device);
             }
         }
-        private void PassStatus(Status status)
+        public void PassStatus(Status status)
         {
             _statuses.OnNext(status);
         }

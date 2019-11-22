@@ -17,7 +17,7 @@ namespace BrickABracket.NXT
         private static readonly Box SCORE_OUTBOX = Box.Box1;
         private static readonly Box STATUS_INBOX = Box.Box5;
         private Brick<I2CSensor, I2CSensor, I2CSensor, I2CSensor> _brick;
-        private readonly SemaphoreSlim semaphore = new SemaphoreSlim(1,1);
+        private readonly SemaphoreSlim semaphore = new SemaphoreSlim(1, 1);
         private IDisposable _followSubscription;
         private readonly Subject<Score> _scores;
         private readonly BehaviorSubject<Status> _statuses;
@@ -96,7 +96,7 @@ namespace BrickABracket.NXT
             {
                 switch (status)
                 {
-                    case Status.Start: // Start matach and start emitting scores
+                    case Status.Start: // Start match and start emitting scores
                         await StartMatch();
                         break;
                     case Status.Stop: // Stop match and stop emitting scores

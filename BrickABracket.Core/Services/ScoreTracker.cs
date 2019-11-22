@@ -1,9 +1,9 @@
+using BrickABracket.Models.Base;
+using BrickABracket.Models.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Reactive.Linq;
 using System.Reactive.Subjects;
-using BrickABracket.Models.Base;
-using BrickABracket.Models.Interfaces;
 
 namespace BrickABracket.Core.Services
 {
@@ -44,6 +44,6 @@ namespace BrickABracket.Core.Services
                 _scoreSubscriptions.Remove(device);
             }
         }
-        private void PassScore(Score score) => _scores.OnNext(score);
+        public void PassScore(Score score) => _scores.OnNext(score);
     }
 }

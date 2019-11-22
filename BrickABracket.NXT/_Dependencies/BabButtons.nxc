@@ -1,6 +1,6 @@
 /*
 Brick-a-Bracket Buttons
-Version 1.0
+Version 1.1
 Jameson Gagnepain
 
 Works with Brick-a-Bracket server to track times
@@ -17,8 +17,6 @@ Bottom button requires enhanced NXT firmware
 
 bool Running = false;
 bool SentTime = false;
-bool SentStart = false;
-bool SentStop = false;
 long StartTick;
 
 string MSToString(long ms)
@@ -66,31 +64,27 @@ void StartMatch()
   StartTick = CurrentTick();
   Running = true;
   SentTime = false;
-  SentStop = false;
   SendStatus("Running");
 }
 
 void StopMatch()
 {
   Running = false;
-  SentStart = false;
   SendStatus("Stopped");
 }
 
 void RemoteStart()
 {
-  if (SentStart)
+  if (Running)
     return;
   SendStatus("Start");
-  SentStart = true;
 }
 
 void RemoteStop()
 {
-  if (SentStop)
+  if (!Running)
     return;
   SendStatus("Stop");
-  SentStop = true;
 }
 
 void ReadStatus()

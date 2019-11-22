@@ -1,25 +1,25 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.SpaServices.AngularCli;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Autofac;
 using BrickABracket.Core;
 using BrickABracket.Core.ORM;
-using BrickABracket.FileProcessing;
-using BrickABracket.Web.Hubs;
-using BrickABracket.Models;
-using BrickABracket.Web.Services;
-using BrickABracket.NXT;
 using BrickABracket.Derby;
+using BrickABracket.FileProcessing;
+using BrickABracket.Models;
+using BrickABracket.NXT;
 using BrickABracket.RoundRobin;
 using BrickABracket.SingleElimination;
 using BrickABracket.SwissSystem;
+using BrickABracket.Web.Hubs;
+using BrickABracket.Web.Services;
 using Hangfire;
 using Hangfire.MemoryStorage;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace BrickABracket.Web
 {
@@ -64,8 +64,6 @@ namespace BrickABracket.Web
             builder.RegisterModule(new RoundRobinModule());
             builder.RegisterModule(new SingleEliminationModule());
             builder.RegisterModule(new SwissSystemModule());
-            builder.RegisterType<ScorePasser>().SingleInstance();
-            builder.RegisterType<StatusPasser>().SingleInstance();
 
             // Background Services
             builder.RegisterType<MatchWatcher>()

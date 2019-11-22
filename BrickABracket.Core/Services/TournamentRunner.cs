@@ -1,12 +1,12 @@
+using Autofac.Features.Metadata;
+using BrickABracket.Core.ORM;
+using BrickABracket.Models.Base;
+using BrickABracket.Models.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reactive.Linq;
 using System.Reactive.Subjects;
-using Autofac.Features.Metadata;
-using BrickABracket.Models.Interfaces;
-using BrickABracket.Models.Base;
-using BrickABracket.Core.ORM;
 
 namespace BrickABracket.Core.Services
 {
@@ -308,9 +308,11 @@ namespace BrickABracket.Core.Services
                 case Status.Stop:
                     StopMatch();
                     break;
+                case Status.Ready:
+                    ReadyMatch();
+                    break;
                 case Status.Running:
                 case Status.Stopped:
-                case Status.Ready:  //Don't forward Ready status
                 case Status.Unknown:
                 default:
                     // TODO: Log status?
