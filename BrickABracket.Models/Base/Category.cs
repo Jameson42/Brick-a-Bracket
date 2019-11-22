@@ -12,6 +12,7 @@ namespace BrickABracket.Models.Base
             ClassificationId = classificationId;
         }
         public Category() { }
+        public int Id { get; set; }
         public string Name { get; set; }
         public int ClassificationId { get; set; }
         public List<Round> Rounds { get; set; } = new List<Round>();

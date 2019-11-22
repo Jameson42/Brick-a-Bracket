@@ -6,6 +6,7 @@ using System.Reactive.Subjects;
 using Autofac.Features.Metadata;
 using BrickABracket.Models.Interfaces;
 using BrickABracket.Models.Base;
+using BrickABracket.Core.ORM;
 
 namespace BrickABracket.Core.Services
 {
@@ -25,15 +26,15 @@ namespace BrickABracket.Core.Services
         private readonly BehaviorSubject<Status> _statuses = new BehaviorSubject<Status>(Status.Unknown);
         private IDisposable _followStatusSubscription;
         private IDisposable _followScoreSubscription;
-        private readonly Func<MocService> _mocServiceFactory;
-        private readonly Func<TournamentService> _tournamentServiceFactory;
+        private readonly Func<Repository<Moc>> _mocRepositoryFactory;
+        private readonly Func<Repository<Tournament>> _tournamentRepositoryFactory;
         private readonly IEnumerable<Meta<ITournamentStrategy>> _tournamentStrategies;
         #endregion
-        public TournamentRunner(Func<MocService> mocs, Func<TournamentService> tournaments,
+        public TournamentRunner(Func<Repository<Moc>> mocs, Func<Repository<Tournament>> tournaments,
             IEnumerable<Meta<ITournamentStrategy>> tournamentStrategies)
         {
-            _mocServiceFactory = mocs;
-            _tournamentServiceFactory = tournaments;
+            _mocRepositoryFactory = mocs;
+            _tournamentRepositoryFactory = tournaments;
             _tournamentStrategies = tournamentStrategies;
             Statuses = _statuses.AsObservable();
         }
@@ -114,7 +115,7 @@ namespace BrickABracket.Core.Services
         private bool SaveTournament()
         {
             if (Tournament != null && Tournament._id > 0)
-                using (var _tournaments = _tournamentServiceFactory())
+                using (var _tournaments = _tournamentRepositoryFactory())
                     return _tournaments.Update(Tournament);
             return false;
         }
@@ -153,7 +154,7 @@ namespace BrickABracket.Core.Services
         public void GenerateCategories()
         {
             IEnumerable<Moc> mocs;
-            using (var _mocs = _mocServiceFactory())
+            using (var _mocs = _mocRepositoryFactory())
             {
                 mocs = _mocs.ReadAll()
                     .Where(m => Tournament.MocIds.Contains(m._id));

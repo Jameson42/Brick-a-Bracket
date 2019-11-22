@@ -1,5 +1,6 @@
-using BrickABracket.Core.Services;
+using BrickABracket.Core.ORM;
 using BrickABracket.FileProcessing;
+using BrickABracket.Models.Base;
 using BrickABracket.Web.Hubs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -11,10 +12,10 @@ namespace BrickABracket.Controllers
     [Route("api/import")]
     public class ImportController : Controller
     {
-        private readonly CompetitorService _competitors;
+        private readonly Repository<Competitor> _competitors;
         private readonly CompetitorImportService _competitorImport;
         private readonly IHubContext<TournamentHub> _hub;
-        public ImportController(CompetitorService competitors,
+        public ImportController(Repository<Competitor> competitors,
             CompetitorImportService competitorImport,
             IHubContext<TournamentHub> hub)
         {

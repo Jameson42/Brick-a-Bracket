@@ -1,6 +1,9 @@
 using Autofac;
 using LiteDB;
 using BrickABracket.Core.Services;
+using BrickABracket.Core.ORM;
+using BrickABracket.Models.Base;
+using Microsoft.EntityFrameworkCore;
 
 namespace BrickABracket.Core
 {
@@ -8,7 +11,7 @@ namespace BrickABracket.Core
     {
         protected override void Load(ContainerBuilder builder)
         {
-            // LiteDB Entities
+             // LiteDB Entities
             builder.RegisterInstance(
                 new ConnectionString("Filename=BrickABracket.db;Mode=Exclusive")
             );
@@ -20,10 +23,13 @@ namespace BrickABracket.Core
             builder.RegisterType<DeviceService>().SingleInstance()
                 .AsSelf().AsImplementedInterfaces();
             builder.RegisterType<TournamentRunner>().SingleInstance();
-            builder.RegisterType<TournamentService>();
-            builder.RegisterType<CompetitorService>();
-            builder.RegisterType<MocService>();
-            builder.RegisterType<ClassificationService>();
+
+            // Repositories
+            builder.RegisterType<BabContext>()
+                .As<DbContext>();
+            builder.RegisterGeneric(typeof(Repository<>));
+            builder.RegisterType<TournamentRepository>()
+                .As<Repository<Tournament>>();
         }
     }
 }

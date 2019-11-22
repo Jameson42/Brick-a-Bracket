@@ -9,6 +9,7 @@ namespace BrickABracket.Models.Base
     /// </summary>
     public class Match
     {
+        public int Id { get; set; }
         public List<int> MocIds { get; set; } = new List<int>();
         public List<MatchResult> Results { get; set; } = new List<MatchResult>();
     }

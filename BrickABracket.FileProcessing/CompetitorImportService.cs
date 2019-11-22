@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using BrickABracket.Core.Services;
+using BrickABracket.Core.ORM;
 using BrickABracket.Models.Base;
 using FileHelpers;
 
@@ -10,8 +10,8 @@ namespace BrickABracket.FileProcessing
 {
     public class CompetitorImportService
     {
-        private readonly CompetitorService _competitors;
-        public CompetitorImportService(CompetitorService competitors)
+        private readonly Repository<Competitor> _competitors;
+        public CompetitorImportService(Repository<Competitor> competitors)
         {
             _competitors = competitors;
         }

@@ -1,11 +1,15 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using BrickABracket.Models.Base;
 using Microsoft.EntityFrameworkCore;
 
 namespace BrickABracket.Core.ORM
 {
-    public class Context : DbContext
+    public class BabContext : DbContext
     {
-        public Context(DbContextOptions<Context> options) : base(options)
+        public BabContext(DbContextOptions<BabContext> options) : base(options)
         { }
 
         public DbSet<Classification> Classifications { get; set; }
@@ -14,7 +18,6 @@ namespace BrickABracket.Core.ORM
         public DbSet<Tournament> Tournaments { get; set; }
         public DbSet<TournamentSummary> TournamentSummaries { get; set; }
 
-        // TODO: Can I create any shortcuts to common .Include chains?
         // TODO: Need Image storage
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -26,7 +29,7 @@ namespace BrickABracket.Core.ORM
                 .HasKey(c => c._id);
             builder.Entity<Moc>()
                 .HasKey(m => m._id);
-            builder.Entity<Tournament>()
+            builder.Entity<TournamentSummary>()
                 .HasKey(t => t._id);
 
             // Entity relationships
@@ -59,6 +62,24 @@ namespace BrickABracket.Core.ORM
                 .HasMany(mr => mr.Scores)
                 .WithOne()
                 .OnDelete(DeleteBehavior.Cascade);
+
+            // Property conversions
+            Expression<Func<List<int>, string>> idsToString = mi => string.Join(',', mi);
+            Expression<Func<string, List<int>>> stringToIds = mi => mi.Split(',', StringSplitOptions.RemoveEmptyEntries)
+                            .Select(s => int.Parse(s))
+                            .ToList();
+            builder.Entity<Tournament>()
+                .Property(t => t.MocIds)
+                .HasConversion(idsToString, stringToIds);
+            builder.Entity<Category>()
+                .Property(c => c.MocIds)
+                .HasConversion(idsToString, stringToIds);
+            builder.Entity<Round>()
+                .Property(r => r.MocIds)
+                .HasConversion(idsToString, stringToIds);
+            builder.Entity<Match>()
+                .Property(m => m.MocIds)
+                .HasConversion(idsToString, stringToIds);
         }
     }
 }

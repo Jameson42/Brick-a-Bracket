@@ -2,6 +2,7 @@ namespace BrickABracket.Models.Base
 {
     public class Standing
     {
+        public int Id { get; set; }
         public int MocId { get; set; }
         public int Place { get; set; }
         public int Score { get; set; }

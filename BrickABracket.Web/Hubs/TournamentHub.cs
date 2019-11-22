@@ -5,26 +5,27 @@ using BrickABracket.Web.Services;
 using Microsoft.AspNetCore.SignalR;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
+using BrickABracket.Core.ORM;
 
 namespace BrickABracket.Web.Hubs
 {
     public class TournamentHub : Hub
     {
         #region Services
-        private readonly ClassificationService _classes;
-        private readonly CompetitorService _competitors;
+        private readonly Repository<Classification> _classes;
+        private readonly Repository<Competitor> _competitors;
+        private readonly Repository<Moc> _mocs;
+        private readonly Repository<Tournament> _tournaments;
         private readonly DeviceService _devices;
-        private readonly MocService _mocs;
-        private readonly TournamentService _tournaments;
         private readonly TournamentRunner _runner;
         private readonly ScorePasser _scores;
         private readonly StatusPasser _statuses;
         #endregion
-        public TournamentHub(ClassificationService classes,
-            CompetitorService competitors,
+        public TournamentHub(Repository<Classification> classes,
+            Repository<Competitor> competitors,
             DeviceService devices,
-            MocService mocs,
-            TournamentService tournaments,
+            Repository<Moc> mocs,
+            Repository<Tournament> tournaments,
             TournamentRunner runner,
             ScorePasser scores,
             StatusPasser statuses)

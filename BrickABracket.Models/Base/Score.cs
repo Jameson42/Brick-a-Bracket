@@ -22,6 +22,7 @@ namespace BrickABracket.Models.Base
             Player = 0;
             Time = 0.0;
         }
+        public int Id { get; set; }
         public int Player { get; set; }
         public double Time { get; set; }
 

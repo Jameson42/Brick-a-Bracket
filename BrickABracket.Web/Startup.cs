@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Autofac;
 using BrickABracket.Core;
+using BrickABracket.Core.ORM;
 using BrickABracket.FileProcessing;
 using BrickABracket.Web.Hubs;
 using BrickABracket.Models;
@@ -18,6 +19,7 @@ using BrickABracket.SwissSystem;
 using Hangfire;
 using Hangfire.MemoryStorage;
 using Microsoft.AspNetCore.StaticFiles;
+using Microsoft.EntityFrameworkCore;
 
 namespace BrickABracket.Web
 {
@@ -47,6 +49,8 @@ namespace BrickABracket.Web
                 .UseMemoryStorage()
                 );
             services.AddHangfireServer();
+            services.AddDbContext<BabContext>(options =>
+                options.UseSqlite(Configuration.GetConnectionString("Context")));
         }
 
         public void ConfigureContainer(ContainerBuilder builder)
