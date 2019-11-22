@@ -28,6 +28,18 @@ namespace BrickABracket.Core.ORM
             await _context.SaveChangesAsync();
             return t._id;
         }
+        public int CreateOrUpdate(T t) => Exists(t._id)
+            ? Update(t)
+                ? t._id
+                : 0
+            : Create(t);
+        public async Task<int> CreateOrUpdateAsync(T t) => await ExistsAsync(t._id)
+            ? await UpdateAsync(t)
+                ? t._id
+                : 0
+            : await CreateAsync(t);
+        public bool Exists(int id) => _set.Any(c => c._id == id);
+        public async Task<bool> ExistsAsync(int id) => await _set.AnyAsync(c => c._id == id);
         public virtual T Read(int id) => _set.Find(id);
         public virtual async Task<T> ReadAsync(int id) => await _set.FindAsync(id);
         public virtual IEnumerable<T> Read(IEnumerable<int> ids) =>
@@ -44,7 +56,7 @@ namespace BrickABracket.Core.ORM
                 _context.SaveChanges();
                 return true;
             }
-            catch (System.Exception)
+            catch (Exception)
             {
                 return false;
             }
@@ -57,7 +69,7 @@ namespace BrickABracket.Core.ORM
                 await _context.SaveChangesAsync();
                 return true;
             }
-            catch (System.Exception)
+            catch (Exception)
             {
                 return false;
             }

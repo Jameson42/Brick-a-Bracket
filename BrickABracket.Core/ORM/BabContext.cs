@@ -15,10 +15,9 @@ namespace BrickABracket.Core.ORM
         public DbSet<Classification> Classifications { get; set; }
         public DbSet<Competitor> Competitors { get; set; }
         public DbSet<Moc> Mocs { get; set; }
+        public DbSet<MocImage> MocImages { get; set; }
         public DbSet<Tournament> Tournaments { get; set; }
         public DbSet<TournamentSummary> TournamentSummaries { get; set; }
-
-        // TODO: Need Image storage
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -31,6 +30,8 @@ namespace BrickABracket.Core.ORM
                 .HasKey(m => m._id);
             builder.Entity<TournamentSummary>()
                 .HasKey(t => t._id);
+            builder.Entity<MocImage>()
+                .HasKey(mi => mi._id);
 
             // Entity relationships
             // TODO: Can any be changed to Owned Entities?

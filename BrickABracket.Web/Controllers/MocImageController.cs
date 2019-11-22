@@ -16,12 +16,12 @@ namespace BrickABracket.Controllers
             _images = images;
         }
         [HttpPost("{mocId}")]
-        public IActionResult UploadFile(int mocId, IFormFile file)
+        public async Task<IActionResult> UploadFile(int mocId, IFormFile file)
         {
             if (file == null || file.Length == 0)
                 return Content("error");
             using var readStream = file.OpenReadStream();
-            if (_images.UploadFile(mocId, readStream))
+            if (await _images.UploadFile(mocId, readStream))
             {
                 BackgroundJob.Enqueue(() => _images.ProcessImage(mocId));
                 return Content("success");
@@ -32,10 +32,10 @@ namespace BrickABracket.Controllers
         [HttpGet("{mocId}")]
         public async Task<IActionResult> DownloadFile(int mocId)
         {
-            var (stream, contentType, fileName, error) = await _images.DownloadFile(mocId);
-            if (error != null)
-                return Content(error);
-            return File(stream, contentType, fileName);
+            var image = await _images.DownloadFile(mocId);
+            if (image == null)
+                return NotFound();
+            return File(image.File, image.Type);
         }
         [HttpGet("form")]
         public IActionResult Form()

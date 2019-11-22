@@ -1,7 +1,8 @@
 using System;
 using System.IO;
 using System.Threading.Tasks;
-using LiteDB;
+using BrickABracket.Core.ORM;
+using BrickABracket.Models.Base;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Processing;
 
@@ -10,58 +11,53 @@ namespace BrickABracket.FileProcessing
     // Manages competitors, retrieving and saving to repository as necessary.
     public class MocImageService : IDisposable
     {
-        private LiteRepository Db { get; }
-        private const string PATH_PREFIX = "$/mocs/";
-        private string Path(int mocId) => PATH_PREFIX + mocId;
-        private string Filename(int mocId) => mocId.ToString();
-        public MocImageService(LiteRepository repository)
+        private readonly Repository<MocImage> _repository;
+        public MocImageService(Repository<MocImage> repository)
         {
-            Db = repository;
+            _repository = repository;
         }
-        private LiteFileStream WriteStream(int mocId) => WriteStream(Path(mocId), Filename(mocId));
-        private LiteFileStream WriteStream(string path, string filename) => Db.FileStorage.OpenWrite(path, filename);
-        private LiteFileStream ReadStream(int mocId) => ReadStream(Path(mocId));
-        private LiteFileStream ReadStream(string path) => Db.FileStorage.OpenRead(path);
-        private LiteFileInfo ReadFileInfo(int mocId) => ReadFileInfo(Path(mocId));
-        private LiteFileInfo ReadFileInfo(string path) => Db.FileStorage.FindById(path);
 
-        public bool UploadFile(int mocId, Stream fileStream)
+        public async Task<bool> UploadFile(int mocId, Stream fileStream)
         {
-            // Save image temporarily, process through job
             if (mocId < 1)
                 return false;
             using var image = Image.Load(fileStream);
-            using var writeStream = WriteStream(mocId);
-            image.SaveAsJpeg(writeStream);
+            var mocImage = new MocImage
+            {
+                File = image.ToByteArray(),
+                _id = mocId,
+                Name = $"{mocId}.jpg",
+                Type = "image/jpeg"
+            };
+            await _repository.CreateOrUpdateAsync(mocImage);
             return true;
         }
-        public async Task ProcessImage(int mocId)
+        public async Task<bool> ProcessImage(int mocId)
         {
-            var (readStream, _, _, error) = await DownloadFile(mocId);
-            if (error != null)
+            var mocImage = await DownloadFile(mocId);
+            if (mocImage == null)
             {
-                throw new ImageProcessingException(error);
+                throw new ImageProcessingException("Error retrieving file");
             }
-            using var image = Image.Load(readStream);
+            using var image = Image.Load(mocImage.File);
             image.Mutate(c => c.AutoOrient());
             image.Mutate(c => c.EntropyCrop());
             image.Mutate(c => c.Resize(640, 0));
-            using var writeStream = WriteStream(mocId);
-            image.SaveAsJpeg(writeStream);
+            mocImage.File = image.ToByteArray();
+            return await _repository.UpdateAsync(mocImage);
         }
-        public async Task<(Stream fileStream, string contentType, string fileDownloadName, string error)> DownloadFile(int mocId)
+        public async Task<MocImage> DownloadFile(int mocId) =>
+            await _repository.ReadAsync(mocId);
+        public void Dispose() => _repository?.Dispose();
+    }
+
+    internal static class ImageExtensions
+    {
+        internal static byte[] ToByteArray(this Image image)
         {
-            if (mocId < 1)
-                return (null, null, null, "error - invalid id");
-            var memory = new MemoryStream();
-            var fileInfo = ReadFileInfo(mocId);
-            if (fileInfo == null)
-                return (null, null, null, "error - no image");
-            using var stream = ReadStream(mocId);
-            await stream.CopyToAsync(memory);
-            memory.Position = 0;
-            return (memory, "image/jpeg", fileInfo.Filename + ".jpg", null);
+            using var writeStream = new MemoryStream();
+            image.SaveAsJpeg(writeStream);
+            return writeStream.ToArray();
         }
-        public void Dispose() => Db?.Dispose();
     }
 }

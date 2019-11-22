@@ -48,9 +48,9 @@ namespace BrickABracket.FileProcessing
         public string LUG;
     }
 
-    public static class LinqAddons
+    internal static class LinqAddons
     {
-        public static IEnumerable<TSource> DistinctBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector)
+        internal static IEnumerable<TSource> DistinctBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector)
         {
             HashSet<TKey> knownKeys = new HashSet<TKey>();
             foreach (TSource element in source)
