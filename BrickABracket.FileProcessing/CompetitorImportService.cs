@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -16,21 +17,19 @@ namespace BrickABracket.FileProcessing
             _competitors = competitors;
         }
 
-        public void UploadCompetitors(Stream fileStream)
+        public async Task UploadCompetitors(Stream fileStream)
         {
-            IEnumerable<CompetitorMapping> results;
-
-            var engine = new FileHelperAsyncEngine<CompetitorMapping>();
+            using var engine = new FileHelperAsyncEngine<CompetitorMapping>();
             using var fileStreamReader = new StreamReader(fileStream);
             using var stream = engine.BeginReadStream(fileStreamReader);
-            results = engine
+            var results = engine
                 .Where(r => !string.IsNullOrWhiteSpace(r.Name))
                 .DistinctBy(r => r.Name)
                 .Where(r => !_competitors.Exists(r.Name));
 
             foreach (var result in results)
             {
-                _competitors.Create(new Competitor()
+                await _competitors.CreateAsync(new Competitor()
                 {
                     Name = result.Name
                 });

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reactive.Linq;
 using System.Reactive.Subjects;
+using System.Threading.Tasks;
 
 namespace BrickABracket.Core.Services
 {
@@ -112,11 +113,11 @@ namespace BrickABracket.Core.Services
                 };
             }
         }
-        private bool SaveTournament()
+        private async Task<bool> SaveTournament()
         {
             if (Tournament != null && Tournament._id > 0)
                 using (var _tournaments = _tournamentRepositoryFactory())
-                    return _tournaments.Update(Tournament);
+                    return (await _tournaments.CreateOrUpdateAsync(Tournament)) > 0;
             return false;
         }
         public IObservable<Status> Statuses { get; }
@@ -125,14 +126,16 @@ namespace BrickABracket.Core.Services
             UnFollowScores();
             if (scores == null)
                 return;
-            _followScoreSubscription = scores.Subscribe(ProcessScore);
+            _followScoreSubscription = scores
+                .Subscribe(async s => await ProcessScore(s));
         }
         public void FollowStatus(IObservable<Status> statuses)
         {
             UnFollowStatus();
             if (statuses == null)
                 return;
-            _followStatusSubscription = statuses.Subscribe(ProcessStatus);
+            _followStatusSubscription = statuses
+                .Subscribe(async s => await ProcessStatus(s));
         }
         public void UnFollowScores()
         {
@@ -151,7 +154,7 @@ namespace BrickABracket.Core.Services
             }
         }
         //Create/Update categories for current Tournament
-        public void GenerateCategories()
+        public async Task GenerateCategories()
         {
             IEnumerable<Moc> mocs;
             using (var _mocs = _mocRepositoryFactory())
@@ -183,17 +186,17 @@ namespace BrickABracket.Core.Services
                 }
             }
 
-            SaveTournament();
+            await SaveTournament();
         }
-        public bool Runoff(int count)
+        public async Task<bool> Runoff(int count)
         {
             if (Category == null)
                 return false;
             RoundIndex = _strategy.GenerateRound(Category, -1, count);
-            SaveTournament();
+            await SaveTournament();
             return RoundIndex != -1;
         }
-        public bool NextMatch()
+        public async Task<bool> NextMatch()
         {
             // Create next match in category and activate
             if (Category == null)
@@ -204,10 +207,10 @@ namespace BrickABracket.Core.Services
             MatchIndex = Round?.Matches?.FindIndex(m => m?.Results?.Count() == 0) ?? -1;
             if (MatchIndex == -1)
                 MatchIndex = _strategy.GenerateMatch(Round);
-            SaveTournament();
+            await SaveTournament();
             return MatchIndex > -1;
         }
-        public void ReadyMatch()
+        public async Task ReadyMatch()
         {
             if (MatchIsNull)
                 return;
@@ -216,7 +219,7 @@ namespace BrickABracket.Core.Services
             if (lastResult == null || lastResult.Scores.Any())
                 Match.Results.Add(new MatchResult());
             _statuses.OnNext(Status.Ready);
-            SaveTournament();
+            await SaveTournament();
         }
         public bool StartMatch()
         {
@@ -225,30 +228,27 @@ namespace BrickABracket.Core.Services
             _statuses.OnNext(Status.Start);
             return true;
         }
-        public void StopMatch()
+        public async Task StopMatch()
         {
             _statuses.OnNext(Status.Stop);
             _strategy.GenerateCategoryStandings(Category);
-            SaveTournament();
+            await SaveTournament();
         }
         public bool StartTimedMatch(long milliseconds)
         {
             if (!StartMatch())
                 return false;
             Observable.Timer(TimeSpan.FromMilliseconds(milliseconds))
-                .Subscribe(x =>
-                {
-                    ProcessStatus(Status.Stop);
-                });
+                .Subscribe(async x => await ProcessStatus(Status.Stop));
             return true;
         }
-        public bool DeleteCurrentMatch()
+        public async Task<bool> DeleteCurrentMatch()
         {
             if (Match == null)
                 return false;
             Round.Matches.RemoveAt(MatchIndex);
             MatchIndex = DEFAULTINDEX;
-            SaveTournament();
+            await SaveTournament();
             return true;
         }
         public bool GenerateRoundStandings(int categoryIndex = -1, int roundIndex = -1)
@@ -271,17 +271,17 @@ namespace BrickABracket.Core.Services
                 return false;
             return _strategy.GenerateCategoryStandings(category);
         }
-        public bool GenerateAllStandings()
+        public async Task<bool> GenerateAllStandings()
         {
             foreach (var category in Tournament?.Categories)
                 _strategy.GenerateCategoryStandings(category);
-            SaveTournament();
+            await SaveTournament();
             return true;
         }
         /// <summary>
         /// Record score into current Match
         /// </summary>
-        private void ProcessScore(Score score)
+        private async Task ProcessScore(Score score)
         {
             if (MatchIsNull)
                 return;
@@ -291,14 +291,14 @@ namespace BrickABracket.Core.Services
                 return; //Should be unreachable, Ready should always be sent before Start or scores
             Match.Results.Last().Scores.Add(score);
             _statuses.OnNext(Status.ScoreReceived);
-            SaveTournament();
+            await SaveTournament();
         }
         private bool MatchIsNull => Match == null;
 
         /// <summary>
         /// Act on incoming status
         /// </summary>
-        private void ProcessStatus(Status status)
+        private async Task ProcessStatus(Status status)
         {
             switch (status)
             {
@@ -306,10 +306,10 @@ namespace BrickABracket.Core.Services
                     StartMatch();
                     break;
                 case Status.Stop:
-                    StopMatch();
+                    await StopMatch();
                     break;
                 case Status.Ready:
-                    ReadyMatch();
+                    await ReadyMatch();
                     break;
                 case Status.Running:
                 case Status.Stopped:

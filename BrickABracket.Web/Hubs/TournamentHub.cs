@@ -60,7 +60,7 @@ namespace BrickABracket.Web.Hubs
         }
         private async Task<int> CreateTournament(Tournament t)
         {
-            var id = _tournaments.Create(t);
+            var id = await _tournaments.CreateAsync(t);
             await SetActiveTournament(id);
             return id;
         }
@@ -70,23 +70,23 @@ namespace BrickABracket.Web.Hubs
             await Clients.Caller.SendAsync("ReceiveTournamentSummaries", _tournaments.ReadAllSummaries());
         public async Task UpdateTournament(Tournament t)
         {
-            var fullTournament = _tournaments.Read(t._id);
+            var fullTournament = await _tournaments.ReadAsync(t._id);
             // Do not allow frontend to change sub-classes directly
             fullTournament.Name = t.Name;
             fullTournament.TournamentType = t.TournamentType;
             fullTournament.MocIds = t.MocIds;
-            if (_tournaments.Update(fullTournament))
+            if (await _tournaments.UpdateAsync(fullTournament))
             {
                 await SetActiveTournament(t._id);
             }
         }
         public async Task DeleteTournament(int id)
         {
-            foreach (var mId in _tournaments.Read(id)?.MocIds)
+            foreach (var mId in (await _tournaments.ReadAsync(id))?.MocIds)
             {
-                _mocs.Delete(mId);
+                await _mocs.DeleteAsync(mId);
             }
-            if (_tournaments.Delete(id))
+            if (await _tournaments.DeleteAsync(id))
             {
                 _runner.Tournament = null;
                 await SendTournaments();
@@ -137,10 +137,11 @@ namespace BrickABracket.Web.Hubs
         #endregion
         // CRUD Classifications
         #region Classification CRUD
-        public async Task SendClassifications() => await Clients.All.SendAsync("ReceiveClassifications", _classes.ReadAll());
+        public async Task SendClassifications() =>
+            await Clients.All.SendAsync("ReceiveClassifications", _classes.ReadAll());
         public async Task<int> CreateClassification(string name)
         {
-            var result = _classes.Create(new Classification() { Name = name });
+            var result = await _classes.CreateAsync(new Classification() { Name = name });
             if (result > 0)
                 await SendClassifications();
             return result;
@@ -151,46 +152,46 @@ namespace BrickABracket.Web.Hubs
         }
         public async Task UpdateClassification(Classification classification)
         {
-            if (_classes.Update(classification))
+            if (await _classes.UpdateAsync(classification))
                 await SendClassifications();
         }
         public async Task DeleteClassification(int id)
         {
-            if (_classes.Delete(id))
+            if (await _classes.DeleteAsync(id))
                 await SendClassifications();
         }
         #endregion
         // CRUD Competitors
         #region Competitor CRUD
-        public async Task SendCompetitors() => await Clients.All.SendAsync("ReceiveCompetitors", _competitors.ReadAll());
+        public async Task SendCompetitors() =>
+            await Clients.All.SendAsync("ReceiveCompetitors", _competitors.ReadAll());
         public async Task<int> CreateCompetitor(Competitor competitor)
         {
-            var result = _competitors.Create(competitor);
+            var result = await _competitors.CreateAsync(competitor);
             if (result > 0)
                 await SendCompetitors();
             return result;
         }
-        public async Task GetCompetitors()
-        {
+        public async Task GetCompetitors() =>
             await Clients.Caller.SendAsync("ReceiveCompetitors", _competitors.ReadAll());
-        }
         public async Task UpdateCompetitor(Competitor competitor)
         {
-            if (_competitors.Update(competitor))
+            if (await _competitors.UpdateAsync(competitor))
                 await SendCompetitors();
         }
         public async Task DeleteCompetitor(int id)
         {
-            if (_competitors.Delete(id))
+            if (await _competitors.DeleteAsync(id))
                 await SendCompetitors();
         }
         #endregion
         // CRUD Mocs
         #region MOC CRUD
-        public async Task SendMocs() => await Clients.All.SendAsync("ReceiveMocs", _mocs.ReadAll());
+        public async Task SendMocs() =>
+            await Clients.All.SendAsync("ReceiveMocs", _mocs.ReadAll());
         public async Task<int> CreateMoc(Moc moc)
         {
-            var result = _mocs.Create(moc);
+            var result = await _mocs.CreateAsync(moc);
             if (result > 0)
             {
                 await SendMocs();
@@ -198,13 +199,11 @@ namespace BrickABracket.Web.Hubs
             }
             return result;
         }
-        public async Task GetMocs()
-        {
+        public async Task GetMocs() =>
             await Clients.Caller.SendAsync("ReceiveMocs", _mocs.ReadAll());
-        }
         public async Task UpdateMoc(Moc moc)
         {
-            if (_mocs.Update(moc))
+            if (await _mocs.UpdateAsync(moc))
             {
                 await AddMocToTournament(moc._id);
                 await SendMocs();
@@ -212,7 +211,7 @@ namespace BrickABracket.Web.Hubs
         }
         public async Task DeleteMoc(int id)
         {
-            if (_mocs.Delete(id))
+            if (await _mocs.DeleteAsync(id))
             {
                 await RemoveMocFromTournament(id);
                 await SendMocs();
@@ -224,7 +223,7 @@ namespace BrickABracket.Web.Hubs
             if (!mocs.Contains(id))
             {
                 mocs.Add(id);
-                _tournaments.Update(_runner.Tournament);
+                await _tournaments.UpdateAsync(_runner.Tournament);
                 await SendTournaments();
             }
         }
@@ -234,7 +233,7 @@ namespace BrickABracket.Web.Hubs
             if (mocs.Contains(id))
             {
                 mocs.Remove(id);
-                _tournaments.Update(_runner.Tournament);
+                await _tournaments.UpdateAsync(_runner.Tournament);
                 await SendTournaments();
             }
         }
@@ -243,12 +242,12 @@ namespace BrickABracket.Web.Hubs
         #region Run Tournaments
         public async Task SetActiveTournament(int id)
         {
-            _runner.Tournament = _tournaments.Read(id);
+            _runner.Tournament = await _tournaments.ReadAsync(id);
             await SendTournaments();
         }
         public async Task GenerateCategories()
         {
-            _runner.GenerateCategories();
+            await _runner.GenerateCategories();
             await SendTournaments();
         }
         public async Task SetCategoryIndex(int i)
@@ -268,12 +267,12 @@ namespace BrickABracket.Web.Hubs
         }
         public async Task Runoff(int count)
         {
-            _runner.Runoff(count);
+            await _runner.Runoff(count);
             await SendTournaments();
         }
         public async Task NextMatch()
         {
-            _runner.NextMatch();
+            await _runner.NextMatch();
             await SendTournaments();
         }
         public void ReadyMatch() => PassStatus(Status.Ready);
@@ -283,7 +282,7 @@ namespace BrickABracket.Web.Hubs
         public void StopMatch() => PassStatus(Status.Stop);
         public async Task DeleteCurrentMatch()
         {
-            _runner.DeleteCurrentMatch();
+            await _runner.DeleteCurrentMatch();
             await SendTournaments();
         }
         public void PassScore(int player, double time) =>
