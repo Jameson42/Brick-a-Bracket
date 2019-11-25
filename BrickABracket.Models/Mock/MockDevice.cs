@@ -24,7 +24,7 @@ namespace BrickABracket.Models.Mock
         {
             _scoreFactory = scoreFactory;
             _scores = new Subject<Score>();
-            _statuses = new BehaviorSubject<Status>(Status.Ready);
+            _statuses = new BehaviorSubject<Status>(Status(StatusCode.Ready));
             Scores = _scores.AsObservable();
             Statuses = _statuses.AsObservable();
         }
@@ -46,6 +46,8 @@ namespace BrickABracket.Models.Mock
         }
 
         public bool Connect() => true;
+        private Status Status(StatusCode code) =>
+            new Status(code, typeof(MockDevice), BrickName);
 
         public void Dispose()
         {
@@ -61,16 +63,16 @@ namespace BrickABracket.Models.Mock
             UnFollowStatus();
             _followSubscription = statuses.Subscribe(s =>
             {
-                switch (s)
+                switch (s.Code)
                 {
-                    case Status.Start:
+                    case StatusCode.Start:
                         var random = new Random();
                         for (int i = 0; i < 4; i++)
                             _scores.OnNext(new Score(i, Math.Round(random.NextDouble() * 5.0, 3)));
-                        _statuses.OnNext(Status.Stop);
+                        _statuses.OnNext(Status(StatusCode.Stopped));
                         break;
-                    case Status.Ready:
-                        _statuses.OnNext(Status.Ready);
+                    case StatusCode.Ready:
+                        _statuses.OnNext(Status(StatusCode.Ready));
                         break;
                     default:
                         break;

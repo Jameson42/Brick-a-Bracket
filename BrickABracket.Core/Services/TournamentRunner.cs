@@ -2,6 +2,7 @@ using Autofac.Features.Metadata;
 using BrickABracket.Core.ORM;
 using BrickABracket.Models.Base;
 using BrickABracket.Models.Interfaces;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,19 +25,23 @@ namespace BrickABracket.Core.Services
         private int _categoryIndex = DEFAULTINDEX;
         private int _roundIndex = DEFAULTINDEX;
         private int _matchIndex = DEFAULTINDEX;
-        private readonly BehaviorSubject<Status> _statuses = new BehaviorSubject<Status>(Status.Unknown);
+        private readonly BehaviorSubject<Status> _statuses =
+            new BehaviorSubject<Status>(Status(StatusCode.Unknown));
         private IDisposable _followStatusSubscription;
         private IDisposable _followScoreSubscription;
         private readonly Func<Repository<Moc>> _mocRepositoryFactory;
         private readonly Func<Repository<Tournament>> _tournamentRepositoryFactory;
         private readonly IEnumerable<Meta<ITournamentStrategy>> _tournamentStrategies;
+        private readonly ILogger<TournamentRunner> _logger;
         #endregion
         public TournamentRunner(Func<Repository<Moc>> mocs, Func<Repository<Tournament>> tournaments,
-            IEnumerable<Meta<ITournamentStrategy>> tournamentStrategies)
+            IEnumerable<Meta<ITournamentStrategy>> tournamentStrategies,
+            ILogger<TournamentRunner> logger)
         {
             _mocRepositoryFactory = mocs;
             _tournamentRepositoryFactory = tournaments;
             _tournamentStrategies = tournamentStrategies;
+            _logger = logger;
             Statuses = _statuses.AsObservable();
         }
         public Tournament Tournament
@@ -120,6 +125,8 @@ namespace BrickABracket.Core.Services
                     return (await _tournaments.CreateOrUpdateAsync(Tournament)) > 0;
             return false;
         }
+        private static Status Status(StatusCode code) =>
+            new Status(code, typeof(TournamentRunner), "Tournament Runner");
         public IObservable<Status> Statuses { get; }
         public void FollowScores(IObservable<Score> scores)
         {
@@ -218,19 +225,19 @@ namespace BrickABracket.Core.Services
             // Only add new result if last result has scores
             if (lastResult == null || lastResult.Scores.Any())
                 Match.Results.Add(new MatchResult());
-            _statuses.OnNext(Status.Ready);
+            _statuses.OnNext(Status(StatusCode.Ready));
             await SaveTournament();
         }
         public bool StartMatch()
         {
             if (MatchIsNull)
                 return false;
-            _statuses.OnNext(Status.Start);
+            _statuses.OnNext(Status(StatusCode.Stop));
             return true;
         }
         public async Task StopMatch()
         {
-            _statuses.OnNext(Status.Stop);
+            _statuses.OnNext(Status(StatusCode.Stop));
             _strategy.GenerateCategoryStandings(Category);
             await SaveTournament();
         }
@@ -239,7 +246,7 @@ namespace BrickABracket.Core.Services
             if (!StartMatch())
                 return false;
             Observable.Timer(TimeSpan.FromMilliseconds(milliseconds))
-                .Subscribe(async x => await ProcessStatus(Status.Stop));
+                .Subscribe(async x => await ProcessStatus(Status(StatusCode.Stop)));
             return true;
         }
         public async Task<bool> DeleteCurrentMatch()
@@ -290,7 +297,7 @@ namespace BrickABracket.Core.Services
             if (!Match.Results.Any())
                 return; //Should be unreachable, Ready should always be sent before Start or scores
             Match.Results.Last().Scores.Add(score);
-            _statuses.OnNext(Status.ScoreReceived);
+            _statuses.OnNext(Status(StatusCode.ScoreReceived));
             await SaveTournament();
         }
         private bool MatchIsNull => Match == null;
@@ -300,20 +307,20 @@ namespace BrickABracket.Core.Services
         /// </summary>
         private async Task ProcessStatus(Status status)
         {
-            switch (status)
+            switch (status.Code)
             {
-                case Status.Start:
+                case StatusCode.Start:
                     StartMatch();
                     break;
-                case Status.Stop:
+                case StatusCode.Stop:
                     await StopMatch();
                     break;
-                case Status.Ready:
+                case StatusCode.Ready:
                     await ReadyMatch();
                     break;
-                case Status.Running:
-                case Status.Stopped:
-                case Status.Unknown:
+                case StatusCode.Running:
+                case StatusCode.Stopped:
+                case StatusCode.Unknown:
                 default:
                     // TODO: Log status?
                     break;

@@ -275,11 +275,11 @@ namespace BrickABracket.Web.Hubs
             await _runner.NextMatch();
             await SendTournaments();
         }
-        public void ReadyMatch() => PassStatus(Status.Ready);
-        public void StartMatch() => PassStatus(Status.Start);
+        public void ReadyMatch() => PassStatus(StatusCode.Ready);
+        public void StartMatch() => PassStatus(StatusCode.Start);
         public void StartTimedMatch(long milliseconds) =>
             _runner.StartTimedMatch(milliseconds);
-        public void StopMatch() => PassStatus(Status.Stop);
+        public void StopMatch() => PassStatus(StatusCode.Stop);
         public async Task DeleteCurrentMatch()
         {
             await _runner.DeleteCurrentMatch();
@@ -293,6 +293,10 @@ namespace BrickABracket.Web.Hubs
             PassStatus(status.ToStatus());
         private void PassStatus(Status status) =>
             _statuses.PassStatus(status);
+        private void PassStatus(StatusCode code) =>
+            PassStatus(Status(code));
+        private static Status Status(StatusCode code) =>
+            new Status(code, typeof(TournamentHub), "Tournament Hub");
         #endregion
     }
 }

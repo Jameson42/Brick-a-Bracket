@@ -1,6 +1,26 @@
+using System;
+
 namespace BrickABracket.Models.Base
 {
-    public enum Status
+    public class Status
+    {
+        public Status(StatusCode code, string senderName) : this(code, null, senderName)
+        { }
+        public Status(StatusCode code, Type senderType = null, string senderName = "")
+        {
+            Code = code;
+            SenderType = senderType;
+            SenderName = senderName == string.Empty
+                ? senderType?.ToString() ?? string.Empty
+                : senderName;
+        }
+        public StatusCode Code { get; }
+        public Type SenderType { get; }
+        public string SenderName { get; }
+        public override string ToString() =>
+            $"{SenderName}({SenderType} - {Code})";
+    }
+    public enum StatusCode
     {
         Unknown,
         Ready,
@@ -10,23 +30,23 @@ namespace BrickABracket.Models.Base
         Stop,
         ScoreReceived
     }
-    public static class StatusExtensions
+    public static class StatusCodeExtensions
     {
-        public static Status ToStatus(this string status)
+        public static StatusCode ToStatus(this string status)
         {
             return (status.ToLower()) switch
             {
-                "ready" => Status.Ready,
-                "start" => Status.Start,
-                "stop" => Status.Stop,
-                "running" => Status.Running,
-                "stopped" => Status.Stopped,
-                _ => Status.Unknown,
+                "ready" => StatusCode.Ready,
+                "start" => StatusCode.Start,
+                "stop" => StatusCode.Stop,
+                "running" => StatusCode.Running,
+                "stopped" => StatusCode.Stopped,
+                _ => StatusCode.Unknown,
             };
         }
-        public static Status ParseStatus(string status)
+        public static StatusCode ParseStatus(string status)
         {
-            return status == null ? Status.Unknown : status.ToStatus();
+            return status == null ? StatusCode.Unknown : status.ToStatus();
         }
     }
 }

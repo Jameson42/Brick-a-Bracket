@@ -34,14 +34,14 @@ namespace BrickABracket.NXT
             Func<string, Score> scoreFactory,
             IDeviceRemover remover)
         {
+            Connection = connectionString;
             _scoreFactory = scoreFactory;
             _scores = new Subject<Score>();
-            _statuses = new BehaviorSubject<Status>(Status.Unknown);
+            _statuses = new BehaviorSubject<Status>(Status(StatusCode.Unknown));
             _remover = remover;
             Scores = _scores.AsObservable();
             Statuses = _statuses.AsObservable();
 
-            Connection = connectionString;
         }
 
         public static string[] Ports => MonoBrick.Bluetooth<Command, Reply>
@@ -94,24 +94,24 @@ namespace BrickABracket.NXT
             UnFollowStatus();
             _followSubscription = Statuses.Subscribe(async status =>
             {
-                switch (status)
+                switch (status.Code)
                 {
-                    case Status.Start: // Start match and start emitting scores
+                    case StatusCode.Start: // Start match and start emitting scores
                         await StartMatch();
                         break;
-                    case Status.Stop: // Stop match and stop emitting scores
+                    case StatusCode.Stop: // Stop match and stop emitting scores
                         await StopMatch();
                         break;
-                    case Status.Ready: //Make sure Program is running
+                    case StatusCode.Ready: //Make sure Program is running
                         await StartProgram();
                         break;
-                    case Status.Unknown:
+                    case StatusCode.Unknown:
                         break;
-                    case Status.Running:
+                    case StatusCode.Running:
                         break;
-                    case Status.Stopped:
+                    case StatusCode.Stopped:
                         break;
-                    case Status.ScoreReceived:
+                    case StatusCode.ScoreReceived:
                         break;
                     default:
                         break;
@@ -160,7 +160,7 @@ namespace BrickABracket.NXT
                 return;
             // Start program, then wait for "Ready" before sending Start
             await StartProgram();
-            _statuses.FirstAsync(s => s == Status.Ready)
+            _statuses.FirstAsync(s => s.Code == StatusCode.Ready)
                 .Subscribe(async s =>
                 {
                     if (Connected)
@@ -213,7 +213,7 @@ namespace BrickABracket.NXT
                         _brick?.StopProgram();
                     ProgramStarted = false;
                     await StopReadMailboxes();
-                    PostStatus(Status.Stopped);
+                    PostStatus(StatusCode.Stopped);
                 }
                 catch (MonoBrick.ConnectionException)
                 {
@@ -278,10 +278,13 @@ namespace BrickABracket.NXT
         private bool PostStatus(string status) => string.IsNullOrWhiteSpace(status)
                 ? false
                 : PostStatus(status.ToStatus());
-
+        private Status Status(StatusCode code) =>
+            new Status(code, typeof(Nxt), BrickName + Connection);
+        private bool PostStatus(StatusCode code) =>
+            PostStatus(Status(code));
         private bool PostStatus(Status status)
         {
-            if (status == Status.Unknown)
+            if (status.Code == StatusCode.Unknown)
                 return false;
             _statuses?.OnNext(status);
             return true;
