@@ -7,6 +7,7 @@ using Microsoft.Extensions.Hosting;
 using System.Threading.Tasks;
 using System.Threading;
 using Hangfire;
+using BrickABracket.Models.Base;
 
 namespace BrickABracket.Web.Services
 {
@@ -44,17 +45,18 @@ namespace BrickABracket.Web.Services
 
         public async Task ExecuteAsync()
         {
+            var statuses = _runner.Statuses
+                .Do(async s => await ProcessStatus(s))
+                .Select(_ => new object()); // Discard object, not needed for merge
+            var scores = _scores.Scores
+                .Do(async s => await ProcessScore(s))
+                .Select(_ => new object()); // Discard object, not needed for merge
             // Send tournament update to clients after 0.5 seconds of no status activity
-            _observable = _runner.Statuses
-                .Select(s => new object())  // Don't need the data, this is so merge works
-                .Merge(_scores.Scores)
+            _observable = statuses
+                .Merge(scores)
                 .TakeWhile(_ => !_cancellationToken.IsCancellationRequested)
                 .Throttle(TimeSpan.FromMilliseconds(500));
-            _watch = _observable.Subscribe(x =>
-            {
-                _hub.Clients.All
-                    .SendAsync("ReceiveTournament", _runner.Metadata);
-            });
+            _watch = _observable.Subscribe(async _ => await UpdateTournamentViews());
             await _observable;
         }
 
@@ -64,5 +66,14 @@ namespace BrickABracket.Web.Services
             _watch = null;
             await _observable;
         }
+
+        private async Task UpdateTournamentViews() =>
+            await _hub.Clients.All.SendAsync("ReceiveTournament", _runner.Metadata);
+
+        private async Task ProcessStatus(Status status) =>
+            await _hub.Clients.All.SendAsync("ReceiveStatus", status);
+
+        private async Task ProcessScore(Score score) =>
+            await _hub.Clients.All.SendAsync("ReceiveScore", score);
     }
 }

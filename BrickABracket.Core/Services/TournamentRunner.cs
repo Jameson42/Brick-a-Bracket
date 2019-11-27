@@ -322,7 +322,6 @@ namespace BrickABracket.Core.Services
                 case StatusCode.Stopped:
                 case StatusCode.Unknown:
                 default:
-                    // TODO: Log status?
                     break;
             }
         }
